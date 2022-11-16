@@ -30,6 +30,7 @@ public class T_BoardController {
 	T_BoardService service;
 	
 		// ** Board Check List ***************************
+	        // 여기 수정했어요 준영씨 11.16
 		// => ver02) SearchCriteria,  PageMaker 적용하기 
 		@RequestMapping(value="/t_bcrilist")
 		public ModelAndView t_bcrilist(ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
