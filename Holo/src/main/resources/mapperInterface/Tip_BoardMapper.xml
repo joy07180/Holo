@@ -163,7 +163,7 @@ insert into board(seq,id,title,content,root)
 
 
 <select id="selectHList" resultType="vo.Tip_BoardVO">
-	select seq, id, title, regdate from tip_board order by seq desc limit 0,5
+	select seq, id, title, DATE_FORMAT(regdate, '%m-%d %H:%i') regdate from tip_board order by seq desc limit 0,5
 </select>
 
 <select id="selectHhotList" resultType="vo.Tip_BoardVO">

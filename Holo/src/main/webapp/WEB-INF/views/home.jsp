@@ -150,7 +150,7 @@
 
             <div class="boards">
                 <section>
-                    <h4>실시간 최신글
+                    <h4>최신 공지사항
                         <a href="noticelist">+</a>
                     </h4>
                     <hr>
@@ -158,15 +158,17 @@
             <thead>
                 <tr height="30">
                     <th width="50%">제목</th>
-                    <th width="30%">글쓴이</th>
+                    <th width="20%">글쓴이</th>
+                    <th width="30%">날짜</th>
                 </tr>
             </thead>
             <tbody>
             	<c:if test="${not empty nlist}">
                     <c:forEach var="board" items="${nlist}">
                         <tr height="30">
-                            <td width="40%"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
+                            <td width="50%"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
                             <td class="ct" width="20%">${board.id}</td>
+                            <td class="ct" width="30%">${board.regdate}</td>
                         </tr>
                     </c:forEach>
                 </c:if>
@@ -200,7 +202,7 @@
             </div>
             <div class="boards">
                 <section>
-                    <h4>실시간 최신글
+                    <h4>최신 팁/정보
                         <a href="hbcrilist">+</a>
                     </h4>
                     <hr>
@@ -208,7 +210,8 @@
             <thead>
                 <tr height="30">
                     <th width="50%">제목</th>
-                    <th width="30%">글쓴이</th>
+                    <th width="20%">글쓴이</th>
+                    <th width="30%">날짜</th>
                 </tr>
             </thead>
             <tbody>
@@ -217,13 +220,15 @@
                         <tr height="30">
                             <td width="40%"><a href="hbdetail?seq=${hboard.seq}">${hboard.title}</a></td>
                             <td class="ct" width="20%">${hboard.id}</td>
+                            <td class="ct" width="30%">${hboard.regdate}</td>
+                            
                         </tr>
                     </c:forEach>
                 </c:if>
         </table>
                 </section>
                 <section>
-                    <h4>실시간 인기글
+                    <h4>인기 팁/정보
                         <a href="hbcrilist">+</a>
                     </h4>
                     <hr>
