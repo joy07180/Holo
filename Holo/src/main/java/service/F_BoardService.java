@@ -38,7 +38,6 @@ public interface F_BoardService {
 	
 	// ** selectList
 	List<F_BoardVO> selectList();
-	
-
+	// 
 
 }
