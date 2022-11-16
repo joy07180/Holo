@@ -21,6 +21,9 @@ import service.Club_BoardService;
 import vo.Club_BoardVO;
 import vo.Tip_BoardVO;
 
+
+// 테스트용 주석
+
 @Controller
 public class Club_BoardController {
 	
