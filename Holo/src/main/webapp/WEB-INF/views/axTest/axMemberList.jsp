@@ -11,7 +11,7 @@
 <script src="resources/myLib/axTest02.js"></script>
 </head>
 
-<!-- ** 반복문에 이벤트 적용하기 
+<!-- ** 반복문에 이벤트 적용하기 으아아아아
 => 과제 : id 클릭하면 이 id가 쓴 글목록(board)을 resultArea2 에 출력하기 
 1) JS : Tag의 onclick 이벤트속성(리스너) , function 이용
 => id 전달: function 의 매개변수를 이용 -> aidBList('banana') 
