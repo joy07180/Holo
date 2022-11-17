@@ -71,7 +71,7 @@ public class T_BoardController {
 			
 	    	mv.addObject("pageMaker", pageMaker);
 			
-			mv.setViewName("board/t_Blist");
+			mv.setViewName("tradeBoard/t_Blist");
 	    	return mv;
 		} //t_bcrilist
 		
@@ -105,7 +105,7 @@ public class T_BoardController {
 	    	
 	    	//System.out.println("*******"+pageMaker);
 	    	
-	    	mv.setViewName("/board/t_Blist");
+	    	mv.setViewName("/tradeBoard/t_Blist");
 	    	return mv;
 		} //t_bcrilist2*/
 	
@@ -137,7 +137,7 @@ public class T_BoardController {
 		// 3) View 처리 => PageMaker
 		pageMaker.setCri(cri);
 		mv.addObject("pageMaker", pageMaker);
-    	mv.setViewName("/board/t_Blist");
+    	mv.setViewName("/tradeBoard/t_Blist");
     	return mv;
     	
 	} //t_bcrilist*/
@@ -149,7 +149,7 @@ public class T_BoardController {
 		public ModelAndView t_bdetail(HttpServletRequest request, HttpServletResponse response,
 				ModelAndView mv, T_BoardVO vo) {
 			// 1. 요청분석
-			String uri = "/board/t_BoardDetail";
+			String uri = "/tradeBoard/t_BoardDetail";
 			
 			// 2. Service 처리
 			vo = service.selectOne(vo);
@@ -163,7 +163,7 @@ public class T_BoardController {
 				 */				
 				// 2.2) 수정요청 인지 확인
 				if ( "U".equals(request.getParameter("jCode")))
-					uri = "/board/t_BupdateForm";
+					uri = "/tradeBoard/t_BupdateForm";
 				
 				// 2.3)	결과전달		
 				mv.addObject("apple", vo);
@@ -178,7 +178,7 @@ public class T_BoardController {
 		// ** Insert : 새글등록
 		@RequestMapping(value="/t_binsertf")
 		public ModelAndView t_binsertf(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
-			mv.setViewName("/board/t_BinsertForm");
+			mv.setViewName("/tradeBoard/t_BinsertForm");
 			return mv;
 		}
 		@RequestMapping(value="/t_binsert", method=RequestMethod.POST)
@@ -241,7 +241,7 @@ public class T_BoardController {
 				rttr.addFlashAttribute("message", "~~ 새글 등록 성공 ~~");
 			}else {
 				mv.addObject("message", "~~ 새글 등록 실패, 다시 하세요 ~~");
-				uri = "/board/t_BinsertForm";
+				uri = "/tradeBoard/t_BinsertForm";
 			}
 			// 3. 결과(ModelAndView) 전달 
 			mv.setViewName(uri);
@@ -257,7 +257,7 @@ public class T_BoardController {
 			// 1. 요청분석
 			// => Update 성공: t_BoardDetail.jsp
 			//           실패: 재수정 유도 -> t_BupdateForm.jsp
-			String uri = "/board/t_BoardDetail";
+			String uri = "/tradeBoard/t_BoardDetail";
 			mv.addObject("apple",vo);
 			// => Update 성공/실패 모두 출력시 필요하므로
 			
@@ -302,7 +302,7 @@ public class T_BoardController {
 				mv.addObject("message", "~~ 글수정 성공 ~~"); 
 			}else {
 				mv.addObject("message", "~~ 글수정 실패, 다시 하세요 ~~");
-				uri = "/board/t_BupdateForm";
+				uri = "/tradeBoard/t_BupdateForm";
 			}
 			
 			// 3. 결과(ModelAndView) 전달 
@@ -343,7 +343,7 @@ public class T_BoardController {
 			// => vo 에는 전달된 부모글의 root, step, indent 가 담겨있음 
 			// => 매핑메서드의 인자로 정의된 vo 는 request.setAttribute 와 동일 scope
 			//    단, 클래스명의 첫글자를 소문자로 ...  ${boardVO.root}??
-			mv.setViewName("/board/t_RinsertForm");
+			mv.setViewName("/tradeBoard/t_RinsertForm");
 			return mv;
 		}
 		@RequestMapping(value="/t_rinsert", method=RequestMethod.POST)
@@ -367,7 +367,7 @@ public class T_BoardController {
 				rttr.addFlashAttribute("message", "~~ 답글 등록 성공 ~~");
 			}else {
 				mv.addObject("message", "~~ 답글 등록 실패, 다시 하세요 ~~");
-				uri = "/board/t_RinsertForm";
+				uri = "/tradeBoard/t_RinsertForm";
 			}
 			
 			// 3. 결과(ModelAndView) 전달 
