@@ -115,7 +115,7 @@ public class F_BoardController {
 		    //    존재하지 않으면 디렉토리 생성
 		      
 		    // ** 기본 이미지 지정하기 
-		    String file1, file2="resources/uploadImage/basicman4.png"; 
+		    String file1, file2=null; 
 		      
 		    // ** MultipartFile
 		    // => 업로드한 파일에 대한 모든 정보를 가지고 있으며 이의 처리를 위한 메서드를 제공한다.
@@ -174,7 +174,7 @@ public class F_BoardController {
 			if ( !f1.exists() ) f1.mkdir();
 			
 			// 2) 기본 이미지 지정하기 
-			String file1, file2="resources/uploadImage/basicman4.png"; 
+			String file1, file2=null; 
 			
 			// 3) MultipartFile : file은 저장, 저장된 경로는 vo 에 set
 			// => 새 화일선택 했으면 : uploadfilef 처리
