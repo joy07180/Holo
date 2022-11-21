@@ -33,6 +33,5 @@ public interface Notice_BoardMapper {
 	int countUp(Notice_BoardVO vo);
 	
 	List<Notice_BoardVO> selectNList();
-	List<Notice_BoardVO> selectNhotList();
 	
 } //interface
