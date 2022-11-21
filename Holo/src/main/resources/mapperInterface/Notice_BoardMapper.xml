@@ -69,10 +69,6 @@
 	select seq, id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate from Notice_board order by seq desc limit 0,5
 </select>
 
-<select id="selectNhotList" resultType="vo.Notice_BoardVO">
-	select seq, id, title, cnt from Notice_board order by cnt desc limit 0,5
-</select>
-
 
 	
 	
