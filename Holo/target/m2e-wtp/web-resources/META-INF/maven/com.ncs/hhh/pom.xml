@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ncs</groupId>
-	<artifactId>green</artifactId>
+	<artifactId>hhh</artifactId>
 	<name>Holo</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
@@ -181,8 +181,18 @@
 		<version>1.2.17</version>
 	</dependency>
 
+<!-- 댓글용 json -->
+<dependency>
+	<groupId>com.fasterxml.jackson.core</groupId>
+	<artifactId>jackson-core</artifactId>
+	<version>2.9.2</version>
+</dependency>
 
-
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.9.2</version>
+</dependency>
 	<!-- Json Lib4Spring -->
 	<dependency>
 		<groupId>net.sf.json-lib</groupId>
