@@ -9,6 +9,7 @@ import criTest.Criteria;
 import criTest.SearchCriteria;
 import mapperInterface.F_BoardMapper;
 import vo.F_BoardVO;
+import vo.Notice_BoardVO;
 
 @Service
 public class F_BoardServiceImpl implements F_BoardService {
@@ -79,7 +80,11 @@ public class F_BoardServiceImpl implements F_BoardService {
 		return mapper.selectList();
 	}
 	
-
+	// home 출력 인기글
+	@Override
+	public List<F_BoardVO> selectfhotList(){
+		return mapper.selectfhotList();
+	}
 	
 
 } //class
