@@ -4,6 +4,7 @@ import java.util.List;
 
 import criTest.Criteria;
 import criTest.SearchCriteria;
+import vo.Notice_BoardVO;
 import vo.T_BoardVO;
 
 public interface T_BoardService {
@@ -50,7 +51,8 @@ public interface T_BoardService {
 	// ** 답글 등록
 	int rinsert(T_BoardVO vo);
 
-	
+	List<T_BoardVO> selectTList();
+
 
 
 }
