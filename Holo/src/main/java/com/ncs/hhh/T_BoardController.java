@@ -30,6 +30,10 @@ public class T_BoardController {
 	T_BoardService service;
 		
 		// commit Push Test 성호 마지막 테스트 두번째
+	    // asdafgag
+	// asdafgag
+	// asdafgag
+	// asdafgag
 		// ** Board Check List ***************************
 		// => ver02) SearchCriteria,  PageMaker 적용하기 
 		@RequestMapping(value="/t_bcrilist")
