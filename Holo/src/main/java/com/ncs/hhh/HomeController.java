@@ -52,6 +52,7 @@ public class HomeController {
 	public ModelAndView home(Locale locale, ModelAndView mv ) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		//sasdsadsadsa
+		//sandjsandjsandjsandjsa
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
