@@ -4,20 +4,10 @@ import java.util.List;
 
 import criTest.Criteria;
 import criTest.SearchCriteria;
+import vo.Notice_BoardVO;
 import vo.T_BoardVO;
 
 public interface T_BoardMapper {
-	
-	// ** T_Blist
-	
-	// ** Criteria PageList
-	
-	
-	// ** Board Check List
-	//List<T_BoardVO> checkList(T_BoardVO vo);
-	
-	
-	
 
 	List<T_BoardVO> checkList(SearchCriteria cri);
 	//List<T_BoardVO> checkList2(SearchCriteria cri);
@@ -52,6 +42,7 @@ public interface T_BoardMapper {
 	int stepUpdate(T_BoardVO vo);
 	int rinsert(T_BoardVO vo);	
 
+	List<T_BoardVO> selectTList();
 
 
 } //interface
