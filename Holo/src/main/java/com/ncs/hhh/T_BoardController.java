@@ -28,11 +28,12 @@ public class T_BoardController {
 	
 	@Autowired
 	T_BoardService service;
-		//dsa
+		
 		// commit Push Test 성호 마지막 테스트 두번째
 	    // asdafgag
 	// asdafgag
 	//이준영 이준영
+	// asdafgag
 	// asdafgag
 	// asdafgag
 		// ** Board Check List ***************************
