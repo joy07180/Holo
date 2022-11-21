@@ -40,5 +40,5 @@ public interface Club_BoardService {
 	int rinsert(Club_BoardVO vo);
 	
 	
-	
+	List<Club_BoardVO> selectChotList();
 }
