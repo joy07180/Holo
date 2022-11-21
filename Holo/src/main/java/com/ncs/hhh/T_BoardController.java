@@ -34,7 +34,7 @@ public class T_BoardController {
 	// asdafgag
 	// asdafgag
 	// asdafgag
-	// 왜왜왜왜왜!
+	// 왜왜왜왜왜! 적용이 안되는거
 	// asdafgag
 		// ** Board Check List ***************************
 		// => ver02) SearchCriteria,  PageMaker 적용하기 
