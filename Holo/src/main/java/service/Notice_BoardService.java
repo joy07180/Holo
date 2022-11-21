@@ -29,6 +29,6 @@ public interface Notice_BoardService {
 	// ** 조회수 증가
 	int countUp(Notice_BoardVO vo);
 	
-	List<Notice_BoardVO> selectNhotList();
+	List<Notice_BoardVO> selectNList();
 	
 }
