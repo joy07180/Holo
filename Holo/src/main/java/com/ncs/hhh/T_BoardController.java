@@ -28,7 +28,8 @@ public class T_BoardController {
 	
 	@Autowired
 	T_BoardService service;
-	
+		
+		// commit Push Test 성호
 		// ** Board Check List ***************************
 		// => ver02) SearchCriteria,  PageMaker 적용하기 
 		@RequestMapping(value="/t_bcrilist")
