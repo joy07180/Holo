@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import criTest.PageMaker;
+import criTest.SearchCriteria;
 import service.Club_BoardService;
 import service.F_BoardService;
 import service.Notice_BoardService;
@@ -32,7 +34,6 @@ import vo.Tip_BoardVO;
 /**
  * Handles requests for the application home page.
  */
-//sdajisadjsaj
 @Controller
 public class HomeController {
 
@@ -52,7 +53,7 @@ public class HomeController {
 	@RequestMapping(value = {"/","home"}, method = RequestMethod.GET)
 	public ModelAndView home(Locale locale, ModelAndView mv ) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		//sandjsandjsandjsandjsa
+
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
@@ -112,6 +113,5 @@ public class HomeController {
 		return mv;
 	}
 
-
-
+	
 }
