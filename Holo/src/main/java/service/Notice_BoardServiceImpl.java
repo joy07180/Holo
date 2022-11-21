@@ -64,9 +64,5 @@ public class Notice_BoardServiceImpl implements Notice_BoardService {
 		return mapper.selectNList();
 	}	
 	
-	// home 출력 인기글
-	@Override
-	public List<Notice_BoardVO> selectNhotList(){
-		return mapper.selectNhotList();
-	}
+
 }
