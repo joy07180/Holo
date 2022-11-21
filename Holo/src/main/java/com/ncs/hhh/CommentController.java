@@ -55,8 +55,12 @@ public class CommentController {
 	}
 
 	@GetMapping("/CommentList/{com_bno}")
-	public Map<String, Object> getList(@PathVariable int com_bno, Model model, PageMaker pageMaker,
+	public Map<String, Object> getList(@PathVariable int com_bno, Model model,
+			HttpServletRequest request, HttpServletResponse response, PageMaker pageMaker,
 			SearchCriteria cri) {
+		request.getAttribute("offset");
+		int r = (int) request.getAttribute("limit");
+		System.out.println("r = "+r);
 		
 		System.out.println("댓글 목록 컨트롤러 동작");
 		List<CommentVO> list = service.getList(com_bno);
