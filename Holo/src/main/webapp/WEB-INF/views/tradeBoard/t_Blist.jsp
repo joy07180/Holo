@@ -135,7 +135,6 @@
 		<!-- <input type="submit" value="검색">&nbsp;
 		<input type="reset" value="취소" onclick="checkClear()"> -->
 		
-	 
 
 
 	<select name="searchType" id="searchType">
