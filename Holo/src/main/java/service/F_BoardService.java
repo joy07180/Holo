@@ -5,6 +5,7 @@ import java.util.List;
 import criTest.Criteria;
 import criTest.SearchCriteria;
 import vo.F_BoardVO;
+import vo.Notice_BoardVO;
 
 public interface F_BoardService {
 	// ** F_Blist
@@ -38,6 +39,8 @@ public interface F_BoardService {
 	
 	// ** selectList
 	List<F_BoardVO> selectList();
-	// 
+	
+	List<F_BoardVO> selectfhotList();
+
 
 }
