@@ -9,6 +9,7 @@ import criTest.Criteria;
 import criTest.SearchCriteria;
 import mapperInterface.Club_BoardMapper;
 import vo.Club_BoardVO;
+import vo.Notice_BoardVO;
 
 @Service
 public class Club_BoardServiceImpl implements Club_BoardService {
@@ -84,5 +85,9 @@ public class Club_BoardServiceImpl implements Club_BoardService {
 		return result;
 	}
 	
-	
+	// home 출력 인기글
+	@Override
+	public List<Club_BoardVO> selectChotList(){
+		return mapper.selectChotList();
+	}
 }
