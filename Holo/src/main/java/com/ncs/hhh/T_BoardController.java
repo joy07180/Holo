@@ -31,6 +31,7 @@ public class T_BoardController {
 	
 		// ** Board Check List ***************************
 		// 올렸습니다
+	// 222222222222
 	        // 여기 수정했어요 준영씨 11.16
 		// => ver02) SearchCriteria,  PageMaker 적용하기 
 		@RequestMapping(value="/t_bcrilist")
