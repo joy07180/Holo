@@ -32,6 +32,7 @@ import vo.Tip_BoardVO;
 /**
  * Handles requests for the application home page.
  */
+//sdajisadjsaj
 @Controller
 public class HomeController {
 
