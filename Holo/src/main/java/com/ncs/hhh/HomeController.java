@@ -18,9 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import service.Club_BoardService;
+import service.F_BoardService;
 import service.Notice_BoardService;
+import service.T_BoardService;
 import service.Tip_BoardService;
+import vo.Club_BoardVO;
+import vo.F_BoardVO;
 import vo.Notice_BoardVO;
+import vo.T_BoardVO;
 import vo.Tip_BoardVO;
 
 /**
@@ -28,26 +34,30 @@ import vo.Tip_BoardVO;
  */
 @Controller
 public class HomeController {
-	
+
 	@Autowired
 	Notice_BoardService nservice;
-	
 	@Autowired
 	Tip_BoardService hservice;
-	
-	
+	@Autowired
+	Club_BoardService cservice;
+	@Autowired
+	F_BoardService fservice;
+	@Autowired
+	T_BoardService tservice;
+
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	@RequestMapping(value = {"/","home"}, method = RequestMethod.GET)
 	public ModelAndView home(Locale locale, ModelAndView mv ) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
+
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
 		mv.addObject("serverTime", formattedDate);
-		
-		
+
+
 		List<Notice_BoardVO> nlist = new ArrayList<Notice_BoardVO>();
 		nlist = nservice.selectNList();
 		if ( nlist!=null ) {
@@ -56,15 +66,7 @@ public class HomeController {
 			mv.addObject("message", "~~ 출력 자료가 없습니다 ~~");
 		}
 
-		List<Notice_BoardVO> nhotlist = new ArrayList<Notice_BoardVO>();
-		nhotlist = nservice.selectNhotList();
-		if ( nhotlist!=null ) {
-			mv.addObject("nhotlist", nhotlist); 
-		}else {
-			mv.addObject("message", "~~ 출력 자료가 없습니다 ~~");
-		}
-		
-		
+
 		List<Tip_BoardVO> hlist = new ArrayList<Tip_BoardVO>();
 		hlist = hservice.selectHList();
 		if ( nlist!=null ) {
@@ -75,8 +77,32 @@ public class HomeController {
 
 		List<Tip_BoardVO> hhotlist = new ArrayList<Tip_BoardVO>();
 		hhotlist = hservice.selectHhotList();
-		if ( nhotlist!=null ) {
+		if ( hhotlist!=null ) {
 			mv.addObject("hhotlist", hhotlist); 
+		}else {
+			mv.addObject("message", "~~ 출력 자료가 없습니다 ~~");
+		}
+		
+		List<Club_BoardVO> chotlist = new ArrayList<Club_BoardVO>();
+		chotlist = cservice.selectChotList();
+		if ( chotlist!=null ) {
+			mv.addObject("chotlist", chotlist); 
+		}else {
+			mv.addObject("message", "~~ 출력 자료가 없습니다 ~~");
+		}
+
+		List<F_BoardVO> fhotlist = new ArrayList<F_BoardVO>();
+		fhotlist = fservice.selectfhotList();
+		if ( fhotlist!=null ) {
+			mv.addObject("fhotlist", fhotlist); 
+		}else {
+			mv.addObject("message", "~~ 출력 자료가 없습니다 ~~");
+		}
+		
+		List<T_BoardVO> tlist = new ArrayList<T_BoardVO>();
+		tlist = tservice.selectTList();
+		if ( tlist!=null ) {
+			mv.addObject("tlist", tlist); 
 		}else {
 			mv.addObject("message", "~~ 출력 자료가 없습니다 ~~");
 		}
@@ -84,7 +110,7 @@ public class HomeController {
 		mv.setViewName("home");
 		return mv;
 	}
-	
-	
+
+
 
 }
