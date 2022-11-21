@@ -5,6 +5,7 @@ import java.util.List;
 import criTest.Criteria;
 import criTest.SearchCriteria;
 import vo.Club_BoardVO;
+import vo.Notice_BoardVO;
 import vo.Tip_BoardVO;
 
 public interface Club_BoardMapper {
@@ -40,5 +41,6 @@ public interface Club_BoardMapper {
 	
 	int rinsert(Club_BoardVO vo);
 	
+	List<Club_BoardVO> selectChotList();
 	
 } //interface
