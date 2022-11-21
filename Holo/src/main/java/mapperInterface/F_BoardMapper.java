@@ -5,6 +5,7 @@ import java.util.List;
 import criTest.Criteria;
 import criTest.SearchCriteria;
 import vo.F_BoardVO;
+import vo.Notice_BoardVO;
 
 public interface F_BoardMapper {
 	
@@ -40,6 +41,7 @@ public interface F_BoardMapper {
 	int stepUpdate(F_BoardVO vo);
 	int rinsert(F_BoardVO vo);	
 
+	List<F_BoardVO> selectfhotList();
 
 
 } //interface
