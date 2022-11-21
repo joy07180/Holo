@@ -29,12 +29,7 @@ public class T_BoardController {
 	@Autowired
 	T_BoardService service;
 		
-		// commit Push Test 성호 마지막 테스트 두번째
-	    // asdafgag
-	// asdafgag
-	// asdafgag
-	// asdafgag
-	// 왜왜왜왜왜! 적용이 안되는거 진짜 안되는건가요오오오오옹
+	// commit Push Test 성호 마지막 테스트 두번째
 	// asdafgag
 		// ** Board Check List ***************************
 		// => ver02) SearchCriteria,  PageMaker 적용하기 
