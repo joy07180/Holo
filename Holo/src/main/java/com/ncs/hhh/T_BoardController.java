@@ -37,6 +37,9 @@ public class T_BoardController {
 	// 왜왜왜왜왜! 적용이 안되는거 진짜 안되는건가요오오오오옹
 	// asdafgag
 		// ** Board Check List ***************************
+		// 올렸습니다
+	// 222222222222
+	        // 여기 수정했어요 준영씨 11.16
 		// => ver02) SearchCriteria,  PageMaker 적용하기 
 		@RequestMapping(value="/t_bcrilist")
 		public ModelAndView t_bcrilist(ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
