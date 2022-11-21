@@ -30,7 +30,7 @@ public class Tip_BoardController {
 	@Autowired
 	CommentService service2;
 	
-	
+	// sdfsadff
 	// ** Reply_Insert : 답글등록12312333123
 	@RequestMapping(value="/hrinsertf")
 	public ModelAndView rinsertf(HttpServletRequest request, 
