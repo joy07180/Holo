@@ -36,9 +36,9 @@
 				{
 					"com_bno":com_bno,
 					"com_writer":com_writer,
-					"com_content":com_content,
-					"offset":offset,
-		      "limit":limit
+					"com_content":com_content
+					/* "offset":offset, */
+		      /* "limit":limit */
 				}		
 			),
 			contentType: 'application/json',
@@ -72,7 +72,7 @@ function getList() {
 	      const com_content = $('#com_content').val();
 	      /* const com_no = ${com}; */
 	   $.getJSON(
-	      "<c:url value='/Comment/CommentList/'/>"+com_bno+"?offset="+offset+"&limit="+limit,
+	      "<c:url value='/Comment/CommentList/'/>"+com_bno/* +"?offset="+offset+"&limit="+limit, */
 	      function(data) {
 	         if(data.total > 0){
 	            var list = data.list;
