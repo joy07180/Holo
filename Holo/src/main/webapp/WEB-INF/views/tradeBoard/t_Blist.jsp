@@ -107,10 +107,6 @@
 </c:if>
 <hr>
 
-<!-- &nbsp;&nbsp;<a href="binsertf">글쓰기</a> -->
-<%-- <c:if test="${not empty loginID}">
-&nbsp;&nbsp;<a href="binsertf">새글등록</a>
-</c:if> --%>
 
 <div id="searchBar">
 <form action="t_bcrilist" method="get"> <!-- onclick="this.submit() -->
@@ -177,31 +173,22 @@
 					</c:forEach>
 					<span style="color:hotpink">re..</span>
 				</c:if>
-			
 			<!-- 로그인 한 경우에만 title을 클릭하면 content를 볼 수 있도록 함
-						=> bdetail 을 실행함 -->
+						=> t_bdetail 을 실행함 -->
 				<c:if test="${empty loginID}">
-					<a href="t_bdetail?seq=${trade_board.seq}">${trade_board.title}</a>&nbsp;&nbsp;
-					<c:if test="${trade_board.trade=='sell'}">
-					    <span style="color:red">판매</span>
-					</c:if>
-					<c:if test="${trade_board.trade=='buy'}">
-					    <span style="color:red">구매</span>
-					</c:if>
-				</c:if> 
-<%-- 				<c:if test="${empty loginID}">
 				    ${trade_board.title}
-				</c:if>       --%>
+				</c:if>		
+				<c:if test="${not empty loginID}">
+					<a href="t_bdetail?seq=${trade_board.seq}">${trade_board.title}</a>&nbsp;&nbsp;
+				</c:if> 
+				<c:if test="${trade_board.trade=='sell'}">
+				    <span style="color:red">판매</span>
+				</c:if>
+				<c:if test="${trade_board.trade=='buy'}">
+				    <span style="color:red">구매</span>
+				</c:if>
 			</td>
 			
-			<%-- <td>
-				<c:if test="${loginID=='admin'}">
-					<a href="mdetail?id=${trade_board.id}">${trade_board.id}</a>
-				</c:if> 
-				<c:if test="${loginID!='admin'}">
-				    ${trade_board.id}
-				</c:if>
-			</td>   --%>
 			<td>${trade_board.id}</td>
 			<td>${trade_board.regdate}</td><td>${trade_board.cnt}</td>
 		</tr>	
@@ -245,10 +232,10 @@
 </div>
 <br>
 
-
-<!-- 아이디 로그인할때만 가능하게 수정해야함 -->
+<!-- 아이디 로그인할때만 가능하게 -->
+<c:if test="${not empty loginID}">
 &nbsp;&nbsp;<a href="t_binsertf">새글등록</a>
-
+</c:if>
 </main>
 <footer>
 </footer>

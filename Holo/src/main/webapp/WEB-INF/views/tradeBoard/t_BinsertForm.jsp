@@ -20,8 +20,7 @@
             </td></tr>
                 
         <tr height="40"><td bgcolor="Linen">I D</td>
-            <td><input type="text" name="id" size="20" readonly></td></tr>
-            <%-- <td><input type="text" name="id" value="${loginID}" size="20" readonly></td></tr> --%>
+            <td><input type="text" name="id" size="20" value="${loginID}" readonly></td></tr>
         <tr height="40"><td bgcolor="Linen">Title</td>
             <td><input type="text" name="title" placeholder="반드시 입력하세요~~"></td></tr>
         <tr height="40"><td bgcolor="Linen">Content</td>

@@ -28,18 +28,6 @@ public class T_BoardController {
 	
 	@Autowired
 	T_BoardService service;
-		
-		// commit Push Test 성호 마지막 테스트 두번째
-	    // asdafgag
-	// asdafgag
-	// asdafgag
-	// asdafgag
-	// 왜왜왜왜왜! 적용이 안되는거 진짜 안되는건가요오오오오옹
-	// asdafgag
-		// ** Board Check List ***************************
-		// 올렸습니다
-	// 222222222222
-	        // 여기 수정했어요 준영씨 11.16
 		// => ver02) SearchCriteria,  PageMaker 적용하기 
 		@RequestMapping(value="/t_bcrilist")
 		public ModelAndView t_bcrilist(ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
@@ -55,101 +43,11 @@ public class T_BoardController {
 			pageMaker.setCri(cri);
 			pageMaker.setTotalRowsCount(service.searchCount(cri)); 
 			
-				
-				
-//			}else if ( cri.getCheck() != null && cri.getCheck().length > 0) {
-//				mv.addObject("banana", service.checkList(cri)); 
-//				pageMaker.setCri(cri);
-//				pageMaker.setTotalRowsCount(service.checkCount(cri)); 
-//				/*
-//				 * } else if(cri.getCheck() != null && cri.getCheck().length > 0 &&
-//				 * service.searchList2(cri).size() <= service.checkList2(cri).size()) {
-//				 * List<T_BoardVO> resultList = service.searchList2(cri).stream() .filter(old ->
-//				 * service.checkList2(cri).stream() .anyMatch(Predicate.isEqual(old)))
-//				 * .collect(Collectors.toList()); mv.addObject("banana", resultList);
-//				 * pageMaker.setCri(cri); pageMaker.setTotalRowsCount(resultList.size());
-//				 */
-//	        
-//			
-//	        } else {
-//			
-//			mv.addObject("banana", service.searchList(cri));
-//			pageMaker.setCri(cri);
-//			pageMaker.setTotalRowsCount(service.searchCount(cri));
-//	        }
-			
 	    	mv.addObject("pageMaker", pageMaker);
 			
 			mv.setViewName("tradeBoard/t_Blist");
 	    	return mv;
 		} //t_bcrilist
-		
-		/*// ** Board search List ***************************
-		// ** Criteria PageList
-		// => ver01 : Criteria cri
-		// => ver02 : SearchCriteria cri
-		@RequestMapping(value="/t_bcrilist2")
-		public ModelAndView t_bcrilist2(HttpServletRequest request, HttpServletResponse response, 
-							ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
-			// 1) Criteria 처리 
-			// => setCurrPage, setRowsPerPage 는 Parameter 로 전달되어,
-			//    setCurrPage(..) , setRowsPerPage(..) 는 자동처리됨(스프링에 의해)
-			//    -> cri.setCurrPage(Integer.parseInt(request.getParameter("currPage")))
-			// => 그러므로 currPage 이용해서 sno, eno 계산만 하면됨
-			cri.setSnoEno();
-			
-			// ** ver02
-			// => SearchCriteria: searchType, keyword 는 Parameter로 전달되어 자동 set 됨.
-			
-			// 2) 서비스처리
-			// => List 처리
-			//mv.addObject("banana", service.criList(cri)); // ver01
-			mv.addObject("banana", service.searchList(cri)); // ver02
-			    	
-	    	// 3) View 처리 => PageMaker
-			pageMaker.setCri(cri);
-			//pageMaker.setTotalRowsCount(service.criTotalCount()); // ver01: 전체 Rows 갯수 
-			pageMaker.setTotalRowsCount(service.searchCount(cri));     // ver02: 조건과 일치하는 Rows 갯수 
-	    	mv.addObject("pageMaker", pageMaker);
-	    	
-	    	//System.out.println("*******"+pageMaker);
-	    	
-	    	mv.setViewName("/tradeBoard/t_Blist");
-	    	return mv;
-		} //t_bcrilist2*/
-	
-	
-	/*@RequestMapping(value="/t_bcrilist")
-	public ModelAndView t_bcrilist(HttpServletRequest request, HttpServletResponse response, 
-						ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
-		// ** Paging 준비
-		cri.setSnoEno();
-		
-		// 1) Check_Box 처리
-		// => check 값이 null이 아니고, check 배열 1개 이상 => check 결과만 보여줌
-		if ( cri.getCheck() != null && cri.getCheck().length > 0 && cri.getSearchType() == null && cri.getKeyword() == null) {
-			mv.addObject("banana", service.checkList(cri));  
-			pageMaker.setTotalRowsCount(service.checkCount(cri)); 
-        }else if(cri.getCheck() == null && cri.getCheck().length < 1 && cri.getSearchType() != null && cri.getKeyword() != null){
-        // => check 값이 없고 search 값이 있을때 => search 결과만 보여줌
-        	mv.addObject("banana", service.searchList(cri));
-        	pageMaker.setTotalRowsCount(service.searchCount(cri));
-			
-		}else if( cri.getCheck() != null && cri.getCheck().length > 0 && cri.getSearchType() != null && cri.getKeyword() != null) { // =>
-		// => check 값이 있고, search 값이 있을때 => check + search
-			
-			
-		}else {
-			cri.setCheck(null);
-		}
-		
-		// 3) View 처리 => PageMaker
-		pageMaker.setCri(cri);
-		mv.addObject("pageMaker", pageMaker);
-    	mv.setViewName("/tradeBoard/t_Blist");
-    	return mv;
-    	
-	} //t_bcrilist*/
 		
 // ********************** 클릭시 글 내용 *******************************************			
 	

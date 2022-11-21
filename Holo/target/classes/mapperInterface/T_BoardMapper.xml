@@ -93,7 +93,7 @@
 	</sql>
 
 	<select id="searchList" resultType="vo.T_BoardVO">
-		select seq, title, regdate, cnt, root, step, indent ,trade
+		select seq, title, id, regdate, cnt, root, step, indent ,trade
 		from trade_board
 		where ( seq>0
 		<include refid="search"></include>
@@ -115,7 +115,7 @@
 	<!-- ** Criteria PageList : ver01 => MySql : limit a , b ( a개 제외하고 a+1 부터 
 		b개 ) 적용 -->
 	<select id="criList" resultType="vo.T_BoardVO">
-		select seq, id, title, regdate, cnt, root, step, indent, trade
+		select seq, title, id, regdate, cnt, root, step, indent, trade
 		from trade_board
 		order by root desc, step asc
 		limit #{sno}, #{rowsPerPage}
@@ -127,7 +127,7 @@
 
 
 	<select id="selectList" resultType="vo.T_BoardVO">
-		select seq, id, title, regdate, cnt, root, step, indent, trade
+		select seq, title, id, regdate, cnt, root, step, indent, trade
 		from trade_board order by root desc, step asc
 	</select>
 
@@ -151,8 +151,8 @@
 		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
 			select IFNULL(max(seq),0)+1 from trade_board
 		</selectKey>
-		insert into trade_board(seq,id,title,content,root,trade,uploadfile)
-		values(#{seq},#{id},#{title},#{content},#{seq},#{trade},#{uploadfile})
+		insert into trade_board(seq,title,id,content,root,trade,uploadfile)
+		values(#{seq},#{title},#{id},#{content},#{seq},#{trade},#{uploadfile})
 	</insert>
 
 	<update id="update">
@@ -179,8 +179,8 @@
 		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
 			select IFNULL(max(seq),0)+1 from trade_board
 		</selectKey>
-		insert into trade_board(seq,id,title,content,root,step,indent)
-		values(#{seq},#{id},#{title},#{content},#{root},#{step},#{indent})
+		insert into trade_board(seq,title,id,content,root,step,indent)
+		values(#{seq},#{title},#{id},#{content},#{root},#{step},#{indent})
 	</insert>
 	<update id="stepUpdate">
 		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
@@ -193,7 +193,7 @@
 
 
 	<select id="selectTList" resultType="vo.T_BoardVO">
-		select seq, id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate from
+		select seq, title, id, DATE_FORMAT(regdate, '%m-%d %H:%i') regdate from
 		trade_board order by seq desc limit 0,5
 	</select>
 </mapper>  
