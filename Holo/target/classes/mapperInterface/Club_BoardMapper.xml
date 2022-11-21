@@ -181,5 +181,10 @@ insert into board(seq,id,title,content,root)
 	update club_board set step=step+1 where root=#{root} and step>=#{step}
 	and seq != #{seq}
 </update>	
+
+<select id="selectChotList" resultType="vo.Club_BoardVO">
+	select seq, id, title, cnt from Club_board order by cnt desc limit 0,5
+</select>
+
 	
 </mapper>  

@@ -139,4 +139,8 @@ insert into board(seq,id,title,content,root)
 	and seq != #{seq}
 </update>	
 	
+<select id="selectfhotList" resultType="vo.F_BoardVO">
+	select seq, id, title, cnt from free_board order by cnt desc limit 0,5
+</select>
+
 </mapper>  
