@@ -6,8 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>거래 게시판</title>
-	<link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
-	<link rel="stylesheet" type="text/css" href="resources/myLib/home.css">
+	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 	<script>
 	
@@ -128,12 +127,9 @@
 			
 			<!-- 로그인 한 경우에만 title을 클릭하면 content를 볼 수 있도록 함
 						=> bdetail 을 실행함 -->
-				<c:if test="${not empty loginID}">
+				
 					<a href="f_bdetail?seq=${free_board.seq}">${free_board.title}</a>&nbsp;&nbsp;
-				</c:if> 
-				<c:if test="${empty loginID}">
-				    ${free_board.title}
-				</c:if>
+
 			</td>
 
 			<td>${free_board.id}</td>
@@ -197,11 +193,31 @@
 <!-- 아이디 로그인할때만 가능하게 수정해야함 -->
 <c:if test="${not empty loginID}">
 &nbsp;&nbsp;<a href="f_binsertf">새글등록</a>
+&nbsp;&nbsp;<a href="home">[Home]</a>
 </c:if>
 
 </main>
+
+<!-- ************************************************************* -->
+
 <footer>
-</footer>
+        <div class="bottom">
+            <ul class="btMenu">
+                <li><a href="">공지사항</a></li>
+                <li><a href="">팁/정보</a></li>
+                <li><a href="">자유게시판</a></li>
+                <li><a href="">거래/나눔</a></li>
+                <li><a href="">동아리/모임</a></li>
+                <li><a href="">Q&A</a></li>
+            </ul>
+            <span>
+                <div>Copyright (c) Holo.net All rights reserved.</div>
+                <div>Contact us, holo at gmail dot com</div>
+                <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
+            </span>
+        </div>
+        <br>
+    </footer>
 
 
 
