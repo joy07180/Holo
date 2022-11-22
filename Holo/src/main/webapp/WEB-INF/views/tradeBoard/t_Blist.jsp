@@ -26,15 +26,14 @@
 		// 2) location 객체의 메서드
 		// => href, replace('...'), reload()	
 		
-		/*$('#searchBtn').click(function(){
+		$('#searchBtn').click(function(){
 			self.location="t_bcrilist"
 				+"${pageMaker.makeQuery(1)}"
 				+"&searchType="
 				+$('#searchType').val()
 				+"&keyword="
 				+$('#keyword').val()
-		}); //click*/
-		
+		}); //click
 	}); //ready */
 	
 	function checkClear() {
@@ -164,12 +163,8 @@
 		<!-- First, Prev -->
 		<c:choose>
 			<c:when test="${pageMaker.prev && pageMaker.spageNo>1}">
-				<a href="t_bcrilist${pageMaker.searchQuery(1)}">&lt;&lt;</a>&nbsp;
 				<a href="t_bcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp; 
 			</c:when>
-			<c:otherwise>
-				<font color="Gray">&lt;&lt;&nbsp;&lt;&nbsp;&nbsp;</font>   
-			</c:otherwise>
 		</c:choose>	
 		<!-- Display PageNo -->
 		<c:forEach  var="i" begin="${pageMaker.spageNo}" end="${pageMaker.epageNo}">
@@ -184,12 +179,7 @@
 		<c:choose>
 			<c:when test="${pageMaker.next && pageMaker.epageNo>0}">
 				<a href="t_bcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&gt;</a>  
-				<a href="t_bcrilist${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;&gt;&gt;</a> 
-			
 			</c:when>
-			<c:otherwise>
-				<font color="Gray">&nbsp;&gt;&nbsp;&gt;&gt;</font>   
-			</c:otherwise>
 		</c:choose>
 	
 	</div>
