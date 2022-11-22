@@ -101,10 +101,6 @@
 </c:if>
 <hr>
 
-<!-- &nbsp;&nbsp;<a href="binsertf">글쓰기</a> -->
-<%-- <c:if test="${not empty loginID}">
-&nbsp;&nbsp;<a href="binsertf">새글등록</a>
-</c:if> --%>
 <br>
 
 

@@ -35,23 +35,6 @@
 				+"&keyword="
 				+$('#keyword').val()
 		}); //click
-		
-/* 		$('#input_id_test').click(function(){
-			self.location="t_bcrilist"
-				+"${pageMaker.makeQuery(1)}"
-				+"&searchType=s"
-				+"&keyword="
-				+"sell"
-		}); //click */
-		
-		
-/* 		  $("#input_id").click(function(){
-		      this.submit();
-		  });
-
-		  $(".input_class").click(function(){
-			  this.submit();
-		  }); */
 	
 	}); //ready */
 	
@@ -117,22 +100,11 @@
 
     <main>
         
-
-
-
-
-
 <br>
 <c:if test="${not empty message}">
 	${message}<br>
 </c:if>
 <hr>
-
-<!-- &nbsp;&nbsp;<a href="binsertf">글쓰기</a> -->
-<%-- <c:if test="${not empty loginID}">
-&nbsp;&nbsp;<a href="binsertf">새글등록</a>
-</c:if> --%>
-
 
 <br><hr>
 <table width=100%> 
@@ -156,22 +128,14 @@
 			
 			<!-- 로그인 한 경우에만 title을 클릭하면 content를 볼 수 있도록 함
 						=> bdetail 을 실행함 -->
-				<c:if test="${empty loginID}">
+				<c:if test="${not empty loginID}">
 					<a href="f_bdetail?seq=${free_board.seq}">${free_board.title}</a>&nbsp;&nbsp;
 				</c:if> 
-<%-- 				<c:if test="${empty loginID}">
-				    ${trade_board.title}
-				</c:if>       --%>
-			</td>
-			
-			<%-- <td>
-				<c:if test="${loginID=='admin'}">
-					<a href="mdetail?id=${free_board.id}">${free_board.id}</a>
-				</c:if> 
-				<c:if test="${loginID!='admin'}">
-				    ${free_board.id}
+				<c:if test="${empty loginID}">
+				    ${free_board.title}
 				</c:if>
-			</td>   --%>
+			</td>
+
 			<td>${free_board.id}</td>
 			<td>${free_board.regdate}</td><td>${free_board.cnt}</td>
 		</tr>	
@@ -231,7 +195,9 @@
 </div>
 
 <!-- 아이디 로그인할때만 가능하게 수정해야함 -->
+<c:if test="${not empty loginID}">
 &nbsp;&nbsp;<a href="f_binsertf">새글등록</a>
+</c:if>
 
 </main>
 <footer>
