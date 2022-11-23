@@ -134,6 +134,18 @@ tr {
 	text-align: center;
 }
 
+#board_container {
+	table-layout:fixed;
+	word-break:break-all;
+}
+
+#title_hidden {
+	width:100%;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+
 
 /* ======================================================================= */
 .bottom {

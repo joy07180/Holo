@@ -100,7 +100,7 @@
         <br>
         <br>
 		
-		<table width=100%>
+		<table width=100% id="board_container">
             <thead>
                 <tr height="30">
                     <th width="10%">글 번호</th>
@@ -116,7 +116,7 @@
 					<tr height="30">
 					<td>${trade_board.seq}</td>
 			
-					<td>
+					<td id="title_hidden" >
 					<!-- 답글 등록후 indent 에 따른 들여쓰기 
 					=> 답글인 경우에만 적용  -->
 					<c:if test="${trade_board.indent > 0}">
