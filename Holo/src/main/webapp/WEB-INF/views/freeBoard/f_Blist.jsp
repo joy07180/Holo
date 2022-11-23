@@ -7,6 +7,7 @@
 	<meta charset="UTF-8">
 	<title>자유 게시판</title>
 	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
+	<link rel="stylesheet" type="text/css" href="resources/myLib/title_hidden.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 	<script>
 	
