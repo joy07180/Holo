@@ -6,9 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <title>** 거래게시판 디테일 **</title>
-<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
+	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
-	
 </head>
 <body>
     <div class="contents">
@@ -80,48 +79,46 @@
         </c:if>
         </div>
 
-<c:if test="${not empty apple}">
-    <table>
-        <tr height="40" width="100">
-        <td>
-        	<c:if test="${apple.trade=='sell'}">판매</c:if>
-        	<c:if test="${apple.trade=='buy'}">구매</c:if>
-        </td></tr>
-        <tr height="40" width="100"><td><b>${apple.title}</b></td></tr>
-        <tr height="40" id="test111"><td>글번호 : ${apple.seq}&nbsp;</td><td>&nbsp;${apple.id}&nbsp;</td>
-                            <td>&nbsp;조회수 : ${apple.cnt}&nbsp;</td><td>&nbsp;${apple.regdate}</td></tr>
-        <tr height="100" width="100">
-            <c:if test="${empty apple.uploadfile}">
-            	<td>${apple.content}</td>
-            </c:if>
-            <c:if test="${not empty apple.uploadfile}">
-            	<td><img height="300" width="300" src="${apple.uploadfile}"><br>${apple.content}</td>
-            </c:if>
-        </tr>
-    </table>
-</c:if>
+	<c:if test="${not empty apple}">
+	    <table>
+	        <tr height="40" width="100">
+	        <td>
+	        	<c:if test="${apple.trade=='sell'}">판매</c:if>
+	        	<c:if test="${apple.trade=='buy'}">구매</c:if>
+	        </td></tr>
+	        <tr height="40" width="100"><td><b>${apple.title}</b></td></tr>
+	        <tr height="40" id="test111"><td>글번호 : ${apple.seq}&nbsp;</td><td>&nbsp;${apple.id}&nbsp;</td>
+	                            <td>&nbsp;조회수 : ${apple.cnt}&nbsp;</td><td>&nbsp;${apple.regdate}</td></tr>
+	        <tr height="100" width="100">
+	            <c:if test="${empty apple.uploadfile}">
+	            	<td>${apple.content}</td>
+	            </c:if>
+	            <c:if test="${not empty apple.uploadfile}">
+	            	<td><img height="300" width="300" src="${apple.uploadfile}"><br>${apple.content}</td>
+	            </c:if>
+	        </tr>
+	    </table>
+	</c:if>
 
 </div>
-<footer>
-    <div class="bottom">
-        <ul class="btMenu">
-            <li><a href="">공지사항</a></li>
-            <li><a href="">팁/정보</a></li>
-            <li><a href="">자유게시판</a></li>
-            <li><a href="">거래/나눔</a></li>
-            <li><a href="">동아리/모임</a></li>
-            <li><a href="">Q&A</a></li>
-        </ul>
-        <span>
-            <div>Copyright (c) Holo.net All rights reserved.</div>
-            <div>Contact us, holo at gmail dot com</div>
-            <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
-        </span>
-    </div>
-    <br>
-</footer>
-
-<hr>
+	<footer>
+	    <div class="bottom">
+	        <ul class="btMenu">
+	            <li><a href="">공지사항</a></li>
+	            <li><a href="">팁/정보</a></li>
+	            <li><a href="">자유게시판</a></li>
+	            <li><a href="">거래/나눔</a></li>
+	            <li><a href="">동아리/모임</a></li>
+	            <li><a href="">Q&A</a></li>
+	        </ul>
+	        <span>
+	            <div>Copyright (c) Holo.net All rights reserved.</div>
+	            <div>Contact us, holo at gmail dot com</div>
+	            <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
+	        </span>
+	    </div>
+	    <br>
+	</footer>
 
 </body>
 </html>

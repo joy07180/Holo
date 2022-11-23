@@ -120,12 +120,32 @@
 	</form>
 </div>
 
-<%-- <c:if test="${loginID==apple.id || loginID=='admin' }"> 
-</c:if>--%>
-<!-- 로그인 아이디랑 아이디랑 같으면 내가 쓴 글 -->
-&nbsp;&nbsp;<a href="bdelete?seq=${apple.seq}&root=${apple.root}">[글삭제]</a>
-&nbsp;&nbsp;<a href="t_bcrilist">목록</a><br>
-&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-&nbsp;&nbsp;<a href="home">[Home]</a>
+	<%-- <c:if test="${loginID==apple.id || loginID=='admin' }"> 
+	</c:if>--%>
+	<!-- 로그인 아이디랑 아이디랑 같으면 내가 쓴 글 -->
+	&nbsp;&nbsp;<a href="bdelete?seq=${apple.seq}&root=${apple.root}">[글삭제]</a>
+	&nbsp;&nbsp;<a href="t_bcrilist">목록</a><br>
+	&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
+	&nbsp;&nbsp;<a href="home">[Home]</a>
+
+	<footer>
+        <div class="bottom">
+            <ul class="btMenu">
+                <li><a href="">공지사항</a></li>
+                <li><a href="">팁/정보</a></li>
+                <li><a href="">자유게시판</a></li>
+                <li><a href="">거래/나눔</a></li>
+                <li><a href="">동아리/모임</a></li>
+                <li><a href="">Q&A</a></li>
+            </ul>
+            <span>
+                <div>Copyright (c) Holo.net All rights reserved.</div>
+                <div>Contact us, holo at gmail dot com</div>
+                <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
+            </span>
+        </div>
+        <br>
+    </footer>
+    
 </body>
 </html>

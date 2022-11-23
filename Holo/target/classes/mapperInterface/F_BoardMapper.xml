@@ -106,7 +106,7 @@ insert into board(seq,id,title,content,root)
 </insert>
 
 <update id="update">
-	update free_board set title=#{title}, content=#{content}, uploadfile=#{uploadfile where seq=#{seq}
+	update free_board set title=#{title}, content=#{content}, uploadfile=#{uploadfile} where seq=#{seq}
 </update>	
 	
 <!-- if 조건문 -->	

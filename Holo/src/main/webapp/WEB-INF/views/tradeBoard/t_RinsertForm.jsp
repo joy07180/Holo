@@ -9,60 +9,61 @@
     <link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
 </head>
 <body>
-    <div class="contents">
-        <header>
-            <div class="header">
-                <div>
-                    <a href="" class="logo">logo</a>
-                </div>
-                <div class="search">
-                    <form action="">
-                        <input class="searchBox" size="40" type="text" id="search" placeholder="게시판 & 통합검색">
-                        <span>
-                            <input class="searchClick" type="submit" value="검색">
-                        </span>
-                    </form>
-                </div>
-
+<div class="contents">
+    <header>
+        <div class="header">
+            <div>
+                <a href="" class="logo">logo</a>
+            </div>
+            <div class="search">
+                <form action="">
+                    <input class="searchBox" size="40" type="text" id="search" placeholder="게시판 & 통합검색">
+                    <span>
+                        <input class="searchClick" type="submit" value="검색">
+                    </span>
+                </form>
             </div>
 
-            <nav class="headerM">
-                <div>
-                    <ul class="category">
-                        <li>
-                            <a href="noticelist" class="liText">공지사항
-                            </a>
-                        </li>
-                        <li>
-                            <a href="hbcrilist" class="liText">팁/정보
-                            </a>
-                        </li>
-                        <li>
-                            <a href="f_bcrilist" class="liText">자유게시판
-                            </a>
-                        </li>
-                        <li>
-                            <a href="t_bcrilist" class="liText">거래/나눔
-                            </a>
-                        </li>
-                        <li>
-                            <a href="cbcrilist" class="liText">동아리/모임
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="liText">Q&A
-                            </a>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </nav>
+        </div>
 
-        </header>
-        <br>
-        <h2>거래/나눔 게시판 답글 등록</h2>
-        <br>
-        <br>
+        <nav class="headerM">
+            <div>
+                <ul class="category">
+                    <li>
+                        <a href="noticelist" class="liText">공지사항
+                        </a>
+                    </li>
+                    <li>
+                        <a href="hbcrilist" class="liText">팁/정보
+                        </a>
+                    </li>
+                    <li>
+                        <a href="f_bcrilist" class="liText">자유게시판
+                        </a>
+                    </li>
+                    <li>
+                        <a href="t_bcrilist" class="liText">거래/나눔
+                        </a>
+                    </li>
+                    <li>
+                        <a href="cbcrilist" class="liText">동아리/모임
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="liText">Q&A
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+
+    </header>
+    <br>
+    <h2>거래/나눔 게시판 답글 등록</h2>
+    <br>
+    <br>
+        
 	<form action="t_rinsert" method="post">
 	    <table>
 	        <tr height="40"><td bgcolor="Violet">I D</td>
@@ -92,17 +93,12 @@
 	    </table>
 	</form>
 </div>
-<c:if test="${not empty message}">
-<hr>
-${message}<br>
-</c:if>
-<hr>
 
-&nbsp;&nbsp;<a href="t_bcrilist">목록으로</a>
-&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-&nbsp;&nbsp;<a href="home">[Home]</a>
+	&nbsp;&nbsp;<a href="t_bcrilist">목록으로</a>
+	&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
+	&nbsp;&nbsp;<a href="home">[Home]</a>
 
-<footer>
+	<footer>
         <div class="bottom">
             <ul class="btMenu">
                 <li><a href="">공지사항</a></li>

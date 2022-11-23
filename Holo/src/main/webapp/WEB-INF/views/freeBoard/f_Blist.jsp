@@ -96,107 +96,98 @@
             </nav>
 
         </header>
-
-    <main>
+        <br>
+        <h2>자유 게시판</h2>
+        <br>
+        <br>
         
-<br>
-<c:if test="${not empty message}">
-	${message}<br>
-</c:if>
-<hr>
+   		<div>
+		<!-- 아이디 로그인할때만 가능하게 -->
+        <c:if test="${not empty loginID}">
+        &nbsp;&nbsp;<a href="f_binsertf">새글등록</a>
+        </c:if>
+        <c:if test="${empty loginID}">
+		&nbsp;&nbsp;<a href="#"><p onclick="alert('로그인후 이용해주세요')">새글등록</p></a>       
+        </c:if>
+        </div>
 
-<br><hr>
-<table width=100%> 
-	<tr bgcolor="Gold" height="30">
-		<th>Seq</th><th>Title</th><th>I D</th><th>RegDate</th><th>조회수</th>
-	</tr>
-	<c:if test="${not empty banana}">
-		<c:forEach  var="free_board" items="${banana}" >
-		<tr height="30">
-			<td>${free_board.seq}</td>
-			
-			<td>
-				<!-- 답글 등록후 indent 에 따른 들여쓰기 
-						=> 답글인 경우에만 적용  -->
-				<c:if test="${free_board.indent > 0}">
-					<c:forEach begin="1" end="${free_board.indent}">
-						<span>&nbsp;&nbsp;</span>
-					</c:forEach>
-					<span style="color:hotpink">re..</span>
-				</c:if>
-			
-			<!-- 로그인 한 경우에만 title을 클릭하면 content를 볼 수 있도록 함
-						=> bdetail 을 실행함 -->
+	<table width=100%> 
+		<tr bgcolor="Gold" height="30">
+			<th>글 번호</th><th>제목</th><th>글쓴이</th><th>날짜</th><th>조회수</th>
+		</tr>
+		<c:if test="${not empty banana}">
+			<c:forEach  var="free_board" items="${banana}" >
+			<tr height="30">
+				<td>${free_board.seq}</td>
 				
-					<a href="f_bdetail?seq=${free_board.seq}">${free_board.title}</a>&nbsp;&nbsp;
+				<td>
+					<!-- 답글 등록후 indent 에 따른 들여쓰기 
+							=> 답글인 경우에만 적용  -->
+					<c:if test="${free_board.indent > 0}">
+						<c:forEach begin="1" end="${free_board.indent}">
+							<span>&nbsp;&nbsp;</span>
+						</c:forEach>
+						<span style="color:hotpink">re..</span>
+					</c:if>
+				
+				<!-- 로그인 한 경우에만 title을 클릭하면 content를 볼 수 있도록 함
+							=> bdetail 을 실행함 -->
+					
+						<a href="f_bdetail?seq=${free_board.seq}">${free_board.title}</a>&nbsp;&nbsp;
+	
+				</td>
+	
+				<td>${free_board.id}</td>
+				<td>${free_board.regdate}</td><td>${free_board.cnt}</td>
+			</tr>	
+			</c:forEach>
+		</c:if>
+	</table>
 
-			</td>
-
-			<td>${free_board.id}</td>
-			<td>${free_board.regdate}</td><td>${free_board.cnt}</td>
-		</tr>	
+	<!-- Cri_Page -->
+	<div align="center">
+		<!-- First, Prev -->
+		<c:choose>
+			<c:when test="${pageMaker.prev && pageMaker.spageNo>1}">
+				<a href="f_bcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp; 
+			</c:when>
+		</c:choose>	
+		<!-- Display PageNo -->
+		<c:forEach  var="i" begin="${pageMaker.spageNo}" end="${pageMaker.epageNo}">
+			<c:if test="${i==pageMaker.cri.currPage}">
+				<font size="5" color="Orange">${i}</font>&nbsp;
+			</c:if>
+			<c:if test="${i!=pageMaker.cri.currPage}">
+				<a href="f_bcrilist${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
+			</c:if>
 		</c:forEach>
-	</c:if>
-</table>
-<hr>
-<!-- Cri_Page -->
-<div align="center">
-	<!-- First, Prev -->
-	<c:choose>
-		<c:when test="${pageMaker.prev && pageMaker.spageNo>1}">
-			<a href="f_bcrilist${pageMaker.searchQuery(1)}">&lt;&lt;</a>&nbsp;
-			<a href="f_bcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp; 
-		</c:when>
-		<c:otherwise>
-			<font color="Gray">&lt;&lt;&nbsp;&lt;&nbsp;&nbsp;</font>   
-		</c:otherwise>
-	</c:choose>	
-	<!-- Display PageNo -->
-	<c:forEach  var="i" begin="${pageMaker.spageNo}" end="${pageMaker.epageNo}">
-		<c:if test="${i==pageMaker.cri.currPage}">
-			<font size="5" color="Orange">${i}</font>&nbsp;
-		</c:if>
-		<c:if test="${i!=pageMaker.cri.currPage}">
-			<a href="f_bcrilist${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
-		</c:if>
-	</c:forEach>
-	<!-- Next, Last -->
-	<c:choose>
-		<c:when test="${pageMaker.next && pageMaker.epageNo>0}">
-			<a href="f_bcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&gt;</a>  
-			<a href="f_bcrilist${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;&gt;&gt;</a> 
-		
-		</c:when>
-		<c:otherwise>
-			<font color="Gray">&nbsp;&gt;&nbsp;&gt;&gt;</font>   
-		</c:otherwise>
-	</c:choose>
-
+		<!-- Next, Last -->
+		<c:choose>
+			<c:when test="${pageMaker.next && pageMaker.epageNo>0}">
+				<a href="f_bcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&gt;</a>  
+			</c:when>
+		</c:choose>
+	
+	</div>
+	<br>
+	<div id="searchBar">
+		<select name="searchType" id="searchType">
+			<!-- <option value="n" selected> 을 조건 (cri.searchType 의 값) 에 따라 작성하기 위한 삼항식 
+				=> value="n" : ~~~~.cri.searchType==null ? 'selected':''  첫화면 출력시 초기값 으로 selected
+			-->
+			<option value="n" ${pageMaker.cri.searchType==null ? 'selected' : ''}>전체</option>
+			<option value="t" ${pageMaker.cri.searchType=='t' ? 'selected' : ''}>제목</option>
+			<option value="c" ${pageMaker.cri.searchType=='c' ? 'selected' : ''}>내용</option>
+			<option value="i" ${pageMaker.cri.searchType=='i' ? 'selected' : ''}>ID(글쓴이)</option>
+			<option value="tc" ${pageMaker.cri.searchType=='tc' ? 'selected' : ''}>제목+내용</option>
+		</select>
+		<input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">	
+		<button id="searchBtn">Search</button>
+	&nbsp;&nbsp;
+	</div>
 </div>
 <br>
-<div id="searchBar">
-	<select name="searchType" id="searchType">
-		<!-- <option value="n" selected> 을 조건 (cri.searchType 의 값) 에 따라 작성하기 위한 삼항식 
-			=> value="n" : ~~~~.cri.searchType==null ? 'selected':''  첫화면 출력시 초기값 으로 selected
-		-->
-		<option value="n" ${pageMaker.cri.searchType==null ? 'selected' : ''}>전체</option>
-		<option value="t" ${pageMaker.cri.searchType=='t' ? 'selected' : ''}>제목</option>
-		<option value="c" ${pageMaker.cri.searchType=='c' ? 'selected' : ''}>내용</option>
-		<option value="i" ${pageMaker.cri.searchType=='i' ? 'selected' : ''}>ID(글쓴이)</option>
-		<option value="tc" ${pageMaker.cri.searchType=='tc' ? 'selected' : ''}>제목+내용</option>
-	</select>
-	<input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">	
-	<button id="searchBtn">Search</button>
-&nbsp;&nbsp;
-</div>
-
-<!-- 아이디 로그인할때만 가능하게 수정해야함 -->
-<c:if test="${not empty loginID}">
-&nbsp;&nbsp;<a href="f_binsertf">새글등록</a>
-&nbsp;&nbsp;<a href="home">[Home]</a>
-</c:if>
-
-</main>
+<br>
 
 <!-- ************************************************************* -->
 

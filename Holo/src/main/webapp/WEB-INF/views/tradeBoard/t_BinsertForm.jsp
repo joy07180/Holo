@@ -117,12 +117,6 @@
 	</form>
 	</div>
 
-<c:if test="${not empty message}">
-<hr>
-${message}<br>
-</c:if>
-<hr>
-
 &nbsp;&nbsp;<a href="t_bcrilist">boardList</a>
 &nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
 &nbsp;&nbsp;<a href="home">[Home]</a>
