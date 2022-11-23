@@ -185,7 +185,7 @@
 	</div>
        
 	<div id="searchBar">
-	<form action="t_bcrilist" method="get"> <!-- onclick="this.submit() -->
+	<form action="t_bcrilist" method="get">
 			<c:set var="ckPrint" value="false" />
 			<c:forEach  var="trade" items="${pageMaker.cri.check}" >
 				<c:if test="${trade=='sell'}">
@@ -207,21 +207,16 @@
 			<c:if test="${not ckPrint}">
 				<input type="checkbox" name="check" value="buy">구매&nbsp;
 			</c:if> 
-			
-			<!-- <input type="submit" value="검색">&nbsp;
-			<input type="reset" value="취소" onclick="checkClear()"> -->
-			
-	
 	
 		<select name="searchType" id="searchType">
 			<!-- <option value="n" selected> 을 조건 (cri.searchType 의 값) 에 따라 작성하기 위한 삼항식 
 				=> value="n" : ~~~~.cri.searchType==null ? 'selected':''  첫화면 출력시 초기값 으로 selected
 			-->
-			<option value="n" ${pageMaker.cri.searchType==null ? 'selected' : ''}>전체</option>
+			<%-- <option value="n" ${pageMaker.cri.searchType==null ? 'selected' : ''}  disabled hidden>숨김</option> --%>
+			<option value="tc" ${pageMaker.cri.searchType=='tc' ? 'selected' : ''} selected >제목+내용</option>
 			<option value="t" ${pageMaker.cri.searchType=='t' ? 'selected' : ''}>제목</option>
 			<option value="c" ${pageMaker.cri.searchType=='c' ? 'selected' : ''}>내용</option>
 			<option value="i" ${pageMaker.cri.searchType=='i' ? 'selected' : ''}>ID(글쓴이)</option>
-			<option value="tc" ${pageMaker.cri.searchType=='tc' ? 'selected' : ''}>제목+내용</option>
 		</select>
 		<input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">	
 		<button id="searchBtn" onclick="this.submit();">Search</button>

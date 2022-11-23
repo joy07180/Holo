@@ -175,11 +175,11 @@
 			<!-- <option value="n" selected> 을 조건 (cri.searchType 의 값) 에 따라 작성하기 위한 삼항식 
 				=> value="n" : ~~~~.cri.searchType==null ? 'selected':''  첫화면 출력시 초기값 으로 selected
 			-->
-			<option value="n" ${pageMaker.cri.searchType==null ? 'selected' : ''}>전체</option>
+			<%-- <option value="n" ${pageMaker.cri.searchType==null ? 'selected' : ''}>전체</option> --%>
+			<option value="tc" ${pageMaker.cri.searchType=='tc' ? 'selected' : ''} selected >제목+내용</option>
 			<option value="t" ${pageMaker.cri.searchType=='t' ? 'selected' : ''}>제목</option>
 			<option value="c" ${pageMaker.cri.searchType=='c' ? 'selected' : ''}>내용</option>
 			<option value="i" ${pageMaker.cri.searchType=='i' ? 'selected' : ''}>ID(글쓴이)</option>
-			<option value="tc" ${pageMaker.cri.searchType=='tc' ? 'selected' : ''}>제목+내용</option>
 		</select>
 		<input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">	
 		<button id="searchBtn">Search</button>
