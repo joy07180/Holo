@@ -143,12 +143,15 @@
 					<c:if test="${not empty loginID}">
 						<a href="t_bdetail?seq=${trade_board.seq}">${trade_board.title}</a>&nbsp;&nbsp;
 					</c:if> 
+					
+					<!-- 구매,판매 빨간글씨로 제목 옆 표시 -->
 					<c:if test="${trade_board.trade=='sell'}">
 					    <span style="color:red">판매</span>
 					</c:if>
 					<c:if test="${trade_board.trade=='buy'}">
 					    <span style="color:red">구매</span>
 					</c:if>
+					
 					</td>
 					<td>${trade_board.id}</td>
 					<td>${trade_board.regdate}</td><td>${trade_board.cnt}</td>

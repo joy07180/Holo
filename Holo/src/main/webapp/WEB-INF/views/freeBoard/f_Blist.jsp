@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>거래 게시판</title>
+	<title>자유 게시판</title>
 	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 	<script>
@@ -131,10 +131,13 @@
 					</c:if>
 				
 				<!-- 로그인 한 경우에만 title을 클릭하면 content를 볼 수 있도록 함
-							=> bdetail 을 실행함 -->
-					
-						<a href="f_bdetail?seq=${free_board.seq}">${free_board.title}</a>&nbsp;&nbsp;
-	
+							=> f_detail 을 실행함 -->
+					<c:if test="${empty loginID}">
+				   		${trade_board.title}
+					</c:if>		
+					<c:if test="${not empty loginID}">
+    					<a href="f_bdetail?seq=${free_board.seq}">${free_board.title}</a>&nbsp;&nbsp;
+					</c:if> 
 				</td>
 	
 				<td>${free_board.id}</td>
