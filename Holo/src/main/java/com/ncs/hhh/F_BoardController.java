@@ -55,13 +55,13 @@ public class F_BoardController {
 			// 2. Service 처리
 			vo = service.selectOne(vo);
 			if ( vo != null ) {
-				/*
-				 * // 2.1) 조회수 증가 String loginID =
-				 * (String)request.getSession().getAttribute("loginID"); if (
-				 * !vo.getId().equals(loginID) && !"U".equals(request.getParameter("jCode")) ) {
-				 * // => 조회수 증가 if ( service.countUp(vo) > 0 ) vo.setCnt(vo.getCnt()+1); }
-				 * //if_증가조건
-				 */				
+				// 2.1) 조회수 증가 
+				String loginID = (String)request.getSession().getAttribute("loginID"); // object 타입을 string으로
+				if (!vo.getId().equals(loginID) && !"U".equals(request.getParameter("jCode"))) { //vo아이디랑 login아이디랑 다르고 && U가 아닌경우
+				    // => 조회수 증가 
+				    if ( service.countUp(vo) > 0 ) vo.setCnt(vo.getCnt()+1); 
+				} //if_증가조건
+				 			
 				// 2.2) 수정요청 인지 확인
 				if ( "U".equals(request.getParameter("jCode")))
 					uri = "/freeBoard/f_BupdateForm";
