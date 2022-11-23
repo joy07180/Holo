@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>거래 게시판</title>
+	<title>거래/나눔 게시판</title>
 	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 	<script>
