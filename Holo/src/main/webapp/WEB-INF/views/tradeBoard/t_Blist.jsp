@@ -100,19 +100,9 @@
         <br>
         <br>
 		
-		<div>
-		<!-- 아이디 로그인할때만 가능하게 -->
-        <c:if test="${not empty loginID}">
-        &nbsp;&nbsp;<a href="t_binsertf">새글등록</a>
-        </c:if>
-        <c:if test="${empty loginID}">
-		&nbsp;&nbsp;<a href="#"><p onclick="alert('로그인후 이용해주세요')">새글등록</p></a>       
-        </c:if>
-        </div>
-		       
 		<table width=100%>
             <thead>
-                <tr bgcolor="Gold" height="30">
+                <tr height="30">
                     <th width="10%">글 번호</th>
                     <th width="40%">제 목</th>
                     <th width="10%">글쓴이</th>
@@ -226,6 +216,16 @@
 		&nbsp;&nbsp;
 		</form>	
 	</div>
+	
+	<div>
+		<!-- 아이디 로그인할때만 가능하게 -->
+        <c:if test="${not empty loginID}">
+        &nbsp;&nbsp;<a href="t_binsertf">새글등록</a>
+        </c:if>
+        <c:if test="${empty loginID}">
+		&nbsp;&nbsp;<a href="#"><p onclick="alert('로그인후 이용해주세요')">새글등록</p></a>       
+        </c:if>
+    </div>
 
 </div>
 <br>

@@ -100,52 +100,50 @@
         <h2>자유 게시판</h2>
         <br>
         <br>
-        
-   		<div>
-		<!-- 아이디 로그인할때만 가능하게 -->
-        <c:if test="${not empty loginID}">
-        &nbsp;&nbsp;<a href="f_binsertf">새글등록</a>
-        </c:if>
-        <c:if test="${empty loginID}">
-		&nbsp;&nbsp;<a href="#"><p onclick="alert('로그인후 이용해주세요')">새글등록</p></a>       
-        </c:if>
-        </div>
 
-	<table width=100%> 
-		<tr bgcolor="Gold" height="30">
-			<th>글 번호</th><th>제목</th><th>글쓴이</th><th>날짜</th><th>조회수</th>
-		</tr>
-		<c:if test="${not empty banana}">
-			<c:forEach  var="free_board" items="${banana}" >
-			<tr height="30">
-				<td>${free_board.seq}</td>
+		<table width=100%>
+            <thead>
+                <tr height="30">
+                    <th width="10%">글 번호</th>
+                    <th width="40%">제 목</th>
+                    <th width="10%">글쓴이</th>
+                    <th width="20%">날 짜</th>
+					<th width="10%">조회수</th>
+				</tr>
+            </thead>
+            <tbody>
+				<c:if test="${not empty banana}">
+					<c:forEach  var="free_board" items="${banana}" >
+					<tr height="30">
+					<td>${free_board.seq}</td>
 				
-				<td>
+					<td>
 					<!-- 답글 등록후 indent 에 따른 들여쓰기 
 							=> 답글인 경우에만 적용  -->
-					<c:if test="${free_board.indent > 0}">
-						<c:forEach begin="1" end="${free_board.indent}">
-							<span>&nbsp;&nbsp;</span>
-						</c:forEach>
-						<span style="color:hotpink">re..</span>
-					</c:if>
-				
-				<!-- 로그인 한 경우에만 title을 클릭하면 content를 볼 수 있도록 함
-							=> f_detail 을 실행함 -->
-					<c:if test="${empty loginID}">
-				   		${trade_board.title}
-					</c:if>		
-					<c:if test="${not empty loginID}">
-    					<a href="f_bdetail?seq=${free_board.seq}">${free_board.title}</a>&nbsp;&nbsp;
-					</c:if> 
-				</td>
+						<c:if test="${free_board.indent > 0}">
+							<c:forEach begin="1" end="${free_board.indent}">
+								<span>&nbsp;&nbsp;</span>
+							</c:forEach>
+								<span style="color:hotpink">re..</span>
+						</c:if>
+						
+						<!-- 로그인 한 경우에만 title을 클릭하면 content를 볼 수 있도록 함
+									=> f_detail 을 실행함 -->
+						<c:if test="${empty loginID}">
+						   		${free_board.title}
+						</c:if>		
+						<c:if test="${not empty loginID}">
+		    				<a href="f_bdetail?seq=${free_board.seq}">${free_board.title}</a>&nbsp;&nbsp;
+						</c:if> 
+				    </td>
 	
-				<td>${free_board.id}</td>
-				<td>${free_board.regdate}</td><td>${free_board.cnt}</td>
-			</tr>	
-			</c:forEach>
-		</c:if>
-	</table>
+					<td>${free_board.id}</td>
+					<td>${free_board.regdate}</td><td>${free_board.cnt}</td>
+					</tr>	
+			    	</c:forEach>
+		    	</c:if>
+		    </tbody>
+		</table>
 
 	<!-- Cri_Page -->
 	<div align="center">
@@ -188,6 +186,18 @@
 		<button id="searchBtn">Search</button>
 	&nbsp;&nbsp;
 	</div>
+	
+	        
+   	<div>
+		<!-- 아이디 로그인할때만 가능하게 -->
+        <c:if test="${not empty loginID}">
+        &nbsp;&nbsp;<a href="f_binsertf">새글등록</a>
+        </c:if>
+        <c:if test="${empty loginID}">
+		&nbsp;&nbsp;<a href="#"><p onclick="alert('로그인후 이용해주세요')">새글등록</p></a>       
+        </c:if>
+    </div>
+	
 </div>
 <br>
 <br>
