@@ -16,15 +16,12 @@
 	<table>
 		<tr height="40"><td bgcolor="MistyRose">Seq</td>
 			<td><input type="text" name="seq" value="${apple.seq}" size="20" readonly></td></tr>
-								<!-- 서버에서 필요한 정보 -->
 		<tr height="40"><td bgcolor="MistyRose">I D</td>
 			<td><input type="text" name="id" value="${apple.id}" size="20" readonly></td></tr>
 		<tr height="40"><td bgcolor="MistyRose">Title</td> 
 			<td><input type="text" name="title" value="${apple.title}"></td></tr>
-								<!-- 서버에서 필요한 정보 -->
 		<tr height="40"><td bgcolor="MistyRose">Content</td>
 			<td><textarea rows="5" cols="50" name="content" >${apple.content}</textarea><img src="${apple.uploadfile}"></td>
-								<!-- 서버에서 필요한 정보 -->
 		</tr>
 		<tr height="40"><td bgcolor="MistyRose">RegDate</td>
 			<td><input type="text" name="regdate" value="${apple.regdate}" readonly></td></tr>

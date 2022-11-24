@@ -106,5 +106,6 @@
 	<select id="nsearchCount" resultType="int">
 		select count(*) from notice_board
 		where ( seq>0 and title like CONCAT('%', #{keyword2}, '%') )
+		
 	</select>
 </mapper>  

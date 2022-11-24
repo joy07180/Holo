@@ -87,13 +87,5 @@ public class Tip_BoardServiceImpl implements Tip_BoardService {
 		return mapper.selectHhotList();
 	}
 
-	// search 
-	@Override
-	public List<Tip_BoardVO> hsearchsearch(SearchCriteria cri) {
-		return mapper.hsearchsearch(cri);
-	}
-	@Override
-	public int hsearchCount(SearchCriteria cri) {
-		return mapper.hsearchCount(cri);
-	}	
+	
 }

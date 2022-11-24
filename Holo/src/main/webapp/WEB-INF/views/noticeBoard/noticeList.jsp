@@ -49,31 +49,6 @@
                 }); //click
             }); //ready	
             
-            $(function () {
-                // 1) SearchType 이 '전체' 면 keyword 클리어
-                $('#searchType').change(function () {
-                    if ($(this).val() == 'n') $('#keyword2').val('');
-                }); //change
-
-                // 2) 검색 후 요청 
-                // => 검색조건 입력 후 첫 Page 요청
-                //    이때는 서버에 searchType, keyword 가 전달되기 이전이므로 makeQuery 메서드사용
-                // => self.location="bcrilist?currPage=?????" : 해당 요청을 서버로 전달 	
-
-                // ** self.location	
-                // 1) location 객체 직접사용 Test : url로 이동, 히스토리에 기록됨
-                // 2) location 객체의 메서드
-                // => href, replace('...'), reload()	
-
-                $('#searchBtn2').click(function () {
-                    self.location = "noticelist"
-                        + "${pageMaker.makeQuery(1)}"
-                        + "&searchType="
-                        + $('#searchType').val()
-                        + "&keyword2="
-                        + $('#keyword2').val()
-                }); //click
-            }); //ready	
         </script>
     </head>
 
