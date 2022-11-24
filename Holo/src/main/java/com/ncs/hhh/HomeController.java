@@ -123,6 +123,7 @@ public class HomeController {
 		mv.addObject("nservice", nservice.nsearchsearch(cri)); // ver02
 		
 		// 3) View 처리 => PageMaker
+		System.out.println("************************************************************************"+pageMaker);
 		pageMaker.setCri(cri);
 		pageMaker.setTotalRowsCount(nservice.nsearchCount(cri));     // ver02: 조건과 일치하는 Rows 갯수 
 		mv.addObject("pageMaker", pageMaker);

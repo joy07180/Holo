@@ -40,7 +40,5 @@ public interface Tip_BoardService {
 	List<Tip_BoardVO> selectHList();
 	List<Tip_BoardVO> selectHhotList();
 
-	List<Tip_BoardVO> hsearchsearch(SearchCriteria cri);
-	int hsearchCount(SearchCriteria cri);
 
 }

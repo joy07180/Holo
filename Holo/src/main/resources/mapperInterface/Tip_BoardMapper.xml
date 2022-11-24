@@ -153,19 +153,5 @@
 		select seq, id, title, cnt from tip_board order by cnt desc limit 0,5
 	</select>
 
-	<select id="hsearchsearch" resultType="vo.Tip_BoardVO">
-		select seq, id,
-		title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt
-		from tip_board
-		where ( seq > 0 and title like CONCAT('%', #{keyword2}, '%') )
-		limit #{sno}, #{rowsPerPage}
-	</select>
-
-	<select id="hsearchCount" resultType="int">
-		select count(*) from
-		notice_board
-		where ( seq>0 and title like CONCAT('%', #{keyword2}, '%')
-		)
-	</select>
 
 </mapper>  

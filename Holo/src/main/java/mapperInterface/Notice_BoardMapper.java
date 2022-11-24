@@ -34,6 +34,7 @@ public interface Notice_BoardMapper {
 	
 	List<Notice_BoardVO> selectNList();
 	
+	// search 
 	List<Notice_BoardVO> nsearchsearch(SearchCriteria cri);
 	int nsearchCount(SearchCriteria cri);
 	
