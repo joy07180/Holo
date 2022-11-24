@@ -11,10 +11,10 @@
 -->
 <select id="checkList" resultType="vo.Club_BoardVO">
 	select * from club_board 
-	where place in
-	<foreach collection="check" item="it" open="(" close=")" separator=",">
-		#{it}
-	</foreach>     
+		where place in
+		<foreach collection="check" item="it" open="(" close=")" separator=",">
+			#{it}
+		</foreach>   
 	order by root desc, step asc
 </select>
 

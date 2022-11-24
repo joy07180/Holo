@@ -6,52 +6,24 @@
 <head>
     <meta charset="UTF-8">
     <title>** 자유게시판 디테일 **</title>
-    <link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
-	<link rel="stylesheet" type="text/css" href="resources/myLib/home.css">
+    <link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
-	<script>	
-	$(function() {
-		// 1) SearchType 이 '전체' 면 keyword 클리어
-		$('#searchType').change(function(){
-			if ( $(this).val()=='n' ) $('#keyword').val('');
-		}); //change
-		
-		// 2) 검색 후 요청 
-		// => 검색조건 입력 후 첫 Page 요청
-		//    이때는 서버에 searchType, keyword 가 전달되기 이전이므로 makeQuery 메서드사용
-		// => self.location="bcrilist?currPage=?????" : 해당 요청을 서버로 전달 	
-				
-		// ** self.location	
-		// 1) location 객체 직접사용 Test : url로 이동, 히스토리에 기록됨
-		// 2) location 객체의 메서드
-		// => href, replace('...'), reload()	
-		
-		$('#searchBtn').click(function(){
-			self.location="f_blist"
-				+"${pageMaker.makeQuery(1)}"
-				+"&searchType="
-				+$('#searchType').val()
-				+"&keyword="
-				+$('#keyword').val()
-		}); //click
-	}); //ready	
-	</script>
 </head>
 <body>
     <div class="contents">
         <header>
             <div class="header">
                 <div>
-                    <a href="" class="logo">logo</a>
+                    <a href="home" class="logo">logo</a>
                 </div>
                 <div class="search">
-                    <form action="">
-                        <input class="searchBox" size="40" type="text" id="search" placeholder="게시판 & 통합검색">
-                        <span>
-                            <input class="searchClick" type="submit" value="검색">
-                        </span>
-                    </form>
-                </div>
+					<form action="searchsearch">
+						<input class="searchBox" type="text" size="40"
+							placeholder="게시판 & 통합검색" type="text" name="keyword2"
+							id="keyword2" /> <input class="searchClick" id="searchBtn2"
+							type="submit" value="검색" />
+					</form>
+				</div>
 
             </div>
 
@@ -86,73 +58,61 @@
                     </ul>
                 </div>
             </nav>
-
         </header>
-    <main>
+        <br>
+        <h2>자유게시판 글 내용</h2>
+        <br>
+        <br>
         
+		<div>
+		<!-- 아이디 로그인이랑 다를때 메뉴 -->
+        <c:if test="${loginID!=apple.id || loginID!='admin'}">
+		<a href="f_binsertf">새글등록</a>
+        &nbsp;&nbsp;<a href="f_rinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글등록</a>
+		&nbsp;&nbsp;<a href="f_bcrilist">목록으로</a>       
+        </c:if>
+        <!-- 아이디 로그인이랑 같을때 추가 메뉴 -->
+        <c:if test="${loginID==apple.id || loginID=='admin' }">
+        &nbsp;&nbsp;<a href="f_bdetail?jCode=U&seq=${apple.seq}">글수정</a>
+        &nbsp;&nbsp;<a href="f_bdelete?seq=${apple.seq}&root=${apple.root}">글삭제</a>
+        </c:if>
+        </div>
 
+	<c:if test="${not empty apple}">
+	    <table>
+	        <tr height="40" width="100"><td><b>${apple.title}</b></td></tr>
+	        <tr height="40" id="test111"><td>글번호 : ${apple.seq}&nbsp;</td><td>&nbsp;${apple.id}&nbsp;</td>
+	                            <td>&nbsp;조회수 : ${apple.cnt}&nbsp;</td><td>&nbsp;${apple.regdate}</td></tr>
+	        <tr height="100" width="100">
+	            <c:if test="${empty apple.uploadfile}">
+	            	<td>${apple.content}</td>
+	            </c:if>
+	            <c:if test="${not empty apple.uploadfile}">
+	            	<td><img height="300" width="300" src="${apple.uploadfile}"><br>${apple.content}</td>
+	            </c:if>
+	        </tr>
+	    </table>
+	</c:if>
+</div>
 
-
-
-
-<br>
-<c:if test="${not empty message}">
-	${message}<br>
-</c:if>
-<hr>
-
-<!-- &nbsp;&nbsp;<a href="binsertf">글쓰기</a> -->
-<%-- <c:if test="${not empty loginID}">
-&nbsp;&nbsp;<a href="binsertf">새글등록</a>
-</c:if> --%>
-<br>
-
-
-
-<h2>** 자유 디테일 **</h2>
-<c:if test="${not empty apple}">
-    <table>
-        <tr height="40" width="100"><td><b>${apple.title}</b></td></tr>
-        <tr height="40" id="test111"><td>글번호 : ${apple.seq}&nbsp;</td><td>&nbsp;${apple.id}&nbsp;</td>
-                            <td>&nbsp;조회수 : ${apple.cnt}&nbsp;</td><td>&nbsp;${apple.regdate}</td></tr>
-        <tr height="100" width="100">
-            <c:if test="${empty apple.uploadfile}">
-            	<td>${apple.content}</td>
-            </c:if>
-            <c:if test="${not empty apple.uploadfile}">
-            	<td><img height="300" width="300" src="${apple.uploadfile}"><br>${apple.content}</td>
-            </c:if>
-        </tr>
-    </table>
-</c:if>
-
-<%-- <c:if test="${not empty message}">
-<hr>
-${message}<br>
-</c:if> --%>
-<%-- <c:if test="${loginID==apple.id || loginID=='admin' }">
-<!-- 로그인 아이디랑 아이디랑 같으면 내가 쓴 글 -->
-
-<!-- root 추가 : 삭제시 원글삭제 or 답글삭제 확인을 위함 -->
-
-</c:if>
-<c:if test="${not empty loginID}"> <!-- 로그인이 되어 있다면~ -->
-답글~~
-</c:if>
-
-&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-&nbsp;&nbsp;<a href="home">[Home]</a> --%>
-
-&nbsp;&nbsp;<a href="f_rinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">[답글달기]</a><br>
-&nbsp;&nbsp;<a href="f_bdetail?jCode=U&seq=${apple.seq}">[글수정]</a>
-&nbsp;&nbsp;<a href="f_bdelete?seq=${apple.seq}&root=${apple.root}">[글삭제]</a>
-&nbsp;&nbsp;<a href="f_bcrilist">목록으로</a>
-
-</main>
-<footer>
-</footer>
-
-<hr>
+	<footer>
+        <div class="bottom">
+            <ul class="btMenu">
+                <li><a href="">공지사항</a></li>
+                <li><a href="">팁/정보</a></li>
+                <li><a href="">자유게시판</a></li>
+                <li><a href="">거래/나눔</a></li>
+                <li><a href="">동아리/모임</a></li>
+                <li><a href="">Q&A</a></li>
+            </ul>
+            <span>
+                <div>Copyright (c) Holo.net All rights reserved.</div>
+                <div>Contact us, holo at gmail dot com</div>
+                <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
+            </span>
+        </div>
+        <br>
+    </footer>
 
 </body>
 </html>

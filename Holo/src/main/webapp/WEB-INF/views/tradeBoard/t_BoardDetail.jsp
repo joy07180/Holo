@@ -37,6 +37,10 @@
 		}); //click
 	}); //ready	
 	</script>
+    <meta charset="UTF-8">
+    <title>** 거래게시판 디테일 **</title>
+	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
+	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 	<div class="contents">
@@ -50,6 +54,20 @@
 						placeholder="게시판 & 통합검색" type="text" name="keyword2" id="keyword2" />
 					<input class="searchClick" id="searchBtn2" type="submit" value="검색" />
 				</form>
+    <div class="contents">
+        <header>
+            <div class="header">
+                <div>
+                    <a href="home" class="logo">logo</a>
+                </div>
+                <div class="search">
+					<form action="searchsearch">
+						<input class="searchBox" type="text" size="40"
+							placeholder="게시판 & 통합검색" type="text" name="keyword2"
+							id="keyword2" /> <input class="searchClick" id="searchBtn2"
+							type="submit" value="검색" />
+					</form>
+				</div>
 
 			</div>
 
@@ -69,9 +87,46 @@
 
 		</header>
 		<main>
+        </header>
+        <br>
+        <h2>거래/나눔 게시판 글 내용</h2>
+        <br>
+        <br>
+		
+		<div>
+		<!-- 아이디 로그인이랑 다를때 메뉴 -->
+        <c:if test="${loginID!=apple.id || loginID!='admin'}">
+		<a href="t_binsertf">새글등록</a>
+        &nbsp;&nbsp;<a href="t_rinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글등록</a>
+		&nbsp;&nbsp;<a href="t_bcrilist">목록으로</a>       
+        </c:if>
+        <!-- 아이디 로그인이랑 같을때 추가 메뉴 -->
+        <c:if test="${loginID==apple.id || loginID=='admin' }">
+        &nbsp;&nbsp;<a href="t_bdetail?jCode=U&seq=${apple.seq}">글수정</a>
+        &nbsp;&nbsp;<a href="t_bdelete?seq=${apple.seq}&root=${apple.root}">글삭제</a>
+        </c:if>
+        </div>
 
-
-
+	<c:if test="${not empty apple}">
+	    <table>
+	        <tr height="40" width="100">
+	        <td>
+	        	<c:if test="${apple.trade=='sell'}">판매</c:if>
+	        	<c:if test="${apple.trade=='buy'}">구매</c:if>
+	        </td></tr>
+	        <tr height="40" width="100"><td><b>${apple.title}</b></td></tr>
+	        <tr height="40" id="test111"><td>글번호 : ${apple.seq}&nbsp;</td><td>&nbsp;${apple.id}&nbsp;</td>
+	                            <td>&nbsp;조회수 : ${apple.cnt}&nbsp;</td><td>&nbsp;${apple.regdate}</td></tr>
+	        <tr height="100" width="100">
+	            <c:if test="${empty apple.uploadfile}">
+	            	<td>${apple.content}</td>
+	            </c:if>
+	            <c:if test="${not empty apple.uploadfile}">
+	            	<td><img height="300" width="300" src="${apple.uploadfile}"><br>${apple.content}</td>
+	            </c:if>
+	        </tr>
+	    </table>
+	</c:if>
 
 
 
@@ -143,5 +198,25 @@ ${message}<br>
 		<footer> </footer>
 
 		<hr>
+</div>
+	<footer>
+	    <div class="bottom">
+	        <ul class="btMenu">
+	            <li><a href="">공지사항</a></li>
+	            <li><a href="">팁/정보</a></li>
+	            <li><a href="">자유게시판</a></li>
+	            <li><a href="">거래/나눔</a></li>
+	            <li><a href="">동아리/모임</a></li>
+	            <li><a href="">Q&A</a></li>
+	        </ul>
+	        <span>
+	            <div>Copyright (c) Holo.net All rights reserved.</div>
+	            <div>Contact us, holo at gmail dot com</div>
+	            <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
+	        </span>
+	    </div>
+	    <br>
+	</footer>
+
 </body>
 </html>

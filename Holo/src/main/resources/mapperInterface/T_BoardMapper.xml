@@ -8,102 +8,75 @@
 		board where id in ('admin','teacher','banana') order by root desc, step asc -->
 	<select id="checkList" resultType="vo.T_BoardVO">
 		select * from trade_board
-		<if test="check!=null">
 			where trade in
 			<foreach collection="check" item="it" open="(" close=")"
 				separator=",">
 				#{it}
 			</foreach>
-		</if>
 		order by root desc, step asc
-		limit #{sno}, #{rowsPerPage}
 	</select>
-
-	<!-- <select id="checkList2" resultType="vo.T_BoardVO"> select * from trade_board 
-		<if test="check!=null"> where trade in <foreach collection="check" item="it" 
-		open="(" close=")" separator=","> #{it} </foreach> </if> order by root desc, 
-		step asc </select> -->
 
 	<select id="checkCount" resultType="int">
 		select count(*) from trade_board
 		<if test="check!=null">
 			where trade in
-			<foreach collection="check" item="it" open="(" close=")"
-				separator=",">
+			<foreach collection="check" item="it" open="(" close=")" separator=",">
 				#{it}
 			</foreach>
 		</if>
 	</select>
 
 
-	<sql id="search">
 		<!-- ** SearchCriteria PageList : ver02 => sql Tag : 필요한 sql 구문을 만들어 놓고 
 			필요할때마다 사용가능 => 호출 Tag : include 적용 범위 -> "and 나머지조건 )" where ( seq>0 and 
 			나머지조건 ) => 조건문 : searchType: title , keyword: Java where title like '%'+#{keyword}+'%' 
 			매번 문자열 + 연산 (Concate...함수 사용해야함) 하기는 불편 그래서 이값을 변수로 처리 -> bind Tag -->
+	
+	<sql id="check">
+		<if test="check!=null">
+			and trade in
+			<foreach collection="check" item="it" open="(" close=")" separator=",">
+				#{it}
+			</foreach>
+		</if>
+	</sql>
+	
+	<sql id="search">
 		<if test="keyword!=null">
 			<bind name="keyVal" value="'%'+keyword+'%'" />
 		</if>
 		<choose>
 			<when test="searchType=='t'.toString()">
-				and title like #{keyVal}
-				<if test="check != null">
-					and id in
-					<foreach collection="check" item="it" open="(" close=")"
-						separator=",">
-						#{it}
-					</foreach>
-				</if>
-				)
+				and title like #{keyVal} <include refid="check"></include> )
 			</when>
 			<when test="searchType=='c'.toString()">
-				and content like #{keyVal}
-				<if test="check != null">
-					and id in
-					<foreach collection="check" item="it" open="(" close=")"
-						separator=",">
-						#{it}
-					</foreach>
-				</if>
-				)
+				and content like #{keyVal} <include refid="check"></include> )
 			</when>
 			<when test="searchType=='i'.toString()">
-				and id like #{keyVal}
-				<if test="check != null">
-					and id in
-					<foreach collection="check" item="it" open="(" close=")"
-						separator=",">
-						#{it}
-					</foreach>
-				</if>
-				)
+				and id like #{keyVal} <include refid="check"></include> )
 			</when>
 			<when test="searchType=='tc'.toString()">
-				and title like #{keyVal}
-				or content like #{keyVal} )
+				and title like #{keyVal} 
+				or content like #{keyVal} <include refid="check"></include> )
 			</when>
 			<when test="searchType=='trb'.toString()">
-				and trade like #{keyVal} )
+				and trade like #{keyVal} <include refid="check"></include> )
 			</when>
 			<when test="searchType=='trs'.toString()">
-				and trade like #{keyVal} )
+				and trade like #{keyVal} <include refid="check"></include> )
 			</when>
-			<otherwise> )</otherwise>
+			<otherwise> <include refid="check"></include>)</otherwise>
 		</choose>
 	</sql>
 
 	<select id="searchList" resultType="vo.T_BoardVO">
-		select seq, title, regdate, cnt, root, step, indent ,trade
+		select seq, title, id, regdate, cnt, root, step, indent ,trade
 		from trade_board
 		where ( seq>0
 		<include refid="search"></include>
 		order by root desc, step asc
 		limit #{sno}, #{rowsPerPage}
 	</select>
-
-	<!-- <select id="searchList2" resultType="vo.T_BoardVO"> select * from trade_board 
-		where ( seq>0 <include refid="search"></include> order by root desc, step 
-		asc </select> -->
 
 	<select id="searchCount" resultType="int">
 		select count(*) from trade_board
@@ -115,7 +88,7 @@
 	<!-- ** Criteria PageList : ver01 => MySql : limit a , b ( a개 제외하고 a+1 부터 
 		b개 ) 적용 -->
 	<select id="criList" resultType="vo.T_BoardVO">
-		select seq, id, title, regdate, cnt, root, step, indent, trade
+		select seq, title, id, regdate, cnt, root, step, indent, trade
 		from trade_board
 		order by root desc, step asc
 		limit #{sno}, #{rowsPerPage}
@@ -127,7 +100,7 @@
 
 
 	<select id="selectList" resultType="vo.T_BoardVO">
-		select seq, id, title, regdate, cnt, root, step, indent, trade
+		select seq, title, id, regdate, cnt, root, step, indent, trade
 		from trade_board order by root desc, step asc
 	</select>
 
@@ -151,8 +124,8 @@
 		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
 			select IFNULL(max(seq),0)+1 from trade_board
 		</selectKey>
-		insert into trade_board(seq,id,title,content,root,trade,uploadfile)
-		values(#{seq},#{id},#{title},#{content},#{seq},#{trade},#{uploadfile})
+		insert into trade_board(seq,title,id,content,root,trade,uploadfile)
+		values(#{seq},#{title},#{id},#{content},#{seq},#{trade},#{uploadfile})
 	</insert>
 
 	<update id="update">
@@ -179,8 +152,8 @@
 		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
 			select IFNULL(max(seq),0)+1 from trade_board
 		</selectKey>
-		insert into trade_board(seq,id,title,content,root,step,indent)
-		values(#{seq},#{id},#{title},#{content},#{root},#{step},#{indent})
+		insert into trade_board(seq,title,id,content,root,step,indent)
+		values(#{seq},#{title},#{id},#{content},#{root},#{step},#{indent})
 	</insert>
 	<update id="stepUpdate">
 		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
@@ -193,7 +166,7 @@
 
 
 	<select id="selectTList" resultType="vo.T_BoardVO">
-		select seq, id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate from
+		select seq, title, id, DATE_FORMAT(regdate, '%m-%d %H:%i') regdate from
 		trade_board order by seq desc limit 0,5
 	</select>
 </mapper>  

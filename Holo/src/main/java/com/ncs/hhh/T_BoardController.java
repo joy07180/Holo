@@ -28,7 +28,6 @@ public class T_BoardController {
 	
 	@Autowired
 	T_BoardService service;
-		
 		// => ver02) SearchCriteria,  PageMaker 적용하기 
 		@RequestMapping(value="/t_bcrilist")
 		public ModelAndView t_bcrilist(ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
@@ -44,101 +43,11 @@ public class T_BoardController {
 			pageMaker.setCri(cri);
 			pageMaker.setTotalRowsCount(service.searchCount(cri)); 
 			
-				
-				
-//			}else if ( cri.getCheck() != null && cri.getCheck().length > 0) {
-//				mv.addObject("banana", service.checkList(cri)); 
-//				pageMaker.setCri(cri);
-//				pageMaker.setTotalRowsCount(service.checkCount(cri)); 
-//				/*
-//				 * } else if(cri.getCheck() != null && cri.getCheck().length > 0 &&
-//				 * service.searchList2(cri).size() <= service.checkList2(cri).size()) {
-//				 * List<T_BoardVO> resultList = service.searchList2(cri).stream() .filter(old ->
-//				 * service.checkList2(cri).stream() .anyMatch(Predicate.isEqual(old)))
-//				 * .collect(Collectors.toList()); mv.addObject("banana", resultList);
-//				 * pageMaker.setCri(cri); pageMaker.setTotalRowsCount(resultList.size());
-//				 */
-//	        
-//			
-//	        } else {
-//			
-//			mv.addObject("banana", service.searchList(cri));
-//			pageMaker.setCri(cri);
-//			pageMaker.setTotalRowsCount(service.searchCount(cri));
-//	        }
-			
 	    	mv.addObject("pageMaker", pageMaker);
 			
 			mv.setViewName("tradeBoard/t_Blist");
 	    	return mv;
 		} //t_bcrilist
-		
-		/*// ** Board search List ***************************
-		// ** Criteria PageList
-		// => ver01 : Criteria cri
-		// => ver02 : SearchCriteria cri
-		@RequestMapping(value="/t_bcrilist2")
-		public ModelAndView t_bcrilist2(HttpServletRequest request, HttpServletResponse response, 
-							ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
-			// 1) Criteria 처리 
-			// => setCurrPage, setRowsPerPage 는 Parameter 로 전달되어,
-			//    setCurrPage(..) , setRowsPerPage(..) 는 자동처리됨(스프링에 의해)
-			//    -> cri.setCurrPage(Integer.parseInt(request.getParameter("currPage")))
-			// => 그러므로 currPage 이용해서 sno, eno 계산만 하면됨
-			cri.setSnoEno();
-			
-			// ** ver02
-			// => SearchCriteria: searchType, keyword 는 Parameter로 전달되어 자동 set 됨.
-			
-			// 2) 서비스처리
-			// => List 처리
-			//mv.addObject("banana", service.criList(cri)); // ver01
-			mv.addObject("banana", service.searchList(cri)); // ver02
-			    	
-	    	// 3) View 처리 => PageMaker
-			pageMaker.setCri(cri);
-			//pageMaker.setTotalRowsCount(service.criTotalCount()); // ver01: 전체 Rows 갯수 
-			pageMaker.setTotalRowsCount(service.searchCount(cri));     // ver02: 조건과 일치하는 Rows 갯수 
-	    	mv.addObject("pageMaker", pageMaker);
-	    	
-	    	//System.out.println("*******"+pageMaker);
-	    	
-	    	mv.setViewName("/tradeBoard/t_Blist");
-	    	return mv;
-		} //t_bcrilist2*/
-	
-	
-	/*@RequestMapping(value="/t_bcrilist")
-	public ModelAndView t_bcrilist(HttpServletRequest request, HttpServletResponse response, 
-						ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
-		// ** Paging 준비
-		cri.setSnoEno();
-		
-		// 1) Check_Box 처리
-		// => check 값이 null이 아니고, check 배열 1개 이상 => check 결과만 보여줌
-		if ( cri.getCheck() != null && cri.getCheck().length > 0 && cri.getSearchType() == null && cri.getKeyword() == null) {
-			mv.addObject("banana", service.checkList(cri));  
-			pageMaker.setTotalRowsCount(service.checkCount(cri)); 
-        }else if(cri.getCheck() == null && cri.getCheck().length < 1 && cri.getSearchType() != null && cri.getKeyword() != null){
-        // => check 값이 없고 search 값이 있을때 => search 결과만 보여줌
-        	mv.addObject("banana", service.searchList(cri));
-        	pageMaker.setTotalRowsCount(service.searchCount(cri));
-			
-		}else if( cri.getCheck() != null && cri.getCheck().length > 0 && cri.getSearchType() != null && cri.getKeyword() != null) { // =>
-		// => check 값이 있고, search 값이 있을때 => check + search
-			
-			
-		}else {
-			cri.setCheck(null);
-		}
-		
-		// 3) View 처리 => PageMaker
-		pageMaker.setCri(cri);
-		mv.addObject("pageMaker", pageMaker);
-    	mv.setViewName("/tradeBoard/t_Blist");
-    	return mv;
-    	
-	} //t_bcrilist*/
 		
 // ********************** 클릭시 글 내용 *******************************************			
 	
@@ -152,13 +61,14 @@ public class T_BoardController {
 			// 2. Service 처리
 			vo = service.selectOne(vo);
 			if ( vo != null ) {
-				/*
-				 * // 2.1) 조회수 증가 String loginID =
-				 * (String)request.getSession().getAttribute("loginID"); if (
-				 * !vo.getId().equals(loginID) && !"U".equals(request.getParameter("jCode")) ) {
-				 * // => 조회수 증가 if ( service.countUp(vo) > 0 ) vo.setCnt(vo.getCnt()+1); }
-				 * //if_증가조건
-				 */				
+				
+				// 2.1) 조회수 증가
+				String loginID = (String)request.getSession().getAttribute("loginID"); // object 타입을 string으로
+				if ( !vo.getId().equals(loginID) && !"U".equals(request.getParameter("jCode"))) { //vo아이디랑 login아이디랑 다르고 && U가 아닌경우
+					//=> 조회수 증가
+					if (service.countUp(vo) > 0) vo.setCnt(vo.getCnt()+1); // 조회수 증가가 성공하면 vo(DB)에 증가한 cnt값을 넣어준다.(값은 vo(현재)에서 올라간 값)
+				} //if 증가조건		
+				
 				// 2.2) 수정요청 인지 확인
 				if ( "U".equals(request.getParameter("jCode")))
 					uri = "/tradeBoard/t_BupdateForm";

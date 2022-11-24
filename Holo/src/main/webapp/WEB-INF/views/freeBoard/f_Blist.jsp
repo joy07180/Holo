@@ -5,9 +5,9 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>거래 게시판</title>
-	<link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
-	<link rel="stylesheet" type="text/css" href="resources/myLib/home.css">
+	<title>자유 게시판</title>
+	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
+	<link rel="stylesheet" type="text/css" href="resources/myLib/title_hidden.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 	<script>
 	
@@ -35,23 +35,6 @@
 				+"&keyword="
 				+$('#keyword').val()
 		}); //click
-		
-/* 		$('#input_id_test').click(function(){
-			self.location="t_bcrilist"
-				+"${pageMaker.makeQuery(1)}"
-				+"&searchType=s"
-				+"&keyword="
-				+"sell"
-		}); //click */
-		
-		
-/* 		  $("#input_id").click(function(){
-		      this.submit();
-		  });
-
-		  $(".input_class").click(function(){
-			  this.submit();
-		  }); */
 	
 	}); //ready */
 	
@@ -68,16 +51,16 @@
         <header>
             <div class="header">
                 <div>
-                    <a href="" class="logo">logo</a>
+                    <a href="home" class="logo">logo</a>
                 </div>
                 <div class="search">
-                    <form action="">
-                        <input class="searchBox" size="40" type="text" id="search" placeholder="게시판 & 통합검색">
-                        <span>
-                            <input class="searchClick" type="submit" value="검색">
-                        </span>
-                    </form>
-                </div>
+					<form action="searchsearch">
+						<input class="searchBox" type="text" size="40"
+							placeholder="게시판 & 통합검색" type="text" name="keyword2"
+							id="keyword2" /> <input class="searchClick" id="searchBtn2"
+							type="submit" value="검색" />
+					</form>
+				</div>
 
             </div>
 
@@ -114,128 +97,132 @@
             </nav>
 
         </header>
+        <br>
+        <h2>자유 게시판</h2>
+        <br>
+        <br>
 
-    <main>
-        
+		<table width=100% id="board_container">
+            <thead>
+                <tr height="30">
+                    <th width="10%">글 번호</th>
+                    <th width="40%">제 목</th>
+                    <th width="10%">글쓴이</th>
+                    <th width="20%">날 짜</th>
+					<th width="10%">조회수</th>
+				</tr>
+            </thead>
+            <tbody>
+				<c:if test="${not empty banana}">
+					<c:forEach  var="free_board" items="${banana}" >
+					<tr height="30">
+					<td>${free_board.seq}</td>
+				
+					<td id="title_hidden" >
+					<!-- 답글 등록후 indent 에 따른 들여쓰기 
+							=> 답글인 경우에만 적용  -->
+						<c:if test="${free_board.indent > 0}">
+							<c:forEach begin="1" end="${free_board.indent}">
+								<span>&nbsp;&nbsp;</span>
+							</c:forEach>
+								<span style="color:hotpink">re..</span>
+						</c:if>
+						
+						<!-- 로그인 한 경우에만 title을 클릭하면 content를 볼 수 있도록 함
+									=> f_detail 을 실행함 -->
+						<c:if test="${empty loginID}">
+						   		${free_board.title}
+						</c:if>		
+						<c:if test="${not empty loginID}">
+		    				<a href="f_bdetail?seq=${free_board.seq}">${free_board.title}</a>&nbsp;&nbsp;
+						</c:if> 
+				    </td>
+	
+					<td>${free_board.id}</td>
+					<td>${free_board.regdate}</td><td>${free_board.cnt}</td>
+					</tr>	
+			    	</c:forEach>
+		    	</c:if>
+		    </tbody>
+		</table>
 
-
-
-
-
-<br>
-<c:if test="${not empty message}">
-	${message}<br>
-</c:if>
-<hr>
-
-<!-- &nbsp;&nbsp;<a href="binsertf">글쓰기</a> -->
-<%-- <c:if test="${not empty loginID}">
-&nbsp;&nbsp;<a href="binsertf">새글등록</a>
-</c:if> --%>
-
-
-<br><hr>
-<table width=100%> 
-	<tr bgcolor="Gold" height="30">
-		<th>Seq</th><th>Title</th><th>I D</th><th>RegDate</th><th>조회수</th>
-	</tr>
-	<c:if test="${not empty banana}">
-		<c:forEach  var="free_board" items="${banana}" >
-		<tr height="30">
-			<td>${free_board.seq}</td>
-			
-			<td>
-				<!-- 답글 등록후 indent 에 따른 들여쓰기 
-						=> 답글인 경우에만 적용  -->
-				<c:if test="${free_board.indent > 0}">
-					<c:forEach begin="1" end="${free_board.indent}">
-						<span>&nbsp;&nbsp;</span>
-					</c:forEach>
-					<span style="color:hotpink">re..</span>
-				</c:if>
-			
-			<!-- 로그인 한 경우에만 title을 클릭하면 content를 볼 수 있도록 함
-						=> bdetail 을 실행함 -->
-				<c:if test="${empty loginID}">
-					<a href="f_bdetail?seq=${free_board.seq}">${free_board.title}</a>&nbsp;&nbsp;
-				</c:if> 
-<%-- 				<c:if test="${empty loginID}">
-				    ${trade_board.title}
-				</c:if>       --%>
-			</td>
-			
-			<%-- <td>
-				<c:if test="${loginID=='admin'}">
-					<a href="mdetail?id=${free_board.id}">${free_board.id}</a>
-				</c:if> 
-				<c:if test="${loginID!='admin'}">
-				    ${free_board.id}
-				</c:if>
-			</td>   --%>
-			<td>${free_board.id}</td>
-			<td>${free_board.regdate}</td><td>${free_board.cnt}</td>
-		</tr>	
+	<!-- Cri_Page -->
+	<div align="center">
+		<!-- First, Prev -->
+		<c:choose>
+			<c:when test="${pageMaker.prev && pageMaker.spageNo>1}">
+				<a href="f_bcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp; 
+			</c:when>
+		</c:choose>	
+		<!-- Display PageNo -->
+		<c:forEach  var="i" begin="${pageMaker.spageNo}" end="${pageMaker.epageNo}">
+			<c:if test="${i==pageMaker.cri.currPage}">
+				<font size="5" color="Orange">${i}</font>&nbsp;
+			</c:if>
+			<c:if test="${i!=pageMaker.cri.currPage}">
+				<a href="f_bcrilist${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
+			</c:if>
 		</c:forEach>
-	</c:if>
-</table>
-<hr>
-<!-- Cri_Page -->
-<div align="center">
-	<!-- First, Prev -->
-	<c:choose>
-		<c:when test="${pageMaker.prev && pageMaker.spageNo>1}">
-			<a href="f_bcrilist${pageMaker.searchQuery(1)}">&lt;&lt;</a>&nbsp;
-			<a href="f_bcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp; 
-		</c:when>
-		<c:otherwise>
-			<font color="Gray">&lt;&lt;&nbsp;&lt;&nbsp;&nbsp;</font>   
-		</c:otherwise>
-	</c:choose>	
-	<!-- Display PageNo -->
-	<c:forEach  var="i" begin="${pageMaker.spageNo}" end="${pageMaker.epageNo}">
-		<c:if test="${i==pageMaker.cri.currPage}">
-			<font size="5" color="Orange">${i}</font>&nbsp;
-		</c:if>
-		<c:if test="${i!=pageMaker.cri.currPage}">
-			<a href="f_bcrilist${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
-		</c:if>
-	</c:forEach>
-	<!-- Next, Last -->
-	<c:choose>
-		<c:when test="${pageMaker.next && pageMaker.epageNo>0}">
-			<a href="f_bcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&gt;</a>  
-			<a href="f_bcrilist${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;&gt;&gt;</a> 
-		
-		</c:when>
-		<c:otherwise>
-			<font color="Gray">&nbsp;&gt;&nbsp;&gt;&gt;</font>   
-		</c:otherwise>
-	</c:choose>
-
+		<!-- Next, Last -->
+		<c:choose>
+			<c:when test="${pageMaker.next && pageMaker.epageNo>0}">
+				<a href="f_bcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&gt;</a>  
+			</c:when>
+		</c:choose>
+	
+	</div>
+	<br>
+	<div id="searchBar">
+		<select name="searchType" id="searchType">
+			<!-- <option value="n" selected> 을 조건 (cri.searchType 의 값) 에 따라 작성하기 위한 삼항식 
+				=> value="n" : ~~~~.cri.searchType==null ? 'selected':''  첫화면 출력시 초기값 으로 selected
+			-->
+			<%-- <option value="n" ${pageMaker.cri.searchType==null ? 'selected' : ''}>전체</option> --%>
+			<option value="tc" ${pageMaker.cri.searchType=='tc' ? 'selected' : ''} selected >제목+내용</option>
+			<option value="t" ${pageMaker.cri.searchType=='t' ? 'selected' : ''}>제목</option>
+			<option value="c" ${pageMaker.cri.searchType=='c' ? 'selected' : ''}>내용</option>
+			<option value="i" ${pageMaker.cri.searchType=='i' ? 'selected' : ''}>ID(글쓴이)</option>
+		</select>
+		<input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">	
+		<button id="searchBtn">Search</button>
+	&nbsp;&nbsp;
+	</div>
+	
+	        
+   	<div>
+		<!-- 아이디 로그인할때만 가능하게 -->
+        <c:if test="${not empty loginID}">
+        &nbsp;&nbsp;<a href="f_binsertf">새글등록</a>
+        </c:if>
+        <c:if test="${empty loginID}">
+		&nbsp;&nbsp;<a href="#"><p onclick="alert('로그인후 이용해주세요')">새글등록</p></a>       
+        </c:if>
+    </div>
+	
 </div>
 <br>
-<div id="searchBar">
-	<select name="searchType" id="searchType">
-		<!-- <option value="n" selected> 을 조건 (cri.searchType 의 값) 에 따라 작성하기 위한 삼항식 
-			=> value="n" : ~~~~.cri.searchType==null ? 'selected':''  첫화면 출력시 초기값 으로 selected
-		-->
-		<option value="n" ${pageMaker.cri.searchType==null ? 'selected' : ''}>전체</option>
-		<option value="t" ${pageMaker.cri.searchType=='t' ? 'selected' : ''}>제목</option>
-		<option value="c" ${pageMaker.cri.searchType=='c' ? 'selected' : ''}>내용</option>
-		<option value="i" ${pageMaker.cri.searchType=='i' ? 'selected' : ''}>ID(글쓴이)</option>
-		<option value="tc" ${pageMaker.cri.searchType=='tc' ? 'selected' : ''}>제목+내용</option>
-	</select>
-	<input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">	
-	<button id="searchBtn">Search</button>
-&nbsp;&nbsp;
-</div>
+<br>
 
-<!-- 아이디 로그인할때만 가능하게 수정해야함 -->
-&nbsp;&nbsp;<a href="f_binsertf">새글등록</a>
+<!-- ************************************************************* -->
 
-</main>
 <footer>
-</footer>
+        <div class="bottom">
+            <ul class="btMenu">
+                <li><a href="">공지사항</a></li>
+                <li><a href="">팁/정보</a></li>
+                <li><a href="">자유게시판</a></li>
+                <li><a href="">거래/나눔</a></li>
+                <li><a href="">동아리/모임</a></li>
+                <li><a href="">Q&A</a></li>
+            </ul>
+            <span>
+                <div>Copyright (c) Holo.net All rights reserved.</div>
+                <div>Contact us, holo at gmail dot com</div>
+                <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
+            </span>
+        </div>
+        <br>
+    </footer>
 
 
 

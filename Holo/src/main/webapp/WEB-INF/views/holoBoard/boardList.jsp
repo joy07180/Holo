@@ -17,13 +17,13 @@
                     <a href="" class="logo">logo</a>
                 </div>
                 <div class="search">
-                    <form action="">
-                        <input class="searchBox" size="40" type="text" id="search" placeholder="게시판 & 통합검색">
-                        <span>
-                            <input class="searchClick" type="submit" value="검색">
-                        </span>
-                    </form>
-                </div>
+					<form action="searchsearch">
+						<input class="searchBox" type="text" size="40"
+							placeholder="게시판 & 통합검색" type="text" name="keyword2"
+							id="keyword2" /> <input class="searchClick" id="searchBtn2"
+							type="submit" value="검색" />
+					</form>
+				</div>
 
             </div>
 
