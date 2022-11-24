@@ -82,7 +82,7 @@
         <header>
             <div class="header">
                 <div>
-                    <a href="" class="logo">logo</a>
+                    <a href="home" class="logo">logo</a>
                 </div>
                 
                 <form action="searchsearch">
