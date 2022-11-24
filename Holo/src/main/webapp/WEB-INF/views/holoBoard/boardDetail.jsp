@@ -7,27 +7,30 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
 	<title>** Board Detail Spring_MVC2 **</title>
-	<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script>
-	let offset = 0;
-	const limit = 10;
+	var offset = 0;
+	const limit = 20;
+	const com_bno = ${apple.seq};
+	console.log("total => "+${total});
 	
-	$(document).on("click", "#Comment_regist", function() {
-		
-		const com_bno = ${apple.seq};
-		console.log(com_bno);
+
+$(document).on("click", "#Comment_regist", function() {
+   	
 		const com_writer = $('#com_writer').val();
 		const com_content = $('#com_content').val();
 		
-		console.log(com_writer);
+		console.log("com_bno =>"+com_bno)
+		
+		console.log("댓글쓴이"+com_writer);
 		console.log(com_content);
 	
-		/* if(com_writer == ''){
+		 if(com_writer == ''){
 			alert('로그인 후 이용해주세요');
 			return;
 		}else if(com_content == '') {
 			alert('내용을 입력하세요');
-		} */
+		} 
 		
 		$.ajax({
 			type:'post',
@@ -36,9 +39,9 @@
 				{
 					"com_bno":com_bno,
 					"com_writer":com_writer,
-					"com_content":com_content
-					/* "offset":offset, */
-		      /* "limit":limit */
+					"com_content":com_content,
+					"offset":offset,
+		      "limit":limit
 				}		
 			),
 			contentType: 'application/json',
@@ -62,20 +65,22 @@
 		
 });// 댓글등록 이벤트 끝
 
-getList();
+getList(0);
 
-function getList() {
-	   
-	   const com_bno = ${apple.seq};
-	   console.log(${apple.seq});
+
+function getList(n) {
+		offset = n;
+	
 	   const com_writer = $('#com_writer').val();
-	      const com_content = $('#com_content').val();
-	      /* const com_no = ${com}; */
+	   const com_content = $('#com_content').val();
 	   $.getJSON(
-	      "<c:url value='/Comment/CommentList/'/>"+com_bno/* +"?offset="+offset+"&limit="+limit, */
+	      "<c:url value='/Comment/CommentList/'/>"+com_bno+"?offset="+offset+"&limit="+limit,
 	      function(data) {
 	         if(data.total > 0){
 	            var list = data.list;
+	            console.log("data => "+data);
+	            console.log("data.list => "+data.list);
+	            console.log("data.total => "+data.total);
 	            
 	            var comment_html = "<div>";
 	            
@@ -102,68 +107,22 @@ function getList() {
 	            var comment_html = "<div>등록된 댓글이 없습니다.</div>";
 	            $(".comment_Box").html(comment_html);
 	         }
-	   
 	      
 	      }
 	      );//getJson
 	}
-
+	
+	
 	</script>
 	
 	
 </head>
 <body>
-        <div class="contents">
-        <header>
-            <div class="header">
-                <div>
-                    <a href="home" class="logo">logo</a>
-                </div>
-                <div class="search">
-                    <form action="">
-                        <input class="searchBox" size="40" type="text" id="search" placeholder="게시판 & 통합검색">
-                        <span>
-                            <input class="searchClick" type="submit" value="검색">
-                        </span>
-                    </form>
-                </div>
-
-            </div>
-
-            <nav class="headerM">
-                <div>
-                    <ul class="category">
-                        <li>
-                            <a href="noticelist" class="liText">공지사항
-                            </a>
-                        </li>
-                        <li>
-                            <a href="hbcrilist" class="liText">팁/정보
-                            </a>
-                        </li>
-                        <li>
-                            <a href="f_bcrilist" class="liText">자유게시판
-                            </a>
-                        </li>
-                        <li>
-                            <a href="t_bcrilist" class="liText">거래/나눔
-                            </a>
-                        </li>
-                        <li>
-                            <a href="cbcrilist" class="liText">동아리/모임
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="liText">Q&A
-                            </a>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </nav>
-
-        </header>
+<div class="contents">
+        <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <h2>** Board Detail Spring_MVC2 **</h2>
+<h2>${apple.regdate}</h2>
+<h2>${banana.regdate}</h2>
 <hr>
 	<table>
 		<tr height="40"><td bgcolor="Khaki">Seq</td><td>${apple.seq}</td></tr>
@@ -181,15 +140,29 @@ function getList() {
 		<tr height="40"><td bgcolor="Khaki">조회수</td><td>${apple.cnt}</td></tr>
 	</table>
 <hr>
+         <div class="comment-count">댓글 <span id="count">0</span> 개</div>
+<div class="comment_Box" style="border:1px solid gray;"> <!-- 댓글이 들어갈 박스 --></div>
 
+
+<div id="page"></div>
+<script>
+let page = document.getElementById("page");
+console.log(page);
+console.log("반내림 => "+Math.floor(${total}/10));
+
+
+	   for(let i=0; i<Math.ceil(${total}/20); i++){
+       page.innerHTML = page.innerHTML+'<input  type="button" class="pagebt" style="border:none; font-size:20px; cursor: pointer;" value="'+(i+1)+'" onclick="getList('+i*20+')"/>';
+       console.log("offset => "+offset);
+	   }
+</script>
   <div class="comment-box">
                     
-         <div class="comment-count">댓글 <span id="count">0</span></div>
 
          	   <!-- <span class="c-icon"><i class="fa-solid fa-user"></i>  -->
          <div class="comment-name">
             <span class="anonym">작성자 : 
-        	    <input type="text" class="form-control" id="com_writer" placeholder="이름" name ="com_writer" value='${login.userId}' readonly  style="width: 100px; border:none;">
+        	    <input type="text" class="form-control" id="com_writer" placeholder="이름" name ="com_writer" value='${loginID}' readonly  style="width: 100px; border:none;">
             </span>
           </div>   
             	
@@ -205,46 +178,19 @@ function getList() {
        </div>
        	<div class="regBtn">
        		<button id="Comment_regist"> 댓글등록</button>
-   </div>
+         </div>
+ </div>
    
-   <div class="comment_Box" style="border:1px solid gray;"> <!-- 댓글이 들어갈 박스 --></div>
-   <div align="center">
-            <!-- First, Prev -->
-            <c:choose>
-                <c:when test="${pageMaker.prev && pageMaker.spageNo>1}">
-                    <!-- New_ver01_Cri : pageMaker.makeQuery(1) -->
-                    <!-- New_ver02_SearchCri : pageMaker.searchQuery(1) -->
-                    <a href="CommentList/${apple.seq}${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
-
-                    <!-- OLD_version 
-    	=> EL 은 주석내에 있어도 JSP가 처리하여 변수명등에 오류있으면 500 발생할 수 있음.  
-    <a href="bcrilist?currPage=1&rowsPerPage=5">FP</a>&nbsp;   
-    <a href="bcrilist?currPage=${pageMaker.spageNo-1}&rowsPerPage=5">&lt;</a>&nbsp;&nbsp;  
-    -->
-                </c:when>
-            </c:choose>
-            <!-- Displag PageNo -->
-            <c:forEach var="i" begin="${pageMaker.spageNo}" end="${pageMaker.epageNo}">
-                <c:if test="${i==pageMaker.cri.currPage}">
-                    <font size="5" color="Orange">${i}</font>&nbsp;
-                </c:if>
-                <c:if test="${i!=pageMaker.cri.currPage}">
-
-                    <a href="CommentList/${apple.seq}${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
-
-                </c:if>
-            </c:forEach>
-
-            <c:choose>
-                <c:when test="${pageMaker.next && pageMaker.epageNo>0}">
-                    <a href="CommentList/${apple.seq}${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&gt;</a>
-
-                </c:when>
-            </c:choose>
-
-      </div>
-
-
+   
+   
+  <!--  <script>
+   
+   let page = document.getElementById('page');
+   page.innerHTML='<form><input type="button" value="1" onclick="getList(10)"></form>'
+   
+   
+   </script>
+ -->
 
 
 
@@ -257,5 +203,8 @@ function getList() {
 &nbsp;&nbsp;<a href="home">[Home]</a>
 
 </div>
+
+ <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+
 </body>
 </html>

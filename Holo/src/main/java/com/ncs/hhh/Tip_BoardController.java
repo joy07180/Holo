@@ -89,37 +89,49 @@ public class Tip_BoardController {
 	
 	
 	// ** BoardDetail
-	// => 글내용 확인 , 수정화면 요청시 (jCode=U&seq=...)
-	// => 조회수 증가
-	// 	- 증가조건 : 글보는이(loginID)와 글쓴이가 다를때 && jCode!=U
-	//	- 증가메서드: DAO, Service 에 countUp 메서드 추가
-	//	- 증가시점 : selectOne 성공후
-	@RequestMapping(value="/hbdetail")
-	public ModelAndView bdetail(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, Tip_BoardVO vo) {
-		// 1. 요청분석
-		String uri = "/holoBoard/boardDetail";
-		// 2. Service 처리
-		vo = service.selectOne(vo);
-		if ( vo != null ) {
-			// 2.1) 조회수 증가
-			String loginID = (String)request.getSession().getAttribute("loginID");
-			if ( !vo.getId().equals(loginID) && !"U".equals(request.getParameter("jCode")) ) {
-				// => 조회수 증가
-				if ( service.countUp(vo) > 0 ) vo.setCnt(vo.getCnt()+1); 
-			} //if_증가조건
+		// => 글내용 확인 , 수정화면 요청시 (jCode=U&seq=...)
+		// => 조회수 증가
+		// 	- 증가조건 : 글보는이(loginID)와 글쓴이가 다를때 && jCode!=U
+		//	- 증가메서드: DAO, Service 에 countUp 메서드 추가
+		//	- 증가시점 : selectOne 성공후
+		@RequestMapping(value="/hbdetail")
+		public ModelAndView bdetail(HttpServletRequest request, HttpServletResponse response,
+				ModelAndView mv, Tip_BoardVO vo) {
+			// 1. 요청분석
+			String uri = "/holoBoard/boardDetail";
 			
-			// 2.2) 수정요청 인지 확인
-			if ( "U".equals(request.getParameter("jCode")))
-				uri = "/holoBoard/bupdateForm";
+			// 2. Service 처리
+			vo = service.selectOne(vo);
+			if ( vo != null ) {
+				// 2.1) 조회수 증가
+				String loginID = (String)request.getSession().getAttribute("loginID");
+				if ( !vo.getId().equals(loginID) && !"U".equals(request.getParameter("jCode")) ) {
+					// => 조회수 증가
+					if ( service.countUp(vo) > 0 ) vo.setCnt(vo.getCnt()+1); 
+				} //if_증가조건
+				
+				// 2.2) 수정요청 인지 확인
+				if ( "U".equals(request.getParameter("jCode")))
+					uri = "/holoBoard/bupdateForm";
+				
+				// 2.3)	결과전달		
+				
+				int total = service2.getTotal(vo.getSeq());
+				System.out.println(vo);
+				
+				
+				mv.addObject("apple", vo);
+				mv.addObject("total",total);
+				
+				mv.addObject(uri);
+				
+				
+			}else mv.addObject("message", "~~ 글번호에 해당하는 자료가 없습니다. ~~");
 			
-			// 2.3)	결과전달		
-			System.out.println(vo);
-			mv.addObject("apple", vo);
-		}else mv.addObject("message", "~~ 글번호에 해당하는 자료가 없습니다. ~~");
-		
-		mv.setViewName(uri);
-		return mv;
-	} //bdetail
+			
+			mv.setViewName(uri);
+			return mv;
+		} //bdetail
 	
 	// ** Insert : 새글등록
 	@RequestMapping(value="/hbinsertf")
