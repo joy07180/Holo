@@ -55,6 +55,7 @@ public class CommentController {
 		
 	}
 
+	// 커밋실험
 	@RequestMapping("/CommentList/{com_bno}")
 	public Map<String, Object> getList(@PathVariable int com_bno, Model model,
 			HttpServletRequest request, HttpServletResponse response, CommentVO vo) {
