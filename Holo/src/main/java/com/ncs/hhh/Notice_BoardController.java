@@ -39,6 +39,8 @@ public class Notice_BoardController {
 		
 		// 2) 서비스처리
 		// => List 처리
+		System.out.println("*************"+cri);
+
 		mv.addObject("banana", service.searchList(cri)); // ver02
 		    	
     	// 3) View 처리 => PageMaker
@@ -51,6 +53,7 @@ public class Notice_BoardController {
     	mv.setViewName("/noticeBoard/noticeList");
     	return mv;
 	} //noticelist
+	
 	
 	// ** Insert : 새글등록
 	@RequestMapping(value="/noticeinsertf")

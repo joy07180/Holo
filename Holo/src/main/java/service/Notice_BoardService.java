@@ -9,8 +9,6 @@ import vo.Notice_BoardVO;
 public interface Notice_BoardService {
 	List<Notice_BoardVO> selectList();
 
-	// ** Criteria PageList
-	// => ver02
 	List<Notice_BoardVO> searchList(SearchCriteria cri);
 	int searchCount(SearchCriteria cri);
 	
@@ -30,5 +28,8 @@ public interface Notice_BoardService {
 	int countUp(Notice_BoardVO vo);
 	
 	List<Notice_BoardVO> selectNList();
+
+	List<Notice_BoardVO> nsearchsearch(SearchCriteria cri);
+	int nsearchCount(SearchCriteria cri);
 	
 }

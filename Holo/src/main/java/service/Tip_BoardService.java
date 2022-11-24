@@ -4,6 +4,7 @@ import java.util.List;
 
 import criTest.Criteria;
 import criTest.SearchCriteria;
+import vo.Notice_BoardVO;
 import vo.Tip_BoardVO;
 
 public interface Tip_BoardService {
@@ -39,5 +40,7 @@ public interface Tip_BoardService {
 	List<Tip_BoardVO> selectHList();
 	List<Tip_BoardVO> selectHhotList();
 
-	
+	List<Tip_BoardVO> hsearchsearch(SearchCriteria cri);
+	int hsearchCount(SearchCriteria cri);
+
 }

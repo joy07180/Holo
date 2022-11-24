@@ -125,6 +125,7 @@ public class PageMaker {
 					queryParam("rowsPerPage", cri.getRowsPerPage()).
 					queryParam("searchType", cri.getSearchType()).
 					queryParam("keyword", cri.getKeyword()).
+					queryParam("keyword2", cri.getKeyword2()).
 					queryParams(checkMap).
 					build();
 			return uriComponents.toString();
