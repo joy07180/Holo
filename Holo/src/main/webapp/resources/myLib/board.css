@@ -214,6 +214,11 @@ tr {
 	display: inline-block;
 }
 
+.board_dTrade {
+	color : red;
+	font-weight: bold; 
+}
+
 
 /* ======================================================================= */
 .bottom {
