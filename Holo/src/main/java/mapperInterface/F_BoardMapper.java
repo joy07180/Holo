@@ -5,7 +5,6 @@ import java.util.List;
 import criTest.Criteria;
 import criTest.SearchCriteria;
 import vo.F_BoardVO;
-import vo.Notice_BoardVO;
 
 public interface F_BoardMapper {
 	
@@ -26,6 +25,12 @@ public interface F_BoardMapper {
 	
 	// ** selectOne
 	F_BoardVO selectOne(F_BoardVO vo);
+	
+	// ** n_selectOne
+	F_BoardVO n_selectOne(F_BoardVO vo);
+	
+	// ** p_selectOne
+	F_BoardVO p_selectOne(F_BoardVO vo);
 	
 	// ** Insert: 새글등록 
 	int insert(F_BoardVO vo);

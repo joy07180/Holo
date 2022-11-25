@@ -45,7 +45,7 @@ public class F_BoardController {
 		} //f_bcrilist
 		
 	
-	// ** Trade_BoardDetail
+	// ** Free_BoardDetail
 		@RequestMapping(value="/f_bdetail")
 		public ModelAndView f_bdetail(HttpServletRequest request, HttpServletResponse response,
 				ModelAndView mv, F_BoardVO vo) {
@@ -65,6 +65,17 @@ public class F_BoardController {
 				// 2.2) 수정요청 인지 확인
 				if ( "U".equals(request.getParameter("jCode")))
 					uri = "/freeBoard/f_BupdateForm";
+				
+				// 2.3) 이전, 다음 상세보기 요청인지 아닌지
+				if ( "P".equals(request.getParameter("jCode"))) {
+					vo = service.p_selectOne(vo);
+					if(vo==null) mv.addObject("Prev", "T");
+				}
+				
+				if ( "N".equals(request.getParameter("jCode"))) {
+					vo = service.n_selectOne(vo);
+					if(vo==null) mv.addObject("Next", "F");
+				}
 				
 				// 2.3)	결과전달		
 				mv.addObject("apple", vo);

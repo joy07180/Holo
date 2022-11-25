@@ -10,6 +10,7 @@ import criTest.SearchCriteria;
 import mapperInterface.F_BoardMapper;
 import vo.F_BoardVO;
 import vo.Notice_BoardVO;
+import vo.T_BoardVO;
 
 @Service
 public class F_BoardServiceImpl implements F_BoardService {
@@ -31,6 +32,18 @@ public class F_BoardServiceImpl implements F_BoardService {
 	@Override
 	public F_BoardVO selectOne(F_BoardVO vo) {
 		return mapper.selectOne(vo);
+	}
+	
+	// ** n_selectOne
+	@Override
+	public F_BoardVO n_selectOne(F_BoardVO vo) {
+		return mapper.n_selectOne(vo);
+	}
+	
+	// ** p_selectOne
+	@Override
+	public F_BoardVO p_selectOne(F_BoardVO vo) {
+		return mapper.p_selectOne(vo);
 	}
 	
 	// ** Insert

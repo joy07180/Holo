@@ -8,6 +8,7 @@
     <title>** 자유게시판 디테일 **</title>
     <link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
+	
 </head>
 <body>
     <div class="contents">
@@ -76,6 +77,17 @@
         &nbsp;&nbsp;<a href="f_bdetail?jCode=U&seq=${apple.seq}">글수정</a>
         &nbsp;&nbsp;<a href="f_bdelete?seq=${apple.seq}&root=${apple.root}">글삭제</a>
         </c:if>
+        <br>
+        
+        <br>
+        <c:if test="${Prev!='T'}">
+        &nbsp;&nbsp;<a href="f_bdetail?jCode=P&seq=${apple.seq}">이전글</a>
+        </c:if>
+        <c:if test="${Prev=='T'}">
+        &nbsp;&nbsp;이전글
+        </c:if>
+        
+        &nbsp;&nbsp;<a href="f_bdetail?jCode=N&seq=${apple.seq}">다음글</a>
         </div>
 
 	<c:if test="${not empty apple}">
