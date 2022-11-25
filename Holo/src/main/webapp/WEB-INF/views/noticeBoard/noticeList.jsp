@@ -113,7 +113,7 @@
 							<tr height="30" bgcolor="lightGray">
 								<td width="10%" class="notice">공지</td>
 								<td width="40%"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
-								<td class="ct" width="20%">${board.id}</td>
+								<td class="ct" width="20%"><img height="25" width="25" src="${board.image}">&nbsp;${board.id}</td>
 								<td class="ct" width="10%">${board.regdate}</td>
 								<td class="ct" width="10%">${board.cnt}</td>
 							</tr>
@@ -123,7 +123,7 @@
 							<tr height="30">
 								<td width="10%">${board.seq}</td>
 								<td width="40%"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
-								<td class="ct" width="20%">${board.id}</td>
+								<td class="ct" width="20%"><img height="25" width="25" src="${board.image}">&nbsp;${board.id}</td>
 								<td class="ct" width="10%">${board.regdate}</td>
 								<td class="ct" width="10%">${board.cnt}</td>
 							</tr>

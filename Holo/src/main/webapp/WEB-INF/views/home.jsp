@@ -108,6 +108,13 @@
 			<div class="main">
 
 
+				
+
+
+				<aside class="banner">
+					<a href=""></a>
+				</aside>
+				<aside class="login">
 				<c:if test="${not empty loginID}">
 					<h1>=> ${loginName} 님 !!!</h1>
 					<br>
@@ -144,12 +151,7 @@
 					</form>
 					<br>
 				</c:if>
-
-
-				<aside class="banner">
-					<a href=""></a>
 				</aside>
-				<aside class="login"></aside>
 			</div>
 
 			<div class="boards">

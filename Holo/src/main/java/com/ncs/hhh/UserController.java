@@ -57,31 +57,6 @@ public class UserController {
 	} //bcrilist
 
 
-
-	/*
-	// ** Ajax memberDelete : 관리자 회원 삭제
-	@RequestMapping(value="/axmdelete", method=RequestMethod.POST)
-	public ModelAndView axmdelete(HttpServletRequest request, ModelAndView mv, UserVO vo ) {
-		// 1. 요청분석
-		String id = null;
-		HttpSession session = request.getSession(false);
-
-		if ( session!=null && ((String)session.getAttribute("loginID")).equals("admin") ) {
-			if ( service.delete(vo) > 0 ) {
-				mv.addObject("code","200"); // 성공
-			}else {
-				mv.addObject("code","201"); // 실패
-			} 
-		}else {
-			mv.addObject("code","202");
-		} // session 확인_if_else
-
-		// 3. 결과(ModelAndView) 전달 
-		mv.setViewName("jsonView");
-		return mv;
-	} // axmdelete
-	 */
-
 	@RequestMapping(value = "/login")
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
 		// 1) request 처리

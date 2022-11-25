@@ -17,5 +17,6 @@ public class F_BoardVO {
 	private int indent;
 	private String uploadfile;
 	private MultipartFile uploadfilef;
-	
+	private String image; 
+
 } //class

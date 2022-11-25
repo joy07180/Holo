@@ -138,7 +138,7 @@
 						</c:if> 
 				    </td>
 	
-					<td>${free_board.id}</td>
+					<td><img height="25" width="25" src="${free_board.image}">${free_board.id}</td>
 					<td>${free_board.regdate}</td><td>${free_board.cnt}</td>
 					</tr>	
 			    	</c:forEach>

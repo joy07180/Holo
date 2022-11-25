@@ -81,9 +81,9 @@
 </sql>
 
 <select id="searchList" resultType="vo.Club_BoardVO">
-	select seq, id, title, regdate, cnt, root, step, indent, place
-	from club_board 
-	where ( seq>0 <include refid="search"></include>  
+	select seq, c.id, title, regdate, cnt, root, step, indent, place, u.uploadfile image
+	from club_board c join user u
+	where c.id = u.id AND ( seq>0 <include refid="search"></include>  
 	order by root desc, step asc
 	limit #{sno}, #{rowsPerPage}
 </select>
@@ -93,25 +93,6 @@
 	where ( seq>0 <include refid="search"></include>
 </select>
 
-
-<!-- ** Criteria PageList : ver01 
-	=> MySql : limit a , b ( a개 제외하고 a+1 부터 b개 )  적용 	-->
-<select id="criList" resultType="vo.Club_BoardVO">
-	select seq, id, title, regdate, cnt, root, step, indent ,place
-	from club_board 
-	order by root desc, step asc
-	limit #{sno}, #{rowsPerPage}
-</select>
-
-<select id="criTotalCount" resultType="int">
-	select count(*) from club_board
-</select>
-
-
-<select id="selectList" resultType="vo.Club_BoardVO">
-	select seq, id, title, regdate, cnt, root, step, indent 
-	from club_board order by root desc, step asc
-</select>
 
 <select id="selectOne" resultType="vo.Club_BoardVO">
 	select * from club_board where seq=#{seq}

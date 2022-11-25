@@ -22,4 +22,6 @@ public class Notice_BoardVO {
 	
 	// ** 상단 고정
 	private String fix; 
+	
+	private String image; 
 }
