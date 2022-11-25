@@ -54,12 +54,6 @@
 							id="keyword2" /> <input class="searchClick" id="searchBtn2"
 							type="submit" value="검색" />
 					</form>
-				</div>
-                <form action="searchsearch">
-					<input class="searchBox" type="text" size="40" 
-					placeholder="게시판 & 통합검색" type="text" name="keyword2" id="keyword2" /> 
-					<input class="searchClick" id="searchBtn2" type="submit" value="검색" />
-				</form>
         		</div>
                 
 

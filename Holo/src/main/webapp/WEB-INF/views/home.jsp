@@ -5,7 +5,6 @@
 <head>
 <title>Home</title>
 <link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
-<link rel="stylesheet" type="text/css" href="resources/myLib/home.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script src="resources/myLib/inCheck.js"></script>
 <script src="resources/myLib/Test01.js"></script>
