@@ -30,18 +30,17 @@ public class Tip_BoardController {
 	@Autowired
 	CommentService service2;
 	
-	// sdfsadff
-	// ** Reply_Insert : 답글등록12312333123
-	@RequestMapping(value="/hrinsertf")
+	// 팁수정 커밋체크
+	@RequestMapping(value="/tiprinsertf")
 	public ModelAndView rinsertf(HttpServletRequest request, 
 			HttpServletResponse response, ModelAndView mv, Tip_BoardVO vo) {
 		// => vo 에는 전달된 부모글의 root, step, indent 가 담겨있음 
 		// => 매핑메서드의 인자로 정의된 vo 는 request.setAttribute 와 동일 scope
 		//    단, 클래스명의 첫글자를 소문자로 ...  ${Tip_BoardVO.root}
-		mv.setViewName("/holoBoard/hbdetail");
+		mv.setViewName("/tipBoard/tipBoarddetail");
 		return mv;
 	}
-	@RequestMapping(value="/hrinsert", method=RequestMethod.POST)
+	@RequestMapping(value="/tiprinsert", method=RequestMethod.POST)
 	public ModelAndView rinsert(HttpServletRequest request, HttpServletResponse response,
 									ModelAndView mv, Tip_BoardVO vo, RedirectAttributes rttr) {
 		// 1. 요청분석
@@ -53,7 +52,7 @@ public class Tip_BoardController {
 		//		- indent: 부모 indent + 1
 		//		- 그러므로 rinsertForm 에 부모값을 보관 (hidden으로) 해서 전달받음 
 		//		  이를 위해 boardDetail 에서 요청시 퀴리스트링으로 전달 -> rinsertf 
-		String uri = "redirect:hbcrilist";
+		String uri = "redirect:tipblist";
 		vo.setStep(vo.getStep()+1);
 		vo.setIndent(vo.getIndent()+1);
 		
@@ -62,7 +61,7 @@ public class Tip_BoardController {
 			rttr.addFlashAttribute("message", "~~ 답글 등록 성공 ~~");
 		}else {
 			mv.addObject("message", "~~ 답글 등록 실패, 다시 하세요 ~~");
-			uri = "/holoBoard/rinsertForm";
+			uri = "/tipBoard/tipRinsertForm";
 		}
 		
 		// 3. 결과(ModelAndView) 전달 
@@ -70,7 +69,7 @@ public class Tip_BoardController {
 		return mv;
 	} //rinsert	
 	
-	@RequestMapping(value="/hbcrilist")
+	@RequestMapping(value="/tipblist")
 	public ModelAndView bcrilist(HttpServletRequest request, HttpServletResponse response, 
 						ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
 		cri.setSnoEno();
@@ -83,7 +82,7 @@ public class Tip_BoardController {
     	
     	//System.out.println("*******"+pageMaker);
     	
-    	mv.setViewName("/holoBoard/bCriList");
+    	mv.setViewName("/tipBoard/tipBlist");
     	return mv;
 	} //bcrilist
 	
@@ -94,11 +93,11 @@ public class Tip_BoardController {
 		// 	- 증가조건 : 글보는이(loginID)와 글쓴이가 다를때 && jCode!=U
 		//	- 증가메서드: DAO, Service 에 countUp 메서드 추가
 		//	- 증가시점 : selectOne 성공후
-		@RequestMapping(value="/hbdetail")
+		@RequestMapping(value="/tipbdetail")
 		public ModelAndView bdetail(HttpServletRequest request, HttpServletResponse response,
 				ModelAndView mv, Tip_BoardVO vo) {
 			// 1. 요청분석
-			String uri = "/holoBoard/boardDetail";
+			String uri = "/tipBoard/tipBoardDetail";
 			
 			// 2. Service 처리
 			vo = service.selectOne(vo);
@@ -112,7 +111,7 @@ public class Tip_BoardController {
 				
 				// 2.2) 수정요청 인지 확인
 				if ( "U".equals(request.getParameter("jCode")))
-					uri = "/holoBoard/bupdateForm";
+					uri = "/tipBoard/tipBupdateForm";
 				
 				// 2.3)	결과전달		
 				
@@ -134,13 +133,13 @@ public class Tip_BoardController {
 		} //bdetail
 	
 	// ** Insert : 새글등록
-	@RequestMapping(value="/hbinsertf")
+	@RequestMapping(value="/tipbinsertf")
 	public ModelAndView binsertf(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
-		mv.setViewName("/holoBoard/binsertForm");
+		mv.setViewName("/tipBoard/tipBinsertForm");
 		return mv;
 	}
 	
-	@RequestMapping(value="/hbinsert", method=RequestMethod.POST)
+	@RequestMapping(value="/tipbinsert", method=RequestMethod.POST)
 	// => 매핑네임과 method 가 일치하는 요청만 처리함
 	// => Get 요청시 : 405–허용되지 않는 메소드 (Request method 'GET' not supported)  
 	public ModelAndView binsert(HttpServletRequest request, 
@@ -154,7 +153,7 @@ public class Tip_BoardController {
 		// 1. 요청분석
 		// => insert 성공 : blist (redirect 요청, message 전달)
 		//    insert 실패 : binsertForm.jsp  
-		String uri = "redirect:hbcrilist";
+		String uri = "redirect:tipblist";
 		System.out.println("2");
 		System.out.println("before vo=>"+vo);
 		// 2. Service 처리
@@ -209,7 +208,7 @@ public class Tip_BoardController {
 			rttr.addFlashAttribute("message", "~~ 새글 등록 성공 ~~");
 		}else {
 			mv.addObject("message", "~~ 새글 등록 실패, 다시 하세요 ~~");
-			uri = "/holoBoard/binsertForm";
+			uri = "/tipBoard/tipBinsertForm";
 		}
 		System.out.println("vo=>"+vo);
 		//==========================================
@@ -221,12 +220,12 @@ public class Tip_BoardController {
 	} //binsert
 	
 	// ** Update : 글수정하기
-	@RequestMapping(value="/hbupdate")
+	@RequestMapping(value="/tipbupdate")
 	public ModelAndView bupdate(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, Tip_BoardVO vo) {
 		// 1. 요청분석
 		// => Update 성공: boardDetail.jsp
 		//           실패: 재수정 유도 -> bupdateForm.jsp
-		String uri = "/holoBoard/boardDetail";
+		String uri = "/tipBoard/tipBoardDetail";
 		mv.addObject("apple",vo);
 		// => Update 성공/실패 모두 출력시 필요하므로
 		
@@ -235,7 +234,7 @@ public class Tip_BoardController {
 			mv.addObject("message", "~~ 글수정 성공 ~~"); 
 		}else {
 			mv.addObject("message", "~~ 글수정 실패, 다시 하세요 ~~");
-			uri = "/holoBoard/bupdateForm";
+			uri = "/tipBoard/tipBupdateForm";
 		}
 		
 		// 3. 결과(ModelAndView) 전달 
@@ -244,20 +243,20 @@ public class Tip_BoardController {
 	}
 	
 	// ** Delete : 글 삭제
-	@RequestMapping(value="/hbdelete")
+	@RequestMapping(value="/tipbdelete")
 	public ModelAndView bdelete(HttpServletRequest request, HttpServletResponse response, 
 									ModelAndView mv, Tip_BoardVO vo, RedirectAttributes rttr) {
 		// 1. 요청분석
 		// => Delete 성공: redirect:blist
 		//           실패: message 표시, redirect:bdetail
-		String uri = "redirect:hblist";
+		String uri = "redirect:tipblist";
 		
 		// 2. Service 처리
 		if ( service.delete(vo) > 0 ) {
 			rttr.addFlashAttribute("message", "~~ 글삭제 성공 ~~"); 
 		}else {
 			rttr.addFlashAttribute("message", "~~ 글삭제 실패, 다시 하세요 ~~");
-			uri = "redirect:hbdetail?seq="+vo.getSeq();
+			uri = "redirect:tipbdetail?seq="+vo.getSeq();
 		} // Service
 		
 		// 3. 결과(ModelAndView) 전달 
