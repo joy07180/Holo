@@ -69,7 +69,18 @@
         &nbsp;&nbsp;<a href="t_bdetail?jCode=U&seq=${apple.seq}">글수정</a>
         &nbsp;&nbsp;<a href="t_bdelete?seq=${apple.seq}&root=${apple.root}">글삭제</a>
         </c:if>
+        
+        <br>
+        <c:if test="${Prev!='T'}">
+        &nbsp;&nbsp;<a href="t_bdetail?jCode=P&seq=${apple.seq}">이전글</a>
+        </c:if>
+        <c:if test="${Prev=='T'}">
+        &nbsp;&nbsp;이전글
+        </c:if>
+        
+        &nbsp;&nbsp;<a href="t_bdetail?jCode=N&seq=${apple.seq}">다음글</a>
         </div>
+        
 	<c:if test="${not empty apple}">
 	    <table>
 	        <tr height="40" width="100">
