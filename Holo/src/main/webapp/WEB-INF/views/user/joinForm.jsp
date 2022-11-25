@@ -182,7 +182,7 @@ function inCheck() {
  			<span id="ppMessage" class="eMessage" ></span></td>
 	</tr>	
 	<tr><td >Name</td>
-		<td><input type="text" name="name" id="name"><br>
+		<td><input type="text" name="name" id="name" ><br>
  			<span id="nMessage" class="eMessage" ></span></td></tr>
  			
 	<tr><td >Birthday</td>
@@ -198,7 +198,7 @@ function inCheck() {
  						
 	<tr><td>핸드폰번호</td>
 		<td><input type="text" name="phonenum" id="phonenum"
-			placeholder="01012345678 형식"><br>
+			placeholder="01012345678 형식 입력"><br>
  			<span id="phMessage" class="eMessage" ></span></td></tr>
 		
 	<tr><td >Image</td>

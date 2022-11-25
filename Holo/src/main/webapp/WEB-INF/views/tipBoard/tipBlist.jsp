@@ -102,7 +102,7 @@
                     <c:forEach var="board" items="${banana}">
                         <tr height="30">
                             <td width="50%"><a href="tipbdetail?seq=${board.seq}">${board.title}</a></td>
-                            <td width="10%">${board.id}</td>
+                            <td width="10%"><img height="25" width="25" src="${board.image}">${board.id}</td>
                             <td class="ct" width="20%">${board.regdate}</td>
                             <td class="ct" width="10%">${board.cnt}</td>
                             <td class="ct" width="10%">1</td>
