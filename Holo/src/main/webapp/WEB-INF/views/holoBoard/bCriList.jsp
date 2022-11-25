@@ -92,11 +92,6 @@
                             <a href="cbcrilist" class="liText">동아리/모임
                             </a>
                         </li>
-                        <li>
-                            <a href="" class="liText">Q&A
-                            </a>
-                        </li>
-                        
                     </ul>
                 </div>
             </nav>
@@ -192,12 +187,12 @@
     <footer>
         <div class="bottom">
             <ul class="btMenu">
-                <li><a href="">공지사항</a></li>
-                <li><a href="">팁/정보</a></li>
-                <li><a href="">자유게시판</a></li>
-                <li><a href="">거래/나눔</a></li>
-                <li><a href="">동아리/모임</a></li>
-                <li><a href="">Q&A</a></li>
+                <li><a href="">A</a></li>
+                <li><a href="">B</a></li>
+                <li><a href="">C</a></li>
+                <li><a href="">D</a></li>
+                <li><a href="">E</a></li>
+                <li><a href="">F</a></li>
             </ul>
             <span>
                 <div>Copyright (c) Holo.net All rights reserved.</div>

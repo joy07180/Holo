@@ -15,8 +15,16 @@ a {
 
 body,
 footer {
-    background-color: #cfcfcf;
+    background-color: #d7e8ff;
     margin: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
 }
 
 .contents {
@@ -27,6 +35,9 @@ footer {
 }
 
 hr {
+	background-image: linear-gradient(to right, skyblue 30%, lightgray 30%);
+    height: 3px;
+    border: 0px;
     opacity: .3;
 }
 
@@ -99,7 +110,7 @@ footer {
 .category>* {
     background-color: #595959;
     float: left;
-    width: 148px;
+    width: 178px;
     text-align: center;
 }
 
@@ -118,6 +129,47 @@ footer {
 
 .category>*:hover {
     background-color: black;
+}
+
+/*================================================================*/
+
+.banner {
+    float: left;
+    height: 150px;
+    width: 600px;
+}
+
+.banner>a {
+    display: block;
+    height: 100%;
+    background: url("/image/2918041.jpg") no-repeat center/cover;
+}
+
+
+.login {
+    float: left;
+    text-align: center;
+    line-height: 150px;
+    width: 290px;
+    height: 150px;
+}
+
+.boards {
+    margin: 50px 0;
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+
+}
+
+.boards>* {
+    display: inline-block;
+    width: 400px;
+    height: 300px;
+}
+
+h4>a {
+    float: right;
 }
 
 /* ================================================================= */

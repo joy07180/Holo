@@ -6,12 +6,19 @@ import criTest.Criteria;
 import criTest.SearchCriteria;
 import vo.F_BoardVO;
 import vo.Notice_BoardVO;
+import vo.T_BoardVO;
 
 public interface F_BoardService {
 	// ** F_Blist
 	
 	// ** selectOne
 	F_BoardVO selectOne(F_BoardVO vo);
+	
+	// ** n_selectOne
+	F_BoardVO n_selectOne(F_BoardVO vo);
+	
+	// ** p_selectOne
+	F_BoardVO p_selectOne(F_BoardVO vo);
 	
 	// ** Insert
 	int insert(F_BoardVO vo);

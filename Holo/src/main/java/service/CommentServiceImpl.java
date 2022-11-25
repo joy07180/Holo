@@ -20,8 +20,8 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public List<CommentVO> getList(int com_bno) {
-		return mapper.getList(com_bno);
+	public List<CommentVO> getList(int com_bno,int offset, int limit) {
+		return mapper.getList(com_bno,offset,limit);
 	}
 
 	@Override

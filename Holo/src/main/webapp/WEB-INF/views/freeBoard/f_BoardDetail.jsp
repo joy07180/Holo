@@ -8,6 +8,7 @@
     <title>** 자유게시판 디테일 **</title>
     <link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
+	
 </head>
 <body>
     <div class="contents">
@@ -50,11 +51,6 @@
                             <a href="cbcrilist" class="liText">동아리/모임
                             </a>
                         </li>
-                        <li>
-                            <a href="" class="liText">Q&A
-                            </a>
-                        </li>
-                        
                     </ul>
                 </div>
             </nav>
@@ -76,6 +72,17 @@
         &nbsp;&nbsp;<a href="f_bdetail?jCode=U&seq=${apple.seq}">글수정</a>
         &nbsp;&nbsp;<a href="f_bdelete?seq=${apple.seq}&root=${apple.root}">글삭제</a>
         </c:if>
+        <br>
+        
+        <br>
+        <c:if test="${Prev!='T'}">
+        &nbsp;&nbsp;<a href="f_bdetail?jCode=P&seq=${apple.seq}">이전글</a>
+        </c:if>
+        <c:if test="${Prev=='T'}">
+        &nbsp;&nbsp;이전글
+        </c:if>
+        
+        &nbsp;&nbsp;<a href="f_bdetail?jCode=N&seq=${apple.seq}">다음글</a>
         </div>
 
 	<c:if test="${not empty apple}">
@@ -98,12 +105,12 @@
 	<footer>
         <div class="bottom">
             <ul class="btMenu">
-                <li><a href="">공지사항</a></li>
-                <li><a href="">팁/정보</a></li>
-                <li><a href="">자유게시판</a></li>
-                <li><a href="">거래/나눔</a></li>
-                <li><a href="">동아리/모임</a></li>
-                <li><a href="">Q&A</a></li>
+                <li><a href="">A</a></li>
+                <li><a href="">B</a></li>
+                <li><a href="">C</a></li>
+                <li><a href="">D</a></li>
+                <li><a href="">E</a></li>
+                <li><a href="">F</a></li>
             </ul>
             <span>
                 <div>Copyright (c) Holo.net All rights reserved.</div>

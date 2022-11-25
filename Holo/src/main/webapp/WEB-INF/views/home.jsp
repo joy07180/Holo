@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>Home</title>
-<link rel="stylesheet" type="text/css" href="resources/myLib/home.css">
+<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script src="resources/myLib/inCheck.js"></script>
 <script src="resources/myLib/Test01.js"></script>
@@ -69,12 +69,13 @@
 				<div>
 					<a href="home" class="logo">logo</a>
 				</div>
-
+				<div class="search">
 				<form action="searchsearch">
-					<input class="searchBox" type="text" size="40" type="text" name="keyword2" id="keyword2" /> 
+					<input class="searchBox" type="text" size="40"
+						placeholder="게시판 & 통합검색" type="text" name="keyword2" id="keyword2" /> 
 					<input class="searchClick" id="searchBtn2" type="submit" value="검색" />
 				</form>
-
+				</div>
 				<!--  
 				<div class="search">
 					<form action="">
@@ -96,8 +97,6 @@
 						<li><a href="f_bcrilist" class="liText">자유게시판 </a></li>
 						<li><a href="t_bcrilist" class="liText">거래/나눔 </a></li>
 						<li><a href="cbcrilist" class="liText">동아리/모임 </a></li>
-						<li><a href="" class="liText">Q&A </a></li>
-
 					</ul>
 				</div>
 			</nav>
@@ -320,7 +319,6 @@
 				<li><a href="">자유게시판</a></li>
 				<li><a href="">거래/나눔</a></li>
 				<li><a href="">동아리/모임</a></li>
-				<li><a href="">Q&A</a></li>
 			</ul>
 			<span>
 				<div>Copyright (c) Holo.net All rights reserved.</div>
