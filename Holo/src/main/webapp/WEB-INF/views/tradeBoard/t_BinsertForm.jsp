@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>새글 등록</title>
     <link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
+    <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 </head>
 <body>
     <div class="contents">

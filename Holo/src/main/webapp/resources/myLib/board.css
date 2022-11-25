@@ -178,7 +178,7 @@ table{
 }
 
 tr {
-    border-bottom: 1px solid rgb(103, 97, 97,.1); 
+    /* border-bottom: 1px solid rgb(103, 97, 97,.1); */ 
     
 }
 
@@ -189,6 +189,7 @@ tr {
 .board_dTop {
 	height: 1em;
 	width: 100%;
+	border: 1px solid rgb(103, 97, 97,.1);
 }
 
 .board_dTitle {
@@ -201,6 +202,7 @@ tr {
 	color: grey;
 	text-align: left;
 	display: inline;
+    margin : 20px, 0;
 }
 
 .board_dBottom {

@@ -60,31 +60,6 @@
         <br>
         <br>
         
-		<div>
-		<!-- 아이디 로그인이랑 다를때 메뉴 -->
-        <c:if test="${loginID!=apple.id || loginID!='admin'}">
-		<a href="f_binsertf">새글등록</a>
-        &nbsp;&nbsp;<a href="f_rinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글등록</a>
-		&nbsp;&nbsp;<a href="f_bcrilist">목록으로</a>       
-        </c:if>
-        <!-- 아이디 로그인이랑 같을때 추가 메뉴 -->
-        <c:if test="${loginID==apple.id || loginID=='admin' }">
-        &nbsp;&nbsp;<a href="f_bdetail?jCode=U&seq=${apple.seq}">글수정</a>
-        &nbsp;&nbsp;<a href="f_bdelete?seq=${apple.seq}&root=${apple.root}">글삭제</a>
-        </c:if>
-        <br>
-        
-        <br>
-        <c:if test="${Prev!='T'}">
-        &nbsp;&nbsp;<a href="f_bdetail?jCode=P&seq=${apple.seq}">이전글</a>
-        </c:if>
-        <c:if test="${Prev=='T'}">
-        &nbsp;&nbsp;이전글
-        </c:if>
-        
-        &nbsp;&nbsp;<a href="f_bdetail?jCode=N&seq=${apple.seq}">다음글</a>
-        </div>
-
 	<c:if test="${not empty apple}">
 	    <table class="board_dTop">
 	        <tr height="40"><td class="board_dTitle">${apple.title}</td></tr>
@@ -104,6 +79,33 @@
 	        </tr>
 	    </table>
 	</c:if>
+	
+	<div>
+		<!-- 아이디 로그인이랑 다를때 메뉴 -->
+        <c:if test="${loginID!=apple.id || loginID!='admin'}">
+		<a href="f_binsertf">새글등록</a>
+        &nbsp;&nbsp;<a href="f_rinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글등록</a>
+		&nbsp;&nbsp;<a href="f_bcrilist">목록으로</a>       
+        </c:if>
+        <!-- 아이디 로그인이랑 같을때 추가 메뉴 -->
+        <c:if test="${loginID==apple.id || loginID=='admin' }">
+        &nbsp;&nbsp;<a href="f_bdetail?jCode=U&seq=${apple.seq}">글수정</a>
+        &nbsp;&nbsp;<a href="f_bdelete?seq=${apple.seq}&root=${apple.root}">글삭제</a>
+        </c:if>
+        <br>
+        
+        <br>
+        <c:if test="${Prev!='T'}">
+        <a href="f_bdetail?jCode=P&seq=${apple.seq}">이전글</a>
+        </c:if>
+        <c:if test="${Prev=='T'}">
+        이전글
+        </c:if>
+        
+        &nbsp;&nbsp;<a href="f_bdetail?jCode=N&seq=${apple.seq}">다음글</a>
+        </div>
+	
+	
 </div>
 
 	<footer>
