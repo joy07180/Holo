@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <title>** User Update**</title>
 <script>
-
+function change() {
+	alert("회원 정보가 수정되었습니다");
+} //change
 </script>
 </head>
 <body>
@@ -18,9 +20,6 @@
 		<!-- name 은 문서밖에서 감색하려고 쓰고 id는 문서내에서 검색하려고 쓴다 id name 이름이 같아야함 -->
 		<tr height="40"><td bgcolor="GreenYellow ">I D</td>
 			<td><input type="text" name="id" id="id" size="20" value="${apple.id}" readonly ></td></tr>
-											<!-- ** input Tag 입력 막기 
-													=> disabled :  서버로 전송 안됨 
-													=> readonly :  서버로 전송 됨   -->
 		<tr height="40"><td bgcolor="GreenYellow ">Password</td>
 		<td>								
 		<a href="userdetail?jCode=Y&id=${apple.id}" >[비밀번호수정]</a>			
@@ -71,7 +70,7 @@
 			
 			
 		<tr height="40"><td></td>
-			<td><input type="submit" value="수정">&nbsp;&nbsp;
+			<td><input type="submit" value="수정" onclick="return change()" >&nbsp;&nbsp;
 				<input type="reset" value="취소">
 			</td>	
 		</tr>	

@@ -306,6 +306,7 @@ public class UserController {
 
 		if ( session!=null && session.getAttribute("loginID")!=null ) 
 			vo.setId((String)session.getAttribute("loginID"));
+		System.out.println("***** pwupdate =>"+vo);
 
 		mv.addObject("apple",vo); //vo : 수정전의 값
 
@@ -315,7 +316,7 @@ public class UserController {
 		//    encode(rawData) -> digest 생성 & vo 에 set  
 		vo.setPassword(passwordEncoder.encode(vo.getPassword()));
 
-		System.out.println("***** pwupdate =>"+vo);
+		System.out.println("***** pwupdate2 =>"+vo);
 		// 2. Service 처리
 		if (service.pwupdate(vo) > 0) {
 			mv.addObject("message", "비밀번호 수정 성공");
