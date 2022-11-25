@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import criTest.Criteria;
 import criTest.SearchCriteria;
 import mapperInterface.T_BoardMapper;
-import vo.Notice_BoardVO;
 import vo.T_BoardVO;
 
 @Service
@@ -45,6 +44,18 @@ public class T_BoardServiceImpl implements T_BoardService {
    @Override
    public T_BoardVO selectOne(T_BoardVO vo) {
       return mapper.selectOne(vo);
+   }
+   
+   // ** n_selectOne
+   @Override
+   public T_BoardVO n_selectOne(T_BoardVO vo) {
+      return mapper.n_selectOne(vo);
+   }
+   
+   // ** p_selectOne
+   @Override
+   public T_BoardVO p_selectOne(T_BoardVO vo) {
+      return mapper.p_selectOne(vo);
    }
    
    // ** Insert
