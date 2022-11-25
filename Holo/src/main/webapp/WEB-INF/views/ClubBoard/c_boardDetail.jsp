@@ -147,11 +147,6 @@ function getList() {
                             <a href="cbcrilist" class="liText">동아리/모임
                             </a>
                         </li>
-                        <li>
-                            <a href="" class="liText">Q&A
-                            </a>
-                        </li>
-                        
                     </ul>
                 </div>
             </nav>
