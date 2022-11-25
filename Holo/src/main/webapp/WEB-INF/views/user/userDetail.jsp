@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
 <title>** MemberDetail Web_MVC2 **</title>
 <script>
 function goto() {
