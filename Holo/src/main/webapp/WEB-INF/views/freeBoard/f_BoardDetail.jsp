@@ -86,11 +86,15 @@
         </div>
 
 	<c:if test="${not empty apple}">
-	    <table>
-	        <tr height="40" width="100"><td><b>${apple.title}</b></td></tr>
-	        <tr height="40" id="test111"><td>글번호 : ${apple.seq}&nbsp;</td><td>&nbsp;${apple.id}&nbsp;</td>
-	                            <td>&nbsp;조회수 : ${apple.cnt}&nbsp;</td><td>&nbsp;${apple.regdate}</td></tr>
-	        <tr height="100" width="100">
+	    <table class="board_dTop">
+	        <tr height="40"><td class="board_dTitle">${apple.title}</td></tr>
+	        <tr height="40" class="board_dList">
+	        	<td>글번호 : ${apple.seq}&nbsp;&nbsp;</td>
+	            <td>| 작성자 : ${apple.id}&nbsp;&nbsp;</td>
+	            <td>| 조회수 : ${apple.cnt}&nbsp;&nbsp;</td>
+	            <td>| ${apple.regdate}</td>
+	        </tr>
+	        <tr class="board_dBottom">
 	            <c:if test="${empty apple.uploadfile}">
 	            	<td>${apple.content}</td>
 	            </c:if>
