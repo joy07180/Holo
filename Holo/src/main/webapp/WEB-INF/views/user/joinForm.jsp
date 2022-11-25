@@ -193,7 +193,8 @@ function inCheck() {
 		</td></tr>
  						
 	<tr height="40"><td bgcolor="LightBlue">핸드폰번호</td>
-		<td><input type="text" name="phonenum" id="phonenum"><br>
+		<td><input type="text" name="phonenum" id="phonenum"
+			placeholder="01012345678 형식"><br>
  			<span id="phMessage" class="eMessage" ></span></td></tr>
 		
 	<tr height="40"><td bgcolor="LightBlue">Image</td>

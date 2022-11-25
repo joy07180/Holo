@@ -100,9 +100,6 @@ public class UserController {
 
 	@RequestMapping(value = "/logout")
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
-		// ** session 인스턴스 정의 후 삭제하기
-		// => 매개변수: 없거나, true, false
-		// => false : session 이 없을때 null 을 return;
 
 		HttpSession session = request.getSession(false);
 		if (session!=null) session.invalidate();

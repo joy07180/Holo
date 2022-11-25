@@ -30,24 +30,19 @@
                 <div>
                     <ul class="category">
                         <li>
-                            <a href="noticelist" class="liText">공지사항
-                            </a>
+                            <a href="noticelist" class="liText">공지사항</a>
                         </li>
                         <li>
-                            <a href="hbcrilist" class="liText">팁/정보
-                            </a>
+                            <a href="hbcrilist" class="liText">팁/정보</a>
                         </li>
                         <li>
-                            <a href="f_bcrilist" class="liText">자유게시판
-                            </a>
+                            <a href="f_bcrilist" class="liText">자유게시판</a>
                         </li>
                         <li>
-                            <a href="t_bcrilist" class="liText">거래/나눔
-                            </a>
+                            <a href="t_bcrilist" class="liText">거래/나눔</a>
                         </li>
                         <li>
-                            <a href="cbcrilist" class="liText">동아리/모임
-                            </a>
+                            <a href="cbcrilist" class="liText">동아리/모임</a>
                         </li>
                     </ul>
                 </div>
@@ -57,9 +52,15 @@
 <h2>공지사항</h2>
 <hr>
 	<table>
-		<tr height="40"><td bgcolor="Khaki">Seq</td><td>${apple.seq}</td></tr>
-		<tr height="40"><td bgcolor="Khaki">I D</td><td>${apple.id}</td></tr>
-		<tr height="40"><td bgcolor="Khaki">Title</td><td>${apple.title}</td></tr>
+		<tr height="40">
+		<td bgcolor="Khaki" width="5%">Seq</td><td width="10%">${apple.seq}</td>
+		<td bgcolor="Khaki" width="5%">I D</td><td width="15%">${apple.id}</td>
+		<td bgcolor="Khaki" width="5%">RegDate</td><td width="40%">${apple.regdate}</td>
+		<td bgcolor="Khaki" width="5%">조회수</td><td width="10%">${apple.cnt}</td>
+		</tr>
+		<tr height="40">
+		<td bgcolor="Khaki" width="5%">Title</td><td width="50%">${apple.title}</td>
+		</tr>
 		<tr height="100" width="100">
 	            <c:if test="${empty apple.uploadfile}">
 	            	<td>${apple.content}</td>
@@ -68,7 +69,7 @@
 	            	<td><img height="300" width="300" src="${apple.uploadfile}"><br>${apple.content}</td>
 	            </c:if>
 	        </tr>
-		<tr height="40"><td bgcolor="Khaki">조회수</td><td>${apple.cnt}</td></tr>
+		<tr height="40"></tr>
 	</table>
 <hr>
 <c:if test="${loginID=='admin'}">
