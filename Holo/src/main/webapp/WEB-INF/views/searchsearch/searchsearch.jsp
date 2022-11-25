@@ -99,19 +99,9 @@
 					<c:forEach var="nboard" items="${nservice}">
 						<tr height="30" bgcolor="lightGray">
 							<td width="40%"><a href="searchdetail?seq=${nboard.seq}">${nboard.title}</a></td>
-							<td class="ct" width="20%"><img height="25" width="25" src="${board.image}">${nboard.id}</td>
+							<td class="ct" width="20%"><img height="25" width="25" src="${nboard.image}">${nboard.id}</td>
 							<td class="ct" width="10%">${nboard.regdate}</td>
 							<td class="ct" width="10%">${nboard.cnt}</td>
-						</tr>
-					</c:forEach>
-				</c:if>
-				<c:if test="${not empty hservice}">
-					<c:forEach var="hboard" items="${hservice}">
-						<tr height="30" bgcolor="lightGray">
-							<td width="40%"><a href="hbdetail?seq=${hboard.seq}">${hboard.title}</a></td>
-							<td class="ct" width="20%"><img height="25" width="25" src="${board.image}">${hboard.id}</td>
-							<td class="ct" width="10%">${hboard.regdate}</td>
-							<td class="ct" width="10%">${hboard.cnt}</td>
 						</tr>
 					</c:forEach>
 				</c:if>
