@@ -70,9 +70,9 @@
 	</sql>
 
 	<select id="searchList" resultType="vo.T_BoardVO">
-		select seq, title, id, regdate, cnt, root, step, indent ,trade
-		from trade_board
-		where ( seq>0
+		select seq, title, t.id, regdate, cnt, root, step, indent ,trade, u.uploadfile image
+		from trade_board t join user u
+		where t.id = u.id AND ( seq>0
 		<include refid="search"></include>
 		order by root desc, step asc
 		limit #{sno}, #{rowsPerPage}
@@ -85,24 +85,6 @@
 	</select>
 
 
-	<!-- ** Criteria PageList : ver01 => MySql : limit a , b ( a개 제외하고 a+1 부터 
-		b개 ) 적용 -->
-	<select id="criList" resultType="vo.T_BoardVO">
-		select seq, title, id, regdate, cnt, root, step, indent, trade
-		from trade_board
-		order by root desc, step asc
-		limit #{sno}, #{rowsPerPage}
-	</select>
-
-	<select id="criTotalCount" resultType="int">
-		select count(*) from trade_board
-	</select>
-
-
-	<select id="selectList" resultType="vo.T_BoardVO">
-		select seq, title, id, regdate, cnt, root, step, indent, trade
-		from trade_board order by root desc, step asc
-	</select>
 
 	<select id="selectOne" resultType="vo.T_BoardVO">
 		select * from trade_board where seq=#{seq}

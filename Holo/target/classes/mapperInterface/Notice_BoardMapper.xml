@@ -25,10 +25,11 @@
 	</sql>
 
 	<select id="searchList" resultType="vo.Notice_BoardVO">
-		select seq, id, title,content, DATE_FORMAT(regdate, '%Y-%m-%d %H:%i')
-		regdate, cnt, fix
-		from notice_board
-		where ( seq>0
+	
+		select seq, n.id, title, content, DATE_FORMAT(regdate, '%Y-%m-%d %H:%i')
+		regdate, cnt, fix, u.uploadfile image
+		from notice_board n join user u
+		where n.id = u.id AND ( seq>0
 		<include refid="search"></include>
 		order by fix desc, seq desc
 		limit #{sno}, #{rowsPerPage}
@@ -80,25 +81,25 @@
 	</sql>
 
 	<select id="nsearchsearch" resultType="vo.Notice_BoardVO">
-		select seq, id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt
-		from notice_board
-		where ( seq > 0 and title like  CONCAT('%', #{keyword2}, '%')    )
+		select seq, n.id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt, u.uploadfile image
+		from notice_board n join user u
+		where n.id = u.id AND ( seq > 0 and title like  CONCAT('%', #{keyword2}, '%')    )
 		UNION ALL
-		select seq, id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt
-		from tip_board
-		where ( seq > 0 and title like  CONCAT('%', #{keyword2}, '%')    )
+		select seq, n.id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt, u.uploadfile image
+		from tip_board t join user u
+		where t.id = u.id AND ( seq > 0 and title like  CONCAT('%', #{keyword2}, '%')    )
 		UNION ALL
-		select seq, id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt
-		from club_board
-		where ( seq > 0 and title like  CONCAT('%', #{keyword2}, '%')    )
+		select seq, n.id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt, u.uploadfile image
+		from club_board c join user u
+		where c.id = u.id AND ( seq > 0 and title like  CONCAT('%', #{keyword2}, '%')    )
 		UNION ALL
-		select seq, id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt
-		from free_board
-		where ( seq > 0 and title like  CONCAT('%', #{keyword2}, '%')    )
+		select seq, n.id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt, u.uploadfile image
+		from free_board f join user u
+		where f.id = u.id AND ( seq > 0 and title like  CONCAT('%', #{keyword2}, '%')    )
 		UNION ALL
-		select seq, id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt
-		from trade_board
-		where ( seq > 0 and title like  CONCAT('%', #{keyword2}, '%')    )
+		select seq, n.id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt, u.uploadfile image
+		from trade_board tr join user u
+		where tr.id = u.id AND ( seq > 0 and title like  CONCAT('%', #{keyword2}, '%')    )
 		order by regdate desc
 		limit #{sno}, #{rowsPerPage}
 	</select>

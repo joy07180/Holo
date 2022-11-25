@@ -22,4 +22,6 @@ public class Tip_BoardVO {
 	// => UI_form 의 Upload_Image 정보를 전달받기위한 필드
 	//    MultipartFile (Interface) -> CommonsMultipartFile
 	//    UI 의 Tag 의 name 속성과 일치
+	private String image; 
+
 }

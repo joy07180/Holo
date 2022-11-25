@@ -139,7 +139,7 @@
 					</c:if>
 					
 					</td>
-					<td>${trade_board.id}</td>
+					<td><img height="25" width="25" src="${trade_board.image}">${trade_board.id}</td>
 					<td>${trade_board.regdate}</td><td>${trade_board.cnt}</td>
 					</tr>	
 					</c:forEach>

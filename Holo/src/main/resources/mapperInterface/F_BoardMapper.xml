@@ -38,9 +38,9 @@
 </sql>
 
 <select id="searchList" resultType="vo.F_BoardVO">
-	select seq, id, title, regdate, cnt, root, step, indent 
-	from free_board 
-	where ( seq>0 <include refid="search"></include>
+	select seq, f.id, title, regdate, cnt, root, step, indent , u.uploadfile image
+	from free_board f join user u
+	where f.id = u.id AND ( seq>0 <include refid="search"></include>
 	order by root desc, step asc
 	limit #{sno}, #{rowsPerPage}
 </select>
@@ -50,25 +50,6 @@
 	where ( seq>0 <include refid="search"></include>
 </select>
 
-
-<!-- ** Criteria PageList : ver01 
-	=> MySql : limit a , b ( a개 제외하고 a+1 부터 b개 )  적용 	-->
-<select id="criList" resultType="vo.F_BoardVO">
-	select seq, id, title, regdate, cnt, root, step, indent 
-	from free_board 
-	order by root desc, step asc
-	limit #{sno}, #{rowsPerPage}
-</select>
-
-<select id="criTotalCount" resultType="int">
-	select count(*) from free_board
-</select>
-
-
-<select id="selectList" resultType="vo.F_BoardVO">
-	select seq, id, title, regdate, cnt, root, step, indent
-	from free_board order by root desc, step asc
-</select>
 
 <select id="selectOne" resultType="vo.F_BoardVO">
 	select * from free_board where seq=#{seq}

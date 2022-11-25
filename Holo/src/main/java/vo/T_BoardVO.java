@@ -19,5 +19,6 @@ public class T_BoardVO {
 	private String trade;
 	private String uploadfile;
 	private MultipartFile uploadfilef;
-	
+	private String image; 
+
 } //class

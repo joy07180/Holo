@@ -103,7 +103,6 @@ public class Notice_BoardController {
 		//    -> boolean isEmpty()
 		
 		MultipartFile uploadfilef = vo.getUploadfilef();  // file 의 내용및 화일명 등 전송된 정보들
-		System.out.println("uploadfilef=>"+uploadfilef);
 		if ( uploadfilef !=null && !uploadfilef.isEmpty() ) {
 			
 			// ** Image를 선택함 -> Image저장 ( 경로_realPath + 화일명 )

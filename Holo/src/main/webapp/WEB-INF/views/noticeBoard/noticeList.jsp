@@ -9,19 +9,7 @@
         <link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
         <script src="resources/myLib/jquery-3.2.1.min.js"></script>
         <script>
-            // ** JS 에서 함수사용
-            // => 최상위 객체 window는 생략가능
-            // 		window.document.write("....");
-            // => jQuery 호출
-            // 	  -	window.jQuery('선택자_id,class,Tag..').click(function(){ ..........  })
-            //	  - 늘 사용해야되는 jQuery 대신 $  기호를 사용 
-            //   	$('#searchBtn').click(function(){ ....
-            // => ready 이벤트
-            //	  - script 구문이 Body 보다 위쪽에 위치하면 Tag 인식이 불가능함.
-            //    - Body 가 Tag들을 모두 load 한 후 실행 되도록 이벤트를 적용
-            //	  - js: window.onload
-            //    - jQ: ready   -> $(document).ready(function() { ....... });
-            // 					-> 이때  "(document).ready" 는 생략가능 
+          
 
             $(function () {
                 // 1) SearchType 이 '전체' 면 keyword 클리어
@@ -60,11 +48,12 @@
                     <a href="home" class="logo">logo</a>
                 </div>
                 <div class="search">
-                <form action="searchsearch">
-					<input class="searchBox" type="text" size="40" 
-					placeholder="게시판 & 통합검색" type="text" name="keyword2" id="keyword2" /> 
-					<input class="searchClick" id="searchBtn2" type="submit" value="검색" />
-				</form>
+					<form action="searchsearch">
+						<input class="searchBox" type="text" size="40"
+							placeholder="게시판 & 통합검색" type="text" name="keyword2"
+							id="keyword2" /> <input class="searchClick" id="searchBtn2"
+							type="submit" value="검색" />
+					</form>
         		</div>
                 
 
@@ -120,7 +109,7 @@
 							<tr height="30" bgcolor="lightGray">
 								<td width="10%" class="notice">공지</td>
 								<td width="40%"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
-								<td class="ct" width="20%">${board.id}</td>
+								<td class="ct" width="20%"><img height="25" width="25" src="${board.image}">&nbsp;${board.id}</td>
 								<td class="ct" width="10%">${board.regdate}</td>
 								<td class="ct" width="10%">${board.cnt}</td>
 							</tr>
@@ -130,7 +119,7 @@
 							<tr height="30">
 								<td width="10%">${board.seq}</td>
 								<td width="40%"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
-								<td class="ct" width="20%">${board.id}</td>
+								<td class="ct" width="20%"><img height="25" width="25" src="${board.image}">&nbsp;${board.id}</td>
 								<td class="ct" width="10%">${board.regdate}</td>
 								<td class="ct" width="10%">${board.cnt}</td>
 							</tr>
