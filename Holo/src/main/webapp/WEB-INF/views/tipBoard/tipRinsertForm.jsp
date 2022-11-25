@@ -10,7 +10,7 @@
 </head>
 <body>
 <h2>** Reply Insert Spring_MVC2 **</h2>
-<form action="hrinsert" method="post">
+<form action="tiprinsert" method="post">
 <table>
 	<tr height="40"><td bgcolor="Violet">I D</td>
 		<td><input type="text" name="id" value="${loginID}" size="20" readonly></td></tr>
@@ -40,7 +40,7 @@
 ${message}<br>
 </c:if>
 <hr>
-&nbsp;&nbsp;<a href="hblist">boardList</a>
+&nbsp;&nbsp;<a href="tipblist">boardList</a>
 &nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
 &nbsp;&nbsp;<a href="home">[Home]</a>
 </body>

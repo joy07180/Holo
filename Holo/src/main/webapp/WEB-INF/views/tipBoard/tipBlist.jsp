@@ -92,6 +92,11 @@
                             <a href="cbcrilist" class="liText">동아리/모임
                             </a>
                         </li>
+                        <li>
+                            <a href="" class="liText">Q&A
+                            </a>
+                        </li>
+                        
                     </ul>
                 </div>
             </nav>
@@ -116,8 +121,8 @@
                 <c:if test="${not empty banana}">
                     <c:forEach var="board" items="${banana}">
                         <tr height="30">
-                            <td width="50%"><a href="hbdetail?seq=${board.seq}">${board.title}</a></td>
-                            <td width="10%"><img height="25" width="25" src="${board.image}">${board.id}</td>
+                            <td width="50%"><a href="tipbdetail?seq=${board.seq}">${board.title}</a></td>
+                            <td width="10%">${board.id}</td>
                             <td class="ct" width="20%">${board.regdate}</td>
                             <td class="ct" width="10%">${board.cnt}</td>
                             <td class="ct" width="10%">1</td>
@@ -177,7 +182,7 @@
 	            <button id="searchBtn">Search</button>
         		</div>
 
-        &nbsp;&nbsp;<a href="hbinsertf">새글등록</a>
+        &nbsp;&nbsp;<a href="tipbinsertf">새글등록</a>
         &nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
         &nbsp;&nbsp;<a href="home">[Home]</a>
     </div>
@@ -187,12 +192,12 @@
     <footer>
         <div class="bottom">
             <ul class="btMenu">
-                <li><a href="">A</a></li>
-                <li><a href="">B</a></li>
-                <li><a href="">C</a></li>
-                <li><a href="">D</a></li>
-                <li><a href="">E</a></li>
-                <li><a href="">F</a></li>
+                <li><a href="">공지사항</a></li>
+                <li><a href="">팁/정보</a></li>
+                <li><a href="">자유게시판</a></li>
+                <li><a href="">거래/나눔</a></li>
+                <li><a href="">동아리/모임</a></li>
+                <li><a href="">Q&A</a></li>
             </ul>
             <span>
                 <div>Copyright (c) Holo.net All rights reserved.</div>

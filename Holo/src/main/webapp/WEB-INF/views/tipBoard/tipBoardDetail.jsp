@@ -17,15 +17,15 @@
 
 $(document).on("click", "#Comment_regist", function() {
    	
-		const com_writer = $('#com_writer').val();
+		const com_writer = $('#writer').val();
 		const com_content = $('#com_content').val();
 		
 		console.log("com_bno =>"+com_bno)
 		
-		console.log("댓글쓴이"+com_writer);
-		console.log(com_content);
+		console.log("댓글쓴이 =>"+com_writer);
+		console.log("콘텐츠 =>"+com_content);
 	
-		 if(com_writer == ''){
+		 if(com_writer === ''){
 			alert('로그인 후 이용해주세요');
 			return;
 		}else if(com_content == '') {
@@ -71,16 +71,13 @@ getList(0);
 function getList(n) {
 		offset = n;
 	
-	   const com_writer = $('#com_writer').val();
+	   const com_writer = $('#writer').value;
 	   const com_content = $('#com_content').val();
 	   $.getJSON(
 	      "<c:url value='/Comment/CommentList/'/>"+com_bno+"?offset="+offset+"&limit="+limit,
 	      function(data) {
 	         if(data.total > 0){
 	            var list = data.list;
-	            console.log("data => "+data);
-	            console.log("data.list => "+data.list);
-	            console.log("data.total => "+data.total);
 	            
 	            var comment_html = "<div>";
 	            
@@ -90,7 +87,7 @@ function getList(n) {
 	               var writer = list[i].com_writer;
 	               comment_html += "<div><span id='com_writer'><strong>" + writer + "</strong></span><br/>";
 	               comment_html += "<span id='com-content'>" + content + "</span><br>";
-	               if(writer === $("#com_writer").val()){
+	               if(writer === $("#writer").val()){
 	                   comment_html += "<span id='delete' style='cursor:pointer;' data-id ="+content+">[삭제]</span><br></div><hr>";
 	                   
 	               }
@@ -162,7 +159,7 @@ console.log("반내림 => "+Math.floor(${total}/10));
          	   <!-- <span class="c-icon"><i class="fa-solid fa-user"></i>  -->
          <div class="comment-name">
             <span class="anonym">작성자 : 
-        	    <input type="text" class="form-control" id="com_writer" placeholder="이름" name ="com_writer" value='${loginID}' readonly  style="width: 100px; border:none;">
+        	    <input type="text" class="form-control" id="writer" placeholder="이름" name ="writer" value='${loginID}' readonly  style="width: 100px; border:none;">
             </span>
           </div>   
             	
@@ -196,9 +193,9 @@ console.log("반내림 => "+Math.floor(${total}/10));
 
 
 
-&nbsp;&nbsp;<a href="hrinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">[답글]</a><br>
-&nbsp;&nbsp;<a href="hbdetail?jCode=U&seq=${apple.seq}">[글수정]</a>
-&nbsp;&nbsp;<a href="hbdelete?seq=${apple.seq}&root=${apple.root}">[글삭제]</a>
+&nbsp;&nbsp;<a href="tiprinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">[답글]</a><br>
+&nbsp;&nbsp;<a href="tipbdetail?jCode=U&seq=${apple.seq}">[글수정]</a>
+&nbsp;&nbsp;<a href="tipbdelete?seq=${apple.seq}&root=${apple.root}">[글삭제]</a>
 &nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
 &nbsp;&nbsp;<a href="home">[Home]</a>
 

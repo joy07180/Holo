@@ -50,13 +50,18 @@
                             <a href="cbcrilist" class="liText">동아리/모임
                             </a>
                         </li>
+                        <li>
+                            <a href="" class="liText">Q&A
+                            </a>
+                        </li>
+                        
                     </ul>
                 </div>
             </nav>
 
         </header>
 <h2>** Board Insert Spring_MVC2 **</h2>
-<form action="hbinsert" method="Post" enctype="multipart/form-data">
+<form action="tipbinsert" method="Post" enctype="multipart/form-data">
 <table>
 <tr height="40"><td>I D</td>
 		<td><input type="text" name="id" value="${loginID}" size="20" style="float: left;" readonly ></td></tr>
@@ -104,7 +109,6 @@
 
 </div>
 <hr>
-&nbsp;&nbsp;<a href="hblist">boardList</a>
 &nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
 &nbsp;&nbsp;<a href="home">[Home]</a>
 </body>
