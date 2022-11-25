@@ -5,6 +5,7 @@
 <head>
 <title>Home</title>
 <link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
+<link rel="stylesheet" type="text/css" href="resources/myLib/home.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script src="resources/myLib/inCheck.js"></script>
 <script src="resources/myLib/Test01.js"></script>
@@ -70,11 +71,12 @@
 					<a href="home" class="logo">logo</a>
 				</div>
 				<div class="search">
-				<form action="searchsearch">
-					<input class="searchBox" type="text" size="40"
-						placeholder="게시판 & 통합검색" type="text" name="keyword2" id="keyword2" /> 
-					<input class="searchClick" id="searchBtn2" type="submit" value="검색" />
-				</form>
+					<form action="searchsearch">
+						<input class="searchBox" type="text" size="40"
+							placeholder="게시판 & 통합검색" type="text" name="keyword2"
+							id="keyword2" /> <input class="searchClick" id="searchBtn2"
+							type="submit" value="검색" />
+					</form>
 				</div>
 				<!--  
 				<div class="search">
@@ -107,49 +109,49 @@
 			<div class="main">
 
 
-				
+
 
 
 				<aside class="banner">
 					<a href=""></a>
 				</aside>
 				<aside class="login">
-				<c:if test="${not empty loginID}">
-					<h1>=> ${loginName} 님 !!!</h1>
-					<br>
+					<c:if test="${not empty loginID}">
+						<h1>=> ${loginName} 님 !!!</h1>
+						<br>
       ${message}<br>
       &nbsp;&nbsp;<a href="logout">Logout</a>
       &nbsp;&nbsp;<a href="userdetail">내정보</a>
-				</c:if>
+					</c:if>
 
-				<c:if test="${loginID=='admin'}">
-					<a href="user">회원 목록</a>&nbsp;&nbsp;
+					<c:if test="${loginID=='admin'}">
+						<a href="user">회원 목록</a>&nbsp;&nbsp;
 	 </c:if>
 
-				<c:if test="${empty loginID}">
-					<form action="login" method="post">
-						<table>
-							<tr>
-								<td bgcolor="PaleTurquoise">I D</td>
-								<td><input type="text" name="id" id="id"><br>
-								</td>
-							</tr>
-							<tr>
-								<td bgcolor="PaleTurquoise ">Password</td>
-								<td><input type="password" name="password" id="password"><br>
-								</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td><input type="submit" value="Login"
-									onclick="return inCheck()">&nbsp;&nbsp; <span
-									id="pMessage" class="eMessage"></span> <br> <a
-									href="joinf">회원가입</a>&nbsp;&nbsp; <a href="logout">Logout</a></td>
-							</tr>
-						</table>
-					</form>
-					<br>
-				</c:if>
+					<c:if test="${empty loginID}">
+						<form action="login" method="post">
+							<table>
+								<tr>
+									<td bgcolor="PaleTurquoise">I D</td>
+									<td><input type="text" name="id" id="id"><br>
+									</td>
+								</tr>
+								<tr>
+									<td bgcolor="PaleTurquoise ">Password</td>
+									<td><input type="password" name="password" id="password"><br>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><input type="submit" value="Login"
+										onclick="return inCheck()">&nbsp;&nbsp; <span
+										id="pMessage" class="eMessage"></span> <br> <a
+										href="joinf">회원가입</a>&nbsp;&nbsp; <a href="logout">Logout</a></td>
+								</tr>
+							</table>
+						</form>
+						<br>
+					</c:if>
 				</aside>
 			</div>
 
