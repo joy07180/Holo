@@ -33,8 +33,6 @@ import vo.CommentVO;
 import vo.Tip_BoardVO;
 
 
-
-
 @RestController
 @RequestMapping("/Comment")
 public class CommentController {
@@ -45,33 +43,42 @@ public class CommentController {
 	@PostMapping("/InsertComment")
 	public String InsertComment(@RequestBody CommentVO vo,HttpSession session) {
 		System.out.println("댓글 등록 통신 성공");
-		/*
-		 * if(session.getAttribute("login") == null) { return "fail"; } else {
-		 */
+		
+		  if(session.getAttribute("loginID") == null) { return "fail"; } else {
+		 
 			System.out.println("로긘함. 스크랩 진행");
 			
 			service.CommentRegist(vo);
-			System.out.println("댓글 등록 서비스 성공");
+			System.out.println("댓글 등록 서비스 성공");}
+		  
 			return "InsertSuccess";
 		
 	}
 
-	@GetMapping("/CommentList/{com_bno}")
+	// 커밋실험
+	@RequestMapping("/CommentList/{com_bno}")
 	public Map<String, Object> getList(@PathVariable int com_bno, Model model,
-			HttpServletRequest request, HttpServletResponse response, PageMaker pageMaker,
-			SearchCriteria cri) {
-		request.getAttribute("offset");
-		int r = (int) request.getAttribute("limit");
-		System.out.println("r = "+r);
+			HttpServletRequest request, HttpServletResponse response, CommentVO vo) {
+		int offset = Integer.parseInt(request.getParameter("offset"));
+		int limit = Integer.parseInt(request.getParameter("limit"));
+		
+		System.out.println("offset => "+offset);
+		System.out.println("limit => "+limit);
+		System.out.println("com_bno => "+com_bno);
+		System.out.println("코맨트VO => "+vo);
+		
 		
 		System.out.println("댓글 목록 컨트롤러 동작");
-		List<CommentVO> list = service.getList(com_bno);
+		List<CommentVO> list = service.getList(com_bno,offset,limit);
 		int total = service.getTotal(com_bno);
+		
+		
 		
 		ModelAndView view = new ModelAndView();
 		
 		System.out.println("댓글 갯수 " + service.getTotal(com_bno));
 		view.setViewName("/holoBoard/boardDetail");
+		
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", list);
 		map.put("total", total);

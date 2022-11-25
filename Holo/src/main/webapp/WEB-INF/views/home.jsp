@@ -24,9 +24,9 @@
             // => enter 누르면 자동 submit 발생되므로 이를 제거함
             $('#password').focus();
          }
-      }).focusout(function(){    
+      }).function(){    
          iCheck=idCheck();
-      }); //id
+      }; //id
       
       // ** Password
       $('#password').keydown(function(e){
@@ -34,9 +34,9 @@
             e.preventDefault();
             $('#password2').focus();
          }
-      }).focusout(function(){    
+      }).function(){    
          pCheck=   pwCheck();
-      }); //password
+      }; //password
    }); //ready
    
    function inCheck() {
@@ -46,6 +46,18 @@
          if ( iCheck && pCheck ) return true; // submit 진행  
          else return false;
    } //inCheck
+   
+   
+   $(function searchsearch() {
+
+       $('#searchBtn2').click(function () {
+           self.location = "searchsearch"
+               + "${pageMaker.makeQuery(1)}"
+               + "&keyword2="
+               + $('#keyword2').val()
+       }); //click
+   }); //ready	
+   
 </script>
 
 
@@ -55,16 +67,24 @@
 		<header>
 			<div class="header">
 				<div>
-					<a href="" class="logo">logo</a>
+					<a href="home" class="logo">logo</a>
 				</div>
+
+				<form action="searchsearch">
+					<input class="searchBox" type="text" size="40" type="text" name="keyword2" id="keyword2" /> 
+					<input class="searchClick" id="searchBtn2" type="submit" value="검색" />
+				</form>
+
+				<!--  
 				<div class="search">
 					<form action="">
-						<input class="searchBox" size="40" type="text" id="search"
-							placeholder="게시판 & 통합검색"> <span> <input
-							class="searchClick" type="submit" value="검색">
+						<input class="searchBox" size="40" type="text" id="search"placeholder="게시판 & 통합검색"> 
+						<span> 
+							<input class="searchClick" type="submit" value="검색">
 						</span>
 					</form>
 				</div>
+				-->
 
 			</div>
 
@@ -146,16 +166,15 @@
 								<th width="30%">날짜</th>
 							</tr>
 						</thead>
-						<tbody>
-							<c:if test="${not empty nlist}">
-								<c:forEach var="board" items="${nlist}">
-									<tr height="30">
-										<td width="50%"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
-										<td class="ct" width="20%">${board.id}</td>
-										<td class="ct" width="30%">${board.regdate}</td>
-									</tr>
-								</c:forEach>
-							</c:if>
+						<c:if test="${not empty nlist}">
+							<c:forEach var="board" items="${nlist}">
+								<tr height="30">
+									<td width="50%"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
+									<td class="ct" width="20%">${board.id}</td>
+									<td class="ct" width="30%">${board.regdate}</td>
+								</tr>
+							</c:forEach>
+						</c:if>
 					</table>
 				</section>
 				<section>
@@ -171,16 +190,16 @@
 								<th width="20%">조회수</th>
 							</tr>
 						</thead>
-						<tbody>
-							<c:if test="${not empty fhotlist}">
-								<c:forEach var="fboard" items="${fhotlist}">
-									<tr height="30">
-										<td width="40%"><a href="f_bdetail?seq=${fboard.seq}">${fboard.title}</a></td>
-										<td class="ct" width="20%">${fboard.id}</td>
-										<td class="ct" width="10%">${fboard.cnt}</td>
-									</tr>
-								</c:forEach>
-							</c:if>
+						<c:if test="${not empty fhotlist}">
+							<c:forEach var="fboard" items="${fhotlist}">
+								<tr height="30">
+
+									<td width="40%"><a href="f_bdetail?seq=${fboard.seq}">${fboard.title}</a></td>
+									<td class="ct" width="20%">${fboard.id}</td>
+									<td class="ct" width="10%">${fboard.cnt}</td>
+								</tr>
+							</c:forEach>
+						</c:if>
 					</table>
 				</section>
 			</div>
@@ -198,17 +217,16 @@
 								<th width="30%">날짜</th>
 							</tr>
 						</thead>
-						<tbody>
-							<c:if test="${not empty hlist}">
-								<c:forEach var="hboard" items="${hlist}">
-									<tr height="30">
-										<td width="40%"><a href="hbdetail?seq=${hboard.seq}">${hboard.title}</a></td>
-										<td class="ct" width="20%">${hboard.id}</td>
-										<td class="ct" width="30%">${hboard.regdate}</td>
+						<c:if test="${not empty hlist}">
+							<c:forEach var="hboard" items="${hlist}">
+								<tr height="30">
+									<td width="40%"><a href="hbdetail?seq=${hboard.seq}">${hboard.title}</a></td>
+									<td class="ct" width="20%">${hboard.id}</td>
+									<td class="ct" width="30%">${hboard.regdate}</td>
 
-									</tr>
-								</c:forEach>
-							</c:if>
+								</tr>
+							</c:forEach>
+						</c:if>
 					</table>
 				</section>
 				<section>
@@ -224,16 +242,15 @@
 								<th width="20%">조회수</th>
 							</tr>
 						</thead>
-						<tbody>
-							<c:if test="${not empty hhotlist}">
-								<c:forEach var="hboard" items="${hhotlist}">
-									<tr height="30">
-										<td width="40%"><a href="hbdetail?seq=${hboard.seq}">${hboard.title}</a></td>
-										<td class="ct" width="20%">${hboard.id}</td>
-										<td class="ct" width="10%">${hboard.cnt}</td>
-									</tr>
-								</c:forEach>
-							</c:if>
+						<c:if test="${not empty hhotlist}">
+							<c:forEach var="hboard" items="${hhotlist}">
+								<tr height="30">
+									<td width="40%"><a href="hbdetail?seq=${hboard.seq}">${hboard.title}</a></td>
+									<td class="ct" width="20%">${hboard.id}</td>
+									<td class="ct" width="10%">${hboard.cnt}</td>
+								</tr>
+							</c:forEach>
+						</c:if>
 					</table>
 				</section>
 			</div>
@@ -251,17 +268,16 @@
 								<th width="30%">날짜</th>
 							</tr>
 						</thead>
-						<tbody>
-							<c:if test="${not empty tlist}">
-								<c:forEach var="tboard" items="${tlist}">
-									<tr height="30">
-										<td width="40%"><a href="t_bdetail?seq=${tboard.seq}">${tboard.title}</a></td>
-										<td class="ct" width="20%">${tboard.id}</td>
-										<td class="ct" width="30%">${tboard.regdate}</td>
+						<c:if test="${not empty tlist}">
+							<c:forEach var="tboard" items="${tlist}">
+								<tr height="30">
+									<td width="40%"><a href="t_bdetail?seq=${tboard.seq}">${tboard.title}</a></td>
+									<td class="ct" width="20%">${tboard.id}</td>
+									<td class="ct" width="30%">${tboard.regdate}</td>
 
-									</tr>
-								</c:forEach>
-							</c:if>
+								</tr>
+							</c:forEach>
+						</c:if>
 					</table>
 				</section>
 				<section>

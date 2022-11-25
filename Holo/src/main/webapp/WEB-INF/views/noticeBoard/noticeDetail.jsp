@@ -13,16 +13,16 @@
         <header>
             <div class="header">
                 <div>
-                    <a href="" class="logo">logo</a>
+                    <a href="home" class="logo">logo</a>
                 </div>
                 <div class="search">
-                    <form action="">
-                        <input class="searchBox" size="40" type="text" id="search" placeholder="게시판 & 통합검색">
-                        <span>
-                            <input class="searchClick" type="submit" value="검색">
-                        </span>
-                    </form>
-                </div>
+					<form action="searchsearch">
+						<input class="searchBox" type="text" size="40"
+							placeholder="게시판 & 통합검색" type="text" name="keyword2"
+							id="keyword2" /> <input class="searchClick" id="searchBtn2"
+							type="submit" value="검색" />
+					</form>
+				</div>
 
             </div>
 
@@ -65,9 +65,14 @@
 		<tr height="40"><td bgcolor="Khaki">Seq</td><td>${apple.seq}</td></tr>
 		<tr height="40"><td bgcolor="Khaki">I D</td><td>${apple.id}</td></tr>
 		<tr height="40"><td bgcolor="Khaki">Title</td><td>${apple.title}</td></tr>
-		<tr height="40"><td bgcolor="Khaki">Content</td>
-						<td><img height="300" width="300" src="${apple.uploadfile}"><br>${apple.content}</td>
-		</tr>
+		<tr height="100" width="100">
+	            <c:if test="${empty apple.uploadfile}">
+	            	<td>${apple.content}</td>
+	            </c:if>
+	            <c:if test="${not empty apple.uploadfile}">
+	            	<td><img height="300" width="300" src="${apple.uploadfile}"><br>${apple.content}</td>
+	            </c:if>
+	        </tr>
 		<tr height="40"><td bgcolor="Khaki">조회수</td><td>${apple.cnt}</td></tr>
 	</table>
 <hr>

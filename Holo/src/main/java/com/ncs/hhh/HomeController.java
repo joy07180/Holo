@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import criTest.PageMaker;
+import criTest.SearchCriteria;
 import service.Club_BoardService;
 import service.F_BoardService;
 import service.Notice_BoardService;
@@ -32,7 +34,6 @@ import vo.Tip_BoardVO;
 /**
  * Handles requests for the application home page.
  */
-//sdajisadjsaj
 @Controller
 public class HomeController {
 
@@ -52,7 +53,7 @@ public class HomeController {
 	@RequestMapping(value = {"/","home"}, method = RequestMethod.GET)
 	public ModelAndView home(Locale locale, ModelAndView mv ) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		//sandjsandjsandjsandjsa
+
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
@@ -70,7 +71,7 @@ public class HomeController {
 
 		List<Tip_BoardVO> hlist = new ArrayList<Tip_BoardVO>();
 		hlist = hservice.selectHList();
-		if ( nlist!=null ) {
+		if ( hlist!=null ) {
 			mv.addObject("hlist", hlist); 
 		}else {
 			mv.addObject("message", "~~ 출력 자료가 없습니다 ~~");
@@ -83,7 +84,7 @@ public class HomeController {
 		}else {
 			mv.addObject("message", "~~ 출력 자료가 없습니다 ~~");
 		}
-		
+
 		List<Club_BoardVO> chotlist = new ArrayList<Club_BoardVO>();
 		chotlist = cservice.selectChotList();
 		if ( chotlist!=null ) {
@@ -99,7 +100,7 @@ public class HomeController {
 		}else {
 			mv.addObject("message", "~~ 출력 자료가 없습니다 ~~");
 		}
-		
+
 		List<T_BoardVO> tlist = new ArrayList<T_BoardVO>();
 		tlist = tservice.selectTList();
 		if ( tlist!=null ) {
@@ -107,11 +108,54 @@ public class HomeController {
 		}else {
 			mv.addObject("message", "~~ 출력 자료가 없습니다 ~~");
 		}
-		
+
 		mv.setViewName("home");
 		return mv;
 	}
 
+	@RequestMapping(value="/searchsearch")
+	public ModelAndView searchsearch(HttpServletRequest request, HttpServletResponse response, 
+			ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
+		cri.setSnoEno();
 
+		// 2) 서비스처리
+		// => List 처리
+		mv.addObject("nservice", nservice.nsearchsearch(cri)); // ver02
+		
+		// 3) View 처리 => PageMaker
+		System.out.println("************************************************************************"+pageMaker);
+		pageMaker.setCri(cri);
+		pageMaker.setTotalRowsCount(nservice.nsearchCount(cri));     // ver02: 조건과 일치하는 Rows 갯수 
+		mv.addObject("pageMaker", pageMaker);
+
+		mv.setViewName("/searchsearch/searchsearch");
+		return mv;
+	} //searchsearch
+
+	@RequestMapping(value="/searchdetail")
+	public ModelAndView search(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, Notice_BoardVO vo) {
+		// 1. 요청분석
+		String uri = "/searchsearch/searchDetail";
+		// 2. Service 처리
+		vo = nservice.selectOne(vo);
+		if ( vo != null ) {
+			// 2.1) 조회수 증가
+			String loginID = (String)request.getSession().getAttribute("loginID");
+			if ( !vo.getId().equals(loginID) && !"U".equals(request.getParameter("jCode")) ) {
+				// => 조회수 증가
+				if ( nservice.countUp(vo) > 0 ) vo.setCnt(vo.getCnt()+1); 
+			} //if_증가조건
+			
+			// 2.2) 수정요청 인지 확인
+			if ( "U".equals(request.getParameter("jCode")))
+				uri = "/searchsearch/searchDetail";
+			
+			// 2.3)	결과전달		
+			mv.addObject("apple", vo);
+		}else mv.addObject("message", "~~ 글번호에 해당하는 자료가 없습니다. ~~");
+		
+		mv.setViewName(uri);
+		return mv;
+	} //searchdetail
 
 }

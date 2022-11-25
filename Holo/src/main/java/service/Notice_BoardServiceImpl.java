@@ -62,6 +62,16 @@ public class Notice_BoardServiceImpl implements Notice_BoardService {
 	@Override
 	public List<Notice_BoardVO> selectNList(){
 		return mapper.selectNList();
+	}
+	
+	// search 
+	@Override
+	public List<Notice_BoardVO> nsearchsearch(SearchCriteria cri) {
+		return mapper.nsearchsearch(cri);
+	}
+	@Override
+	public int nsearchCount(SearchCriteria cri) {
+		return mapper.nsearchCount(cri);
 	}	
 	
 

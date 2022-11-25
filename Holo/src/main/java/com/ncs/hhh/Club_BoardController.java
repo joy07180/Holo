@@ -21,8 +21,6 @@ import service.Club_BoardService;
 import vo.Club_BoardVO;
 import vo.Tip_BoardVO;
 
-// 클럽보드 테스트주석 ㅇㅎㄷ구휴ㅠㅗㅓㅅ구ㅗㅠㅓㅅ가ㅣㅜㅗㅠㅐㅏㅅ기ㅡㅠㅏ
-//ㅑㄱ두허ㅑㅜㄱ둪ㄱ두ㅠㅍ갸더ㅜㅎㅈㄱㅈ가ㅜㅠㅅ갸듀갸ㅐㅜ햪셔규ㅜ더ㅠㅅㄱ속
 
 
 @Controller
