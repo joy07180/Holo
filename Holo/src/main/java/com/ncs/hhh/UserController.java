@@ -54,7 +54,7 @@ public class UserController {
 		mv.addObject("pageMaker",pageMaker);
 		mv.setViewName("/user/userList");
 		return mv;
-	} //bcrilist
+	}
 
 
 	@RequestMapping(value = "/login")
