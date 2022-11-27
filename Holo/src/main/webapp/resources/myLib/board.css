@@ -88,7 +88,11 @@ footer {
     background-color: black;
 }
 
-
+h2 {
+	line-height: 2em;
+	width: 100%;
+	border: 1px solid #D0D1D2 ;	
+}
 
 /* ============================================================== */
 
@@ -98,24 +102,20 @@ footer {
     height: 150px;
 }
 
-
-.headerM {
-    height: 50px;
-}
-
 .category {
+	height: 50px;
     line-height: 50px;
 }
 
-.category>* {
+.category>li {
     background-color: #595959;
     float: left;
-    width: 178px;
+    width: 179.2px;
     text-align: center;
 }
 
 .category>*:not(:last-child) {
-    border-right: 2px solid grey;
+    border-right: 1px solid grey;
 }
 
 .liText {
@@ -187,22 +187,24 @@ tr {
 }
 
 .board_dTop {
-	height: 1em;
 	width: 100%;
 	border: 1px solid rgb(103, 97, 97,.1);
 }
 
 .board_dTitle {
-	font-size: 2.5em;
+	font-size: 40px;
+	line-height: 60px;
 }
 
 .board_dList {
+	height: 40px;
 	width: 100%;
 	font-size: 1em;
 	color: grey;
 	text-align: left;
 	display: inline;
     margin : 20px, 0;
+    border-bottom: 1px solid #d1d2d3;
 }
 
 .board_dBottom {
@@ -217,6 +219,15 @@ tr {
 .board_dTrade {
 	color : red;
 	font-weight: bold; 
+}
+
+.boardList_head {
+	height: 40px;
+	border : 1px solid #d9dad8;
+}
+
+.boardList_body tr:nth-child(even) {
+	background-color: #d9dad8;
 }
 
 
