@@ -190,7 +190,7 @@ function inCheck() {
  			<span id="bMessage" class="eMessage" ></span></td></tr>
  			
 	<tr><td >Gender</td>
-		<td><select name="gender" id="gender">
+		<td><select name="gender" id="gender" style="border:1px solid #388aff; height: 50px; border-radius: 3px;" >
 				<option value="여성">여성</option>
 				<option value="남성" selected>남성</option>
 			</select>

@@ -231,7 +231,7 @@
             </span>
         </div>
         <br>
-    </footer>
+</footer>
 
 
 
