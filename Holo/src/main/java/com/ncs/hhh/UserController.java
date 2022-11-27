@@ -71,7 +71,7 @@ public class UserController {
 		if ( vo != null ) { 
 			// ID 는 일치 -> Password 확인
 			// => password 암호화 이전
-			// if ( vo.getPassword().equals(password) ) {
+			// if ( vo.getPassword().equals(password) ) 
 			// => password 암호화 이후
 			if (passwordEncoder.matches(password, vo.getPassword()) ) {
 
