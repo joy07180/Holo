@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>user 회원가입</title>
-<link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
+<link rel="stylesheet" type="text/css" href="resources/myLib/join.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script src="resources/myLib/inCheck.js"></script>
 <script src="resources/myLib/Test01.js"></script>
@@ -156,50 +156,54 @@ function inCheck() {
        이 폼이 제출될 때 이 형식을 서버에 알려주며, 
        multipart/form-data로 지정이 되어 있어야 서버에서 정상적으로 데이터를 처리할 수 있다.     
 -->
+	<div class="header">
+		<div>
+			<a href="home" class="logo">logo</a>
+		</div>
 
-<h2>User Join</h2>
+	</div>
 
-<form action="join" method="post" id="myForm" enctype="multipart/form-data">
+	<form action="join" method="post" id="myForm" enctype="multipart/form-data">
 <table>
-	<tr height="40"><td bgcolor="LightBlue">I D</td>
+	<tr><td >I D</td>
 		<td><input type="text" name="id" id="id" size="20" 
 								placeholder="id는 영문,숫자 10자 이내">
 			<button type="button" id="idDup" onclick="idDupCheck()">ID 중복확인</button><br>
 			<span id="iMessage" class="eMessage" ></span></td></tr>
 			
-	<tr height="40"><td bgcolor="LightBlue">Password</td>
+	<tr><td	>Password</td>
 		<td><input type="password" name="password" id="password" size="20"
 								placeholder="특수문자 반드시 포함" value="12345!"><br>
  			<span id="pMessage" class="eMessage" ></span>
 		</td></tr>
-	<tr height=40>
-		<td bgcolor="AliceBlue"><label for=password>PW  확인</label></td>
+	<tr>
+		<td ><label for=password>PW  확인</label></td><br>
 		<td><input type="password"  id=password2 size="20"><br>
  			<span id="ppMessage" class="eMessage" ></span></td>
 	</tr>	
-	<tr height="40"><td bgcolor="LightBlue">Name</td>
-		<td><input type="text" name="name" id="name"><br>
+	<tr><td >Name</td>
+		<td><input type="text" name="name" id="name" ><br>
  			<span id="nMessage" class="eMessage" ></span></td></tr>
  			
-	<tr height="40"><td bgcolor="LightBlue">Birthday</td>
+	<tr><td >Birthday</td>
 		<td><input type="date" name="birthday" id="birthday"><br>
  			<span id="bMessage" class="eMessage" ></span></td></tr>
  			
-	<tr height="40"><td bgcolor="LightBlue">Gender</td>
+	<tr><td >Gender</td>
 		<td><select name="gender" id="gender">
 				<option value="여성">여성</option>
 				<option value="남성" selected>남성</option>
 			</select>
 		</td></tr>
  						
-	<tr height="40"><td bgcolor="LightBlue">핸드폰번호</td>
+	<tr><td>핸드폰번호</td>
 		<td><input type="text" name="phonenum" id="phonenum"
-			placeholder="01012345678 형식"><br>
+			placeholder="01012345678 형식 입력"><br>
  			<span id="phMessage" class="eMessage" ></span></td></tr>
 		
-	<tr height="40"><td bgcolor="LightBlue">Image</td>
+	<tr><td >Image</td>
 		<td><img src="" class="select_img" ><br>
-			<input type="file" name="uploadfilef" id="uploadfilef"  ></td></tr>
+			<input type="file" name="uploadfilef" id="uploadfilef" style="border: 0;" ></td></tr>
 			<script>
 				// 해당 파일의 서버상의 경로를 src로 지정하는것으로는 클라이언트 영역에서 이미지는 표시될수 없기 때문에
 				// 이를 해결하기 위해 FileReader이라는 Web API를 사용
@@ -225,21 +229,16 @@ function inCheck() {
 							} // if   
 						}); //change
 			</script>
-	<tr height="40"><td></td>
+	<tr><td></td>
 		<td><input type="submit" value="가입" id="submit" 
-					onclick="return inCheck()" disabled="disabled" >&nbsp;&nbsp;
+					onclick="return inCheck()" disabled="disabled" width="50" >&nbsp;&nbsp;
 			<input type="reset" value="취소">&nbsp;&nbsp;
-			<span id="axjoin" class="textlink">AxJoin</span>
 		</td>	
 	</tr>	
 </table>
 </form>
 <c:if test="${not empty message}">
-<hr>
 ${message}<br>
 </c:if>
-<hr>
-&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-&nbsp;&nbsp;<a href="home">[Home]</a>
 </body>
 </html>

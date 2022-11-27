@@ -12,7 +12,7 @@
 
 <h2>** Board Update Spring_MVC2 **</h2>
 <hr>
-<form action="hbupdate" method="Post">
+<form action="tipbupdate" method="Post">
 	<table>
 		<tr height="40"><td bgcolor="MistyRose">Seq</td>
 			<td><input type="text" name="seq" value="${apple.seq}" size="20" readonly></td></tr>
@@ -42,8 +42,8 @@
 ${message}<br>
 </c:if>
 <hr>
-	&nbsp;&nbsp;<a href="hbdelete?seq=${apple.seq}&root=${apple.root}">[글삭제]</a>
-&nbsp;&nbsp;<a href="hblist">boardList</a>
+	&nbsp;&nbsp;<a href="tipbdelete?seq=${apple.seq}&root=${apple.root}">[글삭제]</a>
+&nbsp;&nbsp;<a href="tipblist">boardList</a>
 &nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
 &nbsp;&nbsp;<a href="home">[Home]</a>
 </body>

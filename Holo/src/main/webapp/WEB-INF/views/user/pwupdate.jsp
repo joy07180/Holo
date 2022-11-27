@@ -42,7 +42,9 @@
          else return false;
    } //inCheck
    
- 
+   function change() {
+		   alert("비밀 번호가 수정되었습니다");
+	} //change
 </script>
 
 </head>
@@ -65,7 +67,7 @@
 		</tr>	
 								
 		<tr height="40"><td></td>
-			<td><input  type="submit" value="수정">&nbsp;&nbsp;
+			<td><input  type="submit" value="수정" onclick="return change()" >&nbsp;&nbsp;
 				<input type="reset" value="취소">
 			</td>	
 		</tr>	

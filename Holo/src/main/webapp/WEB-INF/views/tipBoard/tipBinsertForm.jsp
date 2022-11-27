@@ -30,33 +30,18 @@
             <nav class="headerM">
                 <div>
                     <ul class="category">
-                        <li>
-                            <a href="noticelist" class="liText">공지사항
-                            </a>
-                        </li>
-                        <li>
-                            <a href="hbcrilist" class="liText">팁/정보
-                            </a>
-                        </li>
-                        <li>
-                            <a href="f_bcrilist" class="liText">자유게시판
-                            </a>
-                        </li>
-                        <li>
-                            <a href="t_bcrilist" class="liText">거래/나눔
-                            </a>
-                        </li>
-                        <li>
-                            <a href="cbcrilist" class="liText">동아리/모임
-                            </a>
-                        </li>
-                    </ul>
+						<li><a href="noticelist" class="liText">공지사항 </a></li>
+						<li><a href="tipblist" class="liText">팁/정보 </a></li>
+						<li><a href="f_bcrilist" class="liText">자유게시판 </a></li>
+						<li><a href="t_bcrilist" class="liText">거래/나눔 </a></li>
+						<li><a href="cbcrilist" class="liText">동아리/모임 </a></li>
+					</ul>
                 </div>
             </nav>
 
         </header>
 <h2>** Board Insert Spring_MVC2 **</h2>
-<form action="hbinsert" method="Post" enctype="multipart/form-data">
+<form action="tipbinsert" method="Post" enctype="multipart/form-data">
 <table>
 <tr height="40"><td>I D</td>
 		<td><input type="text" name="id" value="${loginID}" size="20" style="float: left;" readonly ></td></tr>
@@ -104,7 +89,6 @@
 
 </div>
 <hr>
-&nbsp;&nbsp;<a href="hblist">boardList</a>
 &nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
 &nbsp;&nbsp;<a href="home">[Home]</a>
 </body>

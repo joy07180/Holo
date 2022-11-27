@@ -62,12 +62,10 @@
 				<div>
 					<ul class="category">
 						<li><a href="noticelist" class="liText">공지사항 </a></li>
-						<li><a href="hbcrilist" class="liText">팁/정보 </a></li>
+						<li><a href="tipblist" class="liText">팁/정보 </a></li>
 						<li><a href="f_bcrilist" class="liText">자유게시판 </a></li>
 						<li><a href="t_bcrilist" class="liText">거래/나눔 </a></li>
 						<li><a href="cbcrilist" class="liText">동아리/모임 </a></li>
-						<li><a href="" class="liText">Q&A </a></li>
-
 					</ul>
 				</div>
 			</nav>
@@ -91,19 +89,9 @@
 					<c:forEach var="nboard" items="${nservice}">
 						<tr height="30" bgcolor="lightGray">
 							<td width="40%"><a href="searchdetail?seq=${nboard.seq}">${nboard.title}</a></td>
-							<td class="ct" width="20%"><img height="25" width="25" src="${board.image}">${nboard.id}</td>
+							<td class="ct" width="20%"><img height="25" width="25" src="${nboard.image}">${nboard.id}</td>
 							<td class="ct" width="10%">${nboard.regdate}</td>
 							<td class="ct" width="10%">${nboard.cnt}</td>
-						</tr>
-					</c:forEach>
-				</c:if>
-				<c:if test="${not empty hservice}">
-					<c:forEach var="hboard" items="${hservice}">
-						<tr height="30" bgcolor="lightGray">
-							<td width="40%"><a href="hbdetail?seq=${hboard.seq}">${hboard.title}</a></td>
-							<td class="ct" width="20%"><img height="25" width="25" src="${board.image}">${hboard.id}</td>
-							<td class="ct" width="10%">${hboard.regdate}</td>
-							<td class="ct" width="10%">${hboard.cnt}</td>
 						</tr>
 					</c:forEach>
 				</c:if>

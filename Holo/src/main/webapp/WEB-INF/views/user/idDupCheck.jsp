@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>** ID 중복 확인 **</title>
-<link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script src="resources/myLib/inCheck.js"></script>
 <script>
@@ -23,21 +22,6 @@ function idOK() {
 	//=> <script> 에서 EL은 문자열Type 내부에서 사용 가능함.
 	opener.$('#id').val('${newId}');
 	
-	// 2)
-	// ** Js
-	// 1번방식
-	//openr.document.getElementById('submit').disabled='';
-	//openr.document.getElementById('idDup').disabled='disabled';
-	
-	  
-	// ** JQ 방식
-	// => attr , prop 비교
-	// => attr()는 HTML의 속성(Attribute), 기능, 입력된 값을 취급 
-	// => prop()는 JavaScript DOM 객체의 프로퍼티(Property), 실제값, property가 가지는 본연의 값
-	// 2번방식
-	//openr.$('#submit').attr('disabled', false);
-	//openr.$('#idDup').attr('disabled', 'disabled');
-	// 3번방식
 	opener.$('#submit').prop('disabled', false);
 	opener.$('#idDup').prop('disabled', true);
 	
@@ -58,7 +42,6 @@ function idOK() {
 </script>
 <style>
 body {
-      background-color: LightYellow;
       font-family: 맑은고딕;
    }
    #wrap {
@@ -70,22 +53,22 @@ body {
 </head>
 <body>
 <div id="Wrap">
-	<h3>** ID 중복 확인 **</h3>
+	<h3>ID 중복 확인</h3>
 	<form action="idDupCheck" method="get">
-		User_ID :
+		ID :
 		<input type="text" name="id" id="id">&nbsp;
 		<input type="submit" value="ID 중복확인" onclick="return idCheck()"><br>
 		<!-- inCheck.js 의  idCheck() 의 결과에 따라 submit 결정-->
 		<span id="iMessage" class="eMessage" ></span>
 	</form>
-	<br><br><hr><br>
+	<br><br>
 	<!-- ** 서버의 확인 결과에 따른 처리 영역 
 		=>  isUse : 'T' 가능  / 'F' 불가능  
 	-->
 	<div id="msgBlock">
 		<c:if test="${isUse=='T'}">
-			${newId} 는 사용 가능 합니다 ~~&nbsp;&nbsp; 
-			<input type="button" value="id_OK" onclick="idOK()" >
+			${newId} 는 사용 가능한 ID 입니다 &nbsp;&nbsp; 
+			<input type="button" value="아이디 사용" onclick="idOK()" >
 			<!-- 사용자가 입력한 id 를 사용가능하도록 해주고, 현재(this)창은 close -->
 		</c:if>
 		<c:if test="${isUse=='F'}">

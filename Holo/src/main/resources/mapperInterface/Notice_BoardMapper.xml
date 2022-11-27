@@ -85,19 +85,19 @@
 		from notice_board n join user u
 		where n.id = u.id AND ( seq > 0 and title like  CONCAT('%', #{keyword2}, '%')    )
 		UNION ALL
-		select seq, n.id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt, u.uploadfile image
+		select seq, t.id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt, u.uploadfile image
 		from tip_board t join user u
 		where t.id = u.id AND ( seq > 0 and title like  CONCAT('%', #{keyword2}, '%')    )
 		UNION ALL
-		select seq, n.id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt, u.uploadfile image
+		select seq, c.id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt, u.uploadfile image
 		from club_board c join user u
 		where c.id = u.id AND ( seq > 0 and title like  CONCAT('%', #{keyword2}, '%')    )
 		UNION ALL
-		select seq, n.id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt, u.uploadfile image
+		select seq, f.id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt, u.uploadfile image
 		from free_board f join user u
 		where f.id = u.id AND ( seq > 0 and title like  CONCAT('%', #{keyword2}, '%')    )
 		UNION ALL
-		select seq, n.id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt, u.uploadfile image
+		select seq, tr.id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt, u.uploadfile image
 		from trade_board tr join user u
 		where tr.id = u.id AND ( seq > 0 and title like  CONCAT('%', #{keyword2}, '%')    )
 		order by regdate desc
