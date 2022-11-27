@@ -85,11 +85,9 @@
                     </ul>
                 </div>
             </nav>
-
         </header>
         <br>
-        <h2>공지사항</h2>
-        <br>
+        <h2>▶ 공지사항 ◀</h2>
         <br>
         
         <table width=100%>

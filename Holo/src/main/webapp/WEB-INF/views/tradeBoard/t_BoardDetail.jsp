@@ -60,14 +60,14 @@
 		
 	<c:if test="${not empty apple}">
 	    <table class="board_dTop">
-	        <tr height="40"><td class="board_dTitle">${apple.title}</td></tr>
-	        <tr height="40" class="board_dList">
+	        <tr class="board_dTitle"><td>${apple.title}</td></tr>
+	        <tr class="board_dList">
 	            <td>글번호 : ${apple.seq}&nbsp;&nbsp;</td>
 	            <td>| 작성자 : ${apple.id}&nbsp;&nbsp;</td>
 	            <td>| 조회수 : ${apple.cnt}&nbsp;&nbsp;</td>
 	            <td>| ${apple.regdate}</td>
 	        </tr>
-	        <tr height="40" width="100" class="board_dTrade">
+	        <tr class="board_dBottom">
 	        <td>
 	        	<c:if test="${apple.trade=='sell'}">판매</c:if>
 	        	<c:if test="${apple.trade=='buy'}">구매</c:if>

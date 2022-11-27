@@ -92,8 +92,7 @@
 
         </header>
         <br>
-        <h2>거래/나눔 게시판</h2>
-        <br>
+        <h2>▶ 거래/나눔 게시판 ◀</h2>
         <br>
 		
 		<table width=100% id="board_container">
