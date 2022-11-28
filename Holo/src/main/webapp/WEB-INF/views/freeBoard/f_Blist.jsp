@@ -86,7 +86,7 @@
         </div>
         <br>
 
-		<table width=100% id="board_container">
+		<table id="board_container">
             <thead class="boardList_head">
                 <tr>
                     <th class="headS">번호</th>
@@ -157,6 +157,8 @@
 	
 	</div>
 	<br>
+	<br>
+	<br>
 	<div id="searchBar">
 		<select name="searchType" id="searchType">
 			<!-- <option value="n" selected> 을 조건 (cri.searchType 의 값) 에 따라 작성하기 위한 삼항식 
@@ -180,7 +182,7 @@
         &nbsp;&nbsp;<a href="f_binsertf">새글등록</a>
         </c:if>
         <c:if test="${empty loginID}">
-		&nbsp;&nbsp;<a href="#"><p onclick="alert('로그인후 이용해주세요')">새글등록</p></a>       
+		&nbsp;&nbsp;<p onclick="alert('로그인후 이용해주세요')">새글등록</p>      
         </c:if>
     </div>
 	

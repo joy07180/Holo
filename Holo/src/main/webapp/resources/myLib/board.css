@@ -19,14 +19,6 @@ footer {
     margin: auto;
 }
 
-a {
-    text-decoration: none;
-}
-
-li {
-    list-style-type: none;
-}
-
 .contents {
     background-color: white;
     width: 900px;
@@ -197,6 +189,10 @@ tr {
     
 }
 
+#board_container{
+	width: 100%;
+}
+
 .ct{
 	text-align: center;
 }
@@ -273,6 +269,7 @@ tr {
 
 .boardList_body {
 	height: 30px;
+	text-decoration: none;
 }
 
 .bodyS {
@@ -308,10 +305,21 @@ tr {
 	position: absolute;
 	bottom: 5px;
 	left: 20px;
-	line-height: 30px;
-	width: 90px;
 	background-color: #dee2e6;
 	border-radius: 4px;
+	width: 90px;
+	line-height: 30px;
+	text-decoration: none;
+}
+
+.new_Write p {
+	cursor: pointer;
+}
+
+.new_Write a,
+.new_Write p {
+	position: relative;
+	display: inline;
 }
 
 /* ======================================================================= */

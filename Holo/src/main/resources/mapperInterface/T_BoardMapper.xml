@@ -70,7 +70,7 @@
 	</sql>
 
 	<select id="searchList" resultType="vo.T_BoardVO">
-		select seq, title, t.id, regdate, cnt, root, step, indent ,trade, u.uploadfile image
+		select seq, title, t.id, substr(regdate,1,10) regdate, cnt, root, step, indent ,trade, u.uploadfile image
 		from trade_board t join user u
 		where t.id = u.id AND ( seq>0
 		<include refid="search"></include>
