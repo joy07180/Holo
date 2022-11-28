@@ -368,31 +368,20 @@
 	</form>	 
  </div>
 
+        <div>
+		<!-- 아이디 로그인할때만 가능하게 -->
+        <c:if test="${not empty loginID}">
         &nbsp;&nbsp;<a href="cbinsertf">새글등록</a>
-        &nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-        &nbsp;&nbsp;<a href="home">[Home]</a>
+        </c:if>
+        <c:if test="${empty loginID}">
+		&nbsp;&nbsp;<a href="#"><p onclick="alert('로그인후 이용해주세요')">새글등록</p></a>       
+        </c:if>
+    </div>
 </div>
     <br>
     <br>
 
-    <footer>
-        <div class="bottom">
-            <ul class="btMenu">
-                <li><a href="">A</a></li>
-                <li><a href="">B</a></li>
-                <li><a href="">C</a></li>
-                <li><a href="">D</a></li>
-                <li><a href="">E</a></li>
-                <li><a href="">F</a></li>
-            </ul>
-            <span>
-                <div>Copyright (c) Holo.net All rights reserved.</div>
-                <div>Contact us, holo at gmail dot com</div>
-                <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
-            </span>
-        </div>
-        <br>
-    </footer>
+ <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 
 
