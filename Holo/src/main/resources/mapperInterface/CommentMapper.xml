@@ -24,7 +24,7 @@
 	
 	<delete id="commentDelete">
 		DELETE FROM comment
-		WHERE com_writer = #{com_writer} AND com_content = #{com_content}
+		WHERE com_writer = #{com_writer} AND com_no = #{com_no}
 	</delete>
 	
 	<select id="getComList" resultType="vo.CommentVO">
