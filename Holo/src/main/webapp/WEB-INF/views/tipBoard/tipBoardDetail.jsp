@@ -30,8 +30,8 @@ $(document).on("click", "#Comment_regist", function() {
 			return;
 		}else if(com_content == '') {
 			alert('내용을 입력하세요');
-		} 
-		
+		} else{
+		// ㅇ
 		$.ajax({
 			type:'post',
 			url:'<c:url value="/Comment/InsertComment"/>',
@@ -61,11 +61,12 @@ $(document).on("click", "#Comment_regist", function() {
 			error:function(){
 				alert('통신실패');
 			}
-		});// 댓글 비동기 끝
-		
+		});
+		location.href = location.href;
+		}// 댓글 비동기 끝
 });// 댓글등록 이벤트 끝
 
-getList(0);
+getList(Math.ceil(${total}/20)*10);
 
 
 function getList(n) {
