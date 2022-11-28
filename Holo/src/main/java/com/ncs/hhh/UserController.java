@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import criTest.PageMaker;
 import criTest.SearchCriteria;
+import service.Notice_BoardService;
 import service.UserService;
 import vo.UserVO;
 
@@ -31,7 +32,9 @@ public class UserController {
 
 	@Autowired
 	UserService service;
-
+	@Autowired
+	Notice_BoardService nservice;
+	
 	PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 
@@ -46,7 +49,7 @@ public class UserController {
 		// => List 처리
 		mv.addObject("banana", service.searchList(cri)); // ver01
 
-		// 3) View 처리 => PageMake
+		// 3) View 처리 => PageMaker
 		pageMaker.setCri(cri);
 		pageMaker.setTotalRowsCount(service.searchCount(cri)); // ver01 : 전체 row 갯수
 		mv.addObject("pageMaker", pageMaker);
@@ -334,7 +337,8 @@ public class UserController {
 
 	// ** MemberDetail
 	@RequestMapping(value = "/userdetail")
-	public ModelAndView userdetail(HttpServletRequest request, HttpServletResponse response, UserVO vo , ModelAndView mv) {
+	public ModelAndView userdetail(HttpServletRequest request, HttpServletResponse response, UserVO vo , 
+			ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
 		// => Mapping 메서드 : 매개변수로 지정된 객체에 request_ParameterName 과 일치하는 컬럼(setter)존재하면 자동으로 set 
 		//MemberVO vo = new MemberVO();
 		//vo.setId(request.getParameter("id")); 매개변수에 추가하면 자동으로 생겨서 필요 없어짐
@@ -356,30 +360,39 @@ public class UserController {
 				return mv;
 			}
 		} //getParameter_else
-
+		
+		cri.setSnoEno();
+		
 		String uri = "/user/userDetail";
 
 		// 2. Service 처리
 		// => Service 에서 selectOne
 		vo=service.selectOne(vo);
+		
 		if (vo != null) {
-
 			// ** Update 요청이면 uqdateForm.jsp 로
 			// => passwordEncoder 사용 후 에는
 			//	  session에 보관해 놓은 raw_password 를 수정할수 있도록 vo에 set 해줌
 			if("U".equals(request.getParameter("jCode")) ) {
 				uri = "/user/updateForm";
-				vo.setPassword((String)session.getAttribute("loginPW")); 
+				vo.setPassword((String)session.getAttribute("loginPW"));
+				mv.addObject("nservice", nservice.userDetailList(cri));
+
+				pageMaker.setCri(cri);
+				pageMaker.setTotalRowsCount(nservice.userDetailListCount(cri));     // ver02: 조건과 일치하는 Rows 갯수 
+				mv.addObject("pageMaker", pageMaker);
 			}else if("Y".equals(request.getParameter("jCode"))) {
 				uri = "/user/pwupdate";
 				vo.setPassword((String)session.getAttribute("loginPW")); 
 			}
 			mv.addObject("apple", vo);
-		}else {
-			mv.addObject("message","~~ "+request.getParameter("id")+"님의 자료는 존재하지 않습니다 ~~"); 
 		}	
+		
+		System.out.println(cri);
+		
 		mv.setViewName(uri);
 		return mv;
+
 	} //mdetail
 
 

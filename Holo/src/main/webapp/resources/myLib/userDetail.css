@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    display: inline-block;
+    width: 250px;
+    height: 130px;
+    background: url("../uploadImage/Holo_logo.png") center/cover;
+    text-indent: -9999px;
+}
+
+a{
+	text-decoration: none;
+	font-weight:bold;
+	color: Gray;
+}

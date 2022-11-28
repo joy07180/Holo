@@ -196,8 +196,6 @@ console.log("반내림 => "+Math.floor(${total}/10));
 &nbsp;&nbsp;<a href="tiprinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">[답글]</a><br>
 &nbsp;&nbsp;<a href="tipbdetail?jCode=U&seq=${apple.seq}">[글수정]</a>
 &nbsp;&nbsp;<a href="tipbdelete?seq=${apple.seq}&root=${apple.root}">[글삭제]</a>
-&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-&nbsp;&nbsp;<a href="home">[Home]</a>
 
 </div>
 

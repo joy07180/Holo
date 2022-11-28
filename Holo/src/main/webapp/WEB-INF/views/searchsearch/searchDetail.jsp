@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
-<title>** 공지사항</title>
+<title>검색 결과</title>
 </head>
 <body>
 	<div class="contents">
@@ -41,31 +41,23 @@
 		</header>
 		<h2>Search Detail</h2>
 		<hr>
-		<table>
-			<tr height="40">
-				<td bgcolor="Khaki">Seq</td>
-				<td>${apple.seq}</td>
-			</tr>
-			<tr height="40">
-				<td bgcolor="Khaki">I D</td>
-				<td>${apple.id}</td>
-			</tr>
-			<tr height="40">
-				<td bgcolor="Khaki">Title</td>
-				<td>${apple.title}</td>
-			</tr>
-			<tr height="40">
-				<td bgcolor="Khaki">Content</td>
-				<td><img height="300" width="300" src="${apple.uploadfile}"><br>${apple.content}</td>
-			</tr>
-			<tr height="40">
-				<td bgcolor="Khaki">조회수</td>
-				<td>${apple.cnt}</td>
-			</tr>
-		</table>
-		<hr>
-		&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a> 
-		&nbsp;&nbsp;<a href="home">[Home]</a>
+		<table class="board_dTop">
+	        <tr class="board_dTitle"><td>${apple.title}</td></tr>
+	        <tr class="board_dList">
+	        	<td>글번호 : ${apple.seq}&nbsp;&nbsp;</td>
+	            <td>| 작성자 : ${apple.id}&nbsp;&nbsp;</td>
+	            <td>| 조회수 : ${apple.cnt}&nbsp;&nbsp;</td>
+	            <td>| ${apple.regdate}</td>
+	        </tr>
+        <tr class="board_dBottom">
+            <c:if test="${empty apple.uploadfile}">
+            	<td>${apple.content}</td>
+            </c:if>
+            <c:if test="${not empty apple.uploadfile}">
+            	<td><img height="300" width="300" src="${apple.uploadfile}"><br>${apple.content}</td>
+            </c:if>
+	    </tr>
+	</table>
 
 	</div>
 </body>

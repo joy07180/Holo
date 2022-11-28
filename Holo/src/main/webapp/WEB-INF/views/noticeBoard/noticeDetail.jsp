@@ -64,8 +64,6 @@
 &nbsp;&nbsp;<a href="noticedetail?jCode=U&seq=${apple.seq}">[글수정]</a>
 &nbsp;&nbsp;<a href="noticedelete?seq=${apple.seq}">[글삭제]</a>
 </c:if>
-&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-&nbsp;&nbsp;<a href="home">[Home]</a>
 
 </div>
 </body>

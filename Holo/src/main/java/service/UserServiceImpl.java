@@ -64,4 +64,5 @@ public class UserServiceImpl implements UserService {
 	public int delete(UserVO vo) {
 		return mapper.delete(vo);
 	}
+	
 }

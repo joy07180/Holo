@@ -35,7 +35,7 @@
 	-->
 	
 	<logger name="com.ncs.hhh">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -56,7 +56,7 @@
 	</logger>
 
 	<!-- Root Logger 
-	=> info, warn, error -> INFO, WARN, ERROR
+	=> info, warn, error -> INFO, WARN	, ERROR
     => debug -> 위에 DEBUG 추가
     => trace -> 위에 TRACE 추가
     => 실제는 DEBUG, WARN 이 주로 이용됨. 	
@@ -66,7 +66,7 @@
 		sql문 오류 찾을거면 WARN을 debug로 바꾸기
 	-->
 	<root>
-		<priority value="WARN" />
+		<priority value="debug" />
 		<appender-ref ref="console" />
 	</root>
 	

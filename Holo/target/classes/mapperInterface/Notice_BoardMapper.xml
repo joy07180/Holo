@@ -107,6 +107,17 @@
 	<select id="nsearchCount" resultType="int">
 		select count(*) from notice_board
 		where ( seq>0 and title like CONCAT('%', #{keyword2}, '%') )
-		
 	</select>
+
+	<select id="userDetailList" resultType="vo.UserVO">
+		select n.id ,n.title, n.cnt, u.uploadfile image from notice_board n join
+		user u where u.id = #{id}
+	</select>
+
+	<select id="userDetailListCount" resultType="int">
+		select count(*) from notice_board n join user u
+		where ( seq>0 and u.id = #{id} )
+	</select>
+	
+	
 </mapper>  

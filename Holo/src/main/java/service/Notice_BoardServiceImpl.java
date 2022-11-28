@@ -74,5 +74,15 @@ public class Notice_BoardServiceImpl implements Notice_BoardService {
 		return mapper.nsearchCount(cri);
 	}	
 	
+	// userDetailList 
+	@Override
+	public List<Notice_BoardVO> userDetailList(SearchCriteria cri) {
+		return mapper.userDetailList(cri);
+	}
+	@Override
+	public int userDetailListCount(SearchCriteria cri) {
+		return mapper.userDetailListCount(cri);
+	}	
+
 
 }

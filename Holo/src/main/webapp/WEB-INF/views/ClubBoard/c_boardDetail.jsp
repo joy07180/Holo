@@ -227,9 +227,8 @@ function getList() {
 &nbsp;&nbsp;<a href="crinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">[답글]</a><br>
 &nbsp;&nbsp;<a href="cbdetail?jCode=U&seq=${apple.seq}">[글수정]</a>
 &nbsp;&nbsp;<a href="cbdelete?seq=${apple.seq}&root=${apple.root}">[글삭제]</a>
-&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-&nbsp;&nbsp;<a href="home">[Home]</a>
 
+</div>
 </div>
 </body>
 </html>
