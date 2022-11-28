@@ -89,10 +89,24 @@ footer {
     background-color: black;
 }
 
-h2 {
-	line-height: 2em;
+.Header_box {
 	width: 100%;
 	border: 1px solid #D0D1D2 ;	
+}
+
+.Header_text1,
+.Header_text2 {
+	font-size: 0.8em;
+	color: #868e96;
+}
+
+.Header_text2 a {
+	color: blue;
+	text-decoration: none;
+}
+
+h2 {
+	line-height: 2em;
 }
 
 /* ============================================================== */
@@ -286,9 +300,18 @@ tr {
 
 #searchBar {
 	position: absolute;
-	bottom: 0;
-	right: 0;
-	
+	bottom: 5px;
+	right: 5px;
+}
+
+.new_Write {
+	position: absolute;
+	bottom: 5px;
+	left: 20px;
+	line-height: 30px;
+	width: 90px;
+	background-color: #dee2e6;
+	border-radius: 4px;
 }
 
 /* ======================================================================= */

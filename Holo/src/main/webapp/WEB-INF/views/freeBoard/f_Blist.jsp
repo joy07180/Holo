@@ -78,7 +78,12 @@
 
         </header>
         <br>
+        <div class="Header_box">
         <h2>▶ 자유 게시판 ◀</h2>
+        <p class="Header_text1">&nbsp;이곳은 자유게시판 입니다. 아래의 주제 외에 자유롭게 글을 작성해주세요.</p>
+        <p class="Header_text2">&nbsp;팁 관련 주제는 <a href="tipblist">팁/정보</a>게시판, 물건 판매 및 거래는 <a href="t_bcrilist">거래/나눔</a>게시판, 동아리 및 모임 주제는 <a href="cbcrilist">동아리/모임</a>게시판에 남겨주세요.</p>
+        <br>
+        </div>
         <br>
 
 		<table width=100% id="board_container">
@@ -169,7 +174,7 @@
 	</div>
 	
 	        
-   	<div>
+   	<div class="new_Write">
 		<!-- 아이디 로그인할때만 가능하게 -->
         <c:if test="${not empty loginID}">
         &nbsp;&nbsp;<a href="f_binsertf">새글등록</a>
