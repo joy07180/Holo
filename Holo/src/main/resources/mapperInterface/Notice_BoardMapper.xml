@@ -27,7 +27,7 @@
 	<select id="searchList" resultType="vo.Notice_BoardVO">
 	
 		select seq, n.id, title, content, 
-		DATE_FORMAT(regdate, '%Y-%m-%d %H:%i') regdate, cnt, fix, u.uploadfile image
+		substr(regdate,1,10) regdate, cnt, fix, u.uploadfile image
 		from notice_board n join user u
 		where n.id = u.id AND ( seq>0
 		<include refid="search"></include>

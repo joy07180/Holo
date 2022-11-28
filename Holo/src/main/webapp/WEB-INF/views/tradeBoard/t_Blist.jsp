@@ -79,7 +79,7 @@
         <br>
         <div class="Header_box">
         <h2>▶ 거래 게시판 ◀</h2>
-        <p class="Header_text1">&nbsp;이곳은 거래게시판 입니다. 물건 거래, 나눔 글을  작성해주세요.</p>
+        <p class="Header_text1">&nbsp;이곳은 거래/나눔 게시판 입니다. 물건 거래, 나눔 글을 작성해주세요.</p>
         <p class="Header_text2">&nbsp;팁 관련 주제는 <a href="tipblist">팁/정보</a>게시판, 자유주제는 <a href="f_bcrilist">자유</a>게시판, 동아리 및 모임 주제는 <a href="cbcrilist">동아리/모임</a>게시판에 남겨주세요.</p>
         <br>
         </div>
@@ -88,7 +88,7 @@
 		<table  id="board_container">
             <thead class="boardList_head">
                 <tr>
-                    <th class="headS">글 번호</th>
+                    <th class="headS">번호</th>
                     <th class="headT">제 목</th>
                     <th class="headI">글쓴이</th>
                     <th class="headR">날 짜</th>
@@ -201,7 +201,6 @@
 		</select>
 		<input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">	
 		<button id="searchBtn" onclick="this.submit();">Search</button>
-		&nbsp;&nbsp;
 		</form>	
 	</div>
 	
@@ -214,7 +213,6 @@
 		&nbsp;&nbsp;<p onclick="alert('로그인후 이용해주세요')">새글등록</p>      
         </c:if>
     </div>
-
 </div>
 <br>
 <br>

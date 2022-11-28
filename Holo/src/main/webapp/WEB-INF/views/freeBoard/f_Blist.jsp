@@ -100,10 +100,10 @@
 				<c:if test="${not empty banana}">
 					<c:forEach  var="free_board" items="${banana}" >
 					<tr>
-					<td class="bodyS">${free_board.seq}</td>
+						<td class="bodyS">${free_board.seq}</td>
 				
-					<td id="title_hidden" class="bodyT" >
-					<!-- 답글 등록후 indent 에 따른 들여쓰기 
+						<td id="title_hidden" class="bodyT" >
+						<!-- 답글 등록후 indent 에 따른 들여쓰기 
 							=> 답글인 경우에만 적용  -->
 						<c:if test="${free_board.indent > 0}">
 							<c:forEach begin="1" end="${free_board.indent}">
@@ -172,7 +172,6 @@
 		</select>
 		<input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">	
 		<button id="searchBtn">Search</button>
-	&nbsp;&nbsp;
 	</div>
 	
 	        

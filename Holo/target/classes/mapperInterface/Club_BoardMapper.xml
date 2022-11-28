@@ -81,7 +81,7 @@
 </sql>
 
 <select id="searchList" resultType="vo.Club_BoardVO">
-	select seq, c.id, title, regdate, cnt, root, step, indent, place, u.uploadfile image
+	select seq, c.id, title, substr(regdate,1,10) regdate, cnt, root, step, indent, place, u.uploadfile image
 	from club_board c join user u
 	where c.id = u.id AND ( seq>0 <include refid="search"></include>  
 	order by root desc, step asc

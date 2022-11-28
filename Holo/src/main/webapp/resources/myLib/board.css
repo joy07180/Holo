@@ -193,10 +193,6 @@ tr {
 	width: 100%;
 }
 
-.ct{
-	text-align: center;
-}
-
 .board_dTop {
 	width: 100%;
 	border: 1px solid rgb(103, 97, 97,.1);
@@ -241,12 +237,16 @@ tr {
 
 .headS {
 	width:10%;
-	text-align: left;
-	padding:0 1em;
+	text-align: center;
+}
+
+.headG {
+	width:10%;
+	text-align: center;
 }
 
 .headT {
-	width:40%;
+	width:65%;
 }
 
 .headI {
@@ -274,11 +274,11 @@ tr {
 
 .bodyS {
 	width:10%;
-	padding:0 1em;
+	text-align: center;
 }
 
 .bodyT {
-	width:40%;
+	width:65%;
 }
 
 .bodyI {
@@ -353,4 +353,5 @@ tr {
     line-height: 19px;
     text-align: center;
     
+    width:10%;
 }
