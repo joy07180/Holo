@@ -199,8 +199,15 @@ tr {
 }
 
 .board_dTitle {
-	font-size: 40px;
-	line-height: 60px;
+	font-size: 20px;
+	height: 60px;
+	display: inline;
+}
+
+.board_dSB {
+	font-size: 15px;
+	color: red;
+	vertical-align: bottom; 
 }
 
 .board_dList {
@@ -209,8 +216,7 @@ tr {
 	font-size: 1em;
 	color: grey;
 	text-align: left;
-	display: inline;
-    margin : 20px, 0;
+	display: block;
     border-bottom: 1px solid #d1d2d3;
 }
 
