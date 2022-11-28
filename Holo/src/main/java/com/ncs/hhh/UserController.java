@@ -46,7 +46,7 @@ public class UserController {
 		// => List 처리
 		mv.addObject("banana", service.searchList(cri)); // ver01
 
-		// 3) View 처리 => PageMaker
+		// 3) View 처리 => PageMake
 		pageMaker.setCri(cri);
 		pageMaker.setTotalRowsCount(service.searchCount(cri)); // ver01 : 전체 row 갯수
 		mv.addObject("pageMaker", pageMaker);
