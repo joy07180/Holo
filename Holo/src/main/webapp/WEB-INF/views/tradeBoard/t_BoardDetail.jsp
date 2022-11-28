@@ -68,7 +68,7 @@
 	            	<td>${apple.content}</td>
 	            </c:if>
 	            <c:if test="${not empty apple.uploadfile}">
-	            	<td><img width="100%" src="${apple.uploadfile}"><br>${apple.content}</td>
+	            	<td><img width="100%" src="${apple.uploadfile}"><br><br>${apple.content}<br><br></td>
 	            </c:if>
 	        </tr>
 	    </table>
