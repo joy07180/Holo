@@ -46,7 +46,7 @@ footer {
     display: inline-block;
     width: 200px;
     height: 130px;
-    background: url("/image/logo.png") center/cover;
+    background: url("../uploadImage/logo.png") center/cover;
     text-indent: -9999px;
 }
 

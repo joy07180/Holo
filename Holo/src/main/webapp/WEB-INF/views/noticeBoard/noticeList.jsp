@@ -5,9 +5,10 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Notice_Board PageList </title>
-        <link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
-        <script src="resources/myLib/jquery-3.2.1.min.js"></script>
+        <title>공지 게시판</title>
+       	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
+		<link rel="stylesheet" type="text/css" href="resources/myLib/title_hidden.css">
+		<script src="resources/myLib/jquery-3.2.1.min.js"></script>
         <script>
           
 
@@ -72,39 +73,44 @@
             </nav>
         </header>
         <br>
+        <div class="Header_box">
         <h2>▶ 공지사항 ◀</h2>
+        <p class="Header_text1">&nbsp;이곳은 공지사항 게시판 입니다.</p>
+        <p class="Header_text2">&nbsp;관리자 외에 글을 쓸 수 없으며, 글 읽기만 가능합니다.</p>
+        <br>
+        </div>
         <br>
         
-        <table width=100%>
-            <thead>
-                <tr height="30">
-                    <th width="10%">글 번호</th>
-                    <th width="40%">제 목</th>
-                    <th width="10%">글쓴이</th>
-                    <th width="20%">날 짜</th>
-					<th width="10%">조회수</th>
+        <table  id="board_container">
+            <thead class="boardList_head">
+                <tr>
+                    <th class="headS">번호</th>
+                    <th class="headT">제 목</th>
+                    <th class="headI">글쓴이</th>
+                    <th class="headR">날 짜</th>
+					<th class="headC">조회수</th>
 				</tr>
             </thead>
-            <tbody>
+            <tbody class="boardList_body">
 				<c:if test="${not empty banana}">
 					<c:forEach var="board" items="${banana}">
 						<c:if test="${board.fix ==1 }">
-							<tr height="30" bgcolor="lightGray">
-								<td width="10%" class="notice">공지</td>
-								<td width="40%"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
-								<td class="ct" width="20%"><img height="25" width="25" src="${board.image}">&nbsp;${board.id}</td>
-								<td class="ct" width="10%">${board.regdate}</td>
-								<td class="ct" width="10%">${board.cnt}</td>
+							<tr bgcolor="lightBlue">
+								<td class="notice">공지</td>
+								<td class="bodyT" id="title_hidden"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
+								<td class="bodyI"><img height="25" width="25" src="${board.image}">&nbsp;${board.id}</td>
+								<td class="bodyR">${board.regdate}</td>
+								<td class="bodyC">${board.cnt}</td>
 							</tr>
 
 						</c:if>
 						<c:if test="${board.fix !=1 }">
-							<tr height="30">
-								<td width="10%">${board.seq}</td>
-								<td width="40%"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
-								<td class="ct" width="20%"><img height="25" width="25" src="${board.image}">&nbsp;${board.id}</td>
-								<td class="ct" width="10%">${board.regdate}</td>
-								<td class="ct" width="10%">${board.cnt}</td>
+							<tr>
+								<td class="bodyS">${board.seq}</td>
+								<td class="bodyT" id="title_hidden"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
+								<td class="bodyI"><img height="25" width="25" src="${board.image}">&nbsp;${board.id}</td>
+								<td class="bodyR">${board.regdate}</td>
+								<td class="bodyC">${board.cnt}</td>
 							</tr>
 						</c:if>
 
@@ -112,8 +118,6 @@
 				</c:if>
 			</tbody>
         </table>
-        
-        
         
         <!-- Cri_Page -->
         <div align="center">
@@ -144,6 +148,10 @@
             </c:choose>
 
         </div>
+       	<br>
+		<br>
+		<br>
+		
             <div id="searchBar">
 	            <select name="searchType" id="searchType">
 	                <option value="t" ${pageMaker.cri.searchType=='t' ? 'selected' : '' }>제목</option>
@@ -154,12 +162,15 @@
 	            <input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">
 	            <button id="searchBtn">Search</button>
         		</div>
-
-		<c:if test="${loginID=='admin'}">
-        &nbsp;&nbsp;<a href="noticeinsertf">새글등록</a>
-		</c:if>  
-        &nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-        &nbsp;&nbsp;<a href="home">[Home]</a>
+        		
+		<div class="new_Write">
+			<c:if test="${loginID=='admin'}">
+       			&nbsp;&nbsp;<a href="noticeinsertf">새글등록</a>
+			</c:if>  
+      	 	<c:if test="${loginID!='admin'}">
+       			&nbsp;&nbsp;<p onclick="alert('관리자만 사용 가능한 기능입니다.')">새글등록</p>
+			</c:if> 
+        </div>
     </div>
     <br>
     <br>

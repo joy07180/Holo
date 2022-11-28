@@ -41,7 +41,12 @@
             </nav>
         </header>
         <br>
-        <h2>자유게시판 글 내용</h2>
+        <div class="Header_box">
+        <h2>▶ 자유 게시판 ◀</h2>
+        <p class="Header_text1">&nbsp;이곳은 자유게시판 입니다. 아래의 주제 외에 자유롭게 글을 작성해주세요.</p>
+        <p class="Header_text2">&nbsp;팁 관련 주제는 <a href="tipblist">팁/정보</a>게시판, 물건 판매 및 거래는 <a href="t_bcrilist">거래/나눔</a>게시판, 동아리 및 모임 주제는 <a href="cbcrilist">동아리/모임</a>게시판에 남겨주세요.</p>
+        <br>
+        </div>
         <br>
         
 	<c:if test="${not empty apple}">

@@ -9,7 +9,5 @@ public class SearchCriteria extends Criteria {
 	private String keyword;
 	private String keyword2;
 	private String[] check;
-	private String id;
-
-
+	
 } //class

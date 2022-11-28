@@ -19,19 +19,12 @@ footer {
     margin: auto;
 }
 
-a {
-    text-decoration: none;
-}
-
-li {
-    list-style-type: none;
-}
-
 .contents {
     background-color: white;
     width: 900px;
     padding: 0 20px;
     margin: auto;
+    position: relative;
 }
 
 hr {
@@ -58,9 +51,9 @@ footer {
 
 .logo {
     display: inline-block;
-    width: 400px;
-    height: 150px;
-    background: url("../uploadImage/Holo_logo.png") center/cover;
+    width: 200px;
+    height: 130px;
+    background: url("../uploadImage/logo.png") center/cover;
     text-indent: -9999px;
 }
 
@@ -88,10 +81,24 @@ footer {
     background-color: black;
 }
 
-h2 {
-	line-height: 2em;
+.Header_box {
 	width: 100%;
 	border: 1px solid #D0D1D2 ;	
+}
+
+.Header_text1,
+.Header_text2 {
+	font-size: 0.8em;
+	color: #868e96;
+}
+
+.Header_text2 a {
+	color: blue;
+	text-decoration: none;
+}
+
+h2 {
+	line-height: 2em;
 }
 
 /* ============================================================== */
@@ -182,8 +189,8 @@ tr {
     
 }
 
-.ct{
-	text-align: center;
+#board_container{
+	width: 100%;
 }
 
 .board_dTop {
@@ -192,8 +199,15 @@ tr {
 }
 
 .board_dTitle {
-	font-size: 40px;
-	line-height: 60px;
+	font-size: 20px;
+	height: 60px;
+	display: inline;
+}
+
+.board_dSB {
+	font-size: 15px;
+	color: red;
+	vertical-align: bottom; 
 }
 
 .board_dList {
@@ -202,8 +216,7 @@ tr {
 	font-size: 1em;
 	color: grey;
 	text-align: left;
-	display: inline;
-    margin : 20px, 0;
+	display: block;
     border-bottom: 1px solid #d1d2d3;
 }
 
@@ -222,14 +235,98 @@ tr {
 }
 
 .boardList_head {
-	height: 40px;
-	border : 1px solid #d9dad8;
+	height: 35px;
+	border-top : 1px solid #d9dad8;
+	border-bottom : 1px solid #d9dad8;
+	font-size: 0.8em;
 }
 
-.boardList_body tr:nth-child(even) {
-	background-color: #d9dad8;
+.headS {
+	width:10%;
+	text-align: center;
 }
 
+.headG {
+	width:10%;
+	text-align: center;
+}
+
+.headT {
+	width:65%;
+}
+
+.headI {
+	width:10%;
+}
+
+.headR {
+	width:10%;
+	text-align: center;
+}
+
+.headC {
+	width:5%;
+	text-align: center;
+}
+
+.boardList_body tr:nth-child(odd) {
+	background-color: #f1f3f5;
+}
+
+.boardList_body {
+	height: 30px;
+	text-decoration: none;
+}
+
+.bodyS {
+	width:10%;
+	text-align: center;
+}
+
+.bodyT {
+	width:65%;
+}
+
+.bodyI {
+	width:10%;
+}
+
+.bodyR {
+	width:10%;
+	text-align: center;
+}
+
+.bodyC {
+	width:5%;
+	text-align: center;
+}
+
+#searchBar {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+}
+
+.new_Write {
+	position: absolute;
+	bottom: 5px;
+	left: 20px;
+	background-color: #dee2e6;
+	border-radius: 4px;
+	width: 90px;
+	line-height: 30px;
+	text-decoration: none;
+}
+
+.new_Write p {
+	cursor: pointer;
+}
+
+.new_Write a,
+.new_Write p {
+	position: relative;
+	display: inline;
+}
 
 /* ======================================================================= */
 .bottom {
@@ -262,6 +359,5 @@ tr {
     line-height: 19px;
     text-align: center;
     
+    width:10%;
 }
-
-
