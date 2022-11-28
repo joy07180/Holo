@@ -83,21 +83,21 @@
 
 		<table width=100% id="board_container">
             <thead class="boardList_head">
-                <tr height="30">
-                    <th width="10%">글 번호</th>
-                    <th width="40%">제 목</th>
-                    <th width="10%">글쓴이</th>
-                    <th width="20%">날 짜</th>
-					<th width="10%">조회수</th>
+                <tr>
+                    <th class="headS">번호</th>
+                    <th class="headT">제 목</th>
+                    <th class="headI">글쓴이</th>
+                    <th class="headR">날 짜</th>
+					<th class="headC">조회수</th>
 				</tr>
             </thead>
             <tbody class="boardList_body">
 				<c:if test="${not empty banana}">
 					<c:forEach  var="free_board" items="${banana}" >
-					<tr height="30">
-					<td>${free_board.seq}</td>
+					<tr>
+					<td class="bodyS">${free_board.seq}</td>
 				
-					<td id="title_hidden" >
+					<td id="title_hidden" class="bodyT" >
 					<!-- 답글 등록후 indent 에 따른 들여쓰기 
 							=> 답글인 경우에만 적용  -->
 						<c:if test="${free_board.indent > 0}">
@@ -117,8 +117,9 @@
 						</c:if> 
 				    </td>
 	
-					<td><img height="25" width="25" src="${free_board.image}">${free_board.id}</td>
-					<td>${free_board.regdate}</td><td>${free_board.cnt}</td>
+					<td class="bodyI"><img height="25" width="25" src="${free_board.image}">${free_board.id}</td>
+					<td class="bodyR">${free_board.regdate}</td>
+					<td class="bodyC">${free_board.cnt}</td>
 					</tr>	
 			    	</c:forEach>
 		    	</c:if>

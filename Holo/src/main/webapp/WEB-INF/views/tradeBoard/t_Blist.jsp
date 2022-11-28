@@ -81,7 +81,7 @@
         <br>
 		
 		<table width=100% id="board_container">
-            <thead>
+            <thead class="boardList_head">
                 <tr height="30">
                     <th width="10%">글 번호</th>
                     <th width="40%">제 목</th>
@@ -90,10 +90,10 @@
 					<th width="10%">조회수</th>
 				</tr>
             </thead>
-            <tbody>
+            <tbody class="boardList_body">
 				<c:if test="${not empty banana}">
 					<c:forEach var="trade_board" items="${banana}">
-					<tr height="30">
+					<tr>
 					<td>${trade_board.seq}</td>
 			
 					<td id="title_hidden" >

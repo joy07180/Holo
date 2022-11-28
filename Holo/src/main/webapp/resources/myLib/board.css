@@ -32,6 +32,7 @@ li {
     width: 900px;
     padding: 0 20px;
     margin: auto;
+    position: relative;
 }
 
 hr {
@@ -222,14 +223,73 @@ tr {
 }
 
 .boardList_head {
-	height: 40px;
-	border : 1px solid #d9dad8;
+	height: 35px;
+	border-top : 1px solid #d9dad8;
+	border-bottom : 1px solid #d9dad8;
+	font-size: 0.8em;
 }
 
-.boardList_body tr:nth-child(even) {
-	background-color: #d9dad8;
+.headS {
+	width:10%;
+	text-align: left;
+	padding:0 1em;
 }
 
+.headT {
+	width:40%;
+}
+
+.headI {
+	width:10%;
+}
+
+.headR {
+	width:10%;
+	text-align: center;
+}
+
+.headC {
+	width:5%;
+	text-align: center;
+}
+
+.boardList_body tr:nth-child(odd) {
+	background-color: #f1f3f5;
+}
+
+.boardList_body {
+	height: 30px;
+}
+
+.bodyS {
+	width:10%;
+	padding:0 1em;
+}
+
+.bodyT {
+	width:40%;
+}
+
+.bodyI {
+	width:10%;
+}
+
+.bodyR {
+	width:10%;
+	text-align: center;
+}
+
+.bodyC {
+	width:5%;
+	text-align: center;
+}
+
+#searchBar {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	
+}
 
 /* ======================================================================= */
 .bottom {
