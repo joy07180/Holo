@@ -162,9 +162,15 @@
 	            <button id="searchBtn">Search</button>
         		</div>
 
+        <div>
+		<!-- 아이디 로그인할때만 가능하게 -->
+        <c:if test="${not empty loginID}">
         &nbsp;&nbsp;<a href="tipbinsertf">새글등록</a>
-        &nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-        &nbsp;&nbsp;<a href="home">[Home]</a>
+        </c:if>
+        <c:if test="${empty loginID}">
+		&nbsp;&nbsp;<a href="#"><p onclick="alert('로그인후 이용해주세요')">새글등록</p></a>       
+        </c:if>
+    </div>
     </div>
     <br>
     <br>

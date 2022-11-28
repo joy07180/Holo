@@ -22,16 +22,13 @@ $(document).on("click", "#Comment_regist", function() {
 		
 		console.log("com_bno =>"+com_bno)
 		
-		console.log("댓글쓴이 =>"+com_writer);
-		console.log("콘텐츠 =>"+com_content);
-	
 		 if(com_writer === ''){
 			alert('로그인 후 이용해주세요');
 			return;
 		}else if(com_content == '') {
 			alert('내용을 입력하세요');
-		} 
-		
+		} else{
+		// ㅇ
 		$.ajax({
 			type:'post',
 			url:'<c:url value="/Comment/InsertComment"/>',
@@ -61,11 +58,12 @@ $(document).on("click", "#Comment_regist", function() {
 			error:function(){
 				alert('통신실패');
 			}
-		});// 댓글 비동기 끝
-		
+		});
+		location.href = location.href;
+		}// 댓글 비동기 끝
 });// 댓글등록 이벤트 끝
 
-getList(0);
+getList(Math.ceil(${total}/20)*10);
 
 
 function getList(n) {
