@@ -378,7 +378,27 @@ tr {
 	color: black;
 }
 
+/* ======================================================================= */
 
+.insert_container {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	display: block;
+	float: none;
+}
+
+.insert_table {
+	width: 100%;
+}
+
+.test101 {
+	margin: 6px 0;
+	height: 24px;
+	border-radius: 3px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+}
 
 
 
