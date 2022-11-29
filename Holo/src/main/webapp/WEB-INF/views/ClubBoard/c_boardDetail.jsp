@@ -12,10 +12,6 @@
 	<meta charset="UTF-8">
 	<title>** 동아리/모임게시판 디테일 **</title>
 	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
-<<<<<<< HEAD
-=======
-	<title>** 동아리 게시판 **</title>
->>>>>>> branch 'master' of https://github.com/joy07180/holo.git
 	<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script>
 	$(document).on("click", "#Comment_regist", function() {
@@ -146,7 +142,6 @@ function getList() {
             </nav>
 
         </header>
-<<<<<<< HEAD
         <br>
         <div class="Header_box">
         <h2>▶ 동아리/모임 게시판 ◀</h2>
@@ -173,24 +168,6 @@ function getList() {
             	<td><img width="100%" src="${apple.uploadfile}"><br><br>${fn:replace(apple.content, replaceChar, "<br/>")}<br><br></td>
             </c:if>
         </tr>
-=======
-<h2>동아리/모임</h2>
-<hr>
-	<table>
-		<tr height="40"><td bgcolor="Khaki">Seq</td><td>${apple.seq}</td></tr>
-		<tr height="40"><td bgcolor="Khaki">I D</td><td>${apple.id}</td></tr>
-		<tr height="40"><td bgcolor="Khaki">Title</td><td>${apple.title}</td></tr>
-		<tr height="40"><td bgcolor="Khaki">Content</td>
-						<td>
-						<c:if test="${!empty apple.uploadfile}">
-						<img height="300" width="300" src="${apple.uploadfile}">
-						<br>
-						</c:if>
-						${apple.content}</td>
-		</tr>
-		<tr height="40"><td bgcolor="Khaki">RegDate</td><td>${apple.regdate}</td></tr>
-		<tr height="40"><td bgcolor="Khaki">조회수</td><td>${apple.cnt}</td></tr>
->>>>>>> branch 'master' of https://github.com/joy07180/holo.git
 	</table>
 
     <div class="comment-box">
