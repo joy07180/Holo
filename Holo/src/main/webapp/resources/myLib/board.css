@@ -358,6 +358,26 @@ tr {
     font-weight: 800;
     line-height: 19px;
     text-align: center;
-    
     width:10%;
 }
+
+
+/* ======================================================================= */
+
+input{
+	border: 1px solid #388aff;
+    height: 30px;
+    border-radius: 3px;
+}
+
+.user{
+	border: 1px solid #388aff;
+	border-radius: 3px;
+	background-color: #c0c0c0;
+	color: black;
+}
+
+
+
+
+

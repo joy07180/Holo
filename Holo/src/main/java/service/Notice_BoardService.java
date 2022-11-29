@@ -33,4 +33,5 @@ public interface Notice_BoardService {
 	List<Notice_BoardVO> nsearchsearch(SearchCriteria cri);
 	int nsearchCount(SearchCriteria cri);
 	
+
 }

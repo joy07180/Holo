@@ -11,7 +11,7 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
-	<title>** Board Detail Spring_MVC2 **</title>
+	<title>팁 게시판</title>
 	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script>
 	var offset = 0;
@@ -122,24 +122,26 @@ function getList(n) {
 <body>
 <div class="contents">
         <%@ include file="/WEB-INF/views/include/header.jsp" %>
-<h2>** Board Detail Spring_MVC2 **</h2>
+<h2>팁 게시판</h2>
 <h2>${apple.regdate}</h2>
 <h2>${banana.regdate}</h2>
 <hr>
-	<table>
-		<tr height="40"><td bgcolor="Khaki">Seq</td><td>${apple.seq}</td></tr>
-		<tr height="40"><td bgcolor="Khaki">I D</td><td>${apple.id}</td></tr>
-		<tr height="40"><td bgcolor="Khaki">Title</td><td>${apple.title}</td></tr>
-		<tr height="40"><td bgcolor="Khaki">Content</td>
-						<td>
-						<c:if test="${!empty apple.uploadfile}">
-						<img height="300" width="300" src="${apple.uploadfile}">
-						<br>
-						</c:if>
-						${apple.content}</td>
-		</tr>
-		<tr height="40"><td bgcolor="Khaki">RegDate</td><td>${apple.regdate}</td></tr>
-		<tr height="40"><td bgcolor="Khaki">조회수</td><td>${apple.cnt}</td></tr>
+		<table class="board_dTop">
+	        <tr class="board_dTitle"><td>${apple.title}</td></tr>
+	        <tr class="board_dList">
+	        	<td>글번호 : ${apple.seq}&nbsp;&nbsp;</td>
+	            <td>| 작성자 : ${apple.id}&nbsp;&nbsp;</td>
+	            <td>| 조회수 : ${apple.cnt}&nbsp;&nbsp;</td>
+	            <td>| ${apple.regdate}</td>
+	        </tr>
+        <tr class="board_dBottom">
+            <c:if test="${empty apple.uploadfile}">
+            	<td>${apple.content}</td>
+            </c:if>
+            <c:if test="${not empty apple.uploadfile}">
+            	<td><img height="300" width="300" src="${apple.uploadfile}"><br>${apple.content}</td>
+            </c:if>
+	    </tr>
 	</table>
 <hr>
          <div class="comment-count">댓글 <span id="count">0</span> 개</div>
@@ -184,18 +186,6 @@ console.log("반내림 => "+Math.floor(${total}/10));
  </div>
    
    
-   
-  <!--  <script>
-   
-   let page = document.getElementById('page');
-   page.innerHTML='<form><input type="button" value="1" onclick="getList(10)"></form>'
-   
-   
-   </script>
- -->
-
-
-
 
 
 &nbsp;&nbsp;<a href="tiprinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">[답글]</a><br>

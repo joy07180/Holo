@@ -5,14 +5,24 @@
 
 .logo {
     display: inline-block;
-    width: 250px;
+    width: 200px;
     height: 130px;
-    background: url("../uploadImage/Holo_logo.png") center/cover;
+    background: url("../uploadImage/logo.png") center/cover;
     text-indent: -9999px;
 }
 
 a{
 	text-decoration: none;
 	font-weight:bold;
-	color: Gray;
+}
+
+tr{
+	
+	height: 40px;
+}
+
+td{
+	text-align: center;
+	border: 10px lavender;
+	border-radius: 5px;
 }

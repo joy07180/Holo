@@ -32,7 +32,9 @@ import vo.UserVO;
 public class UserController {
 
 	@Autowired
-	UserService service;
+	UserService service;	
+	@Autowired
+	Notice_BoardService nservice;
 
 	PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -336,7 +338,8 @@ public class UserController {
 
 	// ** MemberDetail
 	@RequestMapping(value = "/userdetail")
-	public ModelAndView userdetail(HttpServletRequest request, HttpServletResponse response, UserVO vo , ModelAndView mv) {
+	public ModelAndView userdetail(HttpServletRequest request, HttpServletResponse response, 
+			UserVO vo , ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
 		// => Mapping 메서드 : 매개변수로 지정된 객체에 request_ParameterName 과 일치하는 컬럼(setter)존재하면 자동으로 set 
 		//MemberVO vo = new MemberVO();
 		//vo.setId(request.getParameter("id")); 매개변수에 추가하면 자동으로 생겨서 필요 없어짐
@@ -353,19 +356,30 @@ public class UserController {
 			if ( session!=null && session.getAttribute("loginID")!=null ) 
 				vo.setId((String)session.getAttribute("loginID"));
 			else {
-				request.setAttribute("message", "=> 출력할 id 없음, 로그인후 이용하세요 ~~");
 				mv.setViewName("home");
 				return mv;
 			}
 		} //getParameter_else
 
 		String uri = "/user/userDetail";
+		
+		cri.setSnoEno();
 
 		// 2. Service 처리
 		// => Service 에서 selectOne
 		vo=service.selectOne(vo);
 		if (vo != null) {
 
+			mv.addObject("service", service.userDetailList(vo)); 
+			
+			pageMaker.setCri(cri);
+			pageMaker.setTotalRowsCount(service.userDetailListCount(cri));     // ver02: 조건과 일치하는 Rows 갯수 
+			mv.addObject("pageMaker", pageMaker);
+			
+			System.out.println("vo"+vo);
+			System.out.println("cri"+cri);
+			System.out.println("pageMaker"+pageMaker);
+			
 			// ** Update 요청이면 uqdateForm.jsp 로
 			// => passwordEncoder 사용 후 에는
 			//	  session에 보관해 놓은 raw_password 를 수정할수 있도록 vo에 set 해줌
@@ -377,9 +391,7 @@ public class UserController {
 				vo.setPassword((String)session.getAttribute("loginPW")); 
 			}
 			mv.addObject("apple", vo);
-		}else {
-			mv.addObject("message","~~ "+request.getParameter("id")+"님의 자료는 존재하지 않습니다 ~~"); 
-		}	
+		}
 		mv.setViewName(uri);
 		return mv;
 	} //mdetail

@@ -113,7 +113,7 @@
                         <tr>
                             <td class="bodyG">1</td>
                             <td class="bodyT" id="title_hidden">[${board.place}]<a href="cbdetail?seq=${board.seq}">${board.title}</a></td>
-                            <td class="bodyI" ><img height="25" width="25" src="${board.image}">${board.id}</td>
+                            <td class="bodyI" ><img height="25" width="25" src="${board.image}"><a href="userdetail?id=${board.id}">${board.id}</a></td>
                             <td class="bodyR">${board.regdate}</td>
                             <td class="bodyC">${board.cnt}</td>
                         </tr>
@@ -386,8 +386,6 @@
     <br>
 
  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-
-
 
 
 

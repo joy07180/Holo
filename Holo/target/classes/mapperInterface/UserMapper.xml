@@ -56,6 +56,24 @@
   		delete from user where id = #{id}
   	</delete> 
   	
+  	<select id="userDetailList" resultType="vo.Notice_BoardVO">
+		select seq, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate ,cnt from notice_board where id = #{id}
+		UNION ALL
+		select seq, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate ,cnt from tip_board where id = #{id}
+		UNION ALL
+		select seq, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate ,cnt from club_board where id = #{id}
+		UNION ALL
+		select seq, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate ,cnt from free_board where id = #{id}
+		UNION ALL
+		select seq, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate ,cnt from trade_board where id = #{id}
+		order by regdate desc
+		limit 0,15
+	</select>
+
+	<select id="userDetailListCount" resultType="int">
+		select count(*) from notice_board
+		where ( seq>0 and id = #{id} )
+	</select>
   	
   </mapper>
 

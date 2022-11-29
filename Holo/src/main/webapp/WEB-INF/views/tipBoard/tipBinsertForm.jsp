@@ -40,7 +40,7 @@
             </nav>
 
         </header>
-<h2>** Board Insert Spring_MVC2 **</h2>
+<h2>팁 새 글 등록</h2>
 <form action="tipbinsert" method="Post" enctype="multipart/form-data">
 <table>
 <tr height="40"><td>I D</td>
@@ -89,7 +89,5 @@
 
 </div>
 <hr>
-&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-&nbsp;&nbsp;<a href="home">[Home]</a>
 </body>
 </html>

@@ -120,7 +120,7 @@ public class HomeController {
 
 		// 2) 서비스처리
 		// => List 처리
-		mv.addObject("nservice", nservice.nsearchsearch(cri)); // ver02
+		mv.addObject("nservice", nservice.nsearchsearch(cri)); 
 		
 		// 3) View 처리 => PageMaker
 		System.out.println("*********************************************"+pageMaker);

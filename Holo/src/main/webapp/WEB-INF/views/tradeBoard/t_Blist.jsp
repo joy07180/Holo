@@ -128,7 +128,7 @@
 					</c:if>
 					
 					</td>
-					<td class="bodyI"><img height="25" width="25" src="${trade_board.image}">${trade_board.id}</td>
+					<td class="bodyI"><img height="25" width="25" src="${trade_board.image}"><a href="userdetail?id=${trade_board.id}">${trade_board.id}</a></td>
 					<td class="bodyR">${trade_board.regdate}</td>
 					<td class="bodyC">${trade_board.cnt}</td>
 					</tr>	
