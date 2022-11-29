@@ -11,35 +11,7 @@
 </head>
 <body>
     <div class="contents">
-        <header>
-            <div class="header">
-                <div>
-                    <a href="" class="logo">logo</a>
-                </div>
-                <div class="search">
-                    <form action="">
-                        <input class="searchBox" size="40" type="text" id="search" placeholder="게시판 & 통합검색">
-                        <span>
-                            <input class="searchClick" type="submit" value="검색">
-                        </span>
-                    </form>
-                </div>
-
-            </div>
-
-            <nav class="headerM">
-                <div>
-                    <ul class="category">
-						<li><a href="noticelist" class="liText">공지사항 </a></li>
-						<li><a href="tipblist" class="liText">팁/정보 </a></li>
-						<li><a href="f_bcrilist" class="liText">자유게시판 </a></li>
-						<li><a href="t_bcrilist" class="liText">거래/나눔 </a></li>
-						<li><a href="cbcrilist" class="liText">동아리/모임 </a></li>
-					</ul>
-                </div>
-            </nav>
-
-        </header>
+      <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <h2>팁 새 글 등록</h2>
 <form action="tipbinsert" method="Post" enctype="multipart/form-data">
 <table>
@@ -89,5 +61,6 @@
 
 </div>
 <hr>
+ <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

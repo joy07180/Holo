@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
 </head>
 <body>
-
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <h2>** Board Update Spring_MVC2 **</h2>
 <hr>
 <form action="cbupdate" method="Post">

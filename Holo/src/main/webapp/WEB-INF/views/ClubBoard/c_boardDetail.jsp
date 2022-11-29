@@ -152,35 +152,7 @@ $(document).on("click", "#delete", function(){
 </head>
 <body>
     <div class="contents">
-        <header>
-            <div class="header">
-                <div>
-                    <a href="home" class="logo">logo</a>
-                </div>
-                <div class="search">
-					<form action="searchsearch">
-						<input class="searchBox" type="text" size="40"
-							placeholder="게시판 & 통합검색" type="text" name="keyword2"
-							id="keyword2" /> <input class="searchClick" id="searchBtn2"
-							type="submit" value="검색" />
-					</form>
-				</div>
-
-            </div>
-
-            <nav class="headerM">
-                <div>
-                    <ul class="category">
-                        <li><a href="noticelist" class="liText">공지사항 </a></li>
-						<li><a href="tipblist" class="liText">팁/정보 </a></li>
-						<li><a href="f_bcrilist" class="liText">자유게시판 </a></li>
-						<li><a href="t_bcrilist" class="liText">거래/나눔 </a></li>
-						<li><a href="cbcrilist" class="liText">동아리/모임 </a></li>
-                    </ul>
-                </div>
-            </nav>
-
-        </header>
+       <%@ include file="/WEB-INF/views/include/header.jsp" %>
         <br>
         <div class="Header_box">
         <h2>▶ 동아리/모임 게시판 ◀</h2>
@@ -209,7 +181,7 @@ $(document).on("click", "#delete", function(){
         </tr>
 	</table>
 
-        <div class="comment-count">댓글 <span id="count">0</span> 개</div>
+     <div class="comment-count">댓글 <span id="count">0</span> 개</div>
 <div class="comment_Box" style="border:1px solid gray;"> <!-- 댓글이 들어갈 박스 --></div>
 
 
@@ -248,42 +220,6 @@ console.log("반내림 => "+Math.floor(${total}/10));
        	<div class="regBtn">
        		<button id="Comment_regist"> 댓글등록</button>
          </div>
-  		<div align="center">
-            <!-- First, Prev -->
-            <c:choose>
-                <c:when test="${pageMaker.prev && pageMaker.spageNo>1}">
-                    <!-- New_ver01_Cri : pageMaker.makeQuery(1) -->
-                    <!-- New_ver02_SearchCri : pageMaker.searchQuery(1) -->
-                    <a href="CommentList/${apple.seq}${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
-
-                    <!-- OLD_version 
-    	            => EL 은 주석내에 있어도 JSP가 처리하여 변수명등에 오류있으면 500 발생할 수 있음.  
-				    <a href="bcrilist?currPage=1&rowsPerPage=5">FP</a>&nbsp;   
-				    <a href="bcrilist?currPage=${pageMaker.spageNo-1}&rowsPerPage=5">&lt;</a>&nbsp;&nbsp;  
-				    -->
-                </c:when>
-            </c:choose>
-            <!-- Displag PageNo -->
-            <c:forEach var="i" begin="${pageMaker.spageNo}" end="${pageMaker.epageNo}">
-                <c:if test="${i==pageMaker.cri.currPage}">
-                    <font size="5" color="Orange">${i}</font>&nbsp;
-                </c:if>
-                <c:if test="${i!=pageMaker.cri.currPage}">
-
-                    <a href="CommentList/${apple.seq}${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
-
-                </c:if>
-            </c:forEach>
-
-            <c:choose>
-                <c:when test="${pageMaker.next && pageMaker.epageNo>0}">
-                    <a href="CommentList/${apple.seq}${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&gt;</a>
-
-                </c:when>
-            </c:choose>
-
-      </div>
-</div> <!-- comment-box /div -->
 
 		<div>
 			<!-- 아이디 로그인이랑 다를때 메뉴 -->
