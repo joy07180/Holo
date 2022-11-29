@@ -56,51 +56,53 @@
         
 	<c:if test="${not empty apple}">
 	    <table class="board_dTop">
-	        <tr class="board_dTitle"><td>${apple.title}</td></tr>
+	        <tr class="board_dTitle">
+	        	<td><br>${apple.title}</td>
+	        </tr>
 	        <tr class="board_dList">
 	        	<td>글번호 : ${apple.seq}&nbsp;&nbsp;</td>
-	            <td>| 작성자 : ${apple.id}&nbsp;&nbsp;</td>
+	            <td>| 작성자 : <img height="15" width="15" src="${apple.image}">${apple.id}&nbsp;&nbsp;</td>
 	            <td>| 조회수 : ${apple.cnt}&nbsp;&nbsp;</td>
 	            <td>| ${apple.regdate}</td>
 	        </tr>
 	        <tr class="board_dBottom">
 	            <c:if test="${empty apple.uploadfile}">
-	            	<td>${apple.content}</td>
+	            	<td>${fn:replace(apple.content, replaceChar, "<br/>")}</td>
 	            </c:if>
 	            <c:if test="${not empty apple.uploadfile}">
-	            	<td><img height="300" width="300" src="${apple.uploadfile}"><br>${apple.content}</td>
+	            	<td><img width="100%" src="${apple.uploadfile}"><br><br>${fn:replace(apple.content, replaceChar, "<br/>")}<br><br></td>
 	            </c:if>
 	        </tr>
 	    </table>
 	</c:if>
 	
-	<div>
-		<!-- 아이디 로그인이랑 다를때 메뉴 -->
-        <c:if test="${loginID!=apple.id || loginID!='admin'}">
-		<a href="f_binsertf">새글등록</a>
-        &nbsp;&nbsp;<a href="f_rinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글등록</a>
-		&nbsp;&nbsp;<a href="f_bcrilist">목록으로</a>       
-        </c:if>
-        <!-- 아이디 로그인이랑 같을때 추가 메뉴 -->
-        <c:if test="${loginID==apple.id || loginID=='admin' }">
-        &nbsp;&nbsp;<a href="f_bdetail?jCode=U&seq=${apple.seq}">글수정</a>
-        &nbsp;&nbsp;<a href="f_bdelete?seq=${apple.seq}&root=${apple.root}">글삭제</a>
-        </c:if>
-        <br>
-        
-        <br>
-        <c:if test="${Prev!='T'}">
-        <a href="f_bdetail?jCode=P&seq=${apple.seq}">이전글</a>
-        </c:if>
-        <c:if test="${Prev=='T'}">
-        이전글
-        </c:if>
-        
-        &nbsp;&nbsp;<a href="f_bdetail?jCode=N&seq=${apple.seq}">다음글</a>
+		<div>
+			<!-- 아이디 로그인이랑 다를때 메뉴 -->
+	        <c:if test="${loginID!=apple.id || loginID!='admin'}">
+			<a href="f_binsertf">새글등록</a>
+	        &nbsp;&nbsp;<a href="f_rinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글등록</a>
+			&nbsp;&nbsp;<a href="f_bcrilist">목록으로</a>       
+	        </c:if>
+	        <!-- 아이디 로그인이랑 같을때 추가 메뉴 -->
+	        <c:if test="${loginID==apple.id || loginID=='admin' }">
+	        &nbsp;&nbsp;<a href="f_bdetail?jCode=U&seq=${apple.seq}">글수정</a>
+	        &nbsp;&nbsp;<a href="f_bdelete?seq=${apple.seq}&root=${apple.root}">글삭제</a>
+	        </c:if>
+	        <br>
+	        
+	        <br>
+	        <c:if test="${Prev!='T'}">
+	        <a href="f_bdetail?jCode=P&seq=${apple.seq}">이전글</a>
+	        </c:if>
+	        <c:if test="${Prev=='T'}">
+	        이전글
+	        </c:if>
+	        
+	        &nbsp;&nbsp;<a href="f_bdetail?jCode=N&seq=${apple.seq}">다음글</a>
         </div>
 	
 	
-</div>
+</div> <!-- contents /div -->
 
 	<footer>
         <div class="bottom">
