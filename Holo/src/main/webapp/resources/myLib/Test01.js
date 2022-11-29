@@ -66,7 +66,7 @@ $(function(){
 	$('#axlogin').click(function() {
 		$.ajax({
 			type: 'Post',
-			url: 'login',
+			url: 'home',
 			data:{
 				id: $('#id').val(),
 				password: $('#password').val()
