@@ -116,5 +116,8 @@
 </div>
 </div>
 <hr>
+
+ <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+ 
 </body>
 </html>

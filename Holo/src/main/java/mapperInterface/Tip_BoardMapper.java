@@ -22,6 +22,10 @@ public interface Tip_BoardMapper {
 	List<Tip_BoardVO> selectList();
 	// ** selectOne
 	Tip_BoardVO selectOne(Tip_BoardVO vo);
+	// ** n_selectOne
+	Tip_BoardVO n_selectOne(Tip_BoardVO vo);
+	// ** p_selectOne
+	Tip_BoardVO p_selectOne(Tip_BoardVO vo);
 	
 	// ** Insert: 새글등록 
 	int insert(Tip_BoardVO vo);

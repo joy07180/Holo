@@ -21,6 +21,10 @@ public interface Tip_BoardService {
 	
 	// ** selectOne
 	Tip_BoardVO selectOne(Tip_BoardVO vo);
+	// ** n_selectOne
+	Tip_BoardVO n_selectOne(Tip_BoardVO vo);
+	// ** p_selectOne
+	Tip_BoardVO p_selectOne(Tip_BoardVO vo);
 	
 	// ** Insert
 	int insert(Tip_BoardVO vo);

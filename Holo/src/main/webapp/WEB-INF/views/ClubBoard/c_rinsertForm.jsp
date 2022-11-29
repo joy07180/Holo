@@ -42,5 +42,8 @@ ${message}<br>
 <hr>
 &nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
 &nbsp;&nbsp;<a href="home">[Home]</a>
+
+ <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+
 </body>
 </html>

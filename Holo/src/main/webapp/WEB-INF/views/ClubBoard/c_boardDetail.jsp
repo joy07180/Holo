@@ -311,24 +311,7 @@ console.log("반내림 => "+Math.floor(${total}/10));
         </div>
 </div> <!-- contents /div -->
 
-<footer>
-        <div class="bottom">
-            <ul class="btMenu">
-                <li><a href="">A</a></li>
-                <li><a href="">B</a></li>
-                <li><a href="">C</a></li>
-                <li><a href="">D</a></li>
-                <li><a href="">E</a></li>
-                <li><a href="">F</a></li>
-            </ul>
-            <span>
-                <div>Copyright (c) Holo.net All rights reserved.</div>
-                <div>Contact us, holo at gmail dot com</div>
-                <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
-            </span>
-        </div>
-        <br>
-    </footer>
+ <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 </body>
 </html>

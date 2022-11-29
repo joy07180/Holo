@@ -113,6 +113,17 @@ public class Tip_BoardController {
 				if ( "U".equals(request.getParameter("jCode")))
 					uri = "/tipBoard/tipBupdateForm";
 				
+				// 2.3) 이전, 다음 상세보기 요청인지 아닌지
+				if ( "P".equals(request.getParameter("jCode"))) {
+					vo = service.p_selectOne(vo);
+					if(vo==null) mv.addObject("Prev", "T");
+				}
+				
+				if ( "N".equals(request.getParameter("jCode"))) {
+					vo = service.n_selectOne(vo);
+					if(vo==null) mv.addObject("Next", "F");
+				}
+				
 				// 2.3)	결과전달		
 				
 				System.out.println(vo);

@@ -153,45 +153,54 @@ $(document).on("click", "#delete", function(){
 <body>
 <div class="contents">
         <%@ include file="/WEB-INF/views/include/header.jsp" %>
-<h2>팁 게시판</h2>
-<h2>${apple.regdate}</h2>
-<h2>${banana.regdate}</h2>
-<hr>
+	<br>
+    <div class="Header_box">
+    <h2>▶ 팁/정보 게시판 ◀</h2>
+    <p class="Header_text1">&nbsp;이곳은 팁/정보 게시판 입니다. 자취 팁, 유용한 정보 글을 작성해주세요.</p>
+    <p class="Header_text2">&nbsp;물건 판매 및 거래는 <a href="t_bcrilist">거래/나눔</a>게시판, 자유주제는 <a href="f_bcrilist">자유</a>게시판, 동아리 및 모임 주제는 <a href="cbcrilist">동아리/모임</a>게시판에 남겨주세요.</p>
+    <br>
+    </div>
+    <br>
+    
 		<table class="board_dTop">
-	        <tr class="board_dTitle"><td>${apple.title}</td></tr>
+	        <tr class="board_dTitle"><td><br>${apple.title}</td></tr>
 	        <tr class="board_dList">
 	        	<td>글번호 : ${apple.seq}&nbsp;&nbsp;</td>
-	            <td>| 작성자 : <img height="25" width="25" src="${apple.image}">${apple.id}&nbsp;&nbsp;</td>
+	            <td>| 작성자 : <img height="15" width="15" src="${apple.image}">${apple.id}&nbsp;&nbsp;</td>
 	            <td>| 조회수 : ${apple.cnt}&nbsp;&nbsp;</td>
 	            <td>| ${apple.regdate}</td>
 	        </tr>
         <tr class="board_dBottom">
             <c:if test="${empty apple.uploadfile}">
-            	<td>${apple.content}</td>
+            	<td>${fn:replace(apple.content, replaceChar, "<br/>")}</td>
             </c:if>
             <c:if test="${not empty apple.uploadfile}">
-            	<td><img height="300" width="300" src="${apple.uploadfile}"><br>${apple.content}</td>
+            	<td><img width="100%" src="${apple.uploadfile}"><br><br>${fn:replace(apple.content, replaceChar, "<br/>")}<br><br></td>
             </c:if>
 	    </tr>
 	</table>
-<hr>
-         <div class="comment-count">댓글 <span id="count">0</span> 개</div>
-<div class="comment_Box" style="border:1px solid gray;"> <!-- 댓글이 들어갈 박스 --></div>
+	
+	<br>
+	
+    <div class="comment-count">댓글 <span id="count">0</span> 개</div>
+	<div class="comment_Box" style="border:1px solid gray;"> <!-- 댓글이 들어갈 박스 --></div>
 
 
-<div id="page"></div>
-<script>
-let page = document.getElementById("page");
-console.log(page);
-console.log("반내림 => "+Math.floor(${total}/10));
-
-
-	   for(let i=0; i<Math.ceil(${total}/20); i++){
-       page.innerHTML = page.innerHTML+'<input  type="button" class="pagebt" style="border:none; font-size:20px; cursor: pointer;" value="'+(i+1)+'" onclick="getList('+i*20+')"/>';
-       console.log("offset => "+offset);
-	   }
-</script>
-  <div class="comment-box">
+	<div id="page"></div>
+	
+	<script>
+	let page = document.getElementById("page");
+	console.log(page);
+	console.log("반내림 => "+Math.floor(${total}/10));
+	
+	
+		   for(let i=0; i<Math.ceil(${total}/20); i++){
+	       page.innerHTML = page.innerHTML+'<input  type="button" class="pagebt" style="border:none; font-size:20px; cursor: pointer;" value="'+(i+1)+'" onclick="getList('+i*20+')"/>';
+	       console.log("offset => "+offset);
+		   }
+	</script>
+	
+	<div class="comment-box">
                     
 
          	   <!-- <span class="c-icon"><i class="fa-solid fa-user"></i>  -->
@@ -214,14 +223,29 @@ console.log("반내림 => "+Math.floor(${total}/10));
        	<div class="regBtn">
        		<button id="Comment_regist"> 댓글등록</button>
          </div>
- </div>
+ 	</div>
    
-   
-
-
-&nbsp;&nbsp;<a href="tiprinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">[답글]</a><br>
-&nbsp;&nbsp;<a href="tipbdetail?jCode=U&seq=${apple.seq}">[글수정]</a>
-&nbsp;&nbsp;<a href="tipbdelete?seq=${apple.seq}&root=${apple.root}">[글삭제]</a>
+ 	<div>
+        <br>
+		<a href="tipbinsertf">새글등록</a>
+       	&nbsp;&nbsp;<a href="tiprinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글</a>
+		&nbsp;&nbsp;<a href="tipblist">목록으로</a>  
+		  
+        <!-- 아이디 로그인이랑 같을때 추가 메뉴 -->
+        <c:if test="${loginID==apple.id || loginID=='admin' }">
+			&nbsp;&nbsp;<a href="tipbdetail?jCode=U&seq=${apple.seq}">글수정</a>
+       		&nbsp;&nbsp;<a href="tipbdelete?seq=${apple.seq}&root=${apple.root}">글삭제</a>
+        </c:if>
+        <br>
+        <c:if test="${Prev!='T'}">
+        <a href="tipbdetail?jCode=P&seq=${apple.seq}">이전글</a>
+        </c:if>
+        <c:if test="${Prev=='T'}">
+        이전글
+        </c:if>
+        
+        &nbsp;&nbsp;<a href="tipbdetail?jCode=N&seq=${apple.seq}">다음글</a>
+	</div>
 
 </div>
 
