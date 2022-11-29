@@ -5,9 +5,9 @@
 
 .logo {
     display: inline-block;
-    width: 300px;
+    width: 200px;
     height: 150px;
-    background: url("../uploadImage/Holo_logo.png") center/cover;
+    background: url("../uploadImage/logo.png") center/cover;
     text-indent: -9999px;
 }
 

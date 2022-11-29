@@ -99,8 +99,8 @@
 				<c:if test="${not empty loginID}">
 					<h1> ${loginName} 님 !!!</h1>
 					<br>
-      &nbsp;&nbsp;<a href="logout">Logout</a>
-      &nbsp;&nbsp;<a href="userdetail">내정보</a>
+      &nbsp;&nbsp;<a href="logout" class="user">Logout</a>
+      &nbsp;&nbsp;<a href="userdetail" class="user">내정보</a>
 				</c:if>
 
 				<c:if test="${loginID=='admin'}">
@@ -108,7 +108,7 @@
 	 </c:if>
 
 				<c:if test="${empty loginID}">
-					<form action="login" method="post">
+					<form action="login" method="post" id="axloginf">
 						<table>
 							<tr>
 								<td bgcolor="PaleTurquoise">I D</td>
@@ -122,10 +122,8 @@
 							</tr>
 							<tr>
 								<td></td>
-								<td><input type="submit" value="Login"
-									onclick="return inCheck()">&nbsp;&nbsp; <span
-									id="pMessage" class="eMessage"></span> <br> <a
-									href="joinf">회원가입</a>&nbsp;&nbsp; <a href="logout">Logout</a></td>
+								<td><input type="submit" value="Login" onclick="return inCheck()" class="user" id="axlogin">&nbsp;&nbsp;
+									 <a href="joinf" class="user">회원가입</a>&nbsp;&nbsp;
 							</tr>
 						</table>
 					</form>
