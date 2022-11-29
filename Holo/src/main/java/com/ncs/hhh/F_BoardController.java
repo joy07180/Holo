@@ -80,7 +80,7 @@ public class F_BoardController {
 				}
 				
 				// 2.3)	결과전달		
-int total = service2.getTotal(vo.getSeq());
+				int total = service2.getTotal(vo.getSeq(),3);
 				
 				
 				mv.addObject("total",total);
