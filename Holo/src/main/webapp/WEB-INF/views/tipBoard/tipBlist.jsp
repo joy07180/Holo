@@ -5,10 +5,11 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>** Board Cri_PageList Spring_MVC2 **</title>
-        <link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
-        <script src="resources/myLib/jquery-3.2.1.min.js"></script>
-        <script>
+		<title>팁 게시판</title>
+		<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
+		<link rel="stylesheet" type="text/css" href="resources/myLib/title_hidden.css">
+		<script src="resources/myLib/jquery-3.2.1.min.js"></script>
+		<script>
             // ** JS 에서 함수사용
             // => 최상위 객체 window는 생략가능
             // 		window.document.write("....");
@@ -83,34 +84,39 @@
 
         </header>
         <br>
-        <h2>팁/정보 게시판</h2>
+        <div class="Header_box">
+        <h2>▶ 팁/정보 게시판 ◀</h2>
+        <p class="Header_text1">&nbsp;이곳은 팁/정보 게시판 입니다. 자취 팁, 유용한 정보 글을 작성해주세요.</p>
+        <p class="Header_text2">&nbsp;물건 판매 및 거래는 <a href="t_bcrilist">거래/나눔</a>게시판, 자유주제는 <a href="f_bcrilist">자유</a>게시판, 동아리 및 모임 주제는 <a href="cbcrilist">동아리/모임</a>게시판에 남겨주세요.</p>
         <br>
+        </div>
         <br>
         
-        <table width=100%>
-            <thead>
-                <tr height="30">
-                    <th width="50%">제목</th>
-                    <th width="10%">글쓴이</th>
-                    <th width="20%">날짜</th>
-                    <th width="10%">조회수</th>
-                    <th width="10%">추천</th>
+        <table id="board_container">
+            <thead class="boardList_head">
+              <tr>
+                    <th class="headG">추천</th>
+                    <th class="headT">제 목</th>
+                    <th class="headI">글쓴이</th>
+                    <th class="headR">날 짜</th>
+                    <th class="headC">조회수</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="boardList_body">
                 <c:if test="${not empty banana}">
                     <c:forEach var="board" items="${banana}">
-                        <tr height="30">
-                            <td width="50%"><a href="tipbdetail?seq=${board.seq}">${board.title}</a></td>
-                            <td width="10%"><img height="25" width="25" src="${board.image}">${board.id}</td>
-                            <td class="ct" width="20%">${board.regdate}</td>
-                            <td class="ct" width="10%">${board.cnt}</td>
-                            <td class="ct" width="10%">1</td>
+                        <tr>
+                            <td class="bodyG">1</td>
+                            <td class="bodyT" id="title_hidden"><a href="tipbdetail?seq=${board.seq}">${board.title}</a></td>
+                            <td class="bodyI"><img height="25" width="25" src="${board.image}">${board.id}</td>
+                            <td class="bodyR" width="20%">${board.regdate}</td>
+                            <td class="bodyC" width="10%">${board.cnt}</td>
                         </tr>
                     </c:forEach>
                 </c:if>
             </tbody>
         </table>
+        
         <!-- Cri_Page -->
         <div align="center">
             <!-- First, Prev -->
@@ -147,6 +153,10 @@
             </c:choose>
 
         </div>
+        <br>
+        <br>
+        <br>
+        
             <div id="searchBar">
 	            <select name="searchType" id="searchType">
 	                <option value="n" ${pageMaker.cri.searchType==null ? 'selected' : '' }>전체</option>
@@ -162,10 +172,16 @@
 	            <button id="searchBtn">Search</button>
         		</div>
 
-        &nbsp;&nbsp;<a href="tipbinsertf">새글등록</a>
-        &nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-        &nbsp;&nbsp;<a href="home">[Home]</a>
+        <div class="new_Write">
+		<!-- 아이디 로그인할때만 가능하게 -->
+        <c:if test="${not empty loginID}">
+        &nbsp;&nbsp;<a href="cbinsertf">새글등록</a>
+        </c:if>
+        <c:if test="${empty loginID}">
+		&nbsp;&nbsp;<p onclick="alert('로그인후 이용해주세요')">새글등록</p>        
+        </c:if>
     </div>
+</div>
     <br>
     <br>
 

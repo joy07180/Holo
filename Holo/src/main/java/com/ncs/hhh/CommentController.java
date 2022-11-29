@@ -86,4 +86,16 @@ public class CommentController {
 		
 		return map;
 	}
+	
+	@PostMapping("/commentDelete")
+	public String commentDelete(@RequestBody CommentVO vo,HttpSession session) {
+		
+		service.commentDelete(vo);
+		System.out.println("삭제vo => "+vo);
+		System.out.println();
+		System.out.println("vo댓글번호"+vo.getCom_no());
+			  
+		return "DeleteSuccess";
+		
+	}
 }

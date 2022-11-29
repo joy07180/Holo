@@ -5,9 +5,10 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>** Board Cri_PageList Spring_MVC2 **</title>
+        <title>동아리/모임 게시판</title>
         <link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
-        <script src="resources/myLib/jquery-3.2.1.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="resources/myLib/title_hidden.css">
+		<script src="resources/myLib/jquery-3.2.1.min.js"></script>
         <script>
             // ** JS 에서 함수사용
             // => 최상위 객체 window는 생략가능
@@ -87,39 +88,40 @@
             </nav>
 
         </header>
+       <br>
+        <div class="Header_box">
+        <h2>▶ 동아리/모임 게시판 ◀</h2>
+        <p class="Header_text1">&nbsp;이곳은 동아리/모임 게시판 입니다. 동아리, 모임 글을  작성해주세요.</p>
+        <p class="Header_text2">&nbsp;팁 관련 주제는 <a href="tipblist">팁/정보</a>게시판, 자유주제는 <a href="f_bcrilist">자유</a>게시판,  물건 판매 및 거래는 <a href="t_bcrilist">거래/나눔</a>게시판에 남겨주세요.</p>
         <br>
-        <br>
-        <h2>동아리/모임 게시판</h2>
-        <br>
+        </div>
         <br>
         
-        <table width=100%>
-            <thead>
-                <tr height="30">
-                    <th width="50%">제목</th>
-                    <th width="10%">글쓴이</th>
-                    <th width="20%">날짜</th>
-                    <th width="10%">조회수</th>
-                    <th width="10%">추천</th>
+        <table id="board_container">
+            <thead class="boardList_head">
+                <tr>
+                    <th class="headG">추천</th>
+                    <th class="headT">제 목</th>
+                    <th class="headI">글쓴이</th>
+                    <th class="headR">날 짜</th>
+                    <th class="headC">조회수</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="boardList_body">
                 <c:if test="${not empty banana}">
                     <c:forEach var="board" items="${banana}">
-                        <tr height="30">
-                            <td width="45%">&nbsp;
-                            [${board.place}]
-                            &nbsp; <a href="cbdetail?seq=${board.seq}">${board.title}</a> 
-                            </td>
-                            <td width="15%"><img height="25" width="25" src="${board.image}">${board.id}</td>
-                            <td class="ct" width="20%">${board.regdate}</td>
-                            <td class="ct" width="10%">${board.cnt}</td>
-                            <td class="ct" width="10%">1</td>
+                        <tr>
+                            <td class="bodyG">1</td>
+                            <td class="bodyT" id="title_hidden">[${board.place}]<a href="cbdetail?seq=${board.seq}">${board.title}</a></td>
+                            <td class="bodyI" ><img height="25" width="25" src="${board.image}">${board.id}</td>
+                            <td class="bodyR">${board.regdate}</td>
+                            <td class="bodyC">${board.cnt}</td>
                         </tr>
                     </c:forEach>
                 </c:if>
             </tbody>
         </table>
+        
         <!-- Cri_Page -->
         <div align="center">
             <!-- First, Prev -->
@@ -156,6 +158,9 @@
             </c:choose>
 
         </div>
+       	<br>
+		<br>
+		<br>
         
   <div id="searchBar">
             
@@ -364,37 +369,23 @@
        </select>
       <input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">
       <button id="searchBtn" onclick="this.submit()">Search</button>
-		
-		
-		
 	</form>	 
  </div>
 
+        <div class="new_Write">
+		<!-- 아이디 로그인할때만 가능하게 -->
+        <c:if test="${not empty loginID}">
         &nbsp;&nbsp;<a href="cbinsertf">새글등록</a>
-        &nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-        &nbsp;&nbsp;<a href="home">[Home]</a>
+        </c:if>
+        <c:if test="${empty loginID}">
+		&nbsp;&nbsp;<p onclick="alert('로그인후 이용해주세요')">새글등록</p>        
+        </c:if>
+    </div>
 </div>
     <br>
     <br>
 
-    <footer>
-        <div class="bottom">
-            <ul class="btMenu">
-                <li><a href="">A</a></li>
-                <li><a href="">B</a></li>
-                <li><a href="">C</a></li>
-                <li><a href="">D</a></li>
-                <li><a href="">E</a></li>
-                <li><a href="">F</a></li>
-            </ul>
-            <span>
-                <div>Copyright (c) Holo.net All rights reserved.</div>
-                <div>Contact us, holo at gmail dot com</div>
-                <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
-            </span>
-        </div>
-        <br>
-    </footer>
+ <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 
 

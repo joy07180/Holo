@@ -38,31 +38,37 @@
             </nav>
         </header>
         <br>
-        <h2>거래/나눔 게시판 글 내용</h2>
+        <div class="Header_box">
+        <h2>▶ 거래 게시판 ◀</h2>
+        <p class="Header_text1">&nbsp;이곳은 거래/나눔 게시판 입니다. 물건 거래, 나눔 글을 작성해주세요.</p>
+        <p class="Header_text2">&nbsp;팁 관련 주제는 <a href="tipblist">팁/정보</a>게시판, 자유주제는 <a href="f_bcrilist">자유</a>게시판, 동아리 및 모임 주제는 <a href="cbcrilist">동아리/모임</a>게시판에 남겨주세요.</p>
         <br>
+        </div>
         <br>
 		
 		
 	<c:if test="${not empty apple}">
 	    <table class="board_dTop">
-	        <tr height="40"><td class="board_dTitle">${apple.title}</td></tr>
-	        <tr height="40" class="board_dList">
-	            <td>글번호 : ${apple.seq}&nbsp;&nbsp;</td>
-	            <td>| 작성자 : ${apple.id}&nbsp;&nbsp;</td>
-	            <td>| 조회수 : ${apple.cnt}&nbsp;&nbsp;</td>
-	            <td>| ${apple.regdate}</td>
+	        <tr class="board_dTitle">
+	        	<td><br>${apple.title}</td>
+	        	<td class="board_dSB">
+	        		<c:if test="${apple.trade=='sell'}">&nbsp;판매</c:if>
+	        		<c:if test="${apple.trade=='buy'}">&nbsp;구매</c:if>
+	        	</td>
 	        </tr>
-	        <tr height="40" width="100" class="board_dTrade">
-	        <td>
-	        	<c:if test="${apple.trade=='sell'}">판매</c:if>
-	        	<c:if test="${apple.trade=='buy'}">구매</c:if>
-	        </td></tr>
+	        <tr class="board_dList">
+	            <td>글번호 : ${apple.seq}&nbsp;&nbsp;</td>
+	            <td>| 작성자 : <img height="15" width="15" src="${apple.image}">${apple.id}&nbsp;&nbsp;</td>
+	            <td>| 조회수 : ${apple.cnt}&nbsp;&nbsp;</td>
+	            <td>| ${apple.regdate}<br></td>
+	        </tr>
+
 	        <tr class="board_dBottom">
 	            <c:if test="${empty apple.uploadfile}">
 	            	<td>${apple.content}</td>
 	            </c:if>
 	            <c:if test="${not empty apple.uploadfile}">
-	            	<td><img height="300" width="300" src="${apple.uploadfile}"><br>${apple.content}</td>
+	            	<td><img width="100%" src="${apple.uploadfile}"><br><br>${apple.content}<br><br></td>
 	            </c:if>
 	        </tr>
 	    </table>

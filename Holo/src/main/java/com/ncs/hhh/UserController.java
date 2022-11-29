@@ -22,8 +22,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import criTest.PageMaker;
 import criTest.SearchCriteria;
+import service.Notice_BoardService;
 import service.UserService;
 import vo.UserVO;
+
 
 
 @Controller
@@ -54,7 +56,7 @@ public class UserController {
 		mv.addObject("pageMaker",pageMaker);
 		mv.setViewName("/user/userList");
 		return mv;
-	} //bcrilist
+	}
 
 
 	@RequestMapping(value = "/login")
@@ -71,7 +73,7 @@ public class UserController {
 		if ( vo != null ) { 
 			// ID 는 일치 -> Password 확인
 			// => password 암호화 이전
-			// if ( vo.getPassword().equals(password) ) {
+			// if ( vo.getPassword().equals(password) ) 
 			// => password 암호화 이후
 			if (passwordEncoder.matches(password, vo.getPassword()) ) {
 
