@@ -80,11 +80,12 @@
 	        
     <br>
     <br>
+    &nbsp;&nbsp;<a href="noticelist">목록</a>       
     <c:if test="${Prev!='T'}">
-    <a href="t_bdetail?jCode=P&seq=${apple.seq}">이전글</a>
+    &nbsp;&nbsp;<a href="t_bdetail?jCode=P&seq=${apple.seq}">이전글</a>
     </c:if>
     <c:if test="${Prev=='T'}">
-    이전글
+    &nbsp;&nbsp;이전글
     </c:if>
     &nbsp;&nbsp;<a href="t_bdetail?jCode=N&seq=${apple.seq}">다음글</a>
 	<br>

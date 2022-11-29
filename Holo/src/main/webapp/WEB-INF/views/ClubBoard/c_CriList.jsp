@@ -88,7 +88,7 @@
             </nav>
 
         </header>
-       <br>
+        <br>
         <div class="Header_box">
         <h2>▶ 동아리/모임 게시판 ◀</h2>
         <p class="Header_text1">&nbsp;이곳은 동아리/모임 게시판 입니다. 동아리, 모임 글을  작성해주세요.</p>
@@ -163,7 +163,8 @@
 		<br>
         
   <div id="searchBar">
-            
+		<br>
+		<br>       
   	<form action="cbcrilist" method="get">
 			<b>검색 지역선택 : </b>
 			<c:set var="ckPrint" value="false" />
@@ -242,7 +243,6 @@
 			<c:if test="${not ckPrint}">
 				<input type="checkbox" name="check" value="충북">충북&nbsp;
 			</c:if>
-			
 			<c:set var="ckPrint" value="false" />
 			<c:forEach  var="place" items="${pageMaker.cri.check}" >
 				<c:if test="${plce=='충남'}">
@@ -264,6 +264,10 @@
 			<c:if test="${not ckPrint}">
 				<input type="checkbox" name="check" value="대구">대구&nbsp;
 			</c:if>
+						
+			<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			
 			<c:set var="ckPrint" value="false" />
 			<c:forEach  var="place" items="${pageMaker.cri.check}" >
@@ -356,6 +360,8 @@
 
 			<input type="reset" value="초기화" onclick="checkClear()">
 			
+			<br>
+			
 			<!-- <input type="submit" value="검색">&nbsp; -->
 			<select name="searchType" id="searchType">
            <option value="n" ${pageMaker.cri.searchType==null ? 'selected' : '' }>전체</option>
@@ -372,15 +378,18 @@
 	</form>	 
  </div>
 
+<!-- ****************** 버튼 기능 **********************-->
+		<br>
+		<br>
         <div class="new_Write">
-		<!-- 아이디 로그인할때만 가능하게 -->
-        <c:if test="${not empty loginID}">
-        &nbsp;&nbsp;<a href="cbinsertf">새글등록</a>
-        </c:if>
-        <c:if test="${empty loginID}">
-		&nbsp;&nbsp;<p onclick="alert('로그인후 이용해주세요')">새글등록</p>        
-        </c:if>
-    </div>
+			<!-- 아이디 로그인할때만 가능하게 -->
+	        <c:if test="${not empty loginID}">
+	        &nbsp;&nbsp;<a href="cbinsertf">새글등록</a>
+	        </c:if>
+	        <c:if test="${empty loginID}">
+			&nbsp;&nbsp;<p onclick="alert('로그인후 이용해주세요')">새글등록</p>        
+       		</c:if>
+        </div>
 </div>
     <br>
     <br>
