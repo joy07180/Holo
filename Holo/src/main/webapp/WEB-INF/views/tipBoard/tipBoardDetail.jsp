@@ -71,6 +71,7 @@ $(document).on("click", "#Comment_regist", function() {
 		};// 댓글 비동기 끝
 		
 });// 댓글등록 이벤트 끝
+// 임시
 
 getList(0);
 
