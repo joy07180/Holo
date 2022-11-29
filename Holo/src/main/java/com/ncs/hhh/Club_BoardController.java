@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import criTest.PageMaker;
 import criTest.SearchCriteria;
 import service.Club_BoardService;
+import service.CommentService;
 import vo.Club_BoardVO;
 import vo.Tip_BoardVO;
 
@@ -29,6 +30,8 @@ public class Club_BoardController {
 	private static final char[] CLASS_NAME = null;
 	@Autowired
 	Club_BoardService service;
+	@Autowired
+	CommentService service2;
 	
 	
 	// ** Reply_Insert : 답글등록
@@ -128,6 +131,10 @@ public class Club_BoardController {
 			
 			// 2.3)	결과전달		
 			System.out.println(vo);
+			int total = service2.getTotal(vo.getSeq());
+			
+			
+			mv.addObject("total",total);
 			mv.addObject("apple", vo);
 		}else mv.addObject("message", "~~ 글번호에 해당하는 자료가 없습니다. ~~");
 		

@@ -104,12 +104,12 @@
 						<table>
 							<tr>
 								<td bgcolor="PaleTurquoise">I D</td>
-								<td><input type="text" name="id" id="id"><br>
+								<td><input class="put" type="text" name="id" id="id"><br>
 								</td>
 							</tr>
 							<tr>
 								<td bgcolor="PaleTurquoise ">Password</td>
-								<td><input type="password" name="password" id="password"><br>
+								<td><input class="put" type="password" name="password" id="password"><br>
 								</td>
 							</tr>
 							<tr>

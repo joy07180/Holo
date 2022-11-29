@@ -81,7 +81,7 @@
         </div>
         <br>
         
-        <table  id="board_container">
+        <table id="board_container">
             <thead class="boardList_head">
                 <tr>
                     <th class="headS">번호</th>

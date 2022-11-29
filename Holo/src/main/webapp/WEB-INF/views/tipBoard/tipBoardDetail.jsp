@@ -35,7 +35,7 @@ $(document).on("click", "#Comment_regist", function() {
 			return;
 		}else if(com_content == '') {
 			alert('내용을 입력하세요');
-		} 
+		} else{
 		
 		$.ajax({
 			type:'post',
@@ -66,9 +66,12 @@ $(document).on("click", "#Comment_regist", function() {
 			error:function(){
 				alert('통신실패');
 			}
-		});// 댓글 비동기 끝
+		})
+		location.reload();
+		};// 댓글 비동기 끝
 		
 });// 댓글등록 이벤트 끝
+// 임시
 
 getList(0);
 
@@ -90,10 +93,11 @@ function getList(n) {
 	            for(i = 0;i < list.length;i++){
 	               var content = list[i].com_content;
 	               var writer = list[i].com_writer;
+	               var com_no = list[i].com_no;
 	               comment_html += "<div><span id='com_writer'><strong>" + writer + "</strong></span><br/>";
 	               comment_html += "<span id='com-content'>" + content + "</span><br>";
 	               if(writer === $("#writer").val()){
-	                   comment_html += "<span id='delete' style='cursor:pointer;' data-id ="+content+">[삭제]</span><br></div><hr>";
+	                   comment_html += "<span id='delete' style='cursor:pointer;' data-id ="+com_no+">[삭제]</span><br></div><hr>";
 	                   
 	               }
 	               else{
@@ -114,6 +118,33 @@ function getList(n) {
 	      );//getJson
 	}
 	
+$(document).on("click", "#delete", function(){
+	const writer = $('#writer').val();
+	const com_no = $(this).data("id");
+	alert('댓글을 삭제하시겠습니까?');
+	console.log('댓글삭제');
+           $.ajax({
+               type:'post',
+               url:'<c:url value="/Comment/commentDelete"/>',
+               data:JSON.stringify(
+                  {
+                     "com_writer":writer,
+                     "com_no":com_no
+                  }      
+               ),
+               contentType: 'application/json',
+               success:function(data){
+                  console.log('통신성공'+data);
+                  alert('댓글이 삭제되었습니다');
+                  location.href = location.href;
+               },
+               error:function(){
+                  alert('통신실패');
+               }
+            }); //댓글 삭제 비동기
+     
+});
+	
 	
 	</script>
 	
@@ -130,7 +161,7 @@ function getList(n) {
 	        <tr class="board_dTitle"><td>${apple.title}</td></tr>
 	        <tr class="board_dList">
 	        	<td>글번호 : ${apple.seq}&nbsp;&nbsp;</td>
-	            <td>| 작성자 : ${apple.id}&nbsp;&nbsp;</td>
+	            <td>| 작성자 : <img height="25" width="25" src="${apple.image}">${apple.id}&nbsp;&nbsp;</td>
 	            <td>| 조회수 : ${apple.cnt}&nbsp;&nbsp;</td>
 	            <td>| ${apple.regdate}</td>
 	        </tr>
