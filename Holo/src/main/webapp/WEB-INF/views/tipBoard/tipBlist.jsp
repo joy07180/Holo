@@ -147,7 +147,7 @@
         <div class="new_Write">
 		<!-- 아이디 로그인할때만 가능하게 -->
         <c:if test="${not empty loginID}">
-        &nbsp;&nbsp;<a href="cbinsertf">새글등록</a>
+        &nbsp;&nbsp;<a href="tipbinsertf">새글등록</a>
         </c:if>
         <c:if test="${empty loginID}">
 		&nbsp;&nbsp;<p onclick="alert('로그인후 이용해주세요')">새글등록</p>        
