@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
-<title>** 공지사항</title>
+<title></title>
 </head>
 <body>
 	<div class="contents">
@@ -40,7 +40,6 @@
 			</nav>
 
 		</header>
-		<h2>Search Detail</h2>
 		<hr>
 		<table class="board_dTop">
 	        <tr class="board_dTitle"><td>${apple.title}</td></tr>

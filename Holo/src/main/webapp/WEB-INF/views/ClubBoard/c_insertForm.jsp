@@ -75,6 +75,7 @@
 		<tr height="40">
 			<td><textarea rows="7" cols="100" name="content" placeholder="내용을 입력해 주세요."></textarea></td>
 		</tr>
+		<br>
 			<tr height="40">
 			<td><img src="" class="select_img"><br>
 				<input type="file" name="uploadfilef" id="uploadfilef"></td></tr>

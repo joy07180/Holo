@@ -371,7 +371,7 @@ input{
 }
 
 .user{
-	border: 1px solid #388aff;
+	border: 1px solid;
 	border-radius: 3px;
 	background-color: #c0c0c0;
 	color: black;
