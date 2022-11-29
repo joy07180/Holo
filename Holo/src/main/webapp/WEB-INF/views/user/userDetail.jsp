@@ -33,12 +33,12 @@ function goto() {
 
 <c:if test="${not empty apple}"> 
 	<table>
-		<tr><td bgcolor="lavender">I D</td><td>${apple.id}</td></tr>
-		<tr><td bgcolor="lavender">이름</td><td>${apple.name}</td></tr>
-		<tr><td bgcolor="lavender">생년월일</td><td>${apple.birthday}</td></tr>
-		<tr><td bgcolor="lavender">Gender</td><td>${apple.gender}</td></tr>
-		<tr><td bgcolor="lavender">핸드폰 번호</td><td>${apple.phonenum}</td></tr>
-		<tr><td bgcolor="lavender">회원 사진</td>
+		<tr><td class="page">I D</td><td>${apple.id}</td></tr>
+		<tr><td class="page">이름</td><td>${apple.name}</td></tr>
+		<tr><td class="page">생년월일</td><td>${apple.birthday}</td></tr>
+		<tr><td class="page">Gender</td><td>${apple.gender}</td></tr>
+		<tr><td class="page">핸드폰 번호</td><td>${apple.phonenum}</td></tr>
+		<tr><td class="page">회원 사진</td>
 		<td><img src="${apple.uploadfile}" width="70" height="80"></td></tr>
 	</table>
 </c:if>

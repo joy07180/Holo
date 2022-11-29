@@ -17,12 +17,17 @@ a{
 }
 
 tr{
-	
 	height: 40px;
 }
 
-td{
+.page{
+	background-color: lavender;
+	border: 0px;
+	border-radius: 4px; 
+}
+
+th, td{
 	text-align: center;
-	border: 10px lavender;
-	border-radius: 5px;
+	border: 1px solid lavender;
+	border-radius: 4px; 
 }
