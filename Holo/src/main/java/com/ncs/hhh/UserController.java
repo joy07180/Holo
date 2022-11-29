@@ -61,57 +61,7 @@ public class UserController {
 	}
 
 
-	@RequestMapping(value = "/login")
-	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
-		// 1) request 처리
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
-		UserVO vo = new UserVO();
-		String uri = "/home";
 
-		// 2) service 처리
-		vo.setId(id);
-		vo = service.selectOne(vo);
-		if ( vo != null ) { 
-			// ID 는 일치 -> Password 확인
-			// => password 암호화 이전
-			// if ( vo.getPassword().equals(password) ) 
-			// => password 암호화 이후
-			if (passwordEncoder.matches(password, vo.getPassword()) ) {
-
-				// Login 성공 -> login 정보 session에 보관, home
-				request.getSession().setAttribute("loginID", id);
-				request.getSession().setAttribute("loginName", vo.getName());
-
-				// ** BCryptPasswordEncoder 로 암호화되면 복호화가 불가능함.
-				// => password 수정 을 별도로 처리해야 함. 
-				// => 그러나 기존의 update  Code 를 활용하여 updateForm.jsp 에서 수정을 위해 
-				//    User가 입력한 raw_password 를 보관함. 
-				// => 이 session에 보관한 값은 detail 에서 "U" 요청시 사용함. 
-				//request.getSession().setAttribute("loginPW", password); 
-				uri="home";
-			}else {
-				// Password 오류
-				mv.addObject("message", "~~ Password 오류,  다시 하세요 ~~");
-			}
-		}else {	// ID 오류
-			mv.addObject("message", "~~ ID 오류,  다시 하세요 ~~");
-		} //else
-		mv.setViewName(uri);
-		return mv;
-	}
-
-
-	@RequestMapping(value = "/logout")
-	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
-
-		HttpSession session = request.getSession(false);
-		if (session!=null) session.invalidate();
-		mv.addObject("message", "~~ 로그아웃 되었습니다 ~~"); 
-		mv.setViewName("home");
-
-		return mv;
-	} 
 
 	// ** Join : 회원가입
 	@RequestMapping(value = "/joinf")

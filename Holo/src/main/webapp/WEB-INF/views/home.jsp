@@ -39,14 +39,6 @@
       }; //password
    }); //ready
    
-   function inCheck() {
-         if (iCheck==false) { $('#iMessage').html(' id 를 확인하세요 !!');}
-         if (pCheck==false) { $('#pMessage').html(' Password 를 확인하세요 !!');}
-         
-         if ( iCheck && pCheck ) return true; // submit 진행  
-         else return false;
-   } //inCheck
-   
    
    $(function searchsearch() {
        $('#searchBtn2').click(function () {
@@ -122,7 +114,7 @@
 							</tr>
 							<tr>
 								<td></td>
-								<td><input type="submit" value="Login" onclick="return inCheck()" class="user" id="axlogin">&nbsp;&nbsp;
+								<td><input type="submit" value="Login"  class="user" id="axlogin">&nbsp;&nbsp;
 									 <a href="joinf" class="user">회원가입</a>&nbsp;&nbsp;
 							</tr>
 						</table>
