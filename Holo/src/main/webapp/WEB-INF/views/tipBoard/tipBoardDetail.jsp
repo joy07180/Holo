@@ -161,7 +161,7 @@ $(document).on("click", "#delete", function(){
 	        <tr class="board_dTitle"><td>${apple.title}</td></tr>
 	        <tr class="board_dList">
 	        	<td>글번호 : ${apple.seq}&nbsp;&nbsp;</td>
-	            <td>| 작성자 : ${apple.id}&nbsp;&nbsp;</td>
+	            <td>| 작성자 : <img height="25" width="25" src="${apple.image}">${apple.id}&nbsp;&nbsp;</td>
 	            <td>| 조회수 : ${apple.cnt}&nbsp;&nbsp;</td>
 	            <td>| ${apple.regdate}</td>
 	        </tr>

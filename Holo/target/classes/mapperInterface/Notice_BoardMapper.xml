@@ -52,7 +52,7 @@
 	</insert>
 
 	<select id="selectOne" resultType="vo.Notice_BoardVO">
-		select * from notice_board where seq=#{seq}
+		 select seq, title, n.id, content, regdate, cnt, fix, u.uploadfile image  from notice_board n join user u where n.id = u.id AND seq=#{seq}
 	</select>
 
 	<!-- ** 조회수 증가 -->
@@ -75,10 +75,6 @@
 		Notice_board order by seq desc limit 0,5
 	</select>
 
-
-	<sql id="search2">
-				and title like #{keyword2} )
-	</sql>
 
 	<select id="nsearchsearch" resultType="vo.Notice_BoardVO">
 		select seq, n.id, title,DATE_FORMAT(regdate, '%m-%d %H:%i') regdate, cnt, u.uploadfile image

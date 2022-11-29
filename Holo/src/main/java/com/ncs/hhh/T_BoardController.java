@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import criTest.PageMaker;
 import criTest.SearchCriteria;
+import service.CommentService;
 import service.T_BoardService;
 import vo.T_BoardVO;
 
@@ -28,6 +29,8 @@ public class T_BoardController {
 	
 	@Autowired
 	T_BoardService service;
+	@Autowired
+	CommentService service2;
 		// => ver02) SearchCriteria,  PageMaker 적용하기 
 		@RequestMapping(value="/t_bcrilist")
 		public ModelAndView t_bcrilist(ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
@@ -85,6 +88,10 @@ public class T_BoardController {
 				}
 				
 				// 2.3)	결과전달		
+int total = service2.getTotal(vo.getSeq());
+				
+				
+				mv.addObject("total",total);
 				mv.addObject("apple", vo);
 			}else mv.addObject("message", "~~ 글번호에 해당하는 자료가 없습니다. ~~");
 			

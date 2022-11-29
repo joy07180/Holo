@@ -53,7 +53,7 @@
 
 
 <select id="selectOne" resultType="vo.F_BoardVO">
-	select * from free_board where seq=#{seq}
+	select seq, title, f.id, content, regdate, cnt, u.uploadfile image from free_board f join user u where f.id = u.id AND seq=#{seq}
 </select>
 
 <select id="n_selectOne" resultType="vo.F_BoardVO">
