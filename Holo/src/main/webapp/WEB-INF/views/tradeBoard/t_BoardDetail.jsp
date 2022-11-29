@@ -79,12 +79,10 @@
 	</c:if>
 	
 	<div>
-		<!-- 아이디 로그인이랑 다를때 메뉴 -->
-        <c:if test="${loginID!=apple.id || loginID!='admin'}">
 		<a href="t_binsertf">새글등록</a>
         &nbsp;&nbsp;<a href="t_rinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글등록</a>
 		&nbsp;&nbsp;<a href="t_bcrilist">목록으로</a>       
-        </c:if>
+		
         <!-- 아이디 로그인이랑 같을때 추가 메뉴 -->
         <c:if test="${loginID==apple.id || loginID=='admin' }">
         &nbsp;&nbsp;<a href="t_bdetail?jCode=U&seq=${apple.seq}">글수정</a>

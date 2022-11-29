@@ -1,11 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%
+    // 엔터 입력시 줄바꿈
+    pageContext.setAttribute("replaceChar","\n");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
+	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 	<title>** 공지사항</title>
 </head>
 <body>
@@ -39,34 +45,70 @@
             </nav>
         </header>
         <br>
-		<h2>공지사항</h2>
+        <div class="Header_box">
+        <h2>▶ 공지사항 ◀</h2>
+        <p class="Header_text1">&nbsp;이곳은 공지사항 게시판 입니다.</p>
+        <p class="Header_text2">&nbsp;관리자 외에 글을 쓸 수 없으며, 글 읽기만 가능합니다.</p>
+        <br>
+        </div>
         <br>
 	
-	<table class="board_dTop">
+		<table class="board_dTop">
 	        <tr class="board_dTitle"><td>${apple.title}</td></tr>
 	        <tr class="board_dList">
 	        	<td>글번호 : ${apple.seq}&nbsp;&nbsp;</td>
-	            <td>| 작성자 : ${apple.id}&nbsp;&nbsp;</td>
+	            <td>| 작성자 : <img height="15" width="15" src="${apple.image}">${apple.id}&nbsp;&nbsp;</td>
 	            <td>| 조회수 : ${apple.cnt}&nbsp;&nbsp;</td>
 	            <td>| ${apple.regdate}</td>
 	        </tr>
         <tr class="board_dBottom">
             <c:if test="${empty apple.uploadfile}">
-            	<td>${apple.content}</td>
+            	<td>${fn:replace(apple.content, replaceChar, "<br/>")}</td>
             </c:if>
             <c:if test="${not empty apple.uploadfile}">
-            	<td><img height="300" width="300" src="${apple.uploadfile}"><br>${apple.content}</td>
+            	<td><img width="100%" src="${apple.uploadfile}"><br><br>${fn:replace(apple.content, replaceChar, "<br/>")}<br><br></td>
             </c:if>
 	    </tr>
 	</table>
-
-<c:if test="${loginID=='admin'}">
-&nbsp;&nbsp;<a href="noticedetail?jCode=U&seq=${apple.seq}">[글수정]</a>
-&nbsp;&nbsp;<a href="noticedelete?seq=${apple.seq}">[글삭제]</a>
-</c:if>
-&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-&nbsp;&nbsp;<a href="home">[Home]</a>
+	
+	<div>
+	<c:if test="${loginID=='admin'}">
+	&nbsp;&nbsp;<a href="noticeinsertf">새글등록</a>
+	&nbsp;&nbsp;<a href="noticedetail?jCode=U&seq=${apple.seq}">글수정</a>
+	&nbsp;&nbsp;<a href="noticedelete?seq=${apple.seq}">글삭제</a>
+	</c:if>
+	        
+    <br>
+    <br>
+    <c:if test="${Prev!='T'}">
+    <a href="t_bdetail?jCode=P&seq=${apple.seq}">이전글</a>
+    </c:if>
+    <c:if test="${Prev=='T'}">
+    이전글
+    </c:if>
+    &nbsp;&nbsp;<a href="t_bdetail?jCode=N&seq=${apple.seq}">다음글</a>
+	<br>
+	<br>  
+	</div>
 
 </div>
+	<footer>
+	    <div class="bottom">
+	        <ul class="btMenu">
+	            <li><a href="">A</a></li>
+	            <li><a href="">B</a></li>
+	            <li><a href="">C</a></li>
+	            <li><a href="">D</a></li>
+	            <li><a href="">E</a></li>
+	            <li><a href="">F</a></li>
+	        </ul>
+	        <span>
+	            <div>Copyright (c) Holo.net All rights reserved.</div>
+	            <div>Contact us, holo at gmail dot com</div>
+	            <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
+	        </span>
+	    </div>
+	    <br>
+	</footer>
 </body>
 </html>
