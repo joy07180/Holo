@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="resources/myLib/userDetail.css">
-<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 
 <title>내 정보</title>
 <script>
@@ -50,7 +49,7 @@ function goto() {
 &nbsp;&nbsp;<a href="userdetail?jCode=U&id=${apple.id}" >내정보수정</a>
 </c:if>
 <c:if test="${loginID=='admin'}">
-&nbsp;&nbsp;<a href="userdetail?jCode=U&id=${apple.id}" >회원정보수정	</a>
+&nbsp;&nbsp;<a href="userdetail?jCode=U&id=${apple.id}" >회원정보수정</a>
 </c:if>
 <c:if test="${loginID=='admin' or loginID==apple.id}">
 &nbsp;&nbsp; <a href="javascript:goto()" >회원탈퇴</a><br>
@@ -62,24 +61,24 @@ function goto() {
 <h2>내가 쓴 글</h2>
 </c:if>
 <c:if test="${loginID!=apple.id}">
-<h2>${apple.id}가 쓴 글</h2>
+<h2>${apple.id}(이)가 쓴 글</h2>
 </c:if>
 
 <table>
 			<thead>
 				<tr height="30">
-					<th width="200px">제 목</th>
-					<th width="100px">날 짜</th>
-					<th width="40px">조회수</th>
+					<th width="300px">제 목</th>
+					<th width="150px">날 짜</th>
+					<th width="80px">조회수</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:if test="${not empty service}">
 					<c:forEach var="board" items="${service}">
-						<tr height="30" bgcolor="lightGray">
-							<td width="40%"><a href="searchdetail?seq=${board.seq}">${board.title}</a></td>
-							<td class="ct" width="10%">${board.regdate}</td>
-							<td class="ct" width="10%">${board.cnt}</td>
+						<tr height="30">
+							<td><a href="searchdetail?seq=${board.seq}">${board.title}</a></td>
+							<td class="ct">${board.regdate}</td>
+							<td class="ct">${board.cnt}</td>
 						</tr>
 					</c:forEach>
 				</c:if>

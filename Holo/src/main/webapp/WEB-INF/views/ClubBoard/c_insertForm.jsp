@@ -42,7 +42,7 @@
 					</nav>
 
 				</header>
-<h2>** Board Insert Spring_MVC2 **</h2>
+<h2>동아리/ 모임 새 글 등록</h2>
 <form action="cbinsert" method="Post" enctype="multipart/form-data">
 	<table>
 		<tr>
@@ -113,8 +113,7 @@
 </form>
 
 </div>
+</div>
 <hr>
-&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-&nbsp;&nbsp;<a href="home">[Home]</a>
 </body>
 </html>

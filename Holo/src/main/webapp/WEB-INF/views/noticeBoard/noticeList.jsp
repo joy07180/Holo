@@ -108,7 +108,7 @@
 							<tr>
 								<td class="bodyS">${board.seq}</td>
 								<td class="bodyT" id="title_hidden"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
-								<td class="bodyI"><img height="25" width="25" src="${board.image}">&nbsp;${board.id}</td>
+								<td class="bodyI"><img height="25" width="25" src="${board.image}">&nbsp;<a href="userdetail?id=${board.id}">${board.id}</a></td>
 								<td class="bodyR">${board.regdate}</td>
 								<td class="bodyC">${board.cnt}</td>
 							</tr>

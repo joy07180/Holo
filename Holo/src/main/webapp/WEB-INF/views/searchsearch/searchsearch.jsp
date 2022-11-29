@@ -63,7 +63,7 @@
 					<c:forEach var="nboard" items="${nservice}">
 						<tr height="30" bgcolor="lightGray">
 							<td width="40%"><a href="searchdetail?seq=${nboard.seq}">${nboard.title}</a></td>
-							<td class="ct" width="20%"><img height="25" width="25" src="${nboard.image}">${nboard.id}</td>
+							<td class="ct" width="20%"><img height="25" width="25" src="${nboard.image}"><a href="userdetail?id=${nboard.id}">${nboard.id}</a></td>
 							<td class="ct" width="10%">${nboard.regdate}</td>
 							<td class="ct" width="10%">${nboard.cnt}</td>
 						</tr>

@@ -14,9 +14,15 @@
 a{
 	text-decoration: none;
 	font-weight:bold;
-	color: Gray;
 }
 
 tr{
+	
 	height: 40px;
+}
+
+td{
+	text-align: center;
+	border: 10px lavender;
+	border-radius: 5px;
 }

@@ -150,7 +150,7 @@
 							<c:forEach var="board" items="${nlist}">
 								<tr height="30">
 									<td width="50%"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
-									<td class="ct" width="20%">${board.id}</td>
+									<td class="ct" width="20%"><a href="userdetail?id=${board.id}">${board.id}</a></td>
 									<td class="ct" width="30%">${board.regdate}</td>
 								</tr>
 							</c:forEach>
@@ -175,7 +175,7 @@
 								<tr height="30">
 
 									<td width="40%"><a href="f_bdetail?seq=${fboard.seq}">${fboard.title}</a></td>
-									<td class="ct" width="20%">${fboard.id}</td>
+									<td class="ct" width="20%"><a href="userdetail?id=${fboard.id}">${fboard.id}</a></td>
 									<td class="ct" width="10%">${fboard.cnt}</td>
 								</tr>
 							</c:forEach>
@@ -201,7 +201,7 @@
 							<c:forEach var="hboard" items="${hlist}">
 								<tr height="30">
 									<td width="40%"><a href="hbdetail?seq=${hboard.seq}">${hboard.title}</a></td>
-									<td class="ct" width="20%">${hboard.id}</td>
+									<td class="ct" width="20%"><a href="userdetail?id=${hboard.id}">${hboard.id}</a></td>
 									<td class="ct" width="30%">${hboard.regdate}</td>
 
 								</tr>
@@ -226,7 +226,7 @@
 							<c:forEach var="hboard" items="${hhotlist}">
 								<tr height="30">
 									<td width="40%"><a href="hbdetail?seq=${hboard.seq}">${hboard.title}</a></td>
-									<td class="ct" width="20%">${hboard.id}</td>
+									<td class="ct" width="20%"><a href="userdetail?id=${hboard.id}">${hboard.id}</a></td>
 									<td class="ct" width="10%">${hboard.cnt}</td>
 								</tr>
 							</c:forEach>
@@ -252,7 +252,7 @@
 							<c:forEach var="tboard" items="${tlist}">
 								<tr height="30">
 									<td width="40%"><a href="t_bdetail?seq=${tboard.seq}">${tboard.title}</a></td>
-									<td class="ct" width="20%">${tboard.id}</td>
+									<td class="ct" width="20%"><a href="userdetail?id=${tboard.id}">${tboard.id}</a></td>
 									<td class="ct" width="30%">${tboard.regdate}</td>
 
 								</tr>
@@ -278,7 +278,7 @@
 								<c:forEach var="cboard" items="${chotlist}">
 									<tr height="30">
 										<td width="40%"><a href="cbdetail?seq=${cboard.seq}">${cboard.title}</a></td>
-										<td class="ct" width="20%">${cboard.id}</td>
+										<td class="ct" width="20%"><a href="userdetail?id=${cboard.id}">${cboard.id}</a></td>
 										<td class="ct" width="10%">${cboard.cnt}</td>
 									</tr>
 								</c:forEach>

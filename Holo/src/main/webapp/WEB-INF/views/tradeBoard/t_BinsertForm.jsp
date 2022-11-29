@@ -98,10 +98,6 @@
 	</form>
 	</div>
 
-&nbsp;&nbsp;<a href="t_bcrilist">boardList</a>
-&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-&nbsp;&nbsp;<a href="home">[Home]</a>
-
 <footer>
         <div class="bottom">
             <ul class="btMenu">

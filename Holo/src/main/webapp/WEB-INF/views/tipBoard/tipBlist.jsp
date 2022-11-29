@@ -108,7 +108,7 @@
                         <tr>
                             <td class="bodyG">1</td>
                             <td class="bodyT" id="title_hidden"><a href="tipbdetail?seq=${board.seq}">${board.title}</a></td>
-                            <td class="bodyI"><img height="25" width="25" src="${board.image}">${board.id}</td>
+                            <td class="bodyI"><img height="25" width="25" src="${board.image}"><a href="userdetail?id=${board.id}">${board.id}</a></td>
                             <td class="bodyR" width="20%">${board.regdate}</td>
                             <td class="bodyC" width="10%">${board.cnt}</td>
                         </tr>
