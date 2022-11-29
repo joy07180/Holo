@@ -97,7 +97,16 @@
 <select id="selectOne" resultType="vo.Club_BoardVO">
 	select * from club_board where seq=#{seq}
 </select>
-
+<select id="n_selectOne" resultType="vo.Club_BoardVO">
+	select * from club_board where seq = ( 
+    	select min(seq) from club_board where seq>#{seq} and step=0
+	)
+</select>
+<select id="p_selectOne" resultType="vo.Club_BoardVO">
+	select * from club_board where seq = ( 
+    	select max(seq) from club_board where seq<![CDATA[ < ]]>#{seq} and step=0
+	)
+</select>
 <!-- ** selectKey Test 
 => AutoNumbering 을 편리하게 할 수 있도록 지원
 => DB작업중 먼저 어떤 키값을 가져와서 증가시켜서 입력하거나 혹은 입력후에 증가된 키값을 가져올 필요가 있을때마다.

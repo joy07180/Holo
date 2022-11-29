@@ -55,7 +55,7 @@
 	<c:if test="${not empty apple}">
 	    <table class="board_dTop">
 	        <tr class="board_dTitle">
-	        	<td><br>${apple.title}</td>
+	            <td><br>${apple.title}</td>
 	        	<td class="board_dSB">
 	        		<c:if test="${apple.trade=='sell'}">&nbsp;판매</c:if>
 	        		<c:if test="${apple.trade=='buy'}">&nbsp;구매</c:if>
@@ -67,7 +67,6 @@
 	            <td>| 조회수 : ${apple.cnt}&nbsp;&nbsp;</td>
 	            <td>| ${apple.regdate}<br></td>
 	        </tr>
-
 	        <tr class="board_dBottom">
 	            <c:if test="${empty apple.uploadfile}">
 	            	<td>${fn:replace(apple.content, replaceChar, "<br/>")}</td>
@@ -93,14 +92,16 @@
         </c:if>
         
         <br>
+        <br>
         <c:if test="${Prev!='T'}">
-        &nbsp;&nbsp;<a href="t_bdetail?jCode=P&seq=${apple.seq}">이전글</a>
+        <a href="t_bdetail?jCode=P&seq=${apple.seq}">이전글</a>
         </c:if>
         <c:if test="${Prev=='T'}">
-        &nbsp;&nbsp;이전글
+        이전글
         </c:if>
-        
         &nbsp;&nbsp;<a href="t_bdetail?jCode=N&seq=${apple.seq}">다음글</a>
+		<br>
+		<br>        
         </div>
         
 </div>

@@ -34,11 +34,11 @@ public class Club_BoardController {
 	// ** Reply_Insert : 답글등록
 	@RequestMapping(value="/crinsertf")
 	public ModelAndView rinsertf(HttpServletRequest request, 
-			HttpServletResponse response, ModelAndView mv, Tip_BoardVO vo) {
+			HttpServletResponse response, ModelAndView mv, Club_BoardVO vo) {
 		// => vo 에는 전달된 부모글의 root, step, indent 가 담겨있음 
 		// => 매핑메서드의 인자로 정의된 vo 는 request.setAttribute 와 동일 scope
 		//    단, 클래스명의 첫글자를 소문자로 ...  ${Tip_BoardVO.root}
-		mv.setViewName("/ClubBoard/cbdetail");
+		mv.setViewName("/ClubBoard/c_rinsertForm");
 		return mv;
 	}
 	@RequestMapping(value="/crinsert", method=RequestMethod.POST)
@@ -53,7 +53,7 @@ public class Club_BoardController {
 		//		- indent: 부모 indent + 1
 		//		- 그러므로 rinsertForm 에 부모값을 보관 (hidden으로) 해서 전달받음 
 		//		  이를 위해 boardDetail 에서 요청시 퀴리스트링으로 전달 -> rinsertf 
-		String uri = "redirect:c_crilist";
+		String uri = "redirect:cbcrilist";
 		vo.setStep(vo.getStep()+1);
 		vo.setIndent(vo.getIndent()+1);
 		
@@ -114,6 +114,17 @@ public class Club_BoardController {
 			// 2.2) 수정요청 인지 확인
 			if ( "U".equals(request.getParameter("jCode")))
 				uri = "/ClubBoard/c_bupdateForm";
+			
+			// 2.3) 이전, 다음 상세보기 요청인지 아닌지
+			if ( "P".equals(request.getParameter("jCode"))) {
+				vo = service.p_selectOne(vo);
+				if(vo==null) mv.addObject("Prev", "T");
+			}
+			
+			if ( "N".equals(request.getParameter("jCode"))) {
+				vo = service.n_selectOne(vo);
+				if(vo==null) mv.addObject("Next", "F");
+			}
 			
 			// 2.3)	결과전달		
 			System.out.println(vo);

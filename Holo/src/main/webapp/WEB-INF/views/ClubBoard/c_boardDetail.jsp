@@ -10,8 +10,8 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<title>** 동아리/모임게시판 디테일 **</title>
 	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
-	<title>** Board Detail Spring_MVC2 **</title>
 	<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script>
 	$(document).on("click", "#Comment_regist", function() {
@@ -142,52 +142,61 @@ function getList() {
             </nav>
 
         </header>
-<h2>** Board Detail Spring_MVC2 **</h2>
-<hr>
-	<table>
-		<tr height="40"><td bgcolor="Khaki">Seq</td><td>${apple.seq}</td></tr>
-		<tr height="40"><td bgcolor="Khaki">I D</td><td>${apple.id}</td></tr>
-		<tr height="40"><td bgcolor="Khaki">Title</td><td>${apple.title}</td></tr>
-		<tr height="40"><td bgcolor="Khaki">Content</td>
-						<td>
-						<c:if test="${!empty apple.uploadfile}">
-						<img height="300" width="300" src="${apple.uploadfile}">
-						<br>
-						</c:if>
-						${apple.content}</td>
-		</tr>
-		<tr height="40"><td bgcolor="Khaki">RegDate</td><td>${apple.regdate}</td></tr>
-		<tr height="40"><td bgcolor="Khaki">조회수</td><td>${apple.cnt}</td></tr>
+        <br>
+        <div class="Header_box">
+        <h2>▶ 동아리/모임 게시판 ◀</h2>
+        <p class="Header_text1">&nbsp;이곳은 동아리/모임 게시판 입니다. 동아리, 모임 글을  작성해주세요.</p>
+        <p class="Header_text2">&nbsp;팁 관련 주제는 <a href="tipblist">팁/정보</a>게시판, 자유주제는 <a href="f_bcrilist">자유</a>게시판,  물건 판매 및 거래는 <a href="t_bcrilist">거래/나눔</a>게시판에 남겨주세요.</p>
+        <br>
+        </div>
+        <br>
+        
+        
+	<table class="board_dTop">
+		<tr class="board_dTitle"><td><br>${apple.title}</td></tr>
+		<tr class="board_dList">
+        	<td>글번호 : ${apple.seq}&nbsp;&nbsp;</td>
+ 	        <td>| 작성자 : <img height="15" width="15" src="${apple.image}">${apple.id}&nbsp;&nbsp;</td>
+            <td>| 조회수 : ${apple.cnt}&nbsp;&nbsp;</td>
+            <td>| ${apple.regdate}</td>
+	    </tr>
+		<tr class="board_dBottom">
+            <c:if test="${empty apple.uploadfile}">
+            	<td>${fn:replace(apple.content, replaceChar, "<br/>")}</td>
+            </c:if>
+            <c:if test="${not empty apple.uploadfile}">
+            	<td><img width="100%" src="${apple.uploadfile}"><br><br>${fn:replace(apple.content, replaceChar, "<br/>")}<br><br></td>
+            </c:if>
+        </tr>
 	</table>
-<hr>
 
-  <div class="comment-box">
+    <div class="comment-box">
                     
-         <div class="comment-count">댓글 <span id="count">0</span></div>
+        <div class="comment-count">댓글 <span id="count">0</span></div>
 
          	   <!-- <span class="c-icon"><i class="fa-solid fa-user"></i>  -->
-         <div class="comment-name">
+       	<div class="comment-name">
             <span class="anonym">작성자 : 
         	    <input type="text" class="form-control" id="com_writer" placeholder="이름" name ="com_writer" value='${login.userId}' readonly  style="width: 100px; border:none;">
             </span>
-          </div>   
+        </div>   
             	
             <!-- </span> -->
         <!--<img src="/익명.jpg" width ="50px" alt="My Image"><!-->
-       <div class="comment-sbox">
-           <textarea class="comment-input" id="com_content" cols="80" rows="2" name="com_content" ></textarea>
-           <!-- <span class="com-function-btn" type="hidden">
+        <div class="comment-sbox">
+            <textarea class="comment-input" id="com_content" cols="80" rows="2" name="com_content" ></textarea>
+            <!-- <span class="com-function-btn" type="hidden">
                
                <a href="#"><i class="fa-solid fa-pen-to-square"></i></a>
                <a href="#"><i class="fa-solid fa-trash-can"></i></a>
             </span> -->
-       </div>
-       	<div class="regBtn">
+        </div>
+        <div class="regBtn">
        		<button id="Comment_regist"> 댓글등록</button>
-   </div>
+        </div>
    
-   <div class="comment_Box" style="border:1px solid gray;"> <!-- 댓글이 들어갈 박스 --></div>
-   <div align="center">
+   		<div class="comment_Box" style="border:1px solid gray;"> <!-- 댓글이 들어갈 박스 --></div>
+  		<div align="center">
             <!-- First, Prev -->
             <c:choose>
                 <c:when test="${pageMaker.prev && pageMaker.spageNo>1}">
@@ -196,10 +205,10 @@ function getList() {
                     <a href="CommentList/${apple.seq}${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
 
                     <!-- OLD_version 
-    	=> EL 은 주석내에 있어도 JSP가 처리하여 변수명등에 오류있으면 500 발생할 수 있음.  
-    <a href="bcrilist?currPage=1&rowsPerPage=5">FP</a>&nbsp;   
-    <a href="bcrilist?currPage=${pageMaker.spageNo-1}&rowsPerPage=5">&lt;</a>&nbsp;&nbsp;  
-    -->
+    	            => EL 은 주석내에 있어도 JSP가 처리하여 변수명등에 오류있으면 500 발생할 수 있음.  
+				    <a href="bcrilist?currPage=1&rowsPerPage=5">FP</a>&nbsp;   
+				    <a href="bcrilist?currPage=${pageMaker.spageNo-1}&rowsPerPage=5">&lt;</a>&nbsp;&nbsp;  
+				    -->
                 </c:when>
             </c:choose>
             <!-- Displag PageNo -->
@@ -222,18 +231,52 @@ function getList() {
             </c:choose>
 
       </div>
+</div> <!-- comment-box /div -->
 
+		<div>
+			<!-- 아이디 로그인이랑 다를때 메뉴 -->
+	        <c:if test="${loginID!=apple.id || loginID!='admin'}">
+			<a href="cbinsertf">새글등록</a>
+	        &nbsp;&nbsp;<a href="crinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글등록</a>
+			&nbsp;&nbsp;<a href="cbcrilist">목록으로</a>       
+	        </c:if>
+	        <!-- 아이디 로그인이랑 같을때 추가 메뉴 -->
+	        <c:if test="${loginID==apple.id || loginID=='admin' }">
+	        &nbsp;&nbsp;<a href="cbdetail?jCode=U&seq=${apple.seq}">글수정</a>
+	        &nbsp;&nbsp;<a href="cbdelete?seq=${apple.seq}&root=${apple.root}">글삭제</a>
+	        </c:if>
+	        <br>
+	        
+	        <br>
+	        <c:if test="${Prev!='T'}">
+	        <a href="cbdetail?jCode=P&seq=${apple.seq}">이전글</a>
+	        </c:if>
+	        <c:if test="${Prev=='T'}">
+	        이전글
+	        </c:if>
+	        
+	        &nbsp;&nbsp;<a href="cbdetail?jCode=N&seq=${apple.seq}">다음글</a>
+        </div>
+</div> <!-- contents /div -->
 
+<footer>
+        <div class="bottom">
+            <ul class="btMenu">
+                <li><a href="">A</a></li>
+                <li><a href="">B</a></li>
+                <li><a href="">C</a></li>
+                <li><a href="">D</a></li>
+                <li><a href="">E</a></li>
+                <li><a href="">F</a></li>
+            </ul>
+            <span>
+                <div>Copyright (c) Holo.net All rights reserved.</div>
+                <div>Contact us, holo at gmail dot com</div>
+                <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
+            </span>
+        </div>
+        <br>
+    </footer>
 
-
-
-
-
-&nbsp;&nbsp;<a href="crinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">[답글]</a><br>
-&nbsp;&nbsp;<a href="cbdetail?jCode=U&seq=${apple.seq}">[글수정]</a>
-&nbsp;&nbsp;<a href="cbdelete?seq=${apple.seq}&root=${apple.root}">[글삭제]</a>
-
-</div>
-</div>
 </body>
 </html>
