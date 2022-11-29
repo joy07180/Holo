@@ -220,6 +220,7 @@ console.log("반내림 => "+Math.floor(${total}/10));
        	<div class="regBtn">
        		<button id="Comment_regist"> 댓글등록</button>
          </div>
+  </div>
 
 		<div>
 			<!-- 아이디 로그인이랑 다를때 메뉴 -->
