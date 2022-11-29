@@ -100,27 +100,28 @@
 	 </c:if>
 
 				<c:if test="${empty loginID}">
-					<form action="login" method="post" id="axloginf">
+					<form action="login" method="post">
 						<table>
 							<tr>
 								<td bgcolor="PaleTurquoise">I D</td>
-								<td><input class="put" type="text" name="id" id="id"><br>
+								<td><input type="text" class="put" name="id" id="id"><br>
 								</td>
 							</tr>
 							<tr>
 								<td bgcolor="PaleTurquoise ">Password</td>
-								<td><input class="put" type="password" name="password" id="password"><br>
+								<td><input type="password" class="put" name="password" id="password"><br>
 								</td>
 							</tr>
-							<tr>
-								<td></td>
-								<td><input type="submit" value="Login"  class="user" id="axlogin">&nbsp;&nbsp;
+							<tr><td></td>
+								<td>
+								<input  type="submit" id="axlogin" value="Login" class="user">
 									 <a href="joinf" class="user">회원가입</a>&nbsp;&nbsp;
 							</tr>
 						</table>
 					</form>
 					<br>
 				</c:if>
+				
 				</div>
 			</div>
 	

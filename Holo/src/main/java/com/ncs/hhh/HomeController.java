@@ -124,7 +124,9 @@ public class HomeController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/login")
+
+	
+	@RequestMapping(value = "/login" , method=RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
 		// 1) request 처리
 		String id = request.getParameter("id");
@@ -158,7 +160,39 @@ public class HomeController {
 		mv.setViewName(uri);
 		return mv;
 	}
-
+	
+	// ** JSON Login
+	// => jsonView 적용
+	@RequestMapping(value = "/jslogin" , method=RequestMethod.POST)
+	public ModelAndView jslogin(HttpServletRequest request, HttpServletResponse response
+									, ModelAndView mv, UserVO vo) {
+		// 1) request 처리
+		// => 입력한 password 보관
+		// => response 의 한글 처리 (Ajax 요청 결과로 Data를 전송할때 필수) 
+		String password = vo.getPassword();
+		response.setContentType("text/html; charset=UTF-8");
+		
+		// 2) service 처리
+		vo = service.selectOne(vo);
+		if ( vo != null ) { 
+			// ID 는 일치 -> Password 확인
+			if ( vo.getPassword().equals(password) ) {
+				// Login 성공 -> login 정보 session에 보관, home
+				request.getSession().setAttribute("loginID", vo.getId());
+				request.getSession().setAttribute("loginName", vo.getName());
+				mv.addObject("code","200");
+			}else {
+				// Password 오류
+				mv.addObject("message", "~~ Password 오류,  다시 하세요 ~~");
+				mv.addObject("code","201");
+			}
+		}else {	// ID 오류
+			mv.addObject("message", "~~ ID 오류,  다시 하세요 ~~");
+			mv.addObject("code","202");
+		} //else
+		mv.setViewName("jsonView");
+		return mv;
+	}
 
 	@RequestMapping(value = "/logout")
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {

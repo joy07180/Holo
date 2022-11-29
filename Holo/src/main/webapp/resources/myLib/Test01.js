@@ -31,21 +31,6 @@ $(function(){
 		}); //hover
 		
 		
-	// ** axLogin
-	// => axloginf	
-	$('#axloginf').click(function(){
-		$.ajax({
-			type:'Get',
-			url:'loginf',
-			success:function(resultPage){
-				$('#resultArea1').html(resultPage);
-			},
-			error:function(){
-				$('#resultArea1').html('~~ AjaxLogin 요청 Erroe ~~');
-			}
-		}); //ajax
-	}); //click
-		
 	// => axlogin : ver01
     //    로그인 성공 or 실패는 모두 컨트롤러의 정상젓인 처리 결과이므로
 	//	  success function 에서 처리함
@@ -66,7 +51,7 @@ $(function(){
 	$('#axlogin').click(function() {
 		$.ajax({
 			type: 'Post',
-			url: 'home',
+			url: 'login',
 			data:{
 				id: $('#id').val(),
 				password: $('#password').val()
@@ -87,6 +72,7 @@ $(function(){
 			}
 		}); //ajax
 	});	//axlogin_click
+	
 	
 	
 	
