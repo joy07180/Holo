@@ -115,12 +115,12 @@ public class Tip_BoardController {
 				
 				// 2.3)	결과전달		
 				
-				int total = service2.getTotal(vo.getSeq());
 				System.out.println(vo);
+				int total = service2.getTotal(vo.getSeq());
 				
 				
-				mv.addObject("apple", vo);
 				mv.addObject("total",total);
+				mv.addObject("apple", vo);
 				
 				mv.addObject(uri);
 				
