@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%
+    // 엔터 입력시 줄바꿈
+    pageContext.setAttribute("replaceChar","\n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,10 +70,10 @@
 
 	        <tr class="board_dBottom">
 	            <c:if test="${empty apple.uploadfile}">
-	            	<td>${apple.content}</td>
+	            	<td>${fn:replace(apple.content, replaceChar, "<br/>")}</td>
 	            </c:if>
 	            <c:if test="${not empty apple.uploadfile}">
-	            	<td><img width="100%" src="${apple.uploadfile}"><br><br>${apple.content}<br><br></td>
+	            	<td><img width="100%" src="${apple.uploadfile}"><br><br>${fn:replace(apple.content, replaceChar, "<br/>")}<br><br></td>
 	            </c:if>
 	        </tr>
 	    </table>
