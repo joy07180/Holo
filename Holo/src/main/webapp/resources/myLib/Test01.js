@@ -14,7 +14,7 @@ add - *.js - 밑에 제네릭 텍스트 에디터 디폴트
 $(function(){
 	// ** MousePointer
 	// => ~~~.hover(f1, f2);
-	$('.textlink').hover(function(){
+	$('.mouse').hover(function(){
 		$(this).css({
 			fontsize: '1.2em',
 			fontWeight:'bold',
@@ -75,6 +75,27 @@ $(function(){
 	
 	
 	
+		$('#axlogout').click(function() {
+		$.ajax({
+			type: 'Post',
+			url: 'home',
+			data:{action:'logout'},
+			success: function() {
+				// => resultPage 를 사용하면
+           		//    실패시 로그인폼 출력은 가능 하지만,
+             	//    성공시 home 화면을 resultArea1에 출력하게됨
+	  
+				
+				// => resultArea 는 clear, 현재 Page는 새로 고침
+				//	  그러나 실패시 로그인폼 출력이 어려움
+				$('#resultArea1').html('');
+				location.reload(); //새로고침
+			},
+			error: function() {
+				$('#resultArea1').html('~~ AjaxLogin 요청 Erroe ~~');
+			}
+		}); //ajax
+	});	//axlogin_click
 	
 }); //ready
 

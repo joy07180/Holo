@@ -88,14 +88,17 @@
 			<div class="main">
 					<a href="" class="banner"></a>
 					<div>
-				<c:if test="${not empty loginID}">
-					<h1> ${loginName} 님 !!!</h1>
-					<br>
-      &nbsp;&nbsp;<a href="logout" class="user">Logout</a>
-      &nbsp;&nbsp;<a href="userdetail" class="user">내정보</a>
-				</c:if>
+					<c:if test="${not empty loginID}">
+						<form action="logout" method="post">
 
-				<c:if test="${loginID=='admin'}">
+							<h1>${loginName} 님 !!!</h1>
+							<br> &nbsp;&nbsp;<a href="logout" class="user">Logout</a> 
+							<input type="submit" id="axlogout" value="Logout" class="user">
+							&nbsp;&nbsp;<a href="userdetail" class="user">내정보</a>
+						</form>
+					</c:if>
+
+					<c:if test="${loginID=='admin'}">
 					<a href="user">회원 목록</a>&nbsp;&nbsp;
 	 </c:if>
 

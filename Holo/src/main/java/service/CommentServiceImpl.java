@@ -20,14 +20,14 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public List<CommentVO> getList(int com_bno,int offset, int limit) {
-		return mapper.getList(com_bno,offset,limit);
+	public List<CommentVO> getList(int com_bno, int com_type, int offset, int limit) {
+		return mapper.getList(com_bno, com_type, offset, limit);
 	}
 
 	@Override
-	public int getTotal(int com_bno) {
+	public int getTotal(int com_bno, int com_type) {
 		// TODO Auto-generated method stub
-		return mapper.getTotal(com_bno);
+		return mapper.getTotal(com_bno, com_type);
 	}
 
 	@Override

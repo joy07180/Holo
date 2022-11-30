@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
 </head>
 <body>
+
 <h2>** Reply Insert Spring_MVC2 **</h2>
 <form action="crinsert" method="post">
 <table>
