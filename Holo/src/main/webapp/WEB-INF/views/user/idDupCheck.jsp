@@ -34,9 +34,7 @@ function idOK() {
 	
 	// 4)
 	window.close(); 
-	//self.close();
-	//close();
-	//this.close(); -> 확인 필요
+
 } //idOK
 
 </script>

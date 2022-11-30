@@ -89,12 +89,12 @@
 					<a href="" class="banner"></a>
 					<div>
 					<c:if test="${not empty loginID}">
-						<form action="logout" method="post">
+						<form action="logout" method="get">
 
 							<h1>${loginName} 님 !!!</h1>
-							<br> &nbsp;&nbsp;<a href="logout" class="user">Logout</a> 
-							<input type="submit" id="axlogout" value="Logout" class="user">
-							&nbsp;&nbsp;<a href="userdetail" class="user">내정보</a>
+							<br> 
+							&nbsp;&nbsp; <input type="submit" id="axlogout" value="Logout" class="user">
+							&nbsp;&nbsp; <a href="userdetail" class="user">내 정보 보기</a>
 						</form>
 					</c:if>
 
@@ -106,18 +106,18 @@
 					<form action="login" method="post">
 						<table>
 							<tr>
-								<td bgcolor="PaleTurquoise">I D</td>
+								<td class="user">I D</td>
 								<td><input type="text" class="put" name="id" id="id"><br>
 								</td>
 							</tr>
 							<tr>
-								<td bgcolor="PaleTurquoise ">Password</td>
+								<td class="user">Password</td>
 								<td><input type="password" class="put" name="password" id="password"><br>
 								</td>
 							</tr>
 							<tr><td></td>
-								<td>
-								<input  type="submit" id="axlogin" value="Login" class="user">
+								<td >
+								<input type="submit" id="axlogin" value="Login" class="user">
 									 <a href="joinf" class="user">회원가입</a>&nbsp;&nbsp;
 							</tr>
 						</table>
