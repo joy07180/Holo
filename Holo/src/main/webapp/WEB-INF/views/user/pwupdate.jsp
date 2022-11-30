@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>** User PwUpdate **</title>
     <script src="resources/myLib/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="resources/myLib/userUpdate.css">
 	<script src="resources/myLib/inCheck.js"></script>
 
 <script>
@@ -39,7 +40,7 @@
 		if (ppCheck==false) { $('#ppMessage').html(' Password2 를 확인하세요 !!');}
          
          if ( pCheck && ppCheck ) return true; // submit 진행  
-         else return false;
+         else return false;z
    } //inCheck
    
    function change() {
@@ -49,33 +50,38 @@
 
 </head>
 <body>
-<h2>** 비밀번호 변경 **</h2>
+	<div class="header">
+		<div>
+			<a href="home" class="logo">logo</a>
+		</div>
+
+	</div>
+	
+	
+<h2> 비밀번호 변경 </h2>
 
 <form action="pwupdate" method="post" enctype="multipart/form-data">
 	<table>
 		
-		<tr height="40"><td bgcolor="LightBlue">Password</td>
+		<tr height="40"><td>Password</td>
 		<td><input type="password" name="password" id="password"  size="20"
 								placeholder="특수문자 반드시 포함"><br>
  			<span id="pMessage" class="eMessage" ></span>
 		</td></tr>
 		
 		<tr height=40>
-			<td bgcolor="AliceBlue"><label for=password>PW  확인</label></td>
+			<td><label for=password>PW  확인</label></td>
 			<td><input type="password"  id=password2 size="20"><br>
 	 			<span id="ppMessage" class="eMessage" ></span></td>
 		</tr>	
 								
-		<tr height="40"><td></td>
-			<td><input  type="submit" value="수정" onclick="return change()" >&nbsp;&nbsp;
+		<tr>
+			<td class="no"><input  type="submit" value="수정" onclick="return change()" >&nbsp;&nbsp;
 				<input type="reset" value="취소">
 			</td>	
 		</tr>	
 	</table>
 </form>
 
-<hr>
-&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-&nbsp;&nbsp;<a href="home">[Home]</a>
 </body>
 </html>
