@@ -72,7 +72,7 @@
         <table id="board_container">
             <thead class="boardList_head">
                 <tr>
-                    <th class="headG">추천</th>
+                    <th class="headS">번호</th>
                     <th class="headT">제 목</th>
                     <th class="headI">글쓴이</th>
                     <th class="headR">날 짜</th>
@@ -83,7 +83,7 @@
                 <c:if test="${not empty banana}">
                     <c:forEach var="board" items="${banana}">
                         <tr>
-                            <td class="bodyG">1</td>
+                            <td class="bodyS">${trade_board.seq}</td>
                             <td class="bodyT" id="title_hidden">[${board.place}]<a href="cbdetail?seq=${board.seq}">${board.title}</a></td>
                             <td class="bodyI" ><img height="25" width="25" src="${board.image}"><a href="userdetail?id=${board.id}">${board.id}</a></td>
                             <td class="bodyR">${board.regdate}</td>
