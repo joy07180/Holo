@@ -57,14 +57,15 @@ public class T_BoardController {
 	// ** Trade_BoardDetail
 		@RequestMapping(value="/t_bdetail")
 		public ModelAndView t_bdetail(HttpServletRequest request, HttpServletResponse response,
-				ModelAndView mv, T_BoardVO vo) {
+				SearchCriteria cri, ModelAndView mv, T_BoardVO vo) {
 			// 1. 요청분석
 			String uri = "/tradeBoard/t_BoardDetail";
 			
 			// 2. Service 처리
 			vo = service.selectOne(vo);
+			mv.addObject("banana", service.searchList(cri));
+			
 			if ( vo != null ) {
-				
 				// 2.1) 조회수 증가
 				String loginID = (String)request.getSession().getAttribute("loginID"); // object 타입을 string으로
 				if ( !vo.getId().equals(loginID) && !"U".equals(request.getParameter("jCode"))) { //vo아이디랑 login아이디랑 다르고 && U가 아닌경우

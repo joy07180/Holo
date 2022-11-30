@@ -53,17 +53,61 @@
     <br>
     &nbsp;&nbsp;<a href="noticelist">목록</a>       
     <c:if test="${Prev!='T'}">
-    &nbsp;&nbsp;<a href="t_bdetail?jCode=P&seq=${apple.seq}">이전글</a>
+    &nbsp;&nbsp;<a href="noticedetail?jCode=P&seq=${apple.seq}">이전글</a>
     </c:if>
     <c:if test="${Prev=='T'}">
     &nbsp;&nbsp;이전글
     </c:if>
-    &nbsp;&nbsp;<a href="t_bdetail?jCode=N&seq=${apple.seq}">다음글</a>
+    &nbsp;&nbsp;<a href="noticedetail?jCode=N&seq=${apple.seq}">다음글</a>
 	<br>
 	<br>  
 	</div>
+        <hr>
+		<table id="board_container">
+			<thead class="boardList_head">
+				<tr>
+					<th class="headS">번호</th>
+					<th class="headT">제 목</th>
+					<th class="headI">글쓴이</th>
+					<th class="headR">날 짜</th>
+					<th class="headC">조회수</th>
+				</tr>
+			</thead>
+			<tbody class="boardList_body">
+				<c:if test="${not empty banana}">
+					<c:forEach var="board" items="${banana}">
+						<c:if test="${board.fix ==1 }">
+							<tr bgcolor="lightBlue">
+								<td class="notice">공지</td>
+								<td class="bodyT" id="title_hidden"><a
+									href="noticedetail?seq=${board.seq}">${board.title}</a></td>
+								<td class="bodyI"><img height="25" width="25"
+									src="${board.image}">&nbsp;<a
+									href="userdetail?id=${board.id}">${board.id}</a></td>
+								<td class="bodyR">${board.regdate}</td>
+								<td class="bodyC">${board.cnt}</td>
+							</tr>
 
-</div>
+						</c:if>
+						<c:if test="${board.fix !=1 }">
+							<tr>
+								<td class="bodyS">${board.seq}</td>
+								<td class="bodyT" id="title_hidden"><a
+									href="noticedetail?seq=${board.seq}">${board.title}</a></td>
+								<td class="bodyI"><img height="25" width="25"
+									src="${board.image}">&nbsp;<a
+									href="userdetail?id=${board.id}">${board.id}</a></td>
+								<td class="bodyR">${board.regdate}</td>
+								<td class="bodyC">${board.cnt}</td>
+							</tr>
+						</c:if>
+
+					</c:forEach>
+				</c:if>
+			</tbody>
+		</table>
+
+	</div>
 
  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 

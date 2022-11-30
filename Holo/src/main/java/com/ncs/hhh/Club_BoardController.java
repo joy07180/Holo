@@ -101,11 +101,12 @@ public class Club_BoardController {
 	//	- 증가시점 : selectOne 성공후
 	@RequestMapping(value="/cbdetail")
 	public ModelAndView bdetail(HttpServletRequest request, HttpServletResponse response, ModelAndView mv,
-			Club_BoardVO vo) {
+			SearchCriteria cri, Club_BoardVO vo) {
 		// 1. 요청분석
 		String uri = "/ClubBoard/c_boardDetail";
 		// 2. Service 처리
 		vo = service.selectOne(vo);
+		mv.addObject("banana", service.searchList(cri));
 		if ( vo != null ) {
 			// 2.1) 조회수 증가
 			String loginID = (String)request.getSession().getAttribute("loginID");
