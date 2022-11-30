@@ -53,16 +53,10 @@
     </head>
 
   <body>
-<<<<<<< HEAD
     <div class="contents">
         <!-- header -->
     	<%@ include file="/WEB-INF/views/include/header.jsp" %>
     	<br>
-=======
-           <div class="contents">
-       <%@ include file="/WEB-INF/views/include/header.jsp" %>
-        <br>
->>>>>>> branch 'master' of https://github.com/joy07180/holo.git
         <div class="Header_box">
         <h2>▶ 팁/정보 게시판 ◀</h2>
         <p class="Header_text1">&nbsp;이곳은 팁/정보 게시판 입니다. 자취 팁, 유용한 정보 글을 작성해주세요.</p>
@@ -164,10 +158,7 @@
     <br>
     <br>
 
-<<<<<<< HEAD
 <!-- footer -->
-=======
->>>>>>> branch 'master' of https://github.com/joy07180/holo.git
     <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 </body>
