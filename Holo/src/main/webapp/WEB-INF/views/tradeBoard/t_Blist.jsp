@@ -47,12 +47,8 @@
 </head>
 <body>
     <div class="contents">
-<<<<<<< HEAD
-      <%@ include file="/WEB-INF/views/include/header.jsp" %>
-=======
         <!-- header -->
         <%@ include file="/WEB-INF/views/include/header.jsp" %>
->>>>>>> branch 'master' of https://github.com/joy07180/holo.git
         <br>
         <div class="Header_box">
         <h2>▶ 거래 게시판 ◀</h2>
