@@ -22,7 +22,7 @@
     </div>
     <br>
     
-	<form action="tipbinsert" method="Post" enctype="multipart/form-data">
+	<form action="tipbinsert" method="Post" enctype="multipart/form-data"  class="insert_container">
 		<table class="insert_table">
 			<tbody>
 	    		<tr> <!-- 제목 -->

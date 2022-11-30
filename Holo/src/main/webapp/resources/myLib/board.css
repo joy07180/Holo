@@ -269,7 +269,7 @@ tr {
 	text-align: center;
 }
 
-.boardList_body tr:nth-child(odd) {
+.boardList_body tr:nth-child(odd):not(.notice_bg) {
 	background-color: #f1f3f5;
 }
 
@@ -361,6 +361,9 @@ tr {
     width:10%;
 }
 
+.notice_bg{
+	background-color: lightBlue;
+}
 
 /* ======================================================================= */
 

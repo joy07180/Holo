@@ -67,7 +67,7 @@
 				<c:if test="${not empty banana}">
 					<c:forEach var="board" items="${banana}">
 						<c:if test="${board.fix ==1 }">
-							<tr bgcolor="lightBlue">
+							<tr bgcolor="lightBlue" class="notice_bg">
 								<td class="notice">공지</td>
 								<td class="bodyT" id="title_hidden"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
 								<td class="bodyI"><img height="25" width="25" src="${board.image}">&nbsp;<a href="userdetail?id=${board.id}">${board.id}</a></td>

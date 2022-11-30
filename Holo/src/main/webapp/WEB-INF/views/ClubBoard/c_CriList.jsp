@@ -83,7 +83,7 @@
                 <c:if test="${not empty banana}">
                     <c:forEach var="board" items="${banana}">
                         <tr>
-                            <td class="bodyS">${trade_board.seq}</td>
+                            <td class="bodyS">${board.seq}</td>
                             <td class="bodyT" id="title_hidden">[${board.place}]<a href="cbdetail?seq=${board.seq}">${board.title}</a></td>
                             <td class="bodyI" ><img height="25" width="25" src="${board.image}"><a href="userdetail?id=${board.id}">${board.id}</a></td>
                             <td class="bodyR">${board.regdate}</td>
