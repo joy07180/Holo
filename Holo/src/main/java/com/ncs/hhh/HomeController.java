@@ -123,8 +123,6 @@ public class HomeController {
 		mv.setViewName("home");
 		return mv;
 	}
-
-
 	
 	@RequestMapping(value = "/login" , method=RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
