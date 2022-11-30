@@ -125,11 +125,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/login" , method=RequestMethod.POST)
-	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, 
+			ModelAndView mv, UserVO vo) {
 		// 1) request 처리
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
-		UserVO vo = new UserVO();
+		String id = vo.getId();
+		String password = vo.getPassword();
+		response.setContentType("text/html; charset=UTF-8");
+		
 		String uri = "/home";
 
 		// 2) service 처리
@@ -145,7 +147,7 @@ public class HomeController {
 				// Login 성공 -> login 정보 session에 보관, home
 				request.getSession().setAttribute("loginID", id);
 				request.getSession().setAttribute("loginName", vo.getName());
-
+				mv.addObject("code","200");
 				// ** BCryptPasswordEncoder 로 암호화되면 복호화가 불가능함.
 				// => password 수정 을 별도로 처리해야 함. 
 				// => 그러나 기존의 update  Code 를 활용하여 updateForm.jsp 에서 수정을 위해 
@@ -153,9 +155,14 @@ public class HomeController {
 				// => 이 session에 보관한 값은 detail 에서 "U" 요청시 사용함. 
 				//request.getSession().setAttribute("loginPW", password); 
 				uri="home";
+			}else {
+				// Password 오류
+				mv.addObject("code","201");
 			}
+		}else {	// ID 오류
+			mv.addObject("code","202");
 		} 
-		mv.setViewName(uri);
+		mv.setViewName("jsonView");
 		return mv;
 	}
 	

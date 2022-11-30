@@ -49,6 +49,10 @@
        }); //click
    }); //ready	
    
+   function idpwError() {
+	   alert("아이디 또는 비밀번호를 확인해주세요");
+	}
+   
 </script>
 
 
@@ -117,7 +121,7 @@
 							</tr>
 							<tr><td></td>
 								<td >
-								<input type="submit" id="axlogin" value="Login" class="user">
+								<input type="submit" id="jslogin" value="Login" class="user">
 									 <a href="joinf" class="user">회원가입</a>&nbsp;&nbsp;
 							</tr>
 						</table>
