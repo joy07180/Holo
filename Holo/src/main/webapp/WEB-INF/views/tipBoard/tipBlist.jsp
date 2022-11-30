@@ -53,9 +53,10 @@
     </head>
 
   <body>
-           <div class="contents">
-       <%@ include file="/WEB-INF/views/include/header.jsp" %>
-        <br>
+    <div class="contents">
+        <!-- header -->
+    	<%@ include file="/WEB-INF/views/include/header.jsp" %>
+    	<br>
         <div class="Header_box">
         <h2>▶ 팁/정보 게시판 ◀</h2>
         <p class="Header_text1">&nbsp;이곳은 팁/정보 게시판 입니다. 자취 팁, 유용한 정보 글을 작성해주세요.</p>
@@ -96,7 +97,7 @@
                 <c:when test="${pageMaker.prev && pageMaker.spageNo>1}">
                     <!-- New_ver01_Cri : pageMaker.makeQuery(1) -->
                     <!-- New_ver02_SearchCri : pageMaker.searchQuery(1) -->
-                    <a href="hbcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
+                    <a href="tipblist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
 
                     <!-- OLD_version 
     	=> EL 은 주석내에 있어도 JSP가 처리하여 변수명등에 오류있으면 500 발생할 수 있음.  
@@ -112,14 +113,14 @@
                 </c:if>
                 <c:if test="${i!=pageMaker.cri.currPage}">
 
-                    <a href="hbcrilist${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
+                    <a href="tipblist${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
 
                 </c:if>
             </c:forEach>
 
             <c:choose>
                 <c:when test="${pageMaker.next && pageMaker.epageNo>0}">
-                    <a href="hbcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&gt;</a>
+                    <a href="tipblist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&gt;</a>
 
                 </c:when>
             </c:choose>
@@ -157,6 +158,7 @@
     <br>
     <br>
 
+<!-- footer -->
     <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 </body>

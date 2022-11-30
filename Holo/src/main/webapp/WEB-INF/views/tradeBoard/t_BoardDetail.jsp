@@ -153,16 +153,16 @@ $(document).on("click", "#delete", function(){
 </head>
 <body>
     <div class="contents">
-       <%@ include file="/WEB-INF/views/include/header.jsp" %>
-        <br>
-        <div class="Header_box">
-        <h2>▶ 거래 게시판 ◀</h2>
-        <p class="Header_text1">&nbsp;이곳은 거래/나눔 게시판 입니다. 물건 거래, 나눔 글을 작성해주세요.</p>
-        <p class="Header_text2">&nbsp;팁 관련 주제는 <a href="tipblist">팁/정보</a>게시판, 자유주제는 <a href="f_bcrilist">자유</a>게시판, 동아리 및 모임 주제는 <a href="cbcrilist">동아리/모임</a>게시판에 남겨주세요.</p>
-        <br>
-        </div>
-        <br>
-		
+    <!-- header -->
+    <%@ include file="/WEB-INF/views/include/header.jsp" %>
+    <br>
+    <div class="Header_box">
+    <h2>▶ 거래 게시판 ◀</h2>
+    <p class="Header_text1">&nbsp;이곳은 거래/나눔 게시판 입니다. 물건 거래, 나눔 글을 작성해주세요.</p>
+    <p class="Header_text2">&nbsp;팁 관련 주제는 <a href="tipblist">팁/정보</a>게시판, 자유주제는 <a href="f_bcrilist">자유</a>게시판, 동아리 및 모임 주제는 <a href="cbcrilist">동아리/모임</a>게시판에 남겨주세요.</p>
+    <br>
+    </div>
+    <br>
 		
 	<c:if test="${not empty apple}">
 	    <table class="board_dTop">
@@ -308,6 +308,7 @@ console.log("반내림 => "+Math.floor(${total}/10));
         
         
 </div>
-	 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+	<!-- footer -->
+    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

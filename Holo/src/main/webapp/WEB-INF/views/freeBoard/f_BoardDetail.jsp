@@ -70,7 +70,7 @@ $(document).on("click", "#Comment_regist", function() {
 		}// 댓글 비동기 끝
 });// 댓글등록 이벤트 끝
 
-getList(Math.ceil(${total}/20)*10);
+getList(0);
 
 
 function getList(n) {
