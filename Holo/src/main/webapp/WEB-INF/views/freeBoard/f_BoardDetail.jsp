@@ -70,7 +70,7 @@ $(document).on("click", "#Comment_regist", function() {
 		}// 댓글 비동기 끝
 });// 댓글등록 이벤트 끝
 
-getList(Math.ceil(${total}/20)*10);
+getList(0);
 
 
 function getList(n) {
@@ -246,9 +246,50 @@ console.log("반내림 => "+Math.floor(${total}/10));
 	        
 	        &nbsp;&nbsp;<a href="f_bdetail?jCode=N&seq=${apple.seq}">다음글</a>
         </div>
-	
-	
-</div> <!-- contents /div -->
+        <hr>
+		<table id="board_container">
+			<thead class="boardList_head">
+				<tr>
+					<th class="headS">번호</th>
+					<th class="headT">제 목</th>
+					<th class="headI">글쓴이</th>
+					<th class="headR">날 짜</th>
+					<th class="headC">조회수</th>
+				</tr>
+			</thead>
+			<tbody class="boardList_body">
+				<c:if test="${not empty banana}">
+					<c:forEach var="free_board" items="${banana}">
+						<tr>
+							<td class="bodyS">${free_board.seq}</td>
+
+							<td id="title_hidden" class="bodyT">
+								<!-- 답글 등록후 indent 에 따른 들여쓰기 
+							=> 답글인 경우에만 적용  --> <c:if test="${free_board.indent > 0}">
+									<c:forEach begin="1" end="${free_board.indent}">
+										<span>&nbsp;&nbsp;</span>
+									</c:forEach>
+									<span style="color: hotpink">re..</span>
+								</c:if> <!-- 로그인 한 경우에만 title을 클릭하면 content를 볼 수 있도록 함
+									=> f_detail 을 실행함 --> <c:if test="${empty loginID}">
+						   		${free_board.title}
+						</c:if> <c:if test="${not empty loginID}">
+									<a href="f_bdetail?seq=${free_board.seq}">${free_board.title}</a>&nbsp;&nbsp;
+						</c:if>
+							</td>
+
+							<td class="bodyI"><img height="25" width="25"
+								src="${free_board.image}"><a
+								href="userdetail?id=${free_board.id}">${free_board.id}</a></td>
+							<td class="bodyR">${free_board.regdate}</td>
+							<td class="bodyC">${free_board.cnt}</td>
+						</tr>
+					</c:forEach>
+				</c:if>
+			</tbody>
+		</table>
+
+	</div> <!-- contents /div -->
 
  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 

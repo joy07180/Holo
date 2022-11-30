@@ -50,12 +50,13 @@ public class F_BoardController {
 	// ** Free_BoardDetail
 		@RequestMapping(value="/f_bdetail")
 		public ModelAndView f_bdetail(HttpServletRequest request, HttpServletResponse response,
-				ModelAndView mv, F_BoardVO vo) {
+				SearchCriteria cri, ModelAndView mv, F_BoardVO vo) {
 			// 1. 요청분석
 			String uri = "/freeBoard/f_BoardDetail";
 			
 			// 2. Service 처리
 			vo = service.selectOne(vo);
+			mv.addObject("banana", service.searchList(cri));
 			if ( vo != null ) {
 				// 2.1) 조회수 증가 
 				String loginID = (String)request.getSession().getAttribute("loginID"); // object 타입을 string으로

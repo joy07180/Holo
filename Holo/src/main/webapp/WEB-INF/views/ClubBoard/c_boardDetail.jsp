@@ -249,6 +249,31 @@ console.log("반내림 => "+Math.floor(${total}/10));
 	        
 	        &nbsp;&nbsp;<a href="cbdetail?jCode=N&seq=${apple.seq}">다음글</a>
         </div>
+		<hr>
+		<table id="board_container">
+            <thead class="boardList_head">
+                <tr>
+                    <th class="headG">추천</th>
+                    <th class="headT">제 목</th>
+                    <th class="headI">글쓴이</th>
+                    <th class="headR">날 짜</th>
+                    <th class="headC">조회수</th>
+                </tr>
+            </thead>
+            <tbody class="boardList_body">
+                <c:if test="${not empty banana}">
+                    <c:forEach var="board" items="${banana}">
+                        <tr>
+                            <td class="bodyG">1</td>
+                            <td class="bodyT" id="title_hidden">[${board.place}]<a href="cbdetail?seq=${board.seq}">${board.title}</a></td>
+                            <td class="bodyI" ><img height="25" width="25" src="${board.image}"><a href="userdetail?id=${board.id}">${board.id}</a></td>
+                            <td class="bodyR">${board.regdate}</td>
+                            <td class="bodyC">${board.cnt}</td>
+                        </tr>
+                    </c:forEach>
+                </c:if>
+            </tbody>
+        </table>
 </div> <!-- contents /div -->
 
  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
