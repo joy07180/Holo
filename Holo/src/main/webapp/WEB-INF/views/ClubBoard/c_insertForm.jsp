@@ -11,7 +11,6 @@
 </head>
 <body>
 <div class="contents">
-<header>
            <div class="contents">
        <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <h2>동아리/ 모임 새 글 등록</h2>

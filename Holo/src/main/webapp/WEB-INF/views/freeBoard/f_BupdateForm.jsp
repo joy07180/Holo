@@ -11,7 +11,12 @@
 </head>
 <body>
     <div class="contents">
+<<<<<<< HEAD
         <%@ include file="/WEB-INF/views/include/header.jsp" %>
+=======
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
+      
+>>>>>>> branch 'master' of https://github.com/joy07180/holo.git
         <br>
         <h2>자유게시판 글 수정</h2>
         <br>
@@ -68,6 +73,10 @@
 	&nbsp;&nbsp;<a href="home">[Home]</a>
 
  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/joy07180/holo.git
     
 </body>
 </html>

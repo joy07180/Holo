@@ -69,7 +69,11 @@ $(document).on("click", "#Comment_regist", function() {
 				alert('통신실패');
 			}
 		})
+<<<<<<< HEAD
 		location.href = location.href;
+=======
+		 location.href = location.href;
+>>>>>>> branch 'master' of https://github.com/joy07180/holo.git
 		};// 댓글 비동기 끝
 		
 });// 댓글등록 이벤트 끝

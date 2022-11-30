@@ -69,7 +69,11 @@ $(document).on("click", "#Comment_regist", function() {
 				alert('통신실패');
 			}
 		})
+<<<<<<< HEAD
 		location.href = location.href;
+=======
+		 location.href = location.href;
+>>>>>>> branch 'master' of https://github.com/joy07180/holo.git
 		};// 댓글 비동기 끝
 		
 });// 댓글등록 이벤트 끝
@@ -153,7 +157,11 @@ $(document).on("click", "#delete", function(){
 </head>
 <body>
     <div class="contents">
+<<<<<<< HEAD
       <%@ include file="/WEB-INF/views/include/header.jsp" %>
+=======
+       <%@ include file="/WEB-INF/views/include/header.jsp" %>
+>>>>>>> branch 'master' of https://github.com/joy07180/holo.git
         <br>
         <div class="Header_box">
         <h2>▶ 거래 게시판 ◀</h2>
@@ -255,6 +263,10 @@ console.log("반내림 => "+Math.floor(${total}/10));
         </div>
         
 </div>
+<<<<<<< HEAD
+=======
+</div>
+>>>>>>> branch 'master' of https://github.com/joy07180/holo.git
 	 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

@@ -59,7 +59,11 @@
 
   <body>
         <div class="contents">
+<<<<<<< HEAD
       <%@ include file="/WEB-INF/views/include/header.jsp" %>
+=======
+        <%@ include file="/WEB-INF/views/include/header.jsp" %>
+>>>>>>> branch 'master' of https://github.com/joy07180/holo.git
         <br>
         <div class="Header_box">
         <h2>▶ 동아리/모임 게시판 ◀</h2>

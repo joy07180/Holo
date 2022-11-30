@@ -51,7 +51,11 @@
 	&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
 	&nbsp;&nbsp;<a href="home">[Home]</a>
 
+<<<<<<< HEAD
  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+=======
+	 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+>>>>>>> branch 'master' of https://github.com/joy07180/holo.git
     
 </body>
 </html>

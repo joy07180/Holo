@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
 </head>
 <body>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 
 <h2>Notice_Board Update </h2>
 <hr>
@@ -45,5 +46,6 @@ ${message}<br>
 &nbsp;&nbsp;<a href="noticelist">noticelist</a>
 &nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
 &nbsp;&nbsp;<a href="home">[Home]</a>
+ <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

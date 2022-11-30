@@ -1,26 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>새글 등록</title>
-    <link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
-    <script src="resources/myLib/jquery-3.2.1.min.js"></script>
-</head>
-<body>
-<div class="contents">
-        <%@ include file="/WEB-INF/views/include/header.jsp" %>
-        <br>
-        <h2>자유게시판 새글 등록</h2>
-        <br>
-        <br>
-        
-	<form action="f_binsert" method="post" enctype="multipart/form-data">
-	    <table>
+    
+ <table>
+	    <tr height="40"><td bgcolor="Linen">판매/구매</td>
+	            <td><select name="trade" id="trade">
+	                    <option value="sell" selected>판매</option>
+	                    <option value="buy">구매</option>
+	            </select>
+	            </td></tr>
+	                
 	        <tr height="40"><td bgcolor="Linen">I D</td>
-	            <td><input type="text" name="id" size="20" value="${loginID}" readonly ></td></tr>
+	            <td><input type="text" name="id" size="20" value="${loginID}" readonly></td></tr>
 	        <tr height="40"><td bgcolor="Linen">Title</td>
 	            <td><input type="text" name="title" placeholder="반드시 입력하세요~~"></td></tr>
 	        <tr height="40"><td bgcolor="Linen">Content</td>
@@ -54,19 +44,9 @@
 	               } // if   
 	           }); //change
 	        </script>
+	        
 	        <tr><td></td>
 	            <td><input type="submit" value="등록">&nbsp;&nbsp;
 	                 <input type="reset" value="취소">
 	        </td></tr>
 	    </table>
-	</form>
-	</div>
-
-	 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/joy07180/holo.git
-    
-</body>
-</html>
