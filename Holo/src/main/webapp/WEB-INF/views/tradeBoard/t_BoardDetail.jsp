@@ -306,7 +306,6 @@ console.log("반내림 => "+Math.floor(${total}/10));
 			</tbody>
         </table>
         
-        
 </div>
 	<!-- footer -->
     <%@ include file="/WEB-INF/views/include/footer.jsp" %>
