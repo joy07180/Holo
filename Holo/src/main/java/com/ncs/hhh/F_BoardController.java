@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import criTest.PageMaker;
 import criTest.SearchCriteria;
+import service.CommentService;
 import service.F_BoardService;
 import vo.F_BoardVO;
 
@@ -24,6 +25,8 @@ public class F_BoardController {
 	
 	@Autowired
 	F_BoardService service;
+	@Autowired
+	CommentService service2;
 	
 		// ** Board Check List ***************************
 		// => ver02) SearchCriteria,  PageMaker 적용하기 
@@ -78,6 +81,10 @@ public class F_BoardController {
 				}
 				
 				// 2.3)	결과전달		
+				int total = service2.getTotal(vo.getSeq(),3);
+				
+				
+				mv.addObject("total",total);
 				mv.addObject("apple", vo);
 			}else mv.addObject("message", "~~ 글번호에 해당하는 자료가 없습니다. ~~");
 			

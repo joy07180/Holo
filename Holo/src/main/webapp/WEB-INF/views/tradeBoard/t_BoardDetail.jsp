@@ -17,6 +17,7 @@
 	var offset = 0;
 	const limit = 20;
 	const com_bno = ${apple.seq};
+	const com_type = 2;
 	console.log("total => "+${total});
 	
 
@@ -45,6 +46,7 @@ $(document).on("click", "#Comment_regist", function() {
 					"com_bno":com_bno,
 					"com_writer":com_writer,
 					"com_content":com_content,
+					"com_type":com_type,
 					"offset":offset,
 		      "limit":limit
 				}		
@@ -67,7 +69,7 @@ $(document).on("click", "#Comment_regist", function() {
 				alert('통신실패');
 			}
 		})
-		location.reload();
+		 location.href = location.href;
 		};// 댓글 비동기 끝
 		
 });// 댓글등록 이벤트 끝
@@ -82,7 +84,7 @@ function getList(n) {
 	   const com_writer = $('#writer').value;
 	   const com_content = $('#com_content').val();
 	   $.getJSON(
-	      "<c:url value='/Comment/CommentList/'/>"+com_bno+"?offset="+offset+"&limit="+limit,
+			   "<c:url value='/Comment/CommentList/'/>"+com_bno+"?com_type="+com_type+"&offset="+offset+"&limit="+limit,
 	      function(data) {
 	         if(data.total > 0){
 	            var list = data.list;
@@ -129,6 +131,7 @@ $(document).on("click", "#delete", function(){
                data:JSON.stringify(
                   {
                      "com_writer":writer,
+                     "com_type":com_type,
                      "com_no":com_no
                   }      
                ),
@@ -150,32 +153,7 @@ $(document).on("click", "#delete", function(){
 </head>
 <body>
     <div class="contents">
-        <header>
-            <div class="header">
-                <div>
-                    <a href="home" class="logo">logo</a>
-                </div>
-                <div class="search">
-					<form action="searchsearch">
-						<input class="searchBox" type="text" size="40"
-							placeholder="게시판 & 통합검색" type="text" name="keyword2"
-							id="keyword2" /> <input class="searchClick" id="searchBtn2"
-							type="submit" value="검색" />
-					</form>
-				</div>
-            </div>
-            <nav class="headerM">
-                <div>
-                    <ul class="category">
-						<li><a href="noticelist" class="liText">공지사항 </a></li>
-						<li><a href="tipblist" class="liText">팁/정보 </a></li>
-						<li><a href="f_bcrilist" class="liText">자유게시판 </a></li>
-						<li><a href="t_bcrilist" class="liText">거래/나눔 </a></li>
-						<li><a href="cbcrilist" class="liText">동아리/모임 </a></li>
-					</ul>
-                </div>
-            </nav>
-        </header>
+       <%@ include file="/WEB-INF/views/include/header.jsp" %>
         <br>
         <div class="Header_box">
         <h2>▶ 거래 게시판 ◀</h2>
@@ -277,23 +255,6 @@ console.log("반내림 => "+Math.floor(${total}/10));
         
 </div>
 </div>
-	<footer>
-	    <div class="bottom">
-	        <ul class="btMenu">
-	            <li><a href="">A</a></li>
-	            <li><a href="">B</a></li>
-	            <li><a href="">C</a></li>
-	            <li><a href="">D</a></li>
-	            <li><a href="">E</a></li>
-	            <li><a href="">F</a></li>
-	        </ul>
-	        <span>
-	            <div>Copyright (c) Holo.net All rights reserved.</div>
-	            <div>Contact us, holo at gmail dot com</div>
-	            <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
-	        </span>
-	    </div>
-	    <br>
-	</footer>
+	 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

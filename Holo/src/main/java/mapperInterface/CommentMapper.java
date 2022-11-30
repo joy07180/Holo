@@ -9,8 +9,8 @@ import vo.CommentVO;
 public interface CommentMapper {
 	
 	void CommentRegist(CommentVO vo); //댓글 등록
-	List<CommentVO> getList(@Param("com_bno") int com_bno,@Param("offset") int offset,@Param("limit") int limit); //목록 요청
-	int getTotal(int com_bno); //댓글 개수
+	List<CommentVO> getList(@Param("com_bno") int com_bno, @Param("com_type") int com_type, @Param("offset") int offset,@Param("limit") int limit); //목록 요청
+	int getTotal(@Param("com_bno") int com_bno, @Param("com_type") int com_type); //댓글 개수
 	List<CommentVO> myRecord(String writer);
 	void commentDelete(CommentVO vo);
 	

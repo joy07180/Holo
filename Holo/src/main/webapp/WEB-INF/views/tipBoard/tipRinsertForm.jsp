@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
 </head>
 <body>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <h2>** Reply Insert Spring_MVC2 **</h2>
 <form action="tiprinsert" method="post">
 <table>
@@ -43,5 +44,6 @@ ${message}<br>
 &nbsp;&nbsp;<a href="tipblist">boardList</a>
 &nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
 &nbsp;&nbsp;<a href="home">[Home]</a>
+ <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>
