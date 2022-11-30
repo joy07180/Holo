@@ -10,8 +10,8 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
 	<title>팁 게시판</title>
+	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
 	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script>
 	var offset = 0;

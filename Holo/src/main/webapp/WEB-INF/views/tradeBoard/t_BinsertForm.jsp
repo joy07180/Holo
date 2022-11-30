@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%
-    // 엔터 입력시 줄바꿈
-    pageContext.setAttribute("replaceChar","\n");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,15 +30,15 @@
 	    				<table width="100%" border="0">
 	    					<tbody>
 	    						<tr height="30px" style="padding: 0 0 0 5px;">
-	    							<td>&nbsp;
+	    							<td align="center" style="width:60px;">제목 :</td>
+	    							<td style="padding:0 5px 0 0;" width="400px">
+	    								<input type="text" name="title" value="" style="width:400px; border:1 #CCC solid; padding-top: 3px;" MAXLENGTH=150 placeholder="제목을 입력해주세요.">
+	    							</td>
+	    							<td align="left" style="padding:0 15px 0 5px;">
 	    								<select name="trade" id="trade" class="test101">
 	        								<option value="sell" selected>판매</option>
              	  							<option value="buy">구매</option>
 	           							</select>
-	    							</td>
-	    							<td align="center" style="width:60px;">제목 :</td>
-	    							<td style="padding:0 5px 0 0;">
-	    								<input type="text" name="title" value="" style="width:400px; border:1 #CCC solid; padding-top: 3px;" MAXLENGTH=150 placeholder="제목을 입력해주세요.">
 	    							</td>
 	    						</tr>
 	    					</tbody>

@@ -53,37 +53,10 @@
     </head>
 
   <body>
-           <div class="contents">
-        <header>
-            <div class="header">
-                <div>
-                    <a href="home" class="logo">logo</a>
-                </div>
-                <div class="search">
-					<form action="searchsearch">
-						<input class="searchBox" type="text" size="40"
-							placeholder="게시판 & 통합검색" type="text" name="keyword2"
-							id="keyword2" /> <input class="searchClick" id="searchBtn2"
-							type="submit" value="검색" />
-					</form>
-				</div>
-
-            </div>
-
-            <nav class="headerM">
-                <div>
-                    <ul class="category">
-						<li><a href="noticelist" class="liText">공지사항 </a></li>
-						<li><a href="tipblist" class="liText">팁/정보 </a></li>
-						<li><a href="f_bcrilist" class="liText">자유게시판 </a></li>
-						<li><a href="t_bcrilist" class="liText">거래/나눔 </a></li>
-						<li><a href="cbcrilist" class="liText">동아리/모임 </a></li>
-					</ul>
-                </div>
-            </nav>
-
-        </header>
-        <br>
+    <div class="contents">
+        <!-- header -->
+    	<%@ include file="/WEB-INF/views/include/header.jsp" %>
+    	<br>
         <div class="Header_box">
         <h2>▶ 팁/정보 게시판 ◀</h2>
         <p class="Header_text1">&nbsp;이곳은 팁/정보 게시판 입니다. 자취 팁, 유용한 정보 글을 작성해주세요.</p>
@@ -124,7 +97,7 @@
                 <c:when test="${pageMaker.prev && pageMaker.spageNo>1}">
                     <!-- New_ver01_Cri : pageMaker.makeQuery(1) -->
                     <!-- New_ver02_SearchCri : pageMaker.searchQuery(1) -->
-                    <a href="hbcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
+                    <a href="tipblist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
 
                     <!-- OLD_version 
     	=> EL 은 주석내에 있어도 JSP가 처리하여 변수명등에 오류있으면 500 발생할 수 있음.  
@@ -140,14 +113,14 @@
                 </c:if>
                 <c:if test="${i!=pageMaker.cri.currPage}">
 
-                    <a href="hbcrilist${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
+                    <a href="tipblist${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
 
                 </c:if>
             </c:forEach>
 
             <c:choose>
                 <c:when test="${pageMaker.next && pageMaker.epageNo>0}">
-                    <a href="hbcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&gt;</a>
+                    <a href="tipblist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&gt;</a>
 
                 </c:when>
             </c:choose>
@@ -175,7 +148,7 @@
         <div class="new_Write">
 		<!-- 아이디 로그인할때만 가능하게 -->
         <c:if test="${not empty loginID}">
-        &nbsp;&nbsp;<a href="cbinsertf">새글등록</a>
+        &nbsp;&nbsp;<a href="tipbinsertf">새글등록</a>
         </c:if>
         <c:if test="${empty loginID}">
 		&nbsp;&nbsp;<p onclick="alert('로그인후 이용해주세요')">새글등록</p>        
@@ -185,28 +158,8 @@
     <br>
     <br>
 
-    <footer>
-        <div class="bottom">
-            <ul class="btMenu">
-                <li><a href="">공지사항</a></li>
-                <li><a href="">팁/정보</a></li>
-                <li><a href="">자유게시판</a></li>
-                <li><a href="">거래/나눔</a></li>
-                <li><a href="">동아리/모임</a></li>
-                <li><a href="">Q&A</a></li>
-            </ul>
-            <span>
-                <div>Copyright (c) Holo.net All rights reserved.</div>
-                <div>Contact us, holo at gmail dot com</div>
-                <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
-            </span>
-        </div>
-        <br>
-    </footer>
-
-
-
-
+<!-- footer -->
+    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 </body>
 
