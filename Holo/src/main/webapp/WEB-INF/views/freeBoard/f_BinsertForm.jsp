@@ -63,10 +63,6 @@
 	</div>
 
 	 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/joy07180/holo.git
     
 </body>
 </html>

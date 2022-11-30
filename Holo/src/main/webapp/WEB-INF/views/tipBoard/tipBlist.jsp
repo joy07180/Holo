@@ -157,15 +157,7 @@
     <br>
     <br>
 
-<<<<<<< HEAD
- <%@ include file="/WEB-INF/views/include/footer.jsp" %>
-
-=======
     <%@ include file="/WEB-INF/views/include/footer.jsp" %>
->>>>>>> branch 'master' of https://github.com/joy07180/holo.git
-
-
-
 
 </body>
 
