@@ -377,7 +377,33 @@ tr {
 	color: black;
 }
 
+/* ======================================================================= */
 
+.insert_container {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	display: block;
+	float: none;
+}
 
+.insert_table {
+	width: 100%;
+}
 
+.test101 {
+	margin: 6px 0;
+	height: 24px;
+	border-radius: 3px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+}
+
+.test1000 {
+	border: 0;
+	background-color: #f6f5f5;
+	text-align: right;
+	padding: 0;
+	font-weight:bold;
+}
 

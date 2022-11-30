@@ -276,6 +276,7 @@ console.log("반내림 => "+Math.floor(${total}/10));
         </div>
         
 </div>
+</div>
 	<footer>
 	    <div class="bottom">
 	        <ul class="btMenu">
