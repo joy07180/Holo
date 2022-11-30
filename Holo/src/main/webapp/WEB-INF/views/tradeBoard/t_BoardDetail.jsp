@@ -229,7 +229,8 @@ console.log("반내림 => "+Math.floor(${total}/10));
        		<button id="Comment_regist"> 댓글등록</button>
          </div>
   </div>
-	
+	<br>
+	<hr>
 	<div>
 		<a href="t_binsertf">새글등록</a>
         &nbsp;&nbsp;<a href="t_rinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글등록</a>

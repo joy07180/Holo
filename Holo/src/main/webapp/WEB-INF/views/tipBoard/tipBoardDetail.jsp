@@ -228,8 +228,9 @@ $(document).on("click", "#delete", function(){
          </div>
  	</div>
    
+	<br>
+	<hr>
  	<div>
-        <br>
 		<a href="tipbinsertf">새글등록</a>
        	&nbsp;&nbsp;<a href="tiprinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글</a>
 		&nbsp;&nbsp;<a href="tipblist">목록으로</a>  
@@ -239,6 +240,7 @@ $(document).on("click", "#delete", function(){
 			&nbsp;&nbsp;<a href="tipbdetail?jCode=U&seq=${apple.seq}">글수정</a>
        		&nbsp;&nbsp;<a href="tipbdelete?seq=${apple.seq}&root=${apple.root}">글삭제</a>
         </c:if>
+        <br>
         <br>
         <c:if test="${Prev!='T'}">
         <a href="tipbdetail?jCode=P&seq=${apple.seq}">이전글</a>
@@ -253,7 +255,7 @@ $(document).on("click", "#delete", function(){
 		<table id="board_container">
 			<thead class="boardList_head">
 				<tr>
-					<th class="headG">추천</th>
+					<th class="headS">번호</th>
 					<th class="headT">제 목</th>
 					<th class="headI">글쓴이</th>
 					<th class="headR">날 짜</th>
@@ -264,7 +266,7 @@ $(document).on("click", "#delete", function(){
 				<c:if test="${not empty banana}">
 					<c:forEach var="board" items="${banana}">
 						<tr>
-							<td class="bodyG">1</td>
+							<td class="bodyS">${board.seq}</td>
 							<td class="bodyT" id="title_hidden"><a
 								href="tipbdetail?seq=${board.seq}">${board.title}</a></td>
 							<td class="bodyI"><img height="25" width="25"

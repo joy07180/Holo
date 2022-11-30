@@ -42,16 +42,17 @@
             </c:if>
 	    </tr>
 	</table>
-	
+	<br>
+	<hr>
 	<div>
 	<c:if test="${loginID=='admin'}">
-	&nbsp;&nbsp;<a href="noticeinsertf">새글등록</a>
+	<a href="noticeinsertf">새글등록</a>
 	&nbsp;&nbsp;<a href="noticedetail?jCode=U&seq=${apple.seq}">글수정</a>
 	&nbsp;&nbsp;<a href="noticedelete?seq=${apple.seq}">글삭제</a>
 	</c:if>
-	        
+	<br>        
     <br>
-    &nbsp;&nbsp;<a href="noticelist">목록</a>       
+    <a href="noticelist">목록</a>       
     <c:if test="${Prev!='T'}">
     &nbsp;&nbsp;<a href="noticedetail?jCode=P&seq=${apple.seq}">이전글</a>
     </c:if>
@@ -59,7 +60,6 @@
     &nbsp;&nbsp;이전글
     </c:if>
     &nbsp;&nbsp;<a href="noticedetail?jCode=N&seq=${apple.seq}">다음글</a>
-	<br>
 	<br>  
 	</div>
         <hr>
@@ -77,7 +77,7 @@
 				<c:if test="${not empty banana}">
 					<c:forEach var="board" items="${banana}">
 						<c:if test="${board.fix ==1 }">
-							<tr bgcolor="lightBlue">
+							<tr bgcolor="lightBlue" class="notice_bg">
 								<td class="notice">공지</td>
 								<td class="bodyT" id="title_hidden"><a
 									href="noticedetail?seq=${board.seq}">${board.title}</a></td>
