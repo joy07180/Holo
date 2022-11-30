@@ -47,9 +47,18 @@
 </head>
 <body>
     <div class="contents">
+<<<<<<< HEAD
         <!-- header -->
     	<%@ include file="/WEB-INF/views/include/header.jsp" %>
     	<br>
+=======
+<<<<<<< HEAD
+       <%@ include file="/WEB-INF/views/include/header.jsp" %>
+=======
+      <%@ include file="/WEB-INF/views/include/header.jsp" %>
+>>>>>>> branch 'master' of https://github.com/joy07180/holo.git
+        <br>
+>>>>>>> branch 'master' of https://github.com/joy07180/holo.git
         <div class="Header_box">
         <h2>▶ 거래 게시판 ◀</h2>
         <p class="Header_text1">&nbsp;이곳은 거래/나눔 게시판 입니다. 물건 거래, 나눔 글을 작성해주세요.</p>
@@ -190,8 +199,16 @@
 <br>
 <br>
 
+<<<<<<< HEAD
 <!-- footer -->
     <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+=======
+<!-- ************************************************************* -->
+
+ <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+
+
+>>>>>>> branch 'master' of https://github.com/joy07180/holo.git
 
 </body>
 </html>

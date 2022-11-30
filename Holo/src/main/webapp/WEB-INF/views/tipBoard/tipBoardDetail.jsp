@@ -17,6 +17,7 @@
 	var offset = 0;
 	const limit = 20;
 	const com_bno = ${apple.seq};
+	const com_type = 1;
 	console.log("total => "+${total});
 	
 
@@ -45,6 +46,7 @@ $(document).on("click", "#Comment_regist", function() {
 					"com_bno":com_bno,
 					"com_writer":com_writer,
 					"com_content":com_content,
+					"com_type":com_type,
 					"offset":offset,
 		      "limit":limit
 				}		
@@ -67,7 +69,7 @@ $(document).on("click", "#Comment_regist", function() {
 				alert('통신실패');
 			}
 		})
-		location.reload();
+		 location.href = location.href;
 		};// 댓글 비동기 끝
 		
 });// 댓글등록 이벤트 끝
@@ -82,7 +84,7 @@ function getList(n) {
 	   const com_writer = $('#writer').value;
 	   const com_content = $('#com_content').val();
 	   $.getJSON(
-	      "<c:url value='/Comment/CommentList/'/>"+com_bno+"?offset="+offset+"&limit="+limit,
+	      "<c:url value='/Comment/CommentList/'/>"+com_bno+"?com_type="+com_type+"&offset="+offset+"&limit="+limit,
 	      function(data) {
 	         if(data.total > 0){
 	            var list = data.list;
@@ -129,6 +131,7 @@ $(document).on("click", "#delete", function(){
                data:JSON.stringify(
                   {
                      "com_writer":writer,
+                     "com_type":com_type,
                      "com_no":com_no
                   }      
                ),

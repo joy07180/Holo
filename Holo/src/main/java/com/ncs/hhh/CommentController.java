@@ -39,6 +39,8 @@ public class CommentController {
 	
 	@Autowired
 	private CommentService service;
+	@Autowired
+	CommentService service2;
 	
 	@PostMapping("/InsertComment")
 	public String InsertComment(@RequestBody CommentVO vo,HttpSession session) {
@@ -59,6 +61,7 @@ public class CommentController {
 	@RequestMapping("/CommentList/{com_bno}")
 	public Map<String, Object> getList(@PathVariable int com_bno, Model model,
 			HttpServletRequest request, HttpServletResponse response, CommentVO vo) {
+		int com_type = Integer.parseInt(request.getParameter("com_type"));
 		int offset = Integer.parseInt(request.getParameter("offset"));
 		int limit = Integer.parseInt(request.getParameter("limit"));
 		
@@ -69,14 +72,14 @@ public class CommentController {
 		
 		
 		System.out.println("댓글 목록 컨트롤러 동작");
-		List<CommentVO> list = service.getList(com_bno,offset,limit);
-		int total = service.getTotal(com_bno);
+		List<CommentVO> list = service.getList(com_bno, com_type, offset,limit);
+		int total = service.getTotal(com_bno, com_type);
 		
 		
 		
 		ModelAndView view = new ModelAndView();
 		
-		System.out.println("댓글 갯수 " + service.getTotal(com_bno));
+		System.out.println("댓글 갯수 " + service.getTotal(com_bno, com_type));
 		view.setViewName("/holoBoard/boardDetail");
 		
 		Map<String, Object> map = new HashMap<>();

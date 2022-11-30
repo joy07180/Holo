@@ -17,6 +17,7 @@
 	var offset = 0;
 	const limit = 20;
 	const com_bno = ${apple.seq};
+	const com_type = 2;
 	console.log("total => "+${total});
 	
 
@@ -45,6 +46,7 @@ $(document).on("click", "#Comment_regist", function() {
 					"com_bno":com_bno,
 					"com_writer":com_writer,
 					"com_content":com_content,
+					"com_type":com_type,
 					"offset":offset,
 		      "limit":limit
 				}		
@@ -67,7 +69,7 @@ $(document).on("click", "#Comment_regist", function() {
 				alert('통신실패');
 			}
 		})
-		location.reload();
+		 location.href = location.href;
 		};// 댓글 비동기 끝
 		
 });// 댓글등록 이벤트 끝
@@ -82,7 +84,7 @@ function getList(n) {
 	   const com_writer = $('#writer').value;
 	   const com_content = $('#com_content').val();
 	   $.getJSON(
-	      "<c:url value='/Comment/CommentList/'/>"+com_bno+"?offset="+offset+"&limit="+limit,
+			   "<c:url value='/Comment/CommentList/'/>"+com_bno+"?com_type="+com_type+"&offset="+offset+"&limit="+limit,
 	      function(data) {
 	         if(data.total > 0){
 	            var list = data.list;
@@ -129,6 +131,7 @@ $(document).on("click", "#delete", function(){
                data:JSON.stringify(
                   {
                      "com_writer":writer,
+                     "com_type":com_type,
                      "com_no":com_no
                   }      
                ),
@@ -150,6 +153,7 @@ $(document).on("click", "#delete", function(){
 </head>
 <body>
     <div class="contents">
+<<<<<<< HEAD
     <!-- header -->
     <%@ include file="/WEB-INF/views/include/header.jsp" %>
     <br>
@@ -160,6 +164,17 @@ $(document).on("click", "#delete", function(){
     <br>
     </div>
     <br>
+=======
+       <%@ include file="/WEB-INF/views/include/header.jsp" %>
+        <br>
+        <div class="Header_box">
+        <h2>▶ 거래 게시판 ◀</h2>
+        <p class="Header_text1">&nbsp;이곳은 거래/나눔 게시판 입니다. 물건 거래, 나눔 글을 작성해주세요.</p>
+        <p class="Header_text2">&nbsp;팁 관련 주제는 <a href="tipblist">팁/정보</a>게시판, 자유주제는 <a href="f_bcrilist">자유</a>게시판, 동아리 및 모임 주제는 <a href="cbcrilist">동아리/모임</a>게시판에 남겨주세요.</p>
+        <br>
+        </div>
+        <br>
+>>>>>>> branch 'master' of https://github.com/joy07180/holo.git
 		
 		
 	<c:if test="${not empty apple}">
@@ -226,6 +241,7 @@ console.log("반내림 => "+Math.floor(${total}/10));
        	<div class="regBtn">
        		<button id="Comment_regist"> 댓글등록</button>
          </div>
+  </div>
 	
 	<div>
 		<a href="t_binsertf">새글등록</a>
@@ -253,7 +269,11 @@ console.log("반내림 => "+Math.floor(${total}/10));
         
 </div>
 </div>
+<<<<<<< HEAD
 	<!-- footer -->
     <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+=======
+	 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+>>>>>>> branch 'master' of https://github.com/joy07180/holo.git
 </body>
 </html>
