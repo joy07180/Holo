@@ -102,12 +102,13 @@ insert into board(seq,id,title,content,root)
 	<selectKey keyProperty="seq" resultType="int" order="BEFORE">
 		select IFNULL(max(seq),0)+1 from free_board
 	</selectKey>
-	insert into free_board(seq,id,title,content,root,uploadfile) 
-	values(#{seq},#{id},#{title},#{content},#{seq},#{uploadfile})
+	insert into free_board(seq,title,id,content,root,uploadfile) 
+	values(#{seq},#{title},#{id},#{content},#{seq},#{uploadfile})
 </insert>
 
 <update id="update">
-	update free_board set title=#{title}, content=#{content}, uploadfile=#{uploadfile} where seq=#{seq}
+	update free_board set title=#{title}, content=#{content},
+	uploadfile=#{uploadfile} where seq=#{seq}
 </update>	
 	
 <!-- if 조건문 -->	

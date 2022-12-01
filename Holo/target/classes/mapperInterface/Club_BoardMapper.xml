@@ -146,7 +146,7 @@ insert into board(seq,id,title,content,root)
 </insert>
 
 <update id="update">
-	update club_board set title=#{title}, content=#{content},
+	update club_board set place=#{place}, title=#{title}, content=#{content},
 	uploadfile=#{uploadfile} where seq=#{seq}
 </update>	
 	
