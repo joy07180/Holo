@@ -81,7 +81,7 @@
 </sql>
 
 <select id="searchList" resultType="vo.Club_BoardVO">
-	select seq, c.id, title, substr(regdate,1,10) regdate, cnt, root, step, indent, place, u.uploadfile image
+	select seq, c.id, title, substr(regdate,1,10) regdate, cnt, root, step, indent, place, c.uploadfile, u.uploadfile image
 	from club_board c join user u
 	where c.id = u.id AND ( seq>0 <include refid="search"></include>  
 	order by root desc, step asc
@@ -95,16 +95,22 @@
 
 
 <select id="selectOne" resultType="vo.Club_BoardVO">
-	select seq, title, c.id, content, regdate, cnt, u.uploadfile image from club_board c join user u where c.id = u.id AND seq=#{seq}
+	select seq, title, c.id, content, regdate, cnt, u.uploadfile image, c.uploadfile
+	from club_board c join user u 
+	where c.id = u.id AND seq=#{seq}
 </select>
 
 <select id="n_selectOne" resultType="vo.Club_BoardVO">
-	select * from club_board where seq = ( 
+	select seq, title, c.id, content, regdate, cnt, u.uploadfile image, c.uploadfile 
+	from club_board c join user u  
+	where c.id = u.id AND seq = ( 
     	select min(seq) from club_board where seq>#{seq} and step=0
 	)
 </select>
 <select id="p_selectOne" resultType="vo.Club_BoardVO">
-	select * from club_board where seq = ( 
+	select seq, title, c.id, content, regdate, cnt, u.uploadfile image, c.uploadfile 
+	from club_board c join user u  
+	where c.id = u.id AND seq = ( 
     	select max(seq) from club_board where seq<![CDATA[ < ]]>#{seq} and step=0
 	)
 </select>
@@ -140,7 +146,8 @@ insert into board(seq,id,title,content,root)
 </insert>
 
 <update id="update">
-	update club_board set title=#{title}, content=#{content} where seq=#{seq}
+	update club_board set place=#{place}, title=#{title}, content=#{content},
+	uploadfile=#{uploadfile} where seq=#{seq}
 </update>	
 	
 <!-- if 조건문 -->	

@@ -51,7 +51,7 @@
 	</sql>
 
 	<select id="searchList" resultType="vo.Tip_BoardVO">
-		select seq, t.id, title, substr(regdate,1,10) regdate, root, step, indent, u.uploadfile image
+		select seq, t.id, title, substr(regdate,1,10) regdate, root, step, indent, t.uploadfile, u.uploadfile image
 		from tip_board t join user u
 		where t.id = u.id AND ( seq>0
 		<include refid="search"></include>
@@ -68,19 +68,23 @@
 
 
 	<select id="selectOne" resultType="vo.Tip_BoardVO">
-		select seq, title, t.id, content, regdate, cnt, u.uploadfile image
+		select seq, title, t.id, content, regdate, cnt, u.uploadfile image, t.uploadfile 
 		from tip_board t join user u 
 		where t.id = u.id AND seq=#{seq}
 	</select>
 	
 	<select id="n_selectOne" resultType="vo.Tip_BoardVO">
-		select * from tip_board where seq = ( 
+		select seq, title, t.id, content, regdate, cnt,  u.uploadfile image , t.uploadfile 
+		from tip_board t join user u
+		where t.id = u.id AND seq = ( 
     		select min(seq) from tip_board where seq>#{seq} and step=0
 		)
 	</select>
 
 	<select id="p_selectOne" resultType="vo.Tip_BoardVO">
-		select * from tip_board where seq = ( 
+		select seq, title, t.id, content, regdate, cnt,  u.uploadfile image , t.uploadfile 
+		from tip_board t join user u 
+		where t.id = u.id AND seq = ( 
     		select max(seq) from tip_board where seq<![CDATA[ < ]]>#{seq} and step=0
 		)
 	</select>
@@ -106,7 +110,7 @@
 	</insert>
 
 	<update id="update">
-		update tip_board set title=#{title}, content=#{content} where seq=#{seq}
+		update tip_board set title=#{title}, content=#{content}, uploadfile=#{uploadfile} where seq=#{seq}
 	</update>
 
 	<!-- if 조건문 -->

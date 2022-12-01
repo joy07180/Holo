@@ -21,7 +21,7 @@
 	</div>
 	<br>
         
-	<form action="f_bupdate" method="post" enctype="multipart/form-data">
+	<form action="f_bupdate" method="post" enctype="multipart/form-data" class="insert_container">
 	    <table class="insert_table">
 	    	<tbody>
 	    		<tr> <!-- 제목 -->
