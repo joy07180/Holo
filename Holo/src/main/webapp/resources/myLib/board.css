@@ -413,3 +413,7 @@ tr {
 	font-weight: bold;
 	text-align: right;
 }
+
+.seqHidden {
+	display: none;
+}

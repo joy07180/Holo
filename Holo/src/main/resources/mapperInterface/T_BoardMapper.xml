@@ -70,7 +70,7 @@
 	</sql>
 
 	<select id="searchList" resultType="vo.T_BoardVO">
-		select seq, title, t.id, substr(regdate,1,10) regdate, cnt, root, step, indent ,trade, u.uploadfile image
+		select seq, title, t.id, substr(regdate,1,10) regdate, cnt, root, step, indent ,trade,t.uploadfile, u.uploadfile image
 		from trade_board t join user u
 		where t.id = u.id AND ( seq>0
 		<include refid="search"></include>
@@ -87,14 +87,24 @@
 
 
 	<select id="selectOne" resultType="vo.T_BoardVO">
-		select seq, title, t.id, content, regdate, cnt,  u.uploadfile image  from trade_board t join user u where t.id = u.id AND seq=#{seq}
+		select seq, title, t.id, content, regdate, cnt,  u.uploadfile image , t.uploadfile 
+		from trade_board t join user u 
+		where t.id = u.id AND seq=#{seq}
 	</select>
 	
 	<select id="n_selectOne" resultType="vo.T_BoardVO">
-	select * from trade_board where seq = ( 
+	select seq, title, t.id, content, regdate, cnt,  u.uploadfile image , t.uploadfile
+	from trade_board t join user u
+	where t.id = u.id AND seq = ( 
     	select min(seq) from trade_board where seq>#{seq} and step=0
 	)
 	</select>
+
+<!-- 	<select id="n_selectOne" resultType="vo.T_BoardVO">
+	select * from trade_board where seq = ( 
+    	select min(seq) from trade_board where seq>#{seq} and step=0
+	)
+	</select> -->
 
 	<select id="p_selectOne" resultType="vo.T_BoardVO">
 	select * from trade_board where seq = ( 
