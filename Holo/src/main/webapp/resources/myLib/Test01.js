@@ -17,20 +17,13 @@ $(function(){
     //    로그인 성공 or 실패는 모두 컨트롤러의 정상젓인 처리 결과이므로
 	//	  success function 에서 처리함
     //    로그인 성공 or 실패에 따른 다른 처리가 필요함
-	//	  ver01 : webPage 를 response로 전달받음
-	//	  		성공 : 현재 화면을 새로고침
-	//	  		실패 : 현재 로그인 폼을 그냥 두면 됨
-	//			그러므로 response Page가 필요하지 않음
-	//	  		로그인 성공 / 실패 결과만 알면됨
 	
 	//	  ver02 : 결과값 Data 를 response로 전달받음
    	//    		  서버로 부터 결과값을 전달받을 필요성 
    	//    		  서버의 결과는 Java 의 Data -> JS 가 이를 이용해서 코딩
    	//    		  그러므로 Java의 Data를 JS가 인식가능한 Data형식(JSON 포맷)으로 변환 해야함
 
-	// => axlogin : ver01
-	// -> success function내 에서 로그인 성공여부를 알수없음
-	$('#axlogin').click(function() {
+	$('#jslogin').click(function() {
 		$.ajax({
 			type: 'Post',
 			url: 'login',
@@ -38,45 +31,36 @@ $(function(){
 				id: $('#id').val(),
 				password: $('#password').val()
 			},
-			success: function() {
-				// => resultPage 를 사용하면
-				//    실패시 로그인폼 출력은 가능 하지만,
-				//    성공시 home 화면을 resultArea1에 출력하게됨
-
-
-				// => resultArea 는 clear, 현재 Page는 새로 고침
-				//	  그러나 실패시 로그인폼 출력이 어려움
-				location.reload(); //새로고침
+			success: function(resultData) {
+				// ** JSON 처리 예정
+				// => 컨트롤러의 처리 결과를 전달받아 성공/실패 구분 가능
+				if (resultData.code == "200") {
+					location.reload();
+				} else if (resultData.code == "201" ){
+				alert("아이디 또는 비밀번호를 확인해주세요");
+				location.reload();
+				}else if (resultData.code == "202" ){
+				alert("아이디 또는 비밀번호를 확인해주세요");
+				location.reload();
+				}
 			}
 		}); //ajax
-	});	//axlogin_click
-
-
+		
+	});	//click
+	
 
 	$('#axlogout').click(function() {
 		$.ajax({
 			type: 'Post',
 			url: 'logout',
 			success: function() {
-				// => resultPage 를 사용하면
-				//    실패시 로그인폼 출력은 가능 하지만,
-				//    성공시 home 화면을 resultArea1에 출력하게됨
-
-
-				// => resultArea 는 clear, 현재 Page는 새로 고침
-				//	  그러나 실패시 로그인폼 출력이 어려움
 				location.reload(); //새로고침
 			}
 		}); //ajax
-	});	//axlogin_click
+	});	//axlogout
 
 }); //ready
 
-
-// ** Error 처리 function **
-function erroeMessage(message) {
-	$('#resultArea1').html('~~ AjaxLogin 요청 Error => '+message);
-}
 
 
 

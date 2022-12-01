@@ -34,7 +34,7 @@
  function pwCheck() {
     let password=$('#password').val();
    if ( password.length<4 ) {
-      $('#pMessage').html(' Password 길이는 4 이상 입니다. !! ');
+      $('#pMessage').html(' Password 길이는 4 이상 입니다 !! ');
       $('#password').focus();
       return false;
    }else if ( password.replace(/[!-*.@]/gi ,'').length >= password.length ) {

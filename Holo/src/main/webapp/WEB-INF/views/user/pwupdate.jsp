@@ -44,7 +44,12 @@
    } //inCheck
    
    function change() {
-		   alert("비밀 번호가 수정되었습니다");
+	   if (confirm("비밀 번호를 변경하시겠습니까??")) {
+	    }else{
+	    	
+	    }
+	   
+		   
 	} //change
 </script>
 

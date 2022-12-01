@@ -53,3 +53,7 @@ th, td:not(.no){
     border-radius: 6px;
     cursor: pointer;
 }
+
+.eMessage{
+	color: red;
+}

@@ -87,9 +87,13 @@
 
 
 	<select id="selectOne" resultType="vo.T_BoardVO">
+<<<<<<< HEAD
 		select seq, title, t.id, content, regdate, cnt,  u.uploadfile image , t.uploadfile 
 		from trade_board t join user u 
 		where t.id = u.id AND seq=#{seq}
+=======
+		select seq, title, t.id, content, regdate, cnt,t.uploadfile , u.uploadfile image  from trade_board t join user u where t.id = u.id AND seq=#{seq}
+>>>>>>> branch 'master' of https://github.com/joy07180/holo.git
 	</select>
 	
 	<select id="n_selectOne" resultType="vo.T_BoardVO">

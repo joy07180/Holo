@@ -233,11 +233,10 @@ public class UserController {
 
 		// 2. Service 처리
 		if (service.update(vo) > 0) {
-			mv.addObject("message", "회원 정보 수정 성공");
 			mv.addObject("apple",vo); // 회원 정보 수정이 되면 vo에 수정된 값이 들어가야함
+			mv.addObject("service", service.userDetailList(vo)); 
 		}else {
 			// update 실패 : 재수정 유도 -> updateForm.jsp 
-			mv.addObject("message", "회원 정보 수정 실패, 다시 하세요 ~~");
 			uri = "/user/updateForm";
 		}
 
@@ -253,7 +252,7 @@ public class UserController {
 		// 1. 요청분석
 		// => Update 성공 : 내정보 표시 -> memberDetail.jsp
 		// 			 실패 : 재수정 유도 -> updateForm.jsp
-		String uri = "home";
+		String uri = "/user/userDetail";
 
 		// id 찾기
 		HttpSession session = request.getSession(false);
@@ -269,16 +268,15 @@ public class UserController {
 		// => BCryptPasswordEncoder 적용
 		//    encode(rawData) -> digest 생성 & vo 에 set  
 		vo.setPassword(passwordEncoder.encode(vo.getPassword()));
-
 		System.out.println("***** pwupdate2 =>"+vo);
+
 		// 2. Service 처리
 		if (service.pwupdate(vo) > 0) {
-			mv.addObject("message", "비밀번호 수정 성공");
 			mv.addObject("apple",vo); // 회원 정보 수정이 되면 vo에 수정된 값이 들어가야함
+			mv.addObject("service", service.userDetailList(vo)); 
+			System.out.println("***** pwupdate3 =>"+vo);
 		}else {
-			// update 실패 : 재수정 유도 -> pwupdate.jsp 
-			mv.addObject("message", "회원 정보 수정 실패, 다시 하세요 ~~");
-			uri = "/user/pwupdate";
+			uri = "/user/userDetail";
 		}
 
 		// 3. 결과(ModelAndView) 전달 

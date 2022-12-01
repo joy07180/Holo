@@ -49,6 +49,7 @@
        }); //click
    }); //ready	
    
+   
 </script>
 
 
@@ -117,7 +118,7 @@
 							</tr>
 							<tr><td></td>
 								<td >
-								<input type="submit" id="axlogin" value="Login" class="user">
+								<input type="submit" id="jslogin" value="Login" class="user">
 									 <a href="joinf" class="user">회원가입</a>&nbsp;&nbsp;
 							</tr>
 						</table>
