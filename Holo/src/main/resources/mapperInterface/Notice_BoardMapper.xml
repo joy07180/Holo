@@ -61,8 +61,8 @@
 	</update>
 
 	<update id="update">
-		update notice_board set title=#{title}, content=#{content},
-		uploadfile=#{uploadfile}, fix=#{fix} where seq=#{seq}
+		update notice_board n join user u set title=#{title}, content=#{content},
+		n.uploadfile=#{uploadfile}, fix=#{fix}, u.uploadfile=#{image} where seq=#{seq}
 	</update>
 
 	<delete id="delete">

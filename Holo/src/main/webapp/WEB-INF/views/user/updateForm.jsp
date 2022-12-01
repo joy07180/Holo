@@ -10,15 +10,7 @@
 <title> User Update</title>
 <script>
 function change() {
-	var result = confirm("~ 하시겠습니까?");
-	
-	if(result == true) {
-		alert("확인을 눌렀습니다.");
-	} 
-	else {
-		alert("취소를 눌렀습니다.");
-	}
-	   
+		 alert('변경이 완료 되었습니다 ');
 } //change
 </script>
 </head>

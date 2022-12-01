@@ -134,12 +134,6 @@ public class Notice_BoardController {
 	} //binsert
 	
 	
-	// ** BoardDetail
-	// => 글내용 확인 , 수정화면 요청시 (jCode=U&seq=...)
-	// => 조회수 증가
-	// 	- 증가조건 : 글보는이(loginID)와 글쓴이가 다를때 && jCode!=U
-	//	- 증가메서드: DAO, Service 에 countUp 메서드 추가
-	//	- 증가시점 : selectOne 성공후
 	@RequestMapping(value="/noticedetail")
 	public ModelAndView noticedetail(HttpServletRequest request, HttpServletResponse response,
 			SearchCriteria cri, ModelAndView mv, Notice_BoardVO vo) {
@@ -147,6 +141,7 @@ public class Notice_BoardController {
 		String uri = "/noticeBoard/noticeDetail";
 		// 2. Service 처리
 		vo = service.selectOne(vo);
+		System.out.println(vo);
 		mv.addObject("banana", service.searchList(cri));
 		if ( vo != null ) {
 			// 2.1) 조회수 증가
@@ -206,9 +201,10 @@ public class Notice_BoardController {
 
 			// 2. Service 처리
 			if ( service.update(vo) > 0 ) {
-				mv.addObject("message", "~~ 글수정 성공 ~~"); 
+				System.out.println(vo);
+				mv.addObject("service", service.selectOne(vo)); 
+
 			}else {
-				mv.addObject("message", "~~ 글수정 실패, 다시 하세요 ~~");
 				uri = "/noticeBoard/noticeupdate";
 			}
 

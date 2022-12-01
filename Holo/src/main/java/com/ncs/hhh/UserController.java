@@ -101,7 +101,7 @@ public class UserController {
 		// 2) 위 의 값을 이용해서 실제저장위치 확인 
 		// => 개발중인지, 배포했는지 에 따라 결정
 		if ( realPath.contains(".eclipse.") )  // eslipse 개발환경 (배포전)
-			realPath = "C:\\Users\\Administrator.User -2022YRUIG\\git\\holo\\Holo\\src\\main\\webapp\\resources\\Uimages\\";
+			realPath = "C:\\Users\\주성현\\git\\Holo\\src\\main\\webapp\\resources\\Uimages\\";
 		else  // 톰캣서버에 배포 후 : 서버내에서의 위치
 			realPath += "resources\\Uimages\\" ;
 
@@ -235,6 +235,7 @@ public class UserController {
 		if (service.update(vo) > 0) {
 			mv.addObject("apple",vo); // 회원 정보 수정이 되면 vo에 수정된 값이 들어가야함
 			mv.addObject("service", service.userDetailList(vo)); 
+
 		}else {
 			// update 실패 : 재수정 유도 -> updateForm.jsp 
 			uri = "/user/updateForm";
@@ -263,7 +264,6 @@ public class UserController {
 
 		mv.addObject("apple",vo); //vo : 수정전의 값
 
-
 		// ** password 암호화 적용하기
 		// => BCryptPasswordEncoder 적용
 		//    encode(rawData) -> digest 생성 & vo 에 set  
@@ -274,6 +274,7 @@ public class UserController {
 		if (service.pwupdate(vo) > 0) {
 			mv.addObject("apple",vo); // 회원 정보 수정이 되면 vo에 수정된 값이 들어가야함
 			mv.addObject("service", service.userDetailList(vo)); 
+
 			System.out.println("***** pwupdate3 =>"+vo);
 		}else {
 			uri = "/user/userDetail";
@@ -336,6 +337,7 @@ public class UserController {
 				vo.setPassword((String)session.getAttribute("loginPW")); 
 			}else if("Y".equals(request.getParameter("jCode"))) {
 				uri = "/user/pwupdate";
+				mv.addObject("service", service.userDetailList(vo)); 
 				vo.setPassword((String)session.getAttribute("loginPW")); 
 			}
 			mv.addObject("apple", vo);

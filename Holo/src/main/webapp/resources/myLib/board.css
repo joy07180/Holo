@@ -374,15 +374,16 @@ tr {
 }
 
 .user{
-	height: 30px;
-    width: 50px;
+	display: inline-block;
+	height: 29px;
+    width: 70px;
     background-color: #595959;
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    text-align: center;
 }
-
 
 
 /* ======================================================================= */

@@ -18,7 +18,9 @@
 			<td><input type="text" name="seq" value="${apple.seq}" size="20" readonly></td></tr>
 								<!-- 서버에서 필요한 정보 -->
 		<tr height="40"><td bgcolor="MistyRose">I D</td>
-			<td><input type="text" name="id" value="${apple.id}" size="20" readonly></td></tr>
+			<td><input type="text" name="id" value="${apple.id}" size="20" readonly>
+			<input class="test1000" name="image" value="${apple.image}" style="display: none;" >								
+			</td></tr>
 		<tr height="40"><td bgcolor="MistyRose">Title</td> 
 			<td><input type="text" name="title" value="${apple.title}"></td></tr>
 								<!-- 서버에서 필요한 정보 -->

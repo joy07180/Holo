@@ -66,7 +66,8 @@
 	    					<tbody>
 	    						<tr height="30px">
 	    							<td width="*" align="right" style="padding:0 15px 0 5px;">
-										<input class="test1000" name="id" value="${loginID}" readonly >								
+										<input class="test1000" name="id" value="${loginID}" readonly >				
+										<input class="test1000" name="image" value="${apple.image}" style="display: none;" >								
 									</td>
 								</tr>
 	    					</tbody>

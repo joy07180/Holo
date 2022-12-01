@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>** User PwUpdate **</title>
+<title> User PwUpdate </title>
     <script src="resources/myLib/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="resources/myLib/userUpdate.css">
+	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 	<script src="resources/myLib/inCheck.js"></script>
 
 <script>
@@ -44,12 +45,7 @@
    } //inCheck
    
    function change() {
-	   if (confirm("비밀 번호를 변경하시겠습니까??")) {
-	    }else{
-	    	
-	    }
-	   
-		   
+	   alert('변경이 완료 되었습니다 ');
 	} //change
 </script>
 

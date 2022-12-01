@@ -94,14 +94,14 @@
 
 							<h1>${loginName} 님 !!!</h1>
 							<br> 
-							&nbsp;&nbsp; <input type="submit" id="axlogout" value="Logout" class="user">
-							&nbsp;&nbsp; <a href="userdetail" class="user">내 정보 보기</a>
+							 <input type="submit" id="axlogout" value="Logout" class="user">
+							 <a href="userdetail" class="user" style="width: 110px">내 정보 보기</a>
+							<c:if test="${loginID=='admin'}">
+								<a href="user" class="user">회원 목록</a>
+							</c:if>
 						</form>
 					</c:if>
 
-					<c:if test="${loginID=='admin'}">
-					<a href="user">회원 목록</a>&nbsp;&nbsp;
-	 </c:if>
 
 				<c:if test="${empty loginID}">
 					<form action="login" method="post">
@@ -118,8 +118,8 @@
 							</tr>
 							<tr><td></td>
 								<td >
-								<input type="submit" id="jslogin" value="Login" class="user">
-									 <a href="joinf" class="user">회원가입</a>&nbsp;&nbsp;
+								<input type="submit" id="jslogin" value="Login" class="user" >
+								<a href="joinf" class="user">회원가입</a>&nbsp;&nbsp;
 							</tr>
 						</table>
 					</form>
