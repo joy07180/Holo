@@ -38,9 +38,8 @@ import vo.Tip_BoardVO;
 public class CommentController {
 	
 	@Autowired
-	private CommentService service;
-	@Autowired
-	CommentService service2;
+	CommentService service;
+
 	
 	@PostMapping("/InsertComment")
 	public String InsertComment(@RequestBody CommentVO vo,HttpSession session) {

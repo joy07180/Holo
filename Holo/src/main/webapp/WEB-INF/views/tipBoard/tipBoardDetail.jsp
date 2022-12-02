@@ -12,6 +12,22 @@
 	<meta charset="UTF-8">
 	<title>팁 게시판</title>
 	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
+	<style>
+	
+		#like_box{
+		  text-align:center;
+			position:absolute;
+			bottom:0px;
+			left:50%;
+		}
+		
+
+		
+		.board_dBottom{
+			position:relative;
+		}
+	
+    </style>
 	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script>
 	var offset = 0;
@@ -19,18 +35,13 @@
 	const com_bno = ${apple.seq};
 	const com_type = 1;
 	console.log("total => "+${total});
-	
+
 
 $(document).on("click", "#Comment_regist", function() {
    	
 		const com_writer = $('#writer').val();
 		const com_content = $('#com_content').val();
 		
-		console.log("com_bno =>"+com_bno)
-		
-		console.log("댓글쓴이 =>"+com_writer);
-		console.log("콘텐츠 =>"+com_content);
-	
 		 if(com_writer === ''){
 			alert('로그인 후 이용해주세요');
 			return;
@@ -59,7 +70,7 @@ $(document).on("click", "#Comment_regist", function() {
 					console.log('댓글 등록 완료');
 					$('#com_writer').val(com_writer);
    					$('#com_content').val('');
-   					getList();
+   					getList(Math.floor(listcount())*20);
 				} else {
 					alert('로그인 이후 이용해주시기 바랍니다.');
 					console.log('댓글 등록 실패');
@@ -69,13 +80,21 @@ $(document).on("click", "#Comment_regist", function() {
 				alert('통신실패');
 			}
 		})
-		 location.href = location.href;
+		location.reload();
 		};// 댓글 비동기 끝
 		
 });// 댓글등록 이벤트 끝
 // 임시
 
-getList(0);
+function listcount(){
+	if(${total}%limit == 0){
+		return ${total}/limit - 0.1;
+	} else {
+		return ${total}/limit;
+	}
+}
+
+getList(Math.floor(listcount())*20);
 
 
 function getList(n) {
@@ -139,15 +158,60 @@ $(document).on("click", "#delete", function(){
                success:function(data){
                   console.log('통신성공'+data);
                   alert('댓글이 삭제되었습니다');
-                  location.href = location.href;
+                  getList(Math.floor(listcount())*20);
                },
                error:function(){
                   alert('통신실패');
                }
             }); //댓글 삭제 비동기
-     
+           location.reload();
 });
+
+/* ============================================ ↑댓글 ↓추천  ======================================================= */
+
+
+
+$(document).on("click", "#like_bt", function() {
+	const u_id = $('#writer').val();
+	const b_no = ${apple.seq};
+	const b_type = 1;
+	var like_no = 1;
+	var like_check = 1;
 	
+	if(u_id === ""){
+		alert("로그인 후 이용해주세요");
+	} else {
+		$.ajax({
+			type:"post",
+			url:"<c:url value='/Like/InsertLike'/>",
+			data:JSON.stringify(
+				{
+					"like_no":like_no,
+					"b_no":b_no,
+					"u_id":u_id,
+					"b_type":b_type,
+					"like_check":like_check
+				}
+			),
+			contentType:"application/json",
+			success:function(data){
+				if(data === "InsertLike"){
+					alert("게시글을 추천 하였습니다");
+				} else if(data === "overlap"){
+					alert("이미 추천한 게시글 입니다");
+				} else {
+					alert("게시글 추천을 못했어요")
+				}
+			},
+			error:function(){
+				alert("추천오류");
+			}
+		})
+		location.reload();
+	}
+	
+});
+
 	
 	</script>
 	
@@ -180,6 +244,12 @@ $(document).on("click", "#delete", function(){
             <c:if test="${not empty apple.uploadfile}">
             	<td><img width="100%" src="${apple.uploadfile}"><br><br>${fn:replace(apple.content, replaceChar, "<br/>")}<br><br></td>
             </c:if>
+            <td>
+            	<div id="like_box">
+            		<div id="like_bt" style='cursor:pointer;'>추천버튼</div><br>
+            		<span id="LikeCount">${liketotal}</span>
+            	</div>
+            </td>
 	    </tr>
 	</table>
 	

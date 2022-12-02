@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import criTest.PageMaker;
 import criTest.SearchCriteria;
+import service.Board_likeService;
 import service.Club_BoardService;
 import service.CommentService;
 import vo.Club_BoardVO;
@@ -32,7 +33,8 @@ public class Club_BoardController {
 	Club_BoardService service;
 	@Autowired
 	CommentService service2;
-	
+	@Autowired
+	Board_likeService service3;
 	
 	// ** Reply_Insert : 답글등록
 	@RequestMapping(value="/crinsertf")
@@ -133,6 +135,9 @@ public class Club_BoardController {
 			// 2.3)	결과전달		
 			System.out.println(vo);
 			int total = service2.getTotal(vo.getSeq(),4);
+			int liketotal = service3.countbyLike(vo.getSeq(), 4);
+			
+			mv.addObject("liketotal", liketotal);
 			
 			
 			mv.addObject("total",total);

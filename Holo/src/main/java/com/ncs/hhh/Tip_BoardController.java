@@ -17,8 +17,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import criTest.PageMaker;
 import criTest.SearchCriteria;
+import service.Board_likeService;
 import service.CommentService;
 import service.Tip_BoardService;
+import vo.Board_likeVO;
 import vo.Tip_BoardVO;
 
 @Controller
@@ -29,6 +31,9 @@ public class Tip_BoardController {
 	Tip_BoardService service;
 	@Autowired
 	CommentService service2;
+	@Autowired
+	Board_likeService service3;
+
 	
 	// 팁수정 커밋체크
 	@RequestMapping(value="/tiprinsertf")
@@ -95,7 +100,7 @@ public class Tip_BoardController {
 		//	- 증가시점 : selectOne 성공후
 		@RequestMapping(value="/tipbdetail")
 		public ModelAndView bdetail(HttpServletRequest request, HttpServletResponse response,
-				SearchCriteria cri, ModelAndView mv, Tip_BoardVO vo) {
+				SearchCriteria cri, ModelAndView mv, Tip_BoardVO vo, Board_likeVO vo2) {
 			// 1. 요청분석
 			String uri = "/tipBoard/tipBoardDetail";
 			// 2. Service 처리
@@ -128,9 +133,10 @@ public class Tip_BoardController {
 				
 				System.out.println(vo);
 				int total = service2.getTotal(vo.getSeq(),1);
+				int liketotal = service3.countbyLike(vo.getSeq(), 1);
 				
-				
-				mv.addObject("total",total);
+				mv.addObject("liketotal", liketotal);
+				mv.addObject("total", total);
 				mv.addObject("apple", vo);
 				
 				mv.addObject(uri);
@@ -176,7 +182,7 @@ public class Tip_BoardController {
 		// 2) 위 의 값을 이용해서 실제저장위치 확인 
 		// => 개발중인지, 배포했는지 에 따라 결정
 		if ( realPath.contains(".eclipse.") )  // eslipse 개발환경 (배포전)
-			realPath = "C:\\Users\\주성현\\git\\Holo\\src\\main\\webapp\\resources\\uploadImage\\";
+			realPath = "C:\\Users\\Administrator.User -2022OFLBY\\git\\holo\\Holo\\src\\main\\webapp\\resources\\uploadImage\\";
 		else  // 톰캣서버에 배포 후 : 서버내에서의 위치
 			realPath += "resources\\uploadImage\\" ;
 		
@@ -232,50 +238,13 @@ public class Tip_BoardController {
 	
 	// ** Update : 글수정하기
 	@RequestMapping(value="/tipbupdate")
-	public ModelAndView bupdate(HttpServletRequest request, HttpServletResponse response, 
-			ModelAndView mv, Tip_BoardVO vo) throws IOException {
+	public ModelAndView bupdate(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, Tip_BoardVO vo) {
 		// 1. 요청분석
 		// => Update 성공: boardDetail.jsp
 		//           실패: 재수정 유도 -> bupdateForm.jsp
 		String uri = "/tipBoard/tipBoardDetail";
 		mv.addObject("apple",vo);
 		// => Update 성공/실패 모두 출력시 필요하므로
-		
-		// ** Image Update 추가
-		// 1) Image 물리적 저장 위치 확인
-		String realPath = request.getRealPath("/"); // deprecated Method
-		
-		// 1.1) 위 의 값을 이용해서 실제저장위치 확인 
-		// => 개발중인지, 배포했는지 에 따라 결정
-		if ( realPath.contains(".eclipse.") )  // eslipse 개발환경 (배포전)
-			realPath = "C:\\Users\\주성현\\git\\Holo\\src\\main\\webapp\\resources\\uploadImage\\";
-		else  // 톰캣서버에 배포 후 : 서버내에서의 위치
-			realPath += "resources\\uploadImage\\" ;
-		
-		// 1.2) 폴더 만들기 (File 클래스활용, )
-		// => 위의 저장경로에 폴더가 없는 경우 (uploadImage가 없는경우)  만들어 준다
-		File f1 = new File(realPath);
-		if ( !f1.exists() ) f1.mkdir();
-		
-		// 2) 기본 이미지 지정하기 
-		String file1, file2=null; 
-		
-		// 3) MultipartFile : file은 저장, 저장된 경로는 vo 에 set
-		// => 새 화일선택 했으면 : uploadfilef 처리
-		// => 새 화일선택 안했으면 : uploadfilef 처리없이 uploadfile 사용
-		MultipartFile uploadfilef = vo.getUploadfilef();  // file 의 내용및 화일명 등 전송된 정보들
-		if ( uploadfilef !=null && !uploadfilef.isEmpty() ) {
-			// ** 새 Image 화일 을 선택함 -> Image저장 ( 경로_realPath + 화일명 )
-			// 3.1) 물리적 저장경로에 Image 저장
-			file1 = realPath + uploadfilef.getOriginalFilename(); // 경로완성
-			uploadfilef.transferTo(new File(file1)); // Image저장
-			
-			// 3.2) Table 저장 준비
-			file2="resources/uploadImage/"+uploadfilef.getOriginalFilename();
-			vo.setUploadfile(file2);
-		}
-		// ** new_Image 를 선택하지 않은 경우
-		// => form 에서 전송되어 vo 에 담겨진 uploadfile 값을 사용하면 됨. 
 		
 		// 2. Service 처리
 		if ( service.update(vo) > 0 ) {
