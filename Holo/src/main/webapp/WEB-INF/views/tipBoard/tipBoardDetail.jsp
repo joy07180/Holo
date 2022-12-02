@@ -70,7 +70,7 @@ $(document).on("click", "#Comment_regist", function() {
 					console.log('댓글 등록 완료');
 					$('#com_writer').val(com_writer);
    					$('#com_content').val('');
-   					getList();
+   					getList(Math.floor(listcount())*20);
 				} else {
 					alert('로그인 이후 이용해주시기 바랍니다.');
 					console.log('댓글 등록 실패');
@@ -80,13 +80,21 @@ $(document).on("click", "#Comment_regist", function() {
 				alert('통신실패');
 			}
 		})
-		 location.href = location.href;
+		location.reload();
 		};// 댓글 비동기 끝
 		
 });// 댓글등록 이벤트 끝
 // 임시
 
-getList(0);
+function listcount(){
+	if(${total}%limit == 0){
+		return ${total}/limit - 0.1;
+	} else {
+		return ${total}/limit;
+	}
+}
+
+getList(Math.floor(listcount())*20);
 
 
 function getList(n) {
@@ -150,13 +158,13 @@ $(document).on("click", "#delete", function(){
                success:function(data){
                   console.log('통신성공'+data);
                   alert('댓글이 삭제되었습니다');
+                  getList(Math.floor(listcount())*20);
                },
                error:function(){
                   alert('통신실패');
                }
             }); //댓글 삭제 비동기
-               location.href = location.href;
-
+           location.reload();
 });
 
 /* ============================================ ↑댓글 ↓추천  ======================================================= */
@@ -199,7 +207,7 @@ $(document).on("click", "#like_bt", function() {
 				alert("추천오류");
 			}
 		})
-		location.href = location.href;
+		location.reload();
 	}
 	
 });
