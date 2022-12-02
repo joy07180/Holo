@@ -95,7 +95,7 @@
 							<h1>${loginName} 님 !!!</h1>
 							<br> 
 							 <input type="submit" id="axlogout" value="Logout" class="user">
-							 <a href="userdetail" class="user" style="width: 110px">내 정보 보기</a>
+							 <a href="userdetail" class="user" style="width: 110px">마이 페이지</a>
 							<c:if test="${loginID=='admin'}">
 								<a href="user" class="user">회원 목록</a>
 							</c:if>
