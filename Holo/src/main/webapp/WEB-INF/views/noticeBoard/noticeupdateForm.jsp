@@ -7,6 +7,7 @@
 	<meta charset="UTF-8">
 	<title>Notice_Board Update </title>
 	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
+	
 </head>
 <body>
     <div class="contents">
@@ -129,7 +130,7 @@
 	    					<tbody>
 	    						<tr height="30px">
 	    							<td width="*" align="left" style="padding:10px 0 15px 5px;">
-										<input type="submit" value="등록">&nbsp;&nbsp;
+										<input type="submit" value="수정">&nbsp;&nbsp;
 	                					<input type="reset" value="취소">								
 									</td>
 								</tr>
@@ -142,10 +143,6 @@
 	</form>
 	</div>
 <hr>
-<c:if test="${loginID=='admin'}">
-&nbsp;&nbsp;<a href="noticedelete?seq=${apple.seq}">[글삭제]</a>
-</c:if>
-&nbsp;&nbsp;<a href="noticelist">noticelist</a>
  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

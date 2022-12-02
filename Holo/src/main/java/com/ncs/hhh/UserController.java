@@ -69,6 +69,7 @@ public class UserController {
 		mv.setViewName("/user/joinForm");
 		return mv;
 	}
+	
 	@RequestMapping(value = "/join" , method = RequestMethod.POST)
 	// => 매핑네임과 method 가 일치하는 요청만 처리함
 	public ModelAndView join(HttpServletRequest request, HttpServletResponse response, 
@@ -145,12 +146,11 @@ public class UserController {
 		if(service.insert(vo) > 0) {
 			mv.addObject("message" , " ~~ 회원가입 성공, 로그인 후 이용하세여");
 		} else {
-			mv.addObject("message"," ~~ 회원가입 실패, 다시 하세요");
 			uri = "/user/joinForm";
 		}
 
 		// 3. 결과 (View -> forward) 처리
-		mv.setViewName(uri);
+		mv.setViewName("redirect:home");
 		return mv;
 	} //Join
 
@@ -277,11 +277,11 @@ public class UserController {
 
 			System.out.println("***** pwupdate3 =>"+vo);
 		}else {
-			uri = "/user/userDetail";
+			uri = "/user/updateForm";
 		}
 
 		// 3. 결과(ModelAndView) 전달 
-		mv.setViewName(uri);
+		mv.setViewName("redirect:userdetail");
 		return mv;
 	}
 
@@ -289,9 +289,6 @@ public class UserController {
 	@RequestMapping(value = "/userdetail")
 	public ModelAndView userdetail(HttpServletRequest request, HttpServletResponse response, 
 			UserVO vo , ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
-		// => Mapping 메서드 : 매개변수로 지정된 객체에 request_ParameterName 과 일치하는 컬럼(setter)존재하면 자동으로 set 
-		//MemberVO vo = new MemberVO();
-		//vo.setId(request.getParameter("id")); 매개변수에 추가하면 자동으로 생겨서 필요 없어짐
 
 		// 1. 요청분석
 		// => 요청구분 ( 요청에 따라 id 가져오기 )

@@ -212,6 +212,12 @@ $(document).on("click", "#like_bt", function() {
 	
 });
 
+function deletecheck() {
+    if (confirm("해당 글을 삭제 하시겠습니까??")) {
+        location.href = "tipbdelete?seq=${apple.seq}&root=${apple.root}";
+    }
+}//deletecheck
+
 	
 	</script>
 	
@@ -308,7 +314,8 @@ $(document).on("click", "#like_bt", function() {
         <!-- 아이디 로그인이랑 같을때 추가 메뉴 -->
         <c:if test="${loginID==apple.id || loginID=='admin' }">
 			&nbsp;&nbsp;<a href="tipbdetail?jCode=U&seq=${apple.seq}">글수정</a>
-       		&nbsp;&nbsp;<a href="tipbdelete?seq=${apple.seq}&root=${apple.root}">글삭제</a>
+       		&nbsp;&nbsp;<a href="javascript:deletecheck()" >글 삭제</a>
+       		
         </c:if>
         <br>
         <br>

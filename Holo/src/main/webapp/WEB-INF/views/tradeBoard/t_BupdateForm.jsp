@@ -142,7 +142,7 @@
 	    					<tbody>
 	    						<tr height="30px">
 	    							<td width="*" align="left" style="padding:10px 0 15px 5px;">
-										<input type="submit" value="등록">&nbsp;&nbsp;
+										<input type="submit" value="수정">&nbsp;&nbsp;
 	                					<input type="reset" value="취소">								
 									</td>
 								</tr>
@@ -155,13 +155,6 @@
 	</form>
 </div>
 
-	<%-- <c:if test="${loginID==apple.id || loginID=='admin' }"> 
-	</c:if>--%>
-	<!-- 로그인 아이디랑 아이디랑 같으면 내가 쓴 글 -->
-	&nbsp;&nbsp;<a href="bdelete?seq=${apple.seq}&root=${apple.root}">[글삭제]</a>
-	&nbsp;&nbsp;<a href="t_bcrilist">목록</a><br>
-	&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-	&nbsp;&nbsp;<a href="home">[Home]</a>
 
 	 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
     

@@ -12,6 +12,14 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
 	<title>** 공지사항 **</title>
+		<script>
+	function deletecheck() {
+	    if (confirm("해당 글을 삭제 하시겠습니까??")) {
+	        location.href = "noticedelete?seq=${apple.seq}";
+	    }
+	}//goto
+	</script>
+	
 </head>
 <body>
     <div class="contents">
@@ -48,7 +56,8 @@
 	<c:if test="${loginID=='admin'}">
 	<a href="noticeinsertf">새글등록</a>
 	&nbsp;&nbsp;<a href="noticedetail?jCode=U&seq=${apple.seq}">글수정</a>
-	&nbsp;&nbsp;<a href="noticedelete?seq=${apple.seq}">글삭제</a>
+	&nbsp;&nbsp;<a href="javascript:deletecheck()" >글 삭제</a>
+	
 	</c:if>
 	<br>        
     <br>

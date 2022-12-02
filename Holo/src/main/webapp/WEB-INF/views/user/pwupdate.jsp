@@ -44,9 +44,19 @@
          else return false;z
    } //inCheck
    
-   function change() {
-	   alert('변경이 완료 되었습니다 ');
-	} //change
+   $('#change').click(function() {
+		$.ajax({
+			type: 'submit',
+			url: 'userdetail',
+			success: function() {
+				location.reload(); //새로고침
+			}
+		}); //ajax
+	});	//axlogout
+	
+function change() {
+	 alert('변경이 완료 되었습니다 ');
+} //change
 </script>
 
 </head>
@@ -77,7 +87,9 @@
 		</tr>	
 								
 		<tr>
-			<td class="no"><input  type="submit" value="수정" onclick="return change()" >&nbsp;&nbsp;
+			<td class="no">
+				<input  type="submit" id="change" class="change" value="수정" onclick="return change()" >&nbsp;&nbsp;
+				<a href="userdetail" id="change" type="submit" class="change" onclick="return change()" >회원가입</a>
 				<input type="reset" value="취소">
 			</td>	
 		</tr>	

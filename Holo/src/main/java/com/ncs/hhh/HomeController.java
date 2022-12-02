@@ -117,8 +117,6 @@ public class HomeController {
 		}else {
 			mv.addObject("message", "~~ 출력 자료가 없습니다 ~~");
 		}
-
-		
 	
 		mv.setViewName("home");
 		return mv;

@@ -147,7 +147,7 @@
 	    					<tbody>
 	    						<tr height="30px">
 	    							<td width="*" align="left" style="padding:10px 0 15px 5px;">
-										<input type="submit" value="등록">&nbsp;&nbsp;
+										<input type="submit" value="수정">&nbsp;&nbsp;
 	                					<input type="reset" value="취소">								
 									</td>
 								</tr>
@@ -159,10 +159,6 @@
 	    </table>
 	</form>	
 </div>
-&nbsp;&nbsp;<a href="cbdelete?seq=${apple.seq}&root=${apple.root}">[글삭제]</a>
->>>>>>> branch 'master' of https://github.com/joy07180/holo.git
-&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a>
-&nbsp;&nbsp;<a href="home">[Home]</a>
 
  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
