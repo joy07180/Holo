@@ -8,9 +8,11 @@
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script src="resources/myLib/inCheck.js"></script>
 <script src="resources/myLib/Test01.js"></script>
-
-
 <script>
+// =========================== 배너 슬라이드 자바스크립트 ============================================
+
+/* ======================================================================================== */
+
    let iCheck=false;
    let pCheck=false;
    
@@ -24,7 +26,7 @@
             // => enter 누르면 자동 submit 발생되므로 이를 제거함
             $('#password').focus();
          }
-      }).function(){    
+      }).function() {
          iCheck=idCheck();
       }; //id
       
@@ -34,7 +36,7 @@
             e.preventDefault();
             $('#password2').focus();
          }
-      }).function(){    
+      }).function(){
          pCheck=   pwCheck();
       }; //password
    }); //ready
@@ -49,6 +51,7 @@
        }); //click
    }); //ready	
    
+
    
 </script>
 
@@ -87,7 +90,53 @@
 
 		<main>
 			<div class="main">
-					<a href="" class="banner"></a>
+					<ul class="slide_list"></ul>
+					<script>
+					const imgArray = [
+					    "resources/uploadImage/banner1.png",
+					    "resources/uploadImage/banner2.png",
+					    "resources/uploadImage/banner3.png",
+					    "resources/uploadImage/banner4.jpg",
+					    "resources/uploadImage/banner5.jpg"
+					];
+
+					const links = [
+					    "https://1in.seoul.go.kr/front/board/boardContentsView.do?board_id=1&contents_id=42540f97571344a3b84ecb180eaa5241",
+					    "https://www.gseek.kr/member/rl/courseInfo/onCourseCsInfo.do?menuId=&menuStep=&pMenuId=OTOP&courseSeq=3526&courseCsSeq=1&courseCateCode=D600&eduTypeCode=&stuSeq=",
+					    "https://1in.seoul.go.kr/front/board/boardContentsView.do?board_id=1&contents_id=04bae8eea0d24bca9becd560f0ffa8e6",
+					    "https://1in.seoul.go.kr/front/board/boardContentsView.do?board_id=1&contents_id=217822ddd64344258b9d282b50822bcb",
+					    "https://mywellnessgood.com/?p=82/"
+					];
+
+					const slide_list = document.querySelector(".slide_list");
+					
+					for (let i = 0; i < imgArray.length; i++) {
+					    slide_list.appendChild(document.createElement("li"))
+					        .style.background = "url("+imgArray[i]+") center/100% 100%";
+					};
+					
+					const li = slide_list.getElementsByTagName("li");
+					const a = document.getElementsByTagName("a");
+
+					for (let i = 0; i < links.length; i++) {
+					    li[i].innerHTML = "<a class='link' href=" + links[i] + ">" + [i + 1] + '/5' + "</a>";
+					};
+
+					var i = 0;
+
+					setInterval(() => {
+					    li[i].style.display = 'none';
+					    li[i].style.right = "-100%";
+					    // li[i].style.opacity = 0;
+
+					    i++;
+					    i %= li.length;
+
+					    li[i].style.display = 'block';
+					    li[i].style.right = 0;
+					    // li[i].style.opacity = 1;
+					}, 4000);
+					</script>
 					<div>
 					<c:if test="${not empty loginID}">
 						<form action="logout" method="get">
