@@ -94,18 +94,18 @@
 					<script>
 					const imgArray = [
 					    "resources/uploadImage/banner1.png",
-					    "resources/uploadImage/flower2.jpg",
-					    "resources/uploadImage/flower3.jpg",
-					    "resources/uploadImage/flower4.jpg",
-					    "resources/uploadImage/flower5.jpg"
+					    "resources/uploadImage/banner2.png",
+					    "resources/uploadImage/banner3.png",
+					    "resources/uploadImage/banner4.jpg",
+					    "resources/uploadImage/banner5.jpg"
 					];
 
 					const links = [
 					    "https://1in.seoul.go.kr/front/board/boardContentsView.do?board_id=1&contents_id=42540f97571344a3b84ecb180eaa5241",
-					    "https://daum.net",
-					    "https://google.com",
-					    "https://nate.com",
-					    "https://www.dreamwiz.com/"
+					    "https://www.gseek.kr/member/rl/courseInfo/onCourseCsInfo.do?menuId=&menuStep=&pMenuId=OTOP&courseSeq=3526&courseCsSeq=1&courseCateCode=D600&eduTypeCode=&stuSeq=",
+					    "https://1in.seoul.go.kr/front/board/boardContentsView.do?board_id=1&contents_id=04bae8eea0d24bca9becd560f0ffa8e6",
+					    "https://1in.seoul.go.kr/front/board/boardContentsView.do?board_id=1&contents_id=217822ddd64344258b9d282b50822bcb",
+					    "https://mywellnessgood.com/?p=82/"
 					];
 
 					const slide_list = document.querySelector(".slide_list");
