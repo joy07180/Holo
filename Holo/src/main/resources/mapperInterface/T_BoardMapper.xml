@@ -129,8 +129,8 @@
 	</insert>
 
 	<update id="update">
-		update trade_board set trade=#{trade}, title=#{title}, content=#{content},
-		uploadfile=#{uploadfile} where seq=#{seq}
+		update trade_board tr join user u set trade=#{trade}, title=#{title}, content=#{content}, 
+		tr.uploadfile=#{uploadfile}, u.uploadfile=#{image} where seq=#{seq}
 	</update>
 
 	<!-- if 조건문 -->

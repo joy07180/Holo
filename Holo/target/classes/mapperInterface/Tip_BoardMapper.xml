@@ -110,7 +110,8 @@
 	</insert>
 
 	<update id="update">
-		update tip_board set title=#{title}, content=#{content}, uploadfile=#{uploadfile} where seq=#{seq}
+		update tip_board t join user u set title=#{title}, content=#{content}, 
+		t.uploadfile=#{uploadfile}, u.uploadfile=#{image} where seq=#{seq}
 	</update>
 
 	<!-- if 조건문 -->

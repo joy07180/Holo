@@ -146,8 +146,8 @@ insert into board(seq,id,title,content,root)
 </insert>
 
 <update id="update">
-	update club_board set place=#{place}, title=#{title}, content=#{content},
-	uploadfile=#{uploadfile} where seq=#{seq}
+	update club_board c join user u set place=#{place}, title=#{title}, content=#{content},
+	c.uploadfile=#{uploadfile}, u.uploadfile=#{uploadfile=#{uploadfile}} where seq=#{seq}
 </update>	
 	
 <!-- if 조건문 -->	
