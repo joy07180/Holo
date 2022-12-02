@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import criTest.PageMaker;
 import criTest.SearchCriteria;
+import service.Board_likeService;
 import service.CommentService;
 import service.T_BoardService;
 import vo.T_BoardVO;
@@ -31,6 +32,8 @@ public class T_BoardController {
 	T_BoardService service;
 	@Autowired
 	CommentService service2;
+	@Autowired
+	Board_likeService service3;
 		// => ver02) SearchCriteria,  PageMaker 적용하기 
 		@RequestMapping(value="/t_bcrilist")
 		public ModelAndView t_bcrilist(ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
@@ -90,7 +93,9 @@ public class T_BoardController {
 				
 				// 2.3)	결과전달		
                 int total = service2.getTotal(vo.getSeq(),2);
+                int liketotal = service3.countbyLike(vo.getSeq(), 2);
 				
+				mv.addObject("liketotal", liketotal);
 				
 				mv.addObject("total",total);
 				mv.addObject("apple", vo);

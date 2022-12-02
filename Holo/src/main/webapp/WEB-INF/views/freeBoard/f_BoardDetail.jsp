@@ -12,6 +12,22 @@
     <meta charset="UTF-8">
     <title>** 자유게시판 디테일 **</title>
     <link rel="stylesheet" type="text/css" href="resources/myLib/board.css">
+    <style>
+	
+		#like_box{
+		  text-align:center;
+			position:absolute;
+			bottom:0px;
+			left:50%;
+		}
+		
+
+		
+		.board_dBottom{
+			position:relative;
+		}
+	
+    </style>
 	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 	<script>
 	var offset = 0;
@@ -142,6 +158,47 @@ $(document).on("click", "#delete", function(){
             }); //댓글 삭제 비동기
      
 });
+
+$(document).on("click", "#like_bt", function() {
+	const u_id = $('#writer').val();
+	const b_no = ${apple.seq};
+	const b_type = 3;
+	var like_no = 1;
+	var like_check = 1;
+	
+	if(u_id === ""){
+		alert("로그인 후 이용해주세요");
+	} else {
+		$.ajax({
+			type:"post",
+			url:"<c:url value='/Like/InsertLike'/>",
+			data:JSON.stringify(
+				{
+					"like_no":like_no,
+					"b_no":b_no,
+					"u_id":u_id,
+					"b_type":b_type,
+					"like_check":like_check
+				}
+			),
+			contentType:"application/json",
+			success:function(data){
+				if(data === "InsertLike"){
+					alert("게시글을 추천 하였습니다");
+				} else if(data === "overlap"){
+					alert("이미 추천한 게시글 입니다");
+				} else {
+					alert("게시글 추천을 못했어요")
+				}
+			},
+			error:function(){
+				alert("추천오류");
+			}
+		})
+		location.href = location.href;
+	}
+	
+});
 	
 	
 	</script>
@@ -177,6 +234,12 @@ $(document).on("click", "#delete", function(){
 	            <c:if test="${not empty apple.uploadfile}">
 	            	<td><img width="100%" src="${apple.uploadfile}"><br><br>${fn:replace(apple.content, replaceChar, "<br/>")}<br><br></td>
 	            </c:if>
+     	         <td>
+            	<div id="like_box">
+            		<div id="like_bt" style='cursor:pointer;'>추천버튼</div><br>
+            		<span id="LikeCount">${liketotal}</span>
+            	</div>
+            </td>
 	        </tr>
 	    </table>
 	</c:if>

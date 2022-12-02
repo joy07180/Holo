@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import criTest.PageMaker;
 import criTest.SearchCriteria;
+import service.Board_likeService;
 import service.CommentService;
 import service.F_BoardService;
 import vo.F_BoardVO;
@@ -27,6 +28,8 @@ public class F_BoardController {
 	F_BoardService service;
 	@Autowired
 	CommentService service2;
+	@Autowired
+	Board_likeService service3;
 		// ** Board Check List ***************************
 		// => ver02) SearchCriteria,  PageMaker 적용하기 
 		@RequestMapping(value="/f_bcrilist")
@@ -82,6 +85,9 @@ public class F_BoardController {
 				
 				// 2.3)	결과전달		
 				int total = service2.getTotal(vo.getSeq(),3);
+				int liketotal = service3.countbyLike(vo.getSeq(), 3);
+				
+				mv.addObject("liketotal", liketotal);
 				
 				
 				mv.addObject("total",total);
