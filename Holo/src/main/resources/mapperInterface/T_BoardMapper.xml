@@ -152,8 +152,8 @@
 		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
 			select IFNULL(max(seq),0)+1 from trade_board
 		</selectKey>
-		insert into trade_board(seq,title,id,content,root,step,indent)
-		values(#{seq},#{title},#{id},#{content},#{root},#{step},#{indent})
+		insert into trade_board(seq,id,title,content,root,step,indent)
+		values(#{seq},#{id},#{title},#{content},#{root},#{step},#{indent})
 	</insert>
 	<update id="stepUpdate">
 		<selectKey keyProperty="seq" resultType="int" order="BEFORE">

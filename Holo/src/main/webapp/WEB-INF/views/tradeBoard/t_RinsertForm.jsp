@@ -33,7 +33,7 @@
 	                -> 매핑메서드의 인자로 정의된 vo 와 param 모두 가능   -->
 	           
 	        <tr height="40"><td></td>
-	            <td><input type="text" name="root" value="${t_BoardVO.root}" hidden>
+	            <td><input type="text" name="root" value="${param.root}" hidden>
 	                 <input type="text" name="step" value="${t_BoardVO.step}" hidden>
 	                 <input type="text" name="indent" value="${t_BoardVO.indent}" hidden>
 	            </td>
