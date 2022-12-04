@@ -20,7 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import criTest.PageMaker;
 import criTest.SearchCriteria;
-import service.CommentService;
 import service.T_BoardService;
 import vo.T_BoardVO;
 
@@ -29,8 +28,6 @@ public class T_BoardController {
 	
 	@Autowired
 	T_BoardService service;
-	@Autowired
-	CommentService service2;
 		// => ver02) SearchCriteria,  PageMaker 적용하기 
 		@RequestMapping(value="/t_bcrilist")
 		public ModelAndView t_bcrilist(ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
@@ -57,15 +54,14 @@ public class T_BoardController {
 	// ** Trade_BoardDetail
 		@RequestMapping(value="/t_bdetail")
 		public ModelAndView t_bdetail(HttpServletRequest request, HttpServletResponse response,
-				SearchCriteria cri, ModelAndView mv, T_BoardVO vo) {
+				ModelAndView mv, T_BoardVO vo) {
 			// 1. 요청분석
 			String uri = "/tradeBoard/t_BoardDetail";
 			
 			// 2. Service 처리
 			vo = service.selectOne(vo);
-			mv.addObject("banana", service.searchList(cri));
-			
 			if ( vo != null ) {
+				
 				// 2.1) 조회수 증가
 				String loginID = (String)request.getSession().getAttribute("loginID"); // object 타입을 string으로
 				if ( !vo.getId().equals(loginID) && !"U".equals(request.getParameter("jCode"))) { //vo아이디랑 login아이디랑 다르고 && U가 아닌경우
@@ -89,10 +85,6 @@ public class T_BoardController {
 				}
 				
 				// 2.3)	결과전달		
-                int total = service2.getTotal(vo.getSeq(),2);
-				
-				
-				mv.addObject("total",total);
 				mv.addObject("apple", vo);
 			}else mv.addObject("message", "~~ 글번호에 해당하는 자료가 없습니다. ~~");
 			
@@ -195,7 +187,7 @@ public class T_BoardController {
 			// 1.1) 위 의 값을 이용해서 실제저장위치 확인 
 			// => 개발중인지, 배포했는지 에 따라 결정
 			if ( realPath.contains(".eclipse.") )  // eslipse 개발환경 (배포전)
-				realPath = "C:\\Users\\주성현\\git\\Holo\\src\\main\\webapp\\resources\\uploadImage\\";
+				realPath = "C:\\Users\\주성현\\git\\Holo\\src\\main\\webapp\\resources\\uploadImage";
 			else  // 톰캣서버에 배포 후 : 서버내에서의 위치
 				realPath += "resources\\uploadImage\\" ;
 			

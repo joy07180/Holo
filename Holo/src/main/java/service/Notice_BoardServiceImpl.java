@@ -75,5 +75,4 @@ public class Notice_BoardServiceImpl implements Notice_BoardService {
 	}	
 	
 
-		
 }

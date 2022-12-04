@@ -34,9 +34,6 @@ public interface UserMapper {
 	// ** delete
 	int delete(UserVO vo);
 
-	// userDetailList
-	List<UserVO> userDetailList(UserVO vo);
-	int userDetailListCount(SearchCriteria cri);
 	
 	
 	

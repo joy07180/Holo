@@ -53,17 +53,6 @@ public class Club_BoardServiceImpl implements Club_BoardService {
 	public Club_BoardVO selectOne(Club_BoardVO vo) {
 		return mapper.selectOne(vo);
 	}
-	// ** n_selectOne
-	@Override
-	public Club_BoardVO n_selectOne(Club_BoardVO vo) {
-		return mapper.n_selectOne(vo);
-	}
-	// ** p_selectOne
-	@Override
-	public Club_BoardVO p_selectOne(Club_BoardVO vo) {
-		return mapper.p_selectOne(vo);
-	}
-	
 	
 	// ** Insert
 	@Override

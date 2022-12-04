@@ -141,13 +141,11 @@ public class Notice_BoardController {
 	//	- 증가메서드: DAO, Service 에 countUp 메서드 추가
 	//	- 증가시점 : selectOne 성공후
 	@RequestMapping(value="/noticedetail")
-	public ModelAndView noticedetail(HttpServletRequest request, HttpServletResponse response,
-			SearchCriteria cri, ModelAndView mv, Notice_BoardVO vo) {
+	public ModelAndView noticedetail(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, Notice_BoardVO vo) {
 		// 1. 요청분석
 		String uri = "/noticeBoard/noticeDetail";
 		// 2. Service 처리
 		vo = service.selectOne(vo);
-		mv.addObject("banana", service.searchList(cri));
 		if ( vo != null ) {
 			// 2.1) 조회수 증가
 			String loginID = (String)request.getSession().getAttribute("loginID");

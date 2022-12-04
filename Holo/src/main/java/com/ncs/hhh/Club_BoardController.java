@@ -18,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import criTest.PageMaker;
 import criTest.SearchCriteria;
 import service.Club_BoardService;
-import service.CommentService;
 import vo.Club_BoardVO;
 import vo.Tip_BoardVO;
 
@@ -30,18 +29,16 @@ public class Club_BoardController {
 	private static final char[] CLASS_NAME = null;
 	@Autowired
 	Club_BoardService service;
-	@Autowired
-	CommentService service2;
 	
 	
 	// ** Reply_Insert : 답글등록
 	@RequestMapping(value="/crinsertf")
 	public ModelAndView rinsertf(HttpServletRequest request, 
-			HttpServletResponse response, ModelAndView mv, Club_BoardVO vo) {
+			HttpServletResponse response, ModelAndView mv, Tip_BoardVO vo) {
 		// => vo 에는 전달된 부모글의 root, step, indent 가 담겨있음 
 		// => 매핑메서드의 인자로 정의된 vo 는 request.setAttribute 와 동일 scope
 		//    단, 클래스명의 첫글자를 소문자로 ...  ${Tip_BoardVO.root}
-		mv.setViewName("/ClubBoard/c_rinsertForm");
+		mv.setViewName("/ClubBoard/cbdetail");
 		return mv;
 	}
 	@RequestMapping(value="/crinsert", method=RequestMethod.POST)
@@ -56,7 +53,7 @@ public class Club_BoardController {
 		//		- indent: 부모 indent + 1
 		//		- 그러므로 rinsertForm 에 부모값을 보관 (hidden으로) 해서 전달받음 
 		//		  이를 위해 boardDetail 에서 요청시 퀴리스트링으로 전달 -> rinsertf 
-		String uri = "redirect:cbcrilist";
+		String uri = "redirect:c_crilist";
 		vo.setStep(vo.getStep()+1);
 		vo.setIndent(vo.getIndent()+1);
 		
@@ -101,12 +98,11 @@ public class Club_BoardController {
 	//	- 증가시점 : selectOne 성공후
 	@RequestMapping(value="/cbdetail")
 	public ModelAndView bdetail(HttpServletRequest request, HttpServletResponse response, ModelAndView mv,
-			SearchCriteria cri, Club_BoardVO vo) {
+			Club_BoardVO vo) {
 		// 1. 요청분석
 		String uri = "/ClubBoard/c_boardDetail";
 		// 2. Service 처리
 		vo = service.selectOne(vo);
-		mv.addObject("banana", service.searchList(cri));
 		if ( vo != null ) {
 			// 2.1) 조회수 증가
 			String loginID = (String)request.getSession().getAttribute("loginID");
@@ -119,23 +115,8 @@ public class Club_BoardController {
 			if ( "U".equals(request.getParameter("jCode")))
 				uri = "/ClubBoard/c_bupdateForm";
 			
-			// 2.3) 이전, 다음 상세보기 요청인지 아닌지
-			if ( "P".equals(request.getParameter("jCode"))) {
-				vo = service.p_selectOne(vo);
-				if(vo==null) mv.addObject("Prev", "T");
-			}
-			
-			if ( "N".equals(request.getParameter("jCode"))) {
-				vo = service.n_selectOne(vo);
-				if(vo==null) mv.addObject("Next", "F");
-			}
-			
 			// 2.3)	결과전달		
 			System.out.println(vo);
-			int total = service2.getTotal(vo.getSeq(),4);
-			
-			
-			mv.addObject("total",total);
 			mv.addObject("apple", vo);
 		}else mv.addObject("message", "~~ 글번호에 해당하는 자료가 없습니다. ~~");
 		
@@ -177,7 +158,7 @@ public class Club_BoardController {
 		// 2) 위 의 값을 이용해서 실제저장위치 확인 
 		// => 개발중인지, 배포했는지 에 따라 결정
 		if ( realPath.contains(".eclipse.") )  // eslipse 개발환경 (배포전)
-			realPath = "C:\\Users\\주성현\\git\\Holo\\src\\main\\webapp\\resources\\uploadImage\\";
+			realPath = "C:\\Users\\Administrator.User -2022YRUIG\\git\\holo\\Holo\\src\\main\\webapp\\resources\\uploadImage\\";
 		else  // 톰캣서버에 배포 후 : 서버내에서의 위치
 			realPath += "resources\\uploadImage\\" ;
 		
@@ -234,51 +215,13 @@ public class Club_BoardController {
 	// ** Update : 글수정하기
 	@RequestMapping(value="/cbupdate")
 	public ModelAndView bupdate(HttpServletRequest request, HttpServletResponse response,
-			ModelAndView mv, Club_BoardVO vo) throws IOException  {
+			ModelAndView mv, Club_BoardVO vo) {
 		// 1. 요청분석
 		// => Update 성공: boardDetail.jsp
 		//           실패: 재수정 유도 -> bupdateForm.jsp
 		String uri = "/ClubBoard/c_boardDetail";
 		mv.addObject("apple",vo);
 		// => Update 성공/실패 모두 출력시 필요하므로
-		
-		
-		// ** Image Update 추가
-		// 1) Image 물리적 저장 위치 확인
-		String realPath = request.getRealPath("/"); // deprecated Method
-		
-		// 1.1) 위 의 값을 이용해서 실제저장위치 확인 
-		// => 개발중인지, 배포했는지 에 따라 결정
-		if ( realPath.contains(".eclipse.") )  // eslipse 개발환경 (배포전)
-			realPath = "C:\\Users\\주성현\\git\\Holo\\src\\main\\webapp\\resources\\uploadImage\\";
-		else  // 톰캣서버에 배포 후 : 서버내에서의 위치
-			realPath += "resources\\uploadImage\\" ;
-		
-		// 1.2) 폴더 만들기 (File 클래스활용, )
-		// => 위의 저장경로에 폴더가 없는 경우 (uploadImage가 없는경우)  만들어 준다
-		File f1 = new File(realPath);
-		if ( !f1.exists() ) f1.mkdir();
-		
-		// 2) 기본 이미지 지정하기 
-		String file1, file2=null; 
-		
-		// 3) MultipartFile : file은 저장, 저장된 경로는 vo 에 set
-		// => 새 화일선택 했으면 : uploadfilef 처리
-		// => 새 화일선택 안했으면 : uploadfilef 처리없이 uploadfile 사용
-		MultipartFile uploadfilef = vo.getUploadfilef();  // file 의 내용및 화일명 등 전송된 정보들
-		if ( uploadfilef !=null && !uploadfilef.isEmpty() ) {
-			// ** 새 Image 화일 을 선택함 -> Image저장 ( 경로_realPath + 화일명 )
-			// 3.1) 물리적 저장경로에 Image 저장
-			file1 = realPath + uploadfilef.getOriginalFilename(); // 경로완성
-			uploadfilef.transferTo(new File(file1)); // Image저장
-			
-			// 3.2) Table 저장 준비
-			file2="resources/uploadImage/"+uploadfilef.getOriginalFilename();
-			vo.setUploadfile(file2);
-		}
-		// ** new_Image 를 선택하지 않은 경우
-		// => form 에서 전송되어 vo 에 담겨진 uploadfile 값을 사용하면 됨. 
-
 		
 		// 2. Service 처리
 		if ( service.update(vo) > 0 ) {

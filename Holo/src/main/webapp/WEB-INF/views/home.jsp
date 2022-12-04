@@ -39,6 +39,14 @@
       }; //password
    }); //ready
    
+   function inCheck() {
+         if (iCheck==false) { $('#iMessage').html(' id 를 확인하세요 !!');}
+         if (pCheck==false) { $('#pMessage').html(' Password 를 확인하세요 !!');}
+         
+         if ( iCheck && pCheck ) return true; // submit 진행  
+         else return false;
+   } //inCheck
+   
    
    $(function searchsearch() {
        $('#searchBtn2').click(function () {
@@ -48,7 +56,6 @@
                + $('#keyword2').val()
        }); //click
    }); //ready	
-   
    
 </script>
 
@@ -89,17 +96,14 @@
 			<div class="main">
 					<a href="" class="banner"></a>
 					<div>
-					<c:if test="${not empty loginID}">
-						<form action="logout" method="get">
+				<c:if test="${not empty loginID}">
+					<h1> ${loginName} 님 !!!</h1>
+					<br>
+      &nbsp;&nbsp;<a href="logout">Logout</a>
+      &nbsp;&nbsp;<a href="userdetail">내정보</a>
+				</c:if>
 
-							<h1>${loginName} 님 !!!</h1>
-							<br> 
-							&nbsp;&nbsp; <input type="submit" id="axlogout" value="Logout" class="user">
-							&nbsp;&nbsp; <a href="userdetail" class="user">내 정보 보기</a>
-						</form>
-					</c:if>
-
-					<c:if test="${loginID=='admin'}">
+				<c:if test="${loginID=='admin'}">
 					<a href="user">회원 목록</a>&nbsp;&nbsp;
 	 </c:if>
 
@@ -107,25 +111,26 @@
 					<form action="login" method="post">
 						<table>
 							<tr>
-								<td class="user">I D</td>
-								<td><input type="text" class="put" name="id" id="id"><br>
+								<td bgcolor="PaleTurquoise">I D</td>
+								<td><input type="text" name="id" id="id"><br>
 								</td>
 							</tr>
 							<tr>
-								<td class="user">Password</td>
-								<td><input type="password" class="put" name="password" id="password"><br>
+								<td bgcolor="PaleTurquoise ">Password</td>
+								<td><input type="password" name="password" id="password"><br>
 								</td>
 							</tr>
-							<tr><td></td>
-								<td >
-								<input type="submit" id="jslogin" value="Login" class="user">
-									 <a href="joinf" class="user">회원가입</a>&nbsp;&nbsp;
+							<tr>
+								<td></td>
+								<td><input type="submit" value="Login"
+									onclick="return inCheck()">&nbsp;&nbsp; <span
+									id="pMessage" class="eMessage"></span> <br> <a
+									href="joinf">회원가입</a>&nbsp;&nbsp; <a href="logout">Logout</a></td>
 							</tr>
 						</table>
 					</form>
 					<br>
 				</c:if>
-				
 				</div>
 			</div>
 	
@@ -147,7 +152,7 @@
 							<c:forEach var="board" items="${nlist}">
 								<tr height="30">
 									<td width="50%"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
-									<td class="ct" width="20%"><a href="userdetail?id=${board.id}">${board.id}</a></td>
+									<td class="ct" width="20%">${board.id}</td>
 									<td class="ct" width="30%">${board.regdate}</td>
 								</tr>
 							</c:forEach>
@@ -172,7 +177,7 @@
 								<tr height="30">
 
 									<td width="40%"><a href="f_bdetail?seq=${fboard.seq}">${fboard.title}</a></td>
-									<td class="ct" width="20%"><a href="userdetail?id=${fboard.id}">${fboard.id}</a></td>
+									<td class="ct" width="20%">${fboard.id}</td>
 									<td class="ct" width="10%">${fboard.cnt}</td>
 								</tr>
 							</c:forEach>
@@ -198,7 +203,7 @@
 							<c:forEach var="hboard" items="${hlist}">
 								<tr height="30">
 									<td width="40%"><a href="hbdetail?seq=${hboard.seq}">${hboard.title}</a></td>
-									<td class="ct" width="20%"><a href="userdetail?id=${hboard.id}">${hboard.id}</a></td>
+									<td class="ct" width="20%">${hboard.id}</td>
 									<td class="ct" width="30%">${hboard.regdate}</td>
 
 								</tr>
@@ -223,7 +228,7 @@
 							<c:forEach var="hboard" items="${hhotlist}">
 								<tr height="30">
 									<td width="40%"><a href="hbdetail?seq=${hboard.seq}">${hboard.title}</a></td>
-									<td class="ct" width="20%"><a href="userdetail?id=${hboard.id}">${hboard.id}</a></td>
+									<td class="ct" width="20%">${hboard.id}</td>
 									<td class="ct" width="10%">${hboard.cnt}</td>
 								</tr>
 							</c:forEach>
@@ -249,7 +254,7 @@
 							<c:forEach var="tboard" items="${tlist}">
 								<tr height="30">
 									<td width="40%"><a href="t_bdetail?seq=${tboard.seq}">${tboard.title}</a></td>
-									<td class="ct" width="20%"><a href="userdetail?id=${tboard.id}">${tboard.id}</a></td>
+									<td class="ct" width="20%">${tboard.id}</td>
 									<td class="ct" width="30%">${tboard.regdate}</td>
 
 								</tr>
@@ -275,7 +280,7 @@
 								<c:forEach var="cboard" items="${chotlist}">
 									<tr height="30">
 										<td width="40%"><a href="cbdetail?seq=${cboard.seq}">${cboard.title}</a></td>
-										<td class="ct" width="20%"><a href="userdetail?id=${cboard.id}">${cboard.id}</a></td>
+										<td class="ct" width="20%">${cboard.id}</td>
 										<td class="ct" width="10%">${cboard.cnt}</td>
 									</tr>
 								</c:forEach>

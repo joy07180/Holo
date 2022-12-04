@@ -43,7 +43,35 @@
 
   <body>
     <div class="contents">
-       <%@ include file="/WEB-INF/views/include/header.jsp" %>
+        <header>
+            <div class="header">
+                <div>
+                    <a href="home" class="logo">logo</a>
+                </div>
+                <div class="search">
+					<form action="searchsearch">
+						<input class="searchBox" type="text" size="40"
+							placeholder="게시판 & 통합검색" type="text" name="keyword2"
+							id="keyword2" /> <input class="searchClick" id="searchBtn2"
+							type="submit" value="검색" />
+					</form>
+        		</div>
+                
+
+            </div>
+
+            <nav class="headerM">
+                <div>
+                   <ul class="category">
+						<li><a href="noticelist" class="liText">공지사항 </a></li>
+						<li><a href="tipblist" class="liText">팁/정보 </a></li>
+						<li><a href="f_bcrilist" class="liText">자유게시판 </a></li>
+						<li><a href="t_bcrilist" class="liText">거래/나눔 </a></li>
+						<li><a href="cbcrilist" class="liText">동아리/모임 </a></li>
+					</ul>
+                </div>
+            </nav>
+        </header>
         <br>
         <div class="Header_box">
         <h2>▶ 공지사항 ◀</h2>
@@ -53,7 +81,7 @@
         </div>
         <br>
         
-        <table id="board_container">
+        <table  id="board_container">
             <thead class="boardList_head">
                 <tr>
                     <th class="headS">번호</th>
@@ -67,10 +95,10 @@
 				<c:if test="${not empty banana}">
 					<c:forEach var="board" items="${banana}">
 						<c:if test="${board.fix ==1 }">
-							<tr bgcolor="lightBlue" class="notice_bg">
+							<tr bgcolor="lightBlue">
 								<td class="notice">공지</td>
 								<td class="bodyT" id="title_hidden"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
-								<td class="bodyI"><img height="25" width="25" src="${board.image}">&nbsp;<a href="userdetail?id=${board.id}">${board.id}</a></td>
+								<td class="bodyI"><img height="25" width="25" src="${board.image}">&nbsp;${board.id}</td>
 								<td class="bodyR">${board.regdate}</td>
 								<td class="bodyC">${board.cnt}</td>
 							</tr>
@@ -80,7 +108,7 @@
 							<tr>
 								<td class="bodyS">${board.seq}</td>
 								<td class="bodyT" id="title_hidden"><a href="noticedetail?seq=${board.seq}">${board.title}</a></td>
-								<td class="bodyI"><img height="25" width="25" src="${board.image}">&nbsp;<a href="userdetail?id=${board.id}">${board.id}</a></td>
+								<td class="bodyI"><img height="25" width="25" src="${board.image}">&nbsp;${board.id}</td>
 								<td class="bodyR">${board.regdate}</td>
 								<td class="bodyC">${board.cnt}</td>
 							</tr>
@@ -147,7 +175,28 @@
     <br>
     <br>
 
- <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+    <footer>
+        <div class="bottom">
+            <ul class="btMenu">
+                <li><a href="">A</a></li>
+                <li><a href="">B</a></li>
+                <li><a href="">C</a></li>
+                <li><a href="">D</a></li>
+                <li><a href="">E</a></li>
+                <li><a href="">F</a></li>
+            </ul>
+            <span>
+                <div>Copyright (c) Holo.net All rights reserved.</div>
+                <div>Contact us, holo at gmail dot com</div>
+                <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
+            </span>
+        </div>
+        <br>
+    </footer>
+
+
+
+
 
 </body>
 

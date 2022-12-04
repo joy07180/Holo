@@ -59,8 +59,36 @@
 
   <body>
         <div class="contents">
-        <%@ include file="/WEB-INF/views/include/header.jsp" %>
-        <br>
+        <header>
+            <div class="header">
+                <div>
+                    <a href="home" class="logo">logo</a>
+                </div>
+               <div class="search">
+					<form action="searchsearch">
+						<input class="searchBox" type="text" size="40"
+							placeholder="게시판 & 통합검색" type="text" name="keyword2"
+							id="keyword2" /> <input class="searchClick" id="searchBtn2"
+							type="submit" value="검색" />
+					</form>
+				</div>
+
+            </div>
+
+            <nav class="headerM">
+                <div>
+					<ul class="category">
+						<li><a href="noticelist" class="liText">공지사항 </a></li>
+						<li><a href="tipblist" class="liText">팁/정보 </a></li>
+						<li><a href="f_bcrilist" class="liText">자유게시판 </a></li>
+						<li><a href="t_bcrilist" class="liText">거래/나눔 </a></li>
+						<li><a href="cbcrilist" class="liText">동아리/모임 </a></li>
+					</ul>
+				</div>
+            </nav>
+
+        </header>
+       <br>
         <div class="Header_box">
         <h2>▶ 동아리/모임 게시판 ◀</h2>
         <p class="Header_text1">&nbsp;이곳은 동아리/모임 게시판 입니다. 동아리, 모임 글을  작성해주세요.</p>
@@ -72,7 +100,7 @@
         <table id="board_container">
             <thead class="boardList_head">
                 <tr>
-                    <th class="headS">번호</th>
+                    <th class="headG">추천</th>
                     <th class="headT">제 목</th>
                     <th class="headI">글쓴이</th>
                     <th class="headR">날 짜</th>
@@ -83,9 +111,9 @@
                 <c:if test="${not empty banana}">
                     <c:forEach var="board" items="${banana}">
                         <tr>
-                            <td class="bodyS">${board.seq}</td>
+                            <td class="bodyG">1</td>
                             <td class="bodyT" id="title_hidden">[${board.place}]<a href="cbdetail?seq=${board.seq}">${board.title}</a></td>
-                            <td class="bodyI" ><img height="25" width="25" src="${board.image}"><a href="userdetail?id=${board.id}">${board.id}</a></td>
+                            <td class="bodyI" ><img height="25" width="25" src="${board.image}">${board.id}</td>
                             <td class="bodyR">${board.regdate}</td>
                             <td class="bodyC">${board.cnt}</td>
                         </tr>
@@ -135,8 +163,7 @@
 		<br>
         
   <div id="searchBar">
-		<br>
-		<br>       
+            
   	<form action="cbcrilist" method="get">
 			<b>검색 지역선택 : </b>
 			<c:set var="ckPrint" value="false" />
@@ -215,6 +242,7 @@
 			<c:if test="${not ckPrint}">
 				<input type="checkbox" name="check" value="충북">충북&nbsp;
 			</c:if>
+			
 			<c:set var="ckPrint" value="false" />
 			<c:forEach  var="place" items="${pageMaker.cri.check}" >
 				<c:if test="${plce=='충남'}">
@@ -236,10 +264,6 @@
 			<c:if test="${not ckPrint}">
 				<input type="checkbox" name="check" value="대구">대구&nbsp;
 			</c:if>
-						
-			<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			
 			<c:set var="ckPrint" value="false" />
 			<c:forEach  var="place" items="${pageMaker.cri.check}" >
@@ -332,8 +356,6 @@
 
 			<input type="reset" value="초기화" onclick="checkClear()">
 			
-			<br>
-			
 			<!-- <input type="submit" value="검색">&nbsp; -->
 			<select name="searchType" id="searchType">
            <option value="n" ${pageMaker.cri.searchType==null ? 'selected' : '' }>전체</option>
@@ -350,23 +372,22 @@
 	</form>	 
  </div>
 
-<!-- ****************** 버튼 기능 **********************-->
-		<br>
-		<br>
         <div class="new_Write">
-			<!-- 아이디 로그인할때만 가능하게 -->
-	        <c:if test="${not empty loginID}">
-	        &nbsp;&nbsp;<a href="cbinsertf">새글등록</a>
-	        </c:if>
-	        <c:if test="${empty loginID}">
-			&nbsp;&nbsp;<p onclick="alert('로그인후 이용해주세요')">새글등록</p>        
-       		</c:if>
-        </div>
+		<!-- 아이디 로그인할때만 가능하게 -->
+        <c:if test="${not empty loginID}">
+        &nbsp;&nbsp;<a href="cbinsertf">새글등록</a>
+        </c:if>
+        <c:if test="${empty loginID}">
+		&nbsp;&nbsp;<p onclick="alert('로그인후 이용해주세요')">새글등록</p>        
+        </c:if>
+    </div>
 </div>
     <br>
     <br>
 
  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+
+
 
 
 

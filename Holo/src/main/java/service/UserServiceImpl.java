@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import criTest.SearchCriteria;
 import mapperInterface.UserMapper;
-import vo.Notice_BoardVO;
 import vo.UserVO;
 
 //** Service
@@ -64,16 +63,5 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int delete(UserVO vo) {
 		return mapper.delete(vo);
-	}
-	
-	// userDetailList
-	@Override
-	public List<UserVO> userDetailList(UserVO vo) {
-		return mapper.userDetailList(vo);
-	}
-
-	@Override
-	public int userDetailListCount(SearchCriteria cri) {
-		return mapper.userDetailListCount(cri);
 	}
 }

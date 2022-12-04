@@ -269,7 +269,7 @@ tr {
 	text-align: center;
 }
 
-.boardList_body tr:nth-child(odd):not(.notice_bg) {
+.boardList_body tr:nth-child(odd) {
 	background-color: #f1f3f5;
 }
 
@@ -358,62 +358,6 @@ tr {
     font-weight: 800;
     line-height: 19px;
     text-align: center;
+    
     width:10%;
-}
-
-.notice_bg{
-	background-color: lightBlue;
-}
-
-/* ======================================================================= */
-
-.put{
-	border: 1px solid #595959;
-    height: 30px;
-    border-radius: 3px;
-}
-
-.user{
-	height: 30px;
-    width: 50px;
-    background-color: #595959;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-
-
-/* ======================================================================= */
-
-.insert_container {
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	display: block;
-	float: none;
-}
-
-.insert_table {
-	width: 100%;
-}
-
-.test101 {
-	height: 24px;
-	border-radius: 3px;
-	background-color: #fff;
-	border: 1px solid #ccc;
-}
-
-.test1000 {
-	border: 0;
-	background-color: #f6f5f5;
-	font-size: 20px;
-	font-weight: bold;
-	text-align: right;
-}
-
-.seqHidden {
-	display: none;
 }

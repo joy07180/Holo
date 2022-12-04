@@ -48,7 +48,35 @@
 </head>
 <body>
     <div class="contents">
-       <%@ include file="/WEB-INF/views/include/header.jsp" %>
+        <header>
+            <div class="header">
+                <div>
+                    <a href="home" class="logo">logo</a>
+                </div>
+                <div class="search">
+					<form action="searchsearch">
+						<input class="searchBox" type="text" size="40"
+							placeholder="게시판 & 통합검색" type="text" name="keyword2"
+							id="keyword2" /> <input class="searchClick" id="searchBtn2"
+							type="submit" value="검색" />
+					</form>
+				</div>
+
+            </div>
+
+            <nav class="headerM">
+                <div>
+                    <ul class="category">
+						<li><a href="noticelist" class="liText">공지사항 </a></li>
+						<li><a href="tipblist" class="liText">팁/정보 </a></li>
+						<li><a href="f_bcrilist" class="liText">자유게시판 </a></li>
+						<li><a href="t_bcrilist" class="liText">거래/나눔 </a></li>
+						<li><a href="cbcrilist" class="liText">동아리/모임 </a></li>
+                    </ul>
+                </div>
+            </nav>
+
+        </header>
         <br>
         <div class="Header_box">
         <h2>▶ 자유 게시판 ◀</h2>
@@ -94,7 +122,7 @@
 						</c:if> 
 				    </td>
 	
-					<td class="bodyI"><img height="25" width="25" src="${free_board.image}"><a href="userdetail?id=${free_board.id}">${free_board.id}</a></td>
+					<td class="bodyI"><img height="25" width="25" src="${free_board.image}">${free_board.id}</td>
 					<td class="bodyR">${free_board.regdate}</td>
 					<td class="bodyC">${free_board.cnt}</td>
 					</tr>	
@@ -163,7 +191,24 @@
 
 <!-- ************************************************************* -->
 
- <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+<footer>
+        <div class="bottom">
+            <ul class="btMenu">
+                <li><a href="">A</a></li>
+                <li><a href="">B</a></li>
+                <li><a href="">C</a></li>
+                <li><a href="">D</a></li>
+                <li><a href="">E</a></li>
+                <li><a href="">F</a></li>
+            </ul>
+            <span>
+                <div>Copyright (c) Holo.net All rights reserved.</div>
+                <div>Contact us, holo at gmail dot com</div>
+                <div><a href="">이용약관</a> | <a href="">개인정보취급방침</a></div>
+            </span>
+        </div>
+        <br>
+    </footer>
 
 
 

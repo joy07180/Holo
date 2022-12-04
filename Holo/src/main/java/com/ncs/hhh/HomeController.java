@@ -8,13 +8,10 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,21 +25,18 @@ import service.F_BoardService;
 import service.Notice_BoardService;
 import service.T_BoardService;
 import service.Tip_BoardService;
-import service.UserService;
 import vo.Club_BoardVO;
 import vo.F_BoardVO;
 import vo.Notice_BoardVO;
 import vo.T_BoardVO;
 import vo.Tip_BoardVO;
-import vo.UserVO;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
-	@Autowired
-	UserService service;	
+
 	@Autowired
 	Notice_BoardService nservice;
 	@Autowired
@@ -53,14 +47,11 @@ public class HomeController {
 	F_BoardService fservice;
 	@Autowired
 	T_BoardService tservice;
-	
-	PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@RequestMapping(value = {"/","home"}, method = RequestMethod.GET)
-	public ModelAndView home(HttpServletRequest request, Locale locale, ModelAndView mv ) {
+	public ModelAndView home(Locale locale, ModelAndView mv ) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
 		Date date = new Date();
@@ -118,66 +109,10 @@ public class HomeController {
 			mv.addObject("message", "~~ 출력 자료가 없습니다 ~~");
 		}
 
-		
-	
 		mv.setViewName("home");
 		return mv;
 	}
-	
-	@RequestMapping(value = "/login" , method=RequestMethod.POST)
-	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, 
-			ModelAndView mv, UserVO vo) {
-		// 1) request 처리
-		String id = vo.getId();
-		String password = vo.getPassword();
-		response.setContentType("text/html; charset=UTF-8");
-		
-		String uri = "/home";
 
-		// 2) service 처리
-		vo.setId(id);
-		vo = service.selectOne(vo);
-		if ( vo != null ) { 
-			// ID 는 일치 -> Password 확인
-			// => password 암호화 이전
-			// if ( vo.getPassword().equals(password) ) 
-			// => password 암호화 이후
-			if (passwordEncoder.matches(password, vo.getPassword()) ) {
-
-				// Login 성공 -> login 정보 session에 보관, home
-				request.getSession().setAttribute("loginID", id);
-				request.getSession().setAttribute("loginName", vo.getName());
-				mv.addObject("code","200");
-				// ** BCryptPasswordEncoder 로 암호화되면 복호화가 불가능함.
-				// => password 수정 을 별도로 처리해야 함. 
-				// => 그러나 기존의 update  Code 를 활용하여 updateForm.jsp 에서 수정을 위해 
-				//    User가 입력한 raw_password 를 보관함. 
-				// => 이 session에 보관한 값은 detail 에서 "U" 요청시 사용함. 
-				//request.getSession().setAttribute("loginPW", password); 
-				uri="home";
-			}else {
-				// Password 오류
-				mv.addObject("code","201");
-			}
-		}else {	// ID 오류
-			mv.addObject("code","202");
-		} 
-		mv.setViewName("jsonView");
-		return mv;
-	}
-	
-
-	@RequestMapping(value = "/logout" , method=RequestMethod.POST)
-	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
-
-		HttpSession session = request.getSession(false);
-		if (session!=null) session.invalidate();
-
-		mv.setViewName("home");
-
-		return mv;
-	} 
-	
 	@RequestMapping(value="/searchsearch")
 	public ModelAndView searchsearch(HttpServletRequest request, HttpServletResponse response, 
 			ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
@@ -185,7 +120,7 @@ public class HomeController {
 
 		// 2) 서비스처리
 		// => List 처리
-		mv.addObject("nservice", nservice.nsearchsearch(cri)); 
+		mv.addObject("nservice", nservice.nsearchsearch(cri)); // ver02
 		
 		// 3) View 처리 => PageMaker
 		System.out.println("*********************************************"+pageMaker);

@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 탈퇴</title>
+<title>** LoginForm Spring_MVC2 **</title>
 <link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script src="resources/myLib/inCheck.js"></script>
+<script src="resources/myLib/axTest01.js"></script>
 
 <script>
 	let iCheck=false;
@@ -49,7 +50,7 @@
 </script>
 </head>
 <body>
-<h2>회원 삭제</h2>
+<h2>** LoginForm Spring_MVC2 **</h2>
 
 <form action="login" method="post">
 <table>

@@ -32,9 +32,7 @@ import vo.UserVO;
 public class UserController {
 
 	@Autowired
-	UserService service;	
-	@Autowired
-	Notice_BoardService nservice;
+	UserService service;
 
 	PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -61,7 +59,57 @@ public class UserController {
 	}
 
 
+	@RequestMapping(value = "/login")
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+		// 1) request 처리
+		String id = request.getParameter("id");
+		String password = request.getParameter("password");
+		UserVO vo = new UserVO();
+		String uri = "/home";
 
+		// 2) service 처리
+		vo.setId(id);
+		vo = service.selectOne(vo);
+		if ( vo != null ) { 
+			// ID 는 일치 -> Password 확인
+			// => password 암호화 이전
+			// if ( vo.getPassword().equals(password) ) 
+			// => password 암호화 이후
+			if (passwordEncoder.matches(password, vo.getPassword()) ) {
+
+				// Login 성공 -> login 정보 session에 보관, home
+				request.getSession().setAttribute("loginID", id);
+				request.getSession().setAttribute("loginName", vo.getName());
+
+				// ** BCryptPasswordEncoder 로 암호화되면 복호화가 불가능함.
+				// => password 수정 을 별도로 처리해야 함. 
+				// => 그러나 기존의 update  Code 를 활용하여 updateForm.jsp 에서 수정을 위해 
+				//    User가 입력한 raw_password 를 보관함. 
+				// => 이 session에 보관한 값은 detail 에서 "U" 요청시 사용함. 
+				//request.getSession().setAttribute("loginPW", password); 
+				uri="home";
+			}else {
+				// Password 오류
+				mv.addObject("message", "~~ Password 오류,  다시 하세요 ~~");
+			}
+		}else {	// ID 오류
+			mv.addObject("message", "~~ ID 오류,  다시 하세요 ~~");
+		} //else
+		mv.setViewName(uri);
+		return mv;
+	}
+
+
+	@RequestMapping(value = "/logout")
+	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+
+		HttpSession session = request.getSession(false);
+		if (session!=null) session.invalidate();
+		mv.addObject("message", "~~ 로그아웃 되었습니다 ~~"); 
+		mv.setViewName("home");
+
+		return mv;
+	} 
 
 	// ** Join : 회원가입
 	@RequestMapping(value = "/joinf")
@@ -101,7 +149,7 @@ public class UserController {
 		// 2) 위 의 값을 이용해서 실제저장위치 확인 
 		// => 개발중인지, 배포했는지 에 따라 결정
 		if ( realPath.contains(".eclipse.") )  // eslipse 개발환경 (배포전)
-			realPath = "C:\\Users\\주성현\\git\\Holo\\src\\main\\webapp\\resources\\Uimages\\";
+			realPath = "C:\\Users\\Administrator.User -2022YRUIG\\git\\holo\\Holo\\src\\main\\webapp\\resources\\Uimages\\";
 		else  // 톰캣서버에 배포 후 : 서버내에서의 위치
 			realPath += "resources\\Uimages\\" ;
 
@@ -196,7 +244,7 @@ public class UserController {
 		// 1.1) 위 의 값을 이용해서 실제저장위치 확인 
 		// => 개발중인지, 배포했는지 에 따라 결정
 		if ( realPath.contains(".eclipse.") )  // eslipse 개발환경 (배포전)
-			realPath = "C:\\Users\\주성현\\git\\Holo\\src\\main\\webapp\\resources\\uploadImage\\";
+			realPath = "C:\\Users\\Administrator.User -2022YRUIG\\git\\holo\\Holo\\src\\main\\webapp\\resources\\Uimages\\";
 		else  // 톰캣서버에 배포 후 : 서버내에서의 위치
 			realPath += "resources\\Uimages\\" ;
 
@@ -233,10 +281,11 @@ public class UserController {
 
 		// 2. Service 처리
 		if (service.update(vo) > 0) {
+			mv.addObject("message", "회원 정보 수정 성공");
 			mv.addObject("apple",vo); // 회원 정보 수정이 되면 vo에 수정된 값이 들어가야함
-			mv.addObject("service", service.userDetailList(vo)); 
 		}else {
 			// update 실패 : 재수정 유도 -> updateForm.jsp 
+			mv.addObject("message", "회원 정보 수정 실패, 다시 하세요 ~~");
 			uri = "/user/updateForm";
 		}
 
@@ -252,7 +301,7 @@ public class UserController {
 		// 1. 요청분석
 		// => Update 성공 : 내정보 표시 -> memberDetail.jsp
 		// 			 실패 : 재수정 유도 -> updateForm.jsp
-		String uri = "/user/userDetail";
+		String uri = "home";
 
 		// id 찾기
 		HttpSession session = request.getSession(false);
@@ -268,15 +317,16 @@ public class UserController {
 		// => BCryptPasswordEncoder 적용
 		//    encode(rawData) -> digest 생성 & vo 에 set  
 		vo.setPassword(passwordEncoder.encode(vo.getPassword()));
-		System.out.println("***** pwupdate2 =>"+vo);
 
+		System.out.println("***** pwupdate2 =>"+vo);
 		// 2. Service 처리
 		if (service.pwupdate(vo) > 0) {
+			mv.addObject("message", "비밀번호 수정 성공");
 			mv.addObject("apple",vo); // 회원 정보 수정이 되면 vo에 수정된 값이 들어가야함
-			mv.addObject("service", service.userDetailList(vo)); 
-			System.out.println("***** pwupdate3 =>"+vo);
 		}else {
-			uri = "/user/userDetail";
+			// update 실패 : 재수정 유도 -> pwupdate.jsp 
+			mv.addObject("message", "회원 정보 수정 실패, 다시 하세요 ~~");
+			uri = "/user/pwupdate";
 		}
 
 		// 3. 결과(ModelAndView) 전달 
@@ -286,8 +336,7 @@ public class UserController {
 
 	// ** MemberDetail
 	@RequestMapping(value = "/userdetail")
-	public ModelAndView userdetail(HttpServletRequest request, HttpServletResponse response, 
-			UserVO vo , ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
+	public ModelAndView userdetail(HttpServletRequest request, HttpServletResponse response, UserVO vo , ModelAndView mv) {
 		// => Mapping 메서드 : 매개변수로 지정된 객체에 request_ParameterName 과 일치하는 컬럼(setter)존재하면 자동으로 set 
 		//MemberVO vo = new MemberVO();
 		//vo.setId(request.getParameter("id")); 매개변수에 추가하면 자동으로 생겨서 필요 없어짐
@@ -304,30 +353,19 @@ public class UserController {
 			if ( session!=null && session.getAttribute("loginID")!=null ) 
 				vo.setId((String)session.getAttribute("loginID"));
 			else {
+				request.setAttribute("message", "=> 출력할 id 없음, 로그인후 이용하세요 ~~");
 				mv.setViewName("home");
 				return mv;
 			}
 		} //getParameter_else
 
 		String uri = "/user/userDetail";
-		
-		cri.setSnoEno();
 
 		// 2. Service 처리
 		// => Service 에서 selectOne
 		vo=service.selectOne(vo);
 		if (vo != null) {
 
-			mv.addObject("service", service.userDetailList(vo)); 
-			
-			pageMaker.setCri(cri);
-			pageMaker.setTotalRowsCount(service.userDetailListCount(cri));     // ver02: 조건과 일치하는 Rows 갯수 
-			mv.addObject("pageMaker", pageMaker);
-			
-			System.out.println("vo"+vo);
-			System.out.println("cri"+cri);
-			System.out.println("pageMaker"+pageMaker);
-			
 			// ** Update 요청이면 uqdateForm.jsp 로
 			// => passwordEncoder 사용 후 에는
 			//	  session에 보관해 놓은 raw_password 를 수정할수 있도록 vo에 set 해줌
@@ -339,7 +377,9 @@ public class UserController {
 				vo.setPassword((String)session.getAttribute("loginPW")); 
 			}
 			mv.addObject("apple", vo);
-		}
+		}else {
+			mv.addObject("message","~~ "+request.getParameter("id")+"님의 자료는 존재하지 않습니다 ~~"); 
+		}	
 		mv.setViewName(uri);
 		return mv;
 	} //mdetail

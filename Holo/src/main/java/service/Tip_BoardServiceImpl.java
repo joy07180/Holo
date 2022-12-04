@@ -43,16 +43,6 @@ public class Tip_BoardServiceImpl implements Tip_BoardService {
 	public Tip_BoardVO selectOne(Tip_BoardVO vo) {
 		return mapper.selectOne(vo);
 	}
-	// ** n_selectOne
-	@Override
-	public Tip_BoardVO n_selectOne(Tip_BoardVO vo) {
-		return mapper.n_selectOne(vo);
-	}
-	// ** p_selectOne
-	@Override
-	public Tip_BoardVO p_selectOne(Tip_BoardVO vo) {
-		return mapper.p_selectOne(vo);
-	}
 
 	// ** Insert
 	@Override

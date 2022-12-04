@@ -38,7 +38,7 @@
 </sql>
 
 <select id="searchList" resultType="vo.F_BoardVO">
-	select seq, f.id, title, substr(regdate,1,10) regdate, cnt, root, step, indent , f.uploadfile, u.uploadfile image
+	select seq, f.id, title, substr(regdate,1,10) regdate, cnt, root, step, indent , u.uploadfile image
 	from free_board f join user u
 	where f.id = u.id AND ( seq>0 <include refid="search"></include>
 	order by root desc, step asc
@@ -53,23 +53,17 @@
 
 
 <select id="selectOne" resultType="vo.F_BoardVO">
-	select seq, title, f.id, content, regdate, cnt,  u.uploadfile image , f.uploadfile 
-	from free_board f join user u 
-	where f.id = u.id AND seq=#{seq}
+	select * from free_board where seq=#{seq}
 </select>
 
 <select id="n_selectOne" resultType="vo.F_BoardVO">
-	select seq, title, f.id, content, regdate, cnt,  u.uploadfile image , f.uploadfile 
-	from free_board f join user u
-	where f.id = u.id AND seq = ( 
+	select * from free_board where seq = ( 
     	select min(seq) from free_board where seq>#{seq} and step=0
 	)
 </select>
 
 <select id="p_selectOne" resultType="vo.F_BoardVO">
-	select seq, title, f.id, content, regdate, cnt,  u.uploadfile image , f.uploadfile 
-	from free_board f join user u
-	where f.id = u.id AND seq = ( 
+	select * from free_board where seq = ( 
     	select max(seq) from free_board where seq<![CDATA[ < ]]>#{seq} and step=0
 	)
 </select>
@@ -102,13 +96,12 @@ insert into board(seq,id,title,content,root)
 	<selectKey keyProperty="seq" resultType="int" order="BEFORE">
 		select IFNULL(max(seq),0)+1 from free_board
 	</selectKey>
-	insert into free_board(seq,title,id,content,root,uploadfile) 
-	values(#{seq},#{title},#{id},#{content},#{seq},#{uploadfile})
+	insert into free_board(seq,id,title,content,root,uploadfile) 
+	values(#{seq},#{id},#{title},#{content},#{seq},#{uploadfile})
 </insert>
 
 <update id="update">
-	update free_board set title=#{title}, content=#{content},
-	uploadfile=#{uploadfile} where seq=#{seq}
+	update free_board set title=#{title}, content=#{content}, uploadfile=#{uploadfile} where seq=#{seq}
 </update>	
 	
 <!-- if 조건문 -->	

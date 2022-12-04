@@ -23,10 +23,6 @@ public interface Club_BoardService {
 	
 	// ** selectOne
 	Club_BoardVO selectOne(Club_BoardVO vo);
-	// ** n_selectOne
-	Club_BoardVO n_selectOne(Club_BoardVO vo);
-	// ** p_selectOne
-	Club_BoardVO p_selectOne(Club_BoardVO vo);
 	
 	// ** Insert
 	int insert(Club_BoardVO vo);

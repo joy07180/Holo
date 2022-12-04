@@ -6,15 +6,15 @@
 
 <insert id="CommentRegist">
   		insert into comment(com_no,com_writer,com_content,com_like,com_hate,re_com,com_type,com_bno)
-		values (#{com_no},#{com_writer},#{com_content},0,0,1,#{com_type},#{com_bno})
+		values (#{com_no},#{com_writer},#{com_content},0,0,1,1,#{com_bno})
   	</insert>
   	
   	<select id="getTotal" resultType="int">
-  		select count(*) from comment where com_bno = #{com_bno} and com_type = #{com_type}
+  		select count(*) from comment where com_bno = #{com_bno}
   	</select>
   	
   	<select id="getList" resultType="vo.CommentVO">
-  		select * from comment where com_bno = #{com_bno} and com_type = #{com_type} limit #{offset}, #{limit}
+  		select * from comment where com_bno = #{com_bno} limit #{offset}, #{limit}
   	</select>
   	
   	<select id="myRecord" resultType="vo.CommentVO">
@@ -24,7 +24,7 @@
 	
 	<delete id="commentDelete">
 		DELETE FROM comment
-		WHERE com_writer = #{com_writer} AND com_no = #{com_no} and com_type = #{com_type}
+		WHERE com_writer = #{com_writer} AND com_no = #{com_no}
 	</delete>
 	
 	<select id="getComList" resultType="vo.CommentVO">
