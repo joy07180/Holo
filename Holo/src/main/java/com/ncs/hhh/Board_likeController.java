@@ -24,6 +24,8 @@ public class Board_likeController {
 	@Autowired
 	Board_likeService service;
 	
+	// 커밋용
+	
 	
 	
 	@PostMapping("/InsertLike")
