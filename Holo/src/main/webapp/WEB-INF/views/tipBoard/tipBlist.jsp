@@ -51,6 +51,7 @@
             }); //ready	
         </script>
     </head>
+    <!-- 커밋용 -->
 
   <body>
     <div class="contents">
@@ -80,7 +81,12 @@
                     <c:forEach var="board" items="${banana}">
                         <tr>
                             <td class="bodyS">${board.seq}</td>
-                            <td class="bodyT" id="title_hidden"><a href="tipbdetail?seq=${board.seq}">${board.title}</a></td>
+                            <td class="bodyT" id="title_hidden"><c:if test="${empty loginID}">
+				   		${board.title}
+					</c:if>		
+					<c:if test="${not empty loginID}">
+						<a href="tipbdetail?seq=${board.seq}">${board.title}</a>&nbsp;&nbsp;
+					</c:if> </td>
                             <td class="bodyI"><img height="25" width="25" src="${board.image}"><a href="userdetail?id=${board.id}">${board.id}</a></td>
                             <td class="bodyR" width="20%">${board.regdate}</td>
                             <td class="bodyC" width="10%">${board.cnt}</td>
