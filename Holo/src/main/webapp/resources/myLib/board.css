@@ -147,9 +147,29 @@ h2 {
 /* ============================================================== */
 
 .main {
+	display:flex;
     width: 900px;
     margin: 10px 0;
-    height: 150px;
+    height: 200px;
+}
+
+.main_slide {
+	display: inline-block;
+	width: 600px;
+	height: 200px;
+	border: 1px solid #d3d4d5;
+}
+
+.main_login {
+	margin: auto;
+	width: 280px;
+	border: 2px solid lightBlue;
+	height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  position: relative;
 }
 
 .category {
@@ -194,7 +214,7 @@ h2 {
 }
 
 .boards {
-    margin: 50px 0;
+    margin: 30px 0;
     display: flex;
     justify-content: space-between;
     width: 900px;
@@ -210,6 +230,8 @@ h2 {
 h4>a {
     float: right;
 }
+
+
 
 /* ================================================================= */
 table{

@@ -256,7 +256,7 @@ function deletecheck() {
 	            <c:if test="${not empty apple.uploadfile}">
 	            	<td><img width="100%" src="${apple.uploadfile}"><br><br>${fn:replace(apple.content, replaceChar, "<br/>")}<br><br></td>
 	            </c:if>
-	             <td>
+	            <td><br>
             	<div id="like_box">
             		<div id="like_bt" style='cursor:pointer;'>추천버튼</div><br>
             		<span id="LikeCount">${liketotal}</span>
@@ -384,7 +384,6 @@ console.log("반내림 => "+Math.floor(${total}/10));
 				</c:if>
 			</tbody>
         </table>
-        
 </div>
 	<!-- footer -->
     <%@ include file="/WEB-INF/views/include/footer.jsp" %>

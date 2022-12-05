@@ -90,6 +90,7 @@
 
 		<main>
 			<div class="main">
+				<div class="main_slide">
 					<ul class="slide_list"></ul>
 					<script>
 					const imgArray = [
@@ -137,9 +138,10 @@
 					    // li[i].style.opacity = 1;
 					}, 4000);
 					</script>
-					<div>
+				</div>
+				<div class="main_login">
 					<c:if test="${not empty loginID}">
-						<form action="logout" method="get">
+						<form action="logout" method="get" class="board_Logout">
 
 							<h1>${loginName} 님 !!!</h1>
 							<br> 
@@ -153,7 +155,7 @@
 
 
 				<c:if test="${empty loginID}">
-					<form action="login" method="post">
+					<form action="login" method="post" class="board_Login">
 						<table>
 							<tr>
 								<td class="user">I D</td>
@@ -172,12 +174,9 @@
 							</tr>
 						</table>
 					</form>
-					<br>
 				</c:if>
-				
 				</div>
 			</div>
-	
 			<div class="boards">
 				<section>
 					<h4>
