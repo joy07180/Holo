@@ -57,7 +57,7 @@
 
                 </c:when>
 			</c:choose>
-			<!-- Displag PageNo -->
+			<!-- Displag PageNo   -->
 			<c:forEach var="i" begin="${pageMaker.spageNo}"
 				end="${pageMaker.epageNo}">
 				<c:if test="${i==pageMaker.cri.currPage}">
