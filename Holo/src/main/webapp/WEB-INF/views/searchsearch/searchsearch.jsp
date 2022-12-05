@@ -16,52 +16,26 @@
 
 <body>
 	<div class="contents">
-		<header>
-			<div class="header">
-				<div>
-					<a href="home" class="logo">logo</a>
-				</div>
-				<div class="search">
-					<form action="searchsearch">
-						<input class="searchBox" type="text" size="40"
-							placeholder="게시판 & 통합검색" type="text" name="keyword2"
-							id="keyword2" /> <input class="searchClick" id="searchBtn2"
-							type="submit" value="검색" />
-					</form>
-				</div>
-
-			</div>
-
-			<nav class="headerM">
-				<div>
-					<ul class="category">
-						<li><a href="noticelist" class="liText">공지사항 </a></li>
-						<li><a href="tipblist" class="liText">팁/정보 </a></li>
-						<li><a href="f_bcrilist" class="liText">자유게시판 </a></li>
-						<li><a href="t_bcrilist" class="liText">거래/나눔 </a></li>
-						<li><a href="cbcrilist" class="liText">동아리/모임 </a></li>
-					</ul>
-				</div>
-			</nav>
-
-		</header>
+	
+		 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+		 
 		<br>
 		<h2>검색 결과</h2>
 		<br> <br>
 
-		<table width=100%>
-			<thead>
-				<tr height="30">
-					<th width="40%">제 목</th>
-					<th width="10%">글쓴이</th>
-					<th width="20%">날 짜</th>
-					<th width="10%">조회수</th>
+        <table id="board_container">
+            <thead class="boardList_head">
+                <tr>
+                    <th class="headT">제 목</th>
+                    <th class="headI">글쓴이</th>
+                    <th class="headR">날 짜</th>
+					<th class="headC">조회수</th>
 				</tr>
-			</thead>
-			<tbody>
+            </thead>
+			<tbody class="boardList_body">
 				<c:if test="${not empty nservice}">
 					<c:forEach var="nboard" items="${nservice}">
-						<tr height="30" bgcolor="lightGray">
+						<tr height="30">
 							<td width="40%"><a href="searchdetail?seq=${nboard.seq}">${nboard.title}</a></td>
 							<td class="ct" width="20%"><img height="25" width="25" src="${nboard.image}"><a href="userdetail?id=${nboard.id}">${nboard.id}</a></td>
 							<td class="ct" width="10%">${nboard.regdate}</td>
@@ -103,28 +77,13 @@
 				</c:when>
 			</c:choose>
 		</div>
-		<br> <br>
+		<br> 
+		<br>
 
-		<footer>
-			<div class="bottom">
-				<ul class="btMenu">
-					<li><a href="">공지사항</a></li>
-					<li><a href="">팁/정보</a></li>
-					<li><a href="">자유게시판</a></li>
-					<li><a href="">거래/나눔</a></li>
-					<li><a href="">동아리/모임</a></li>
-					<li><a href="">Q&A</a></li>
-				</ul>
-				<span>
-					<div>Copyright (c) Holo.net All rights reserved.</div>
-					<div>Contact us, holo at gmail dot com</div>
-					<div>
-						<a href="">이용약관</a> | <a href="">개인정보취급방침</a>
-					</div>
-				</span>
-			</div>
-			<br>
-		</footer>
+</div>
+ <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+
+
 </body>
 
 </html>

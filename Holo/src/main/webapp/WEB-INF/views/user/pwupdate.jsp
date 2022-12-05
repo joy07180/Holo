@@ -89,7 +89,7 @@ function change() {
 		<tr>
 			<td class="no">
 				<input  type="submit" id="change" class="change" value="수정" onclick="return change()" >&nbsp;&nbsp;
-				<a href="userdetail" id="change" type="submit" class="change" onclick="return change()" >회원가입</a>
+				<a href="userdetail" id="change" type="submit" class="change" onclick="return change()" >수정</a>
 				<input type="reset" value="취소">
 			</td>	
 		</tr>	
