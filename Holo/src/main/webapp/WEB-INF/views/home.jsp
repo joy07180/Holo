@@ -144,12 +144,14 @@
 						<form action="logout" method="get" class="board_Logout">
 
 							<h1>${loginName} 님 !!!</h1>
-							<br> 
+							<br>
+							<div class="user_box2"> 
 							 <input type="submit" id="axlogout" value="Logout" class="user">
-							 <a href="userdetail" class="user" style="width: 110px">마이 페이지</a>
+							 <a href="userdetail" class="user3">MYPAGE</a>
 							<c:if test="${loginID=='admin'}">
-								<a href="user" class="user">회원 목록</a>
+								<a href="user" class="user4">회원목록</a>
 							</c:if>
+							</div>
 						</form>
 					</c:if>
 
@@ -168,9 +170,9 @@
 								</td>
 							</tr>
 							<tr><td></td>
-								<td >
-								<input type="submit" id="jslogin" value="Login" class="user" >
-								<a href="joinf" class="user">회원가입</a>&nbsp;&nbsp;
+								<td class="user_box">
+								<input type="submit" id="jslogin" value="Login" class="user1" >
+								<a href="joinf" class="user2">회원가입</a>&nbsp;&nbsp;
 							</tr>
 						</table>
 					</form>
