@@ -47,7 +47,6 @@ function goto() {
 
 <c:if test="${loginID==apple.id}">
 &nbsp;&nbsp;<a href="userdetail?jCode=U&id=${apple.id}" >내정보수정</a>
-<a href="userdetail?jCode=Y&id=${apple.id}">비밀번호수정</a>
 </c:if>
 <c:if test="${loginID=='admin'}">
 &nbsp;&nbsp;<a href="userdetail?jCode=U&id=${apple.id}" >회원정보수정</a>
