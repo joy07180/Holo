@@ -209,7 +209,6 @@ $(document).on("click", "#like_bt", function() {
 		})
 		location.reload();
 	}
-	
 });
 
 function deletecheck() {
