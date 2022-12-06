@@ -308,7 +308,7 @@ function deletecheck() {
 	<hr>
  	<div>
 		<a href="tipbinsertf">새글등록</a>
-       	&nbsp;&nbsp;<a href="tiprinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글</a>
+       <%-- 	&nbsp;&nbsp;<a href="tiprinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글</a> --%>
 		&nbsp;&nbsp;<a href="tipblist">목록으로</a>  
 		  
         <!-- 아이디 로그인이랑 같을때 추가 메뉴 -->

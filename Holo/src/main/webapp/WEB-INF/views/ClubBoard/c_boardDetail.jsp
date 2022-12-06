@@ -307,7 +307,7 @@ console.log("반내림 => "+Math.floor(${total}/10));
 			<!-- 아이디 로그인이랑 다를때 메뉴 -->
 	        <c:if test="${loginID!=apple.id || loginID!='admin'}">
 			<a href="cbinsertf">새글등록</a>
-	        &nbsp;&nbsp;<a href="crinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글등록</a>
+	        <%-- &nbsp;&nbsp;<a href="crinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글등록</a> --%>
 			&nbsp;&nbsp;<a href="cbcrilist">목록으로</a>       
 	        </c:if>
 	        <!-- 아이디 로그인이랑 같을때 추가 메뉴 -->
