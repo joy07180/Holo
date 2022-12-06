@@ -8,7 +8,6 @@
 <title> User PwUpdate </title>
     <script src="resources/myLib/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="resources/myLib/userUpdate.css">
-	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 	<script src="resources/myLib/inCheck.js"></script>
 
 <script>
@@ -40,23 +39,17 @@
 	   	if (pCheck==false) { $('#pMessage').html(' Password 를 확인하세요 !!');}
 		if (ppCheck==false) { $('#ppMessage').html(' Password2 를 확인하세요 !!');}
          
-         if ( pCheck && ppCheck ) return true; // submit 진행  
-         else return false;z
+         if ( pCheck && ppCheck ) {
+     		// => submit 확인
+     		if ( confirm("비밀번호를 변경 하시겠습니 ? (Yes:확인 / No:취소)")==false ) {
+     			 alert('변경이 취소 되었습니다 ~~');
+     			  return false; 
+     		}else return true; // submit 진행  
+     	}else {
+     		return false;
+     	}
    } //inCheck
-   
-   $('#change').click(function() {
-		$.ajax({
-			type: 'submit',
-			url: 'userdetail',
-			success: function() {
-				location.reload(); //새로고침
-			}
-		}); //ajax
-	});	//axlogout
 	
-function change() {
-	 alert('변경이 완료 되었습니다 ');
-} //change
 </script>
 
 </head>
@@ -88,8 +81,7 @@ function change() {
 								
 		<tr>
 			<td class="no">
-				<input  type="submit" id="change" class="change" value="수정" onclick="return change()" >&nbsp;&nbsp;
-				<a href="userdetail" id="change" type="submit" class="change" onclick="return change()" >수정</a>
+				<input type="submit" value="수정" id="submit"onclick="return inCheck()">&nbsp;&nbsp;
 				<input type="reset" value="취소">
 			</td>	
 		</tr>	

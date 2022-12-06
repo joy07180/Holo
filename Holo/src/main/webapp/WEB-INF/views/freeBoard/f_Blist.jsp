@@ -94,7 +94,14 @@
 						</c:if> 
 				    </td>
 	
-					<td class="bodyI"><img height="25" width="25" src="${free_board.image}"><a href="userdetail?id=${free_board.id}">${free_board.id}</a></td>
+					<td class="bodyI">
+					<c:if test="${empty loginID}">
+					<img height="25" width="25" src="${free_board.image}">${free_board.id}
+						</c:if>		
+						<c:if test="${not empty loginID}">
+					<img height="25" width="25" src="${free_board.image}"><a href="userdetail?id=${free_board.id}">${free_board.id}</a>
+						</c:if> 
+					</td>
 					<td class="bodyR">${free_board.regdate}</td>
 					<td class="bodyC">${free_board.cnt}</td>
 					</tr>	
