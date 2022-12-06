@@ -233,7 +233,7 @@
 			<div class="boards">
 				<section>
 					<h4>
-						최신 팁/정보 <a href="hbcrilist">+</a>
+						최신 팁/정보 <a href="tipblist">+</a>
 					</h4>
 					<hr>
 					<table width=100%>
@@ -247,7 +247,7 @@
 						<c:if test="${not empty hlist}">
 							<c:forEach var="hboard" items="${hlist}">
 								<tr height="30">
-									<td width="40%"><a href="hbdetail?seq=${hboard.seq}">${hboard.title}</a></td>
+									<td width="40%"><a href="tipbdetail?seq=${hboard.seq}">${hboard.title}</a></td>
 									<td class="ct" width="20%"><a href="userdetail?id=${hboard.id}">${hboard.id}</a></td>
 									<td class="ct" width="30%">${hboard.regdate}</td>
 
@@ -258,7 +258,7 @@
 				</section>
 				<section>
 					<h4>
-						인기 팁/정보 <a href="hbcrilist">+</a>
+						인기 팁/정보 <a href="tipblist">+</a>
 					</h4>
 					<hr>
 					<table width=100%>
@@ -272,7 +272,7 @@
 						<c:if test="${not empty hhotlist}">
 							<c:forEach var="hboard" items="${hhotlist}">
 								<tr height="30">
-									<td width="40%"><a href="hbdetail?seq=${hboard.seq}">${hboard.title}</a></td>
+									<td width="40%"><a href="tipbdetail?seq=${hboard.seq}">${hboard.title}</a></td>
 									<td class="ct" width="20%"><a href="userdetail?id=${hboard.id}">${hboard.id}</a></td>
 									<td class="ct" width="10%">${hboard.cnt}</td>
 								</tr>

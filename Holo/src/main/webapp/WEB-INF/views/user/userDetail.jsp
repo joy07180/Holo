@@ -75,7 +75,7 @@ function goto() {
 			</thead>
 			<tbody>
 				<c:if test="${not empty service}">
-					<c:forEach var="board" items="${service}">
+					<c:forEach var="board" items="${service}"> 
 						<tr height="30">
 							<td><a href="searchdetail?seq=${board.seq}">${board.title}</a></td>
 							<td class="ct">${board.regdate}</td>

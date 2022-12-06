@@ -287,7 +287,7 @@ public class UserController {
 
 	// ** MemberDetail
 	@RequestMapping(value = "/userdetail")
-	public ModelAndView userdetail(HttpServletRequest request, HttpServletResponse response, 
+	public ModelAndView userdetail(HttpServletRequest request, HttpServletResponse response,
 			UserVO vo , ModelAndView mv, SearchCriteria cri, PageMaker pageMaker) {
 
 		// 1. 요청분석
