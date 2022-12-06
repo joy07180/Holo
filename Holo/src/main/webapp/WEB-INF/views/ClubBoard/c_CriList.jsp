@@ -346,20 +346,21 @@
 			<input type="reset" value="초기화" onclick="checkClear()">
 			
 			<br>
-			
-			<!-- <input type="submit" value="검색">&nbsp; -->
-			<select name="searchType" id="searchType">
-           <option value="n" ${pageMaker.cri.searchType==null ? 'selected' : '' }>전체</option>
-           <option value="t" ${pageMaker.cri.searchType=='t' ? 'selected' : '' }>제목</option>
-           <option value="c" ${pageMaker.cri.searchType=='c' ? 'selected' : '' }>내용</option>
-           <option value="i" ${pageMaker.cri.searchType=='i' ? 'selected' : '' }>ID(글쓴이)</option>
-           <option value="tc" ${pageMaker.cri.searchType=='tc' ? 'selected' : '' }>제목+내용
-           </option>
-           <option value="tci" ${pageMaker.cri.searchType=='tci' ? 'selected' : '' }>제목+내용+글쓴이
-           </option>
-       </select>
-      <input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">
-      <button id="searchBtn" onclick="this.submit()">Search</button>
+			<div class="search_con">
+				<!-- <input type="submit" value="검색">&nbsp; -->
+			    <select name="searchType" id="searchType">
+	            <option value="n" ${pageMaker.cri.searchType==null ? 'selected' : '' }>전체</option>
+	            <option value="t" ${pageMaker.cri.searchType=='t' ? 'selected' : '' }>제목</option>
+	            <option value="c" ${pageMaker.cri.searchType=='c' ? 'selected' : '' }>내용</option>
+	            <option value="i" ${pageMaker.cri.searchType=='i' ? 'selected' : '' }>ID(글쓴이)</option>
+	            <option value="tc" ${pageMaker.cri.searchType=='tc' ? 'selected' : '' }>제목+내용
+	            </option>
+	            <option value="tci" ${pageMaker.cri.searchType=='tci' ? 'selected' : '' }>제목+내용+글쓴이
+	            </option>
+	            </select>
+	            <input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword}">
+	            <button id="searchBtn" onclick="this.submit()">Search</button>
+            </div>
 	</form>	 
  </div>
 

@@ -532,3 +532,6 @@ tr {
 	display: none;
 }
 
+.search_con {
+	text-align: right;
+}
