@@ -102,7 +102,7 @@ public class UserController {
 		// 2) 위 의 값을 이용해서 실제저장위치 확인 
 		// => 개발중인지, 배포했는지 에 따라 결정
 		if ( realPath.contains(".eclipse.") )  // eslipse 개발환경 (배포전)
-			realPath = "C:\\Users\\Administrator.User -2022OFLBY\\git\\holo\\Holo\\src\\main\\webapp\\resources\\Uimages\\";
+			realPath = "C:\\Users\\주성현\\git\\Holo\\src\\main\\webapp\\resources\\Uimages\\";
 		else  // 톰캣서버에 배포 후 : 서버내에서의 위치
 			realPath += "resources\\Uimages\\" ;
 
@@ -196,7 +196,7 @@ public class UserController {
 		// 1.1) 위 의 값을 이용해서 실제저장위치 확인 
 		// => 개발중인지, 배포했는지 에 따라 결정
 		if ( realPath.contains(".eclipse.") )  // eslipse 개발환경 (배포전)
-			realPath = "C:\\Users\\주성현\\git\\Holo\\src\\main\\webapp\\resources\\uploadImage\\";
+			realPath = "C:\\Users\\주성현\\git\\Holo\\src\\main\\webapp\\resources\\Uimages\\";
 		else  // 톰캣서버에 배포 후 : 서버내에서의 위치
 			realPath += "resources\\Uimages\\" ;
 
