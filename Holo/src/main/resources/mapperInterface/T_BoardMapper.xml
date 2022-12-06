@@ -87,13 +87,13 @@
 
 
 	<select id="selectOne" resultType="vo.T_BoardVO">
-		select seq, title, t.id, content, regdate, cnt,  u.uploadfile image , t.uploadfile 
+		select seq, title, trade, t.id, content, regdate, cnt,  u.uploadfile image , t.uploadfile 
 		from trade_board t join user u 
 		where t.id = u.id AND seq=#{seq}
 	</select>
 	
 	<select id="n_selectOne" resultType="vo.T_BoardVO">
-	select seq, title, t.id, content, regdate, cnt,  u.uploadfile image , t.uploadfile
+	select seq, title, trade, t.id, content, regdate, cnt,  u.uploadfile image , t.uploadfile
 	from trade_board t join user u
 	where t.id = u.id AND seq = ( 
     	select min(seq) from trade_board where seq>#{seq} and step=0
@@ -101,7 +101,7 @@
 	</select>
 
 	<select id="p_selectOne" resultType="vo.T_BoardVO">
-	select seq, title, t.id, content, regdate, cnt,  u.uploadfile image , t.uploadfile
+	select seq, title, trade, t.id, content, regdate, cnt,  u.uploadfile image , t.uploadfile
 	from trade_board t join user u
 	where t.id = u.id AND seq = ( 
     	select max(seq) from trade_board where seq<![CDATA[ < ]]>#{seq} and step=0

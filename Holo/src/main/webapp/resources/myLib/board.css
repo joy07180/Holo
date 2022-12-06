@@ -258,6 +258,7 @@ tr {
 }
 
 .board_dSB {
+	width: 40px;
 	font-size: 15px;
 	color: red;
 	vertical-align: bottom; 

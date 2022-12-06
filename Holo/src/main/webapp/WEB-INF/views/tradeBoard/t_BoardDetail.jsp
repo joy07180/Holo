@@ -309,7 +309,7 @@ console.log("반내림 => "+Math.floor(${total}/10));
 	<hr>
 	<div>
 		<a href="t_binsertf">새글등록</a>
-        <%-- &nbsp;&nbsp;<a href="t_rinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글등록</a> --%>
+        &nbsp;&nbsp;<a href="t_rinsertf?root=${apple.root}&step=${apple.step}&indent=${apple.indent}">답글등록</a>
 		&nbsp;&nbsp;<a href="t_bcrilist">목록으로</a>       
 		
         <!-- 아이디 로그인이랑 같을때 추가 메뉴 -->
@@ -385,6 +385,7 @@ console.log("반내림 => "+Math.floor(${total}/10));
 			</tbody>
         </table>
 </div>
+<br>
 	<!-- footer -->
     <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
