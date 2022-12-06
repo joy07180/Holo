@@ -14,6 +14,10 @@ public interface Notice_BoardService {
 	
 	// ** selectOne
 	Notice_BoardVO selectOne(Notice_BoardVO vo);
+	// ** n_selectOne
+	Notice_BoardVO n_selectOne(Notice_BoardVO vo);
+	// ** p_selectOne
+	Notice_BoardVO p_selectOne(Notice_BoardVO vo);
 	
 	// ** Insert
 	int insert(Notice_BoardVO vo);

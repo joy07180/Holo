@@ -27,6 +27,18 @@ public class Notice_BoardServiceImpl implements Notice_BoardService {
 		return mapper.selectOne(vo);
 	}
 	
+	// ** n_selectOne
+	@Override
+	public Notice_BoardVO n_selectOne(Notice_BoardVO vo) {
+		return mapper.n_selectOne(vo);
+	}
+	
+	// ** p_selectOne
+	@Override
+	public Notice_BoardVO p_selectOne(Notice_BoardVO vo) {
+		return mapper.p_selectOne(vo);
+	}
+	
 	// ** Insert
 	@Override
 	public int insert(Notice_BoardVO vo) {

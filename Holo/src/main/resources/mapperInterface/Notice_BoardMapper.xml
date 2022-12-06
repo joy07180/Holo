@@ -52,7 +52,25 @@
 	</insert>
 
 	<select id="selectOne" resultType="vo.Notice_BoardVO">
-		 select seq, title, n.id, content, regdate, cnt, fix, u.uploadfile image  from notice_board n join user u where n.id = u.id AND seq=#{seq}
+		 select seq, title, n.id, content, regdate, cnt, fix, u.uploadfile image, n.uploadfile 
+		 from notice_board n join user u 
+		 where n.id = u.id AND seq=#{seq}
+	</select>
+	
+	<select id="n_selectOne" resultType="vo.Notice_BoardVO">
+		 select seq, title, n.id, content, regdate, cnt, fix, u.uploadfile image, n.uploadfile 
+		 from notice_board n join user u 
+		 where n.id = u.id AND seq = ( 
+    	select min(seq) from notice_board where seq>#{seq} and step=0
+	    )
+	</select>
+	
+	<select id="p_selectOne" resultType="vo.Notice_BoardVO">
+		 select seq, title, n.id, content, regdate, cnt, fix, u.uploadfile image, n.uploadfile 
+		 from notice_board n join user u 
+		 where n.id = u.id AND seq = ( 
+    	select max(seq) from notice_board where seq<![CDATA[ < ]]>#{seq} and step=0
+	)
 	</select>
 
 	<!-- ** 조회수 증가 -->

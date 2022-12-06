@@ -62,13 +62,13 @@
 	<br>        
     <br>
     <a href="noticelist">목록</a>       
-    <c:if test="${Prev!='T'}">
-    &nbsp;&nbsp;<a href="noticedetail?jCode=P&seq=${apple.seq}">이전글</a>
+    &nbsp;&nbsp;<a href="noticedetail?seq=${apple.seq-1}">이전글</a>
+    &nbsp;&nbsp;<a href="noticedetail?seq=${apple.seq+1}">다음글</a>
+<%--     <c:if test="${Prev!='T'}">
     </c:if>
     <c:if test="${Prev=='T'}">
     &nbsp;&nbsp;이전글
-    </c:if>
-    &nbsp;&nbsp;<a href="noticedetail?jCode=N&seq=${apple.seq}">다음글</a>
+    </c:if> --%>
 	<br>  
 	</div>
         <hr>
