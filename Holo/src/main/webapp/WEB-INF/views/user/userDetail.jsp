@@ -26,7 +26,7 @@ function goto() {
 <c:if test="${loginID==apple.id}">
 <h2>마이페이지</h2>
 </c:if>
-<c:if test="${loginID=='admin'}">
+<c:if test="${loginID=='admin'and 'admin'!=apple.id }">
 <h2>${apple.id}의 회원 정보 **</h2>
 </c:if>
 
