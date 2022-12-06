@@ -8,7 +8,6 @@
 <title> User PwUpdate </title>
     <script src="resources/myLib/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="resources/myLib/userUpdate.css">
-	<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 	<script src="resources/myLib/inCheck.js"></script>
 
 <script>
