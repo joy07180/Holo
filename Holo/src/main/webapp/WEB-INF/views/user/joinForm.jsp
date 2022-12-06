@@ -166,31 +166,33 @@ function inCheck() {
 	<form action="join" method="post" id="myForm" enctype="multipart/form-data">
 <table>
 	<tr><td >I D</td>
-		<td><input type="text" name="id" id="id" size="20" 
+		<td><input type="text" name="id" id="id" class="input_id" 
+					style="margin: 10px 10px 20px 75px;"
 								placeholder="id는 영문,숫자 10자 이내">
 			<button type="button" id="idDup" onclick="idDupCheck()">ID 중복확인</button><br>
 			<span id="iMessage" class="eMessage" ></span></td></tr>
 			
 	<tr><td	>Password</td>
-		<td><input type="password" name="password" id="password" size="20"
+		<td><input type="password" name="password" id="password" class="input_pw"
 								placeholder="특수문자 반드시 포함" value="12345!"><br>
  			<span id="pMessage" class="eMessage" ></span>
 		</td></tr>
 	<tr>
 		<td ><label for=password>PW  확인</label></td><br>
-		<td><input type="password"  id=password2 size="20"><br>
+		<td><input type="password"  id=password2 class="input_pw2"><br>
  			<span id="ppMessage" class="eMessage" ></span></td>
 	</tr>	
 	<tr><td >Name</td>
-		<td><input type="text" name="name" id="name" ><br>
+		<td><input type="text" name="name" id="name" class="input_text"><br>
  			<span id="nMessage" class="eMessage" ></span></td></tr>
  			
 	<tr><td >Birthday</td>
-		<td><input type="date" name="birthday" id="birthday"><br>
+		<td><input type="date" name="birthday" id="birthday" class="input_day"><br>
  			<span id="bMessage" class="eMessage" ></span></td></tr>
  			
 	<tr><td >Gender</td>
-		<td><select name="gender" id="gender" style="border:1px solid #388aff; height: 50px; border-radius: 3px;" >
+		<td class="genderbox"><select name="gender" id="gender" 
+			style="border:1px solid #388aff; height: 30px; border-radius: 3px;" >
 				<option value="여성">여성</option>
 				<option value="남성" selected>남성</option>
 			</select>
@@ -231,8 +233,10 @@ function inCheck() {
 			</script>
 	<tr><td></td>
 		<td><input type="submit" value="가입" id="submit" 
-					onclick="return inCheck()" disabled="disabled" width="50" >&nbsp;&nbsp;
-			<input type="reset" value="취소">&nbsp;&nbsp;
+		           style="border:1px solid #388aff; height: 30px; width:50px; border-radius: 3px;"
+					onclick="return inCheck()" disabled="disabled">&nbsp;&nbsp;
+			<input type="reset" value="취소" 
+			style="border:1px solid #388aff; height: 30px; width:50px; border-radius: 3px;">&nbsp;&nbsp;
 		</td>	
 	</tr>	
 </table>
