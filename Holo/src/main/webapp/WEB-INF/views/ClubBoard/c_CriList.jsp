@@ -91,7 +91,14 @@
 					<c:if test="${not empty loginID}">
 						<a href="cbdetail?seq=${board.seq}">${board.title}</a>&nbsp;&nbsp;
 					</c:if> </td>
-                            <td class="bodyI" ><img height="25" width="25" src="${board.image}"><a href="userdetail?id=${board.id}">${board.id}</a></td>
+                            <td class="bodyI">
+							<c:if test="${empty loginID}">
+							<img height="25" width="25" src="${board.image}">${board.id}
+								</c:if>		
+								<c:if test="${not empty loginID}">
+							<img height="25" width="25" src="${board.image}"><a href="userdetail?id=${board.id}">${board.id}</a>
+								</c:if> 
+							</td>
                             <td class="bodyR">${board.regdate}</td>
                             <td class="bodyC">${board.cnt}</td>
                         </tr>
