@@ -238,7 +238,27 @@ function deletecheck() {
         
         
 	<table class="board_dTop">
-		<tr class="board_dTitle"><td><br>${apple.title}</td></tr>
+		<tr class="board_dTitle"><td><br>${apple.title}</td>
+        	<td class="board_dSB">
+        		<c:if test="${apple.place=='서울'}">&nbsp;서울</c:if>
+        		<c:if test="${apple.place=='인천'}">&nbsp;인천</c:if>
+        		<c:if test="${apple.place=='세종'}">&nbsp;세종</c:if>
+        		<c:if test="${apple.place=='경기'}">&nbsp;경기</c:if>
+        		<c:if test="${apple.place=='강원'}">&nbsp;강원</c:if>
+        		<c:if test="${apple.place=='대전'}">&nbsp;대전</c:if>
+        		<c:if test="${apple.place=='충북'}">&nbsp;충북</c:if>
+        		<c:if test="${apple.place=='충남'}">&nbsp;충남</c:if>
+        		<c:if test="${apple.place=='대구'}">&nbsp;대구</c:if>
+        		<c:if test="${apple.place=='부산'}">&nbsp;부산</c:if>
+        		<c:if test="${apple.place=='울산'}">&nbsp;울산</c:if>
+        		<c:if test="${apple.place=='경북'}">&nbsp;경북</c:if>
+        		<c:if test="${apple.place=='경남'}">&nbsp;경남</c:if>
+        		<c:if test="${apple.place=='광주'}">&nbsp;광주</c:if>
+        		<c:if test="${apple.place=='전북'}">&nbsp;전북</c:if>
+        		<c:if test="${apple.place=='전남'}">&nbsp;전남</c:if>
+        		<c:if test="${apple.place=='제주'}">&nbsp;제주</c:if>
+        	</td>
+	    </tr>    	
 		<tr class="board_dList">
         	<td>글번호 : ${apple.seq}&nbsp;&nbsp;</td>
  	        <td>| 작성자 : <img height="15" width="15" src="${apple.image}">${apple.id}&nbsp;&nbsp;</td>

@@ -95,20 +95,20 @@
 
 
 <select id="selectOne" resultType="vo.Club_BoardVO">
-	select seq, title, c.id, content, regdate, cnt, u.uploadfile image, c.uploadfile
+	select seq, title, place, c.id, content, regdate, cnt, u.uploadfile image, c.uploadfile
 	from club_board c join user u 
 	where c.id = u.id AND seq=#{seq}
 </select>
 
 <select id="n_selectOne" resultType="vo.Club_BoardVO">
-	select seq, title, c.id, content, regdate, cnt, u.uploadfile image, c.uploadfile 
+	select seq, title, place, c.id, content, regdate, cnt, u.uploadfile image, c.uploadfile 
 	from club_board c join user u  
 	where c.id = u.id AND seq = ( 
     	select min(seq) from club_board where seq>#{seq} and step=0
 	)
 </select>
 <select id="p_selectOne" resultType="vo.Club_BoardVO">
-	select seq, title, c.id, content, regdate, cnt, u.uploadfile image, c.uploadfile 
+	select seq, title, place, c.id, content, regdate, cnt, u.uploadfile image, c.uploadfile 
 	from club_board c join user u  
 	where c.id = u.id AND seq = ( 
     	select max(seq) from club_board where seq<![CDATA[ < ]]>#{seq} and step=0
