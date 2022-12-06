@@ -45,7 +45,7 @@
 	        <tr class="board_dTitle"><td>${apple.title}</td></tr>
 	        <tr class="board_dList">
 	        	<td>글번호 : ${apple.seq}&nbsp;&nbsp;</td>
-	            <td>| 작성자 : ${apple.id}&nbsp;&nbsp;</td>
+	            <td>| 작성자 : <img height="15" width="15" src="${apple.image}">${apple.id}&nbsp;&nbsp;</td>
 	            <td>| 조회수 : ${apple.cnt}&nbsp;&nbsp;</td>
 	            <td>| ${apple.regdate}</td>
 	        </tr>
@@ -59,9 +59,8 @@
 	    </tr>
 	</table>
 		<hr>
-		&nbsp;&nbsp;<a href="javascript:history.go(-1)">이전으로</a> 
-		&nbsp;&nbsp;<a href="home">[Home]</a>
 
 	</div>
+	 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>
