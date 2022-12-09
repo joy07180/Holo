@@ -48,7 +48,7 @@ function goto() {
 <c:if test="${loginID==apple.id}">
 &nbsp;&nbsp;<a href="userdetail?jCode=U&id=${apple.id}" >내정보수정</a>
 </c:if>
-<c:if test="${loginID=='admin'}">
+<c:if test="${loginID=='admin'and 'admin'!=apple.id}">
 &nbsp;&nbsp;<a href="userdetail?jCode=U&id=${apple.id}" >회원정보수정</a>
 </c:if>
 <c:if test="${loginID=='admin' or loginID==apple.id}">
@@ -76,7 +76,10 @@ function goto() {
 				<c:if test="${not empty service}">
 					<c:forEach var="board" items="${service}"> 
 						<tr height="30">
-							<td><a href="searchdetail?seq=${board.seq}">${board.title}</a></td>
+							<td>
+							<c:if test=""></c:if>
+							<a href="searchdetail?seq=${board.seq}">${board.title}</a>
+							</td>
 							<td class="ct">${board.regdate}</td>
 							<td class="ct">${board.cnt}</td>
 						</tr>
